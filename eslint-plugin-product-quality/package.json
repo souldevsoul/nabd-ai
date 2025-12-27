@@ -1,0 +1,41 @@
+{
+  "name": "eslint-plugin-product-quality",
+  "version": "1.29.0",
+  "description": "ESLint plugin for enforcing product quality standards across AI SaaS projects - v1.29.0 (99 rules)",
+  "main": "index.js",
+  "bin": {
+    "init-payment-logos": "./bin/init-payment-logos.js",
+    "validate-no-overrides": "../scripts/validate-no-overrides.js",
+    "autoqa-setup-a11y": "../scripts/setup-a11y-tests.js"
+  },
+  "author": "AutoQA Team",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "npm test -- --watch",
+    "test:coverage": "npm test -- --coverage",
+    "validate": "node ../scripts/validate-plugin.js"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "quality",
+    "autoqa",
+    "product-quality"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:souldevsoul/autoqa.git",
+    "directory": "plugin"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "jest": "^29.7.0"
+  }
+}

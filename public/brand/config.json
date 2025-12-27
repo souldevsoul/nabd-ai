@@ -1,0 +1,15 @@
+{
+  "name": "Vertex",
+  "font": "Playfair Display",
+  "symbol": "Mountain peak / Diamond apex",
+  "primaryColor": "Gold (#C9A227)",
+  "tagline": "The Pinnacle of AI Excellence",
+  "assets": {
+    "symbol": "/brand/symbol-nobg.png",
+    "illustrations": [
+      "/brand/illustration-1-nobg.png",
+      "/brand/illustration-2-nobg.png",
+      "/brand/illustration-3-nobg.png"
+    ]
+  }
+}

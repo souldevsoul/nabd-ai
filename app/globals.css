@@ -1,0 +1,801 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* NABD - Tajawal + Cairo Arabic Typography */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-display: var(--font-display), "Tajawal", ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body), "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body), "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* NABD brand colors - heartbeat red theme */
+  --color-pulse: var(--pulse);
+  --color-pulse-glow: var(--pulse-glow);
+  --color-gold: var(--gold);
+  --color-success: var(--success);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+}
+
+/* NABD Heartbeat Theme - Deep Red with Gold Accents */
+:root {
+  --radius: 0.5rem;
+
+  /* Core - Warm cream foundation */
+  --background: oklch(0.98 0.01 60);
+  --foreground: oklch(0.15 0.02 20);
+
+  /* Cards & Popovers - Cream tint */
+  --card: oklch(0.99 0.005 60);
+  --card-foreground: oklch(0.15 0.02 20);
+  --popover: oklch(0.99 0.005 60);
+  --popover-foreground: oklch(0.15 0.02 20);
+
+  /* Primary - Deep Red (#DC2626) */
+  --primary: oklch(0.55 0.22 25);
+  --primary-foreground: oklch(1 0 0);
+
+  /* Secondary - Dark Grey */
+  --secondary: oklch(0.20 0.01 20);
+  --secondary-foreground: oklch(1 0 0);
+
+  /* Muted - Warm grey */
+  --muted: oklch(0.95 0.01 60);
+  --muted-foreground: oklch(0.45 0.02 20);
+
+  /* Accent - Gold (#D97706) */
+  --accent: oklch(0.62 0.15 55);
+  --accent-foreground: oklch(1 0 0);
+
+  /* Destructive */
+  --destructive: oklch(0.55 0.22 25);
+
+  /* Borders & Inputs - Warm tones */
+  --border: oklch(0.88 0.01 60);
+  --input: oklch(0.95 0.01 60);
+  --ring: oklch(0.55 0.22 25);
+
+  /* Charts - Red to Gold palette */
+  --chart-1: oklch(0.55 0.22 25);
+  --chart-2: oklch(0.60 0.18 35);
+  --chart-3: oklch(0.62 0.15 55);
+  --chart-4: oklch(0.65 0.12 65);
+  --chart-5: oklch(0.68 0.10 75);
+
+  /* Sidebar */
+  --sidebar: oklch(0.99 0.005 60);
+  --sidebar-foreground: oklch(0.15 0.02 20);
+  --sidebar-primary: oklch(0.55 0.22 25);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.95 0.01 60);
+  --sidebar-accent-foreground: oklch(0.15 0.02 20);
+  --sidebar-border: oklch(0.88 0.01 60);
+  --sidebar-ring: oklch(0.55 0.22 25);
+
+  /* Brand - Pulse Colors */
+  --brand: oklch(0.55 0.22 25);
+  --brand-glow: oklch(0.55 0.22 25 / 25%);
+  --pulse: oklch(0.55 0.22 25);
+  --pulse-dark: oklch(0.45 0.22 25);
+  --pulse-glow: oklch(0.55 0.22 25 / 30%);
+  --gold: oklch(0.62 0.15 55);
+  --dark: oklch(0.20 0.01 20);
+  --success: oklch(0.60 0.16 155);
+  --surface: oklch(0.99 0.005 60);
+  --surface-elevated: oklch(1 0 0);
+}
+
+/* Dark theme override - Deep Red Night */
+.dark {
+  --background: oklch(0.10 0.02 20);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.15 0.02 20);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.15 0.02 20);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.60 0.22 25);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.25 0.02 20);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.22 0.02 20);
+  --muted-foreground: oklch(0.6 0 0);
+  --accent: oklch(0.65 0.15 55);
+  --accent-foreground: oklch(0.10 0.02 20);
+  --destructive: oklch(0.60 0.22 25);
+  --border: oklch(0.25 0.02 20);
+  --input: oklch(0.22 0.02 20);
+  --ring: oklch(0.60 0.22 25);
+  --sidebar: oklch(0.10 0.02 20);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.60 0.22 25);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.22 0.02 20);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.25 0.02 20);
+  --sidebar-ring: oklch(0.60 0.22 25);
+  --pulse: oklch(0.60 0.22 25);
+  --pulse-glow: oklch(0.60 0.22 25 / 30%);
+  --pulse-dark: oklch(0.50 0.22 25);
+  --gold: oklch(0.65 0.15 55);
+  --dark: oklch(0.10 0.02 20);
+  --success: oklch(0.65 0.17 155);
+  --surface: oklch(0.15 0.02 20);
+  --surface-elevated: oklch(0.18 0.02 20);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply antialiased;
+    scroll-behavior: smooth;
+  }
+
+  html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+  }
+
+  html[dir="rtl"] .flex-row {
+    flex-direction: row-reverse;
+  }
+
+  html[dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@layer components {
+  /* Elite Card - Pristine white with cosmic hover */
+  .elite-card {
+    @apply relative bg-white p-8;
+    border: 1px solid oklch(0.90 0.01 240);
+    box-shadow:
+      0 1px 2px oklch(0.15 0.02 250 / 2%),
+      0 4px 12px oklch(0.15 0.02 250 / 3%);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .elite-card:hover {
+    border-color: oklch(0.45 0.15 260 / 40%);
+    box-shadow:
+      0 2px 4px oklch(0.15 0.02 250 / 3%),
+      0 12px 32px oklch(0.45 0.15 260 / 12%),
+      0 0 0 1px oklch(0.45 0.15 260 / 15%);
+    transform: translateY(-2px);
+  }
+
+  /* Sexy Card - Luxury rounded corners */
+  .sexy-card {
+    @apply relative rounded-xl bg-white p-8;
+    border: 1px solid oklch(0.92 0.01 80);
+    box-shadow:
+      0 1px 2px oklch(0.12 0.02 250 / 2%),
+      0 4px 16px oklch(0.12 0.02 250 / 4%);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sexy-card:hover {
+    border-color: oklch(0.45 0.15 260 / 30%);
+    box-shadow:
+      0 2px 4px oklch(0.15 0.02 250 / 3%),
+      0 16px 40px oklch(0.45 0.15 260 / 10%);
+    transform: translateY(-3px);
+  }
+
+  /* Glass morphism */
+  .glass {
+    backdrop-filter: blur(24px);
+    @apply bg-white/90;
+    border: 1px solid oklch(0.92 0.01 80 / 60%);
+    box-shadow: 0 4px 24px oklch(0.12 0.02 250 / 6%);
+  }
+
+  .glass-strong {
+    backdrop-filter: blur(40px);
+    @apply bg-white/95;
+    border: 1px solid oklch(0.92 0.01 80);
+    box-shadow: 0 8px 32px oklch(0.12 0.02 250 / 8%);
+  }
+
+  /* Cosmic gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, oklch(0.45 0.15 260), oklch(0.75 0.13 220));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Navy gradient text */
+  .gradient-text-dark {
+    background: linear-gradient(135deg, oklch(0.15 0.02 250), oklch(0.25 0.02 250));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Cosmic glow effect */
+  .glow-cosmic {
+    box-shadow: 0 0 60px oklch(0.45 0.15 260 / 30%);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 40px oklch(0.60 0.16 155 / 20%);
+  }
+
+  /* Stat card with cosmic accent */
+  .stat-card {
+    @apply relative overflow-hidden p-6 bg-white;
+    border: 1px solid oklch(0.90 0.01 240);
+    box-shadow:
+      0 1px 3px oklch(0.15 0.02 250 / 3%),
+      0 6px 16px oklch(0.15 0.02 250 / 2%);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .stat-card:hover {
+    border-color: oklch(0.45 0.15 260 / 40%);
+    box-shadow:
+      0 2px 6px oklch(0.15 0.02 250 / 4%),
+      0 12px 32px oklch(0.45 0.15 260 / 12%);
+    transform: translateY(-2px);
+  }
+
+  .stat-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-0.5;
+    background: linear-gradient(90deg, oklch(0.45 0.15 260), oklch(0.75 0.13 220));
+  }
+
+  /* Service card */
+  .service-card {
+    @apply relative overflow-hidden transition-all duration-500;
+    @apply bg-white border border-border;
+    box-shadow: 0 4px 16px oklch(0.12 0.02 250 / 3%);
+  }
+
+  .service-card:hover {
+    @apply border-primary/40;
+    box-shadow: 0 12px 40px oklch(0.72 0.14 75 / 12%);
+    transform: translateY(-4px);
+  }
+
+  /* Verified badge */
+  .verified-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+    @apply bg-success/10 text-success border border-success/20;
+  }
+
+  /* Status badges */
+  .status-pending {
+    @apply bg-primary/10 text-primary border border-primary/20;
+  }
+
+  .status-verified {
+    @apply bg-success/10 text-success border border-success/20;
+  }
+
+  .status-rejected {
+    @apply bg-destructive/10 text-destructive border border-destructive/20;
+  }
+
+  /* Smooth animations */
+  .fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hero gradient - cosmic blue radial */
+  .hero-gradient {
+    background: radial-gradient(ellipse 120% 80% at 50% -10%, oklch(0.45 0.15 260 / 8%), transparent);
+  }
+
+  /* Section gradient divider */
+  .section-divider {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, oklch(0.45 0.15 260 / 30%), transparent);
+  }
+
+  /* Cosmic line accent */
+  .cosmic-line {
+    background: linear-gradient(90deg, oklch(0.45 0.15 260), oklch(0.75 0.13 220));
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Pulse glow - cosmic */
+  .pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px oklch(0.45 0.15 260 / 18%); }
+    50% { box-shadow: 0 0 40px oklch(0.45 0.15 260 / 35%); }
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+
+  /* Button variants - Cosmic blue */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold;
+    box-shadow: 0 4px 14px oklch(0.45 0.15 260 / 25%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 6px 20px oklch(0.45 0.15 260 / 35%);
+    transform: translateY(-2px);
+  }
+
+  /* Black elegant button */
+  .btn-black {
+    @apply bg-secondary text-secondary-foreground font-semibold;
+    box-shadow: 0 4px 14px oklch(0.12 0.02 250 / 20%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-black:hover {
+    box-shadow: 0 6px 20px oklch(0.12 0.02 250 / 30%);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground font-semibold transition-all;
+  }
+
+  .btn-outline {
+    @apply border border-border bg-transparent font-medium;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-outline:hover {
+    @apply border-primary bg-primary/5;
+  }
+
+  /* Cosmic outline button */
+  .btn-outline-cosmic {
+    @apply border border-primary bg-transparent font-medium text-primary;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-outline-cosmic:hover {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Sexy input */
+  .sexy-input {
+    @apply w-full px-4 py-3 bg-white border border-border;
+    @apply text-foreground placeholder:text-muted-foreground;
+    @apply focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Marquee animation */
+  .marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Shimmer effect - warm gold */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(0.98 0.005 80) 0%,
+      oklch(1 0 0) 50%,
+      oklch(0.98 0.005 80) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* Grid pattern background - subtle */
+  .grid-pattern {
+    background-image:
+      linear-gradient(oklch(0.92 0.01 80 / 40%) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.92 0.01 80 / 40%) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Dotted pattern */
+  .dot-pattern {
+    background-image: radial-gradient(oklch(0.88 0.01 80) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Cosmic accent border */
+  .cosmic-border {
+    border: 1px solid oklch(0.45 0.15 260 / 30%);
+  }
+
+  .cosmic-border:hover {
+    border-color: oklch(0.45 0.15 260 / 60%);
+  }
+
+  /* Luxury divider with cosmic center */
+  .luxury-divider {
+    @apply relative h-px w-full;
+    background: linear-gradient(
+      90deg,
+      oklch(0.90 0.01 240),
+      oklch(0.45 0.15 260 / 50%),
+      oklch(0.90 0.01 240)
+    );
+  }
+
+  /* Premium badge */
+  .premium-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-widest uppercase;
+    background: linear-gradient(135deg, oklch(0.45 0.15 260), oklch(0.75 0.13 220));
+    color: oklch(1 0 0);
+    box-shadow: 0 4px 16px oklch(0.45 0.15 260 / 30%);
+  }
+
+  /* ORBITA SPACE THEME - Kazakhstan Baikonur Cosmodrome */
+
+  /* Mission Control Dashboard */
+  .mission-control {
+    position: relative;
+    background: radial-gradient(ellipse at bottom, oklch(0.12 0.04 250) 0%, oklch(0.05 0.02 250) 100%);
+  }
+
+  /* Gauge meter for telemetry display */
+  .gauge-meter {
+    position: relative;
+  }
+
+  /* Station module cylindrical styling */
+  .station-module {
+    position: relative;
+  }
+
+  /* Star map constellation positioning */
+  .star-map {
+    position: relative;
+  }
+
+  /* Rocket stages vertical layout */
+  .rocket-stages {
+    position: relative;
+  }
+
+  /* Launch pad styling */
+  .launch-pad {
+    @apply relative;
+    background:
+      linear-gradient(to bottom, transparent 0%, oklch(0.45 0.15 260 / 5%) 100%),
+      repeating-linear-gradient(
+        90deg,
+        oklch(0.45 0.15 260 / 5%) 0px,
+        oklch(0.45 0.15 260 / 5%) 1px,
+        transparent 1px,
+        transparent 60px
+      );
+  }
+
+  /* Starfield background animation */
+  .starfield {
+    position: relative;
+    background: radial-gradient(ellipse at bottom, oklch(0.12 0.04 250) 0%, oklch(0.05 0.02 250) 100%);
+  }
+
+  .starfield::before,
+  .starfield::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow:
+      100px 200px white,
+      300px 100px white,
+      500px 300px white,
+      700px 150px white,
+      900px 250px white,
+      150px 350px white,
+      400px 400px white,
+      600px 100px white,
+      800px 350px white,
+      200px 450px white,
+      1000px 200px oklch(0.75 0.13 220),
+      250px 100px oklch(0.75 0.13 220),
+      450px 250px oklch(0.75 0.13 220),
+      650px 400px oklch(0.75 0.13 220),
+      850px 150px oklch(0.75 0.13 220);
+    animation: twinkle 3s infinite;
+  }
+
+  .starfield::after {
+    box-shadow:
+      200px 150px white,
+      400px 200px white,
+      600px 250px white,
+      800px 100px white,
+      1000px 300px white,
+      100px 400px white,
+      300px 450px white,
+      500px 150px white,
+      700px 400px white,
+      900px 200px white,
+      150px 250px oklch(0.45 0.15 260),
+      350px 350px oklch(0.45 0.15 260),
+      550px 100px oklch(0.45 0.15 260),
+      750px 300px oklch(0.45 0.15 260),
+      950px 400px oklch(0.45 0.15 260);
+    animation: twinkle 4s infinite reverse;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* Aurora borealis effect */
+  .aurora {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(90deg,
+        transparent 0%,
+        oklch(0.75 0.13 220 / 15%) 25%,
+        oklch(0.45 0.15 260 / 20%) 50%,
+        oklch(0.75 0.13 220 / 15%) 75%,
+        transparent 100%
+      );
+    animation: aurora-wave 15s ease-in-out infinite;
+    filter: blur(40px);
+  }
+
+  @keyframes aurora-wave {
+    0%, 100% { transform: translateX(-50%) skewX(-10deg); opacity: 0.3; }
+    50% { transform: translateX(0%) skewX(10deg); opacity: 0.6; }
+  }
+
+  /* Satellite orbit animation */
+  .satellite-orbit {
+    animation: orbit 20s linear infinite;
+  }
+
+  @keyframes orbit {
+    from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+  }
+
+  /* Floating satellite */
+  .satellite-float {
+    animation: satellite-float 8s ease-in-out infinite;
+  }
+
+  @keyframes satellite-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(5deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(15px) rotate(-5deg); }
+  }
+
+  /* Rocket launch trail */
+  .rocket-trail {
+    background: linear-gradient(to top,
+      oklch(0.75 0.13 220 / 80%),
+      oklch(0.45 0.15 260 / 60%),
+      transparent
+    );
+    filter: blur(8px);
+    animation: rocket-launch 3s ease-out infinite;
+  }
+
+  @keyframes rocket-launch {
+    0% { transform: translateY(100%) scaleY(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-100%) scaleY(2); opacity: 0; }
+  }
+
+  /* Cosmic glow pulse */
+  .cosmic-glow-pulse {
+    animation: cosmic-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes cosmic-pulse {
+    0%, 100% {
+      box-shadow:
+        0 0 20px oklch(0.45 0.15 260 / 30%),
+        0 0 40px oklch(0.75 0.13 220 / 20%);
+    }
+    50% {
+      box-shadow:
+        0 0 40px oklch(0.45 0.15 260 / 60%),
+        0 0 80px oklch(0.75 0.13 220 / 40%);
+    }
+  }
+
+  /* Space window/porthole card */
+  .space-porthole {
+    @apply relative overflow-hidden bg-gradient-to-br from-white to-muted/50;
+    border: 3px solid oklch(0.45 0.15 260 / 40%);
+    border-radius: 50% / 10%;
+    box-shadow:
+      inset 0 0 40px oklch(0.45 0.15 260 / 20%),
+      0 8px 32px oklch(0.45 0.15 260 / 25%);
+  }
+
+  /* Kazakhstan flag accent colors */
+  .kz-gold {
+    background: linear-gradient(135deg, oklch(0.75 0.13 80), oklch(0.65 0.13 70));
+  }
+
+  .kz-sky {
+    background: linear-gradient(135deg, oklch(0.65 0.13 220), oklch(0.55 0.15 240));
+  }
+
+  /* Orbital ring decoration */
+  .orbital-ring {
+    @apply absolute rounded-full border-2 border-primary/20;
+    animation: orbital-rotation 30s linear infinite;
+  }
+
+  @keyframes orbital-rotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Constellation pattern */
+  .constellation {
+    background-image:
+      radial-gradient(circle at 20% 30%, oklch(0.75 0.13 220 / 40%) 1px, transparent 1px),
+      radial-gradient(circle at 60% 70%, oklch(0.45 0.15 260 / 40%) 1px, transparent 1px),
+      radial-gradient(circle at 80% 20%, oklch(0.75 0.13 220 / 40%) 1px, transparent 1px),
+      radial-gradient(circle at 40% 80%, oklch(0.45 0.15 260 / 40%) 1px, transparent 1px);
+    background-size: 200px 200px;
+  }
+
+  /* Space station window effect */
+  .space-window {
+    @apply relative bg-gradient-to-b from-background to-muted/30;
+    border: 2px solid oklch(0.45 0.15 260 / 30%);
+    box-shadow:
+      inset 0 2px 20px oklch(0.45 0.15 260 / 10%),
+      0 4px 30px oklch(0.45 0.15 260 / 20%);
+  }
+
+  /* Rocket hover effect */
+  .rocket-hover {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .rocket-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+      0 0 40px oklch(0.75 0.13 220 / 40%),
+      0 20px 60px oklch(0.45 0.15 260 / 30%);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Elite typography spacing */
+  .tracking-elite {
+    letter-spacing: 0.3em;
+  }
+
+  .tracking-luxury {
+    letter-spacing: 0.2em;
+  }
+
+  /* Kazakh space typography */
+  .tracking-cosmos {
+    letter-spacing: 0.25em;
+  }
+}
