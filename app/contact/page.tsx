@@ -11,10 +11,10 @@ import { SlEnvelopeOpen, SlLocationPin, SlClock, SlPaperPlane, SlBubble, SlBrief
 import { toast } from "sonner";
 
 const contactReasons = [
-  { id: "general", label: "ЖАЛПЫ СҰРАУ", icon: SlBubble },
-  { id: "support", label: "ТЕХНИКАЛЫҚ ҚОЛДАУ", icon: SlQuestion },
-  { id: "business", label: "БИЗНЕС", icon: SlBriefcase },
-  { id: "press", label: "БАСПАСӨЗ ЖӘНЕ МЕДИА", icon: SlEnvelopeOpen },
+  { id: "general", label: "استفسار عام", icon: SlBubble },
+  { id: "support", label: "الدعم الفني", icon: SlQuestion },
+  { id: "business", label: "الأعمال", icon: SlBriefcase },
+  { id: "press", label: "الصحافة والإعلام", icon: SlEnvelopeOpen },
 ];
 
 export default function ContactPage() {
@@ -25,7 +25,7 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    toast.success("ТРАНСЛЯЦИЯ ҚАБЫЛДАНДЫ - Жер басқаруы хабарламаңызды растады");
+    toast.success("تم استلام الرسالة - تأكيد المركز الأرضي لرسالتك");
     setIsSubmitting(false);
     (e.target as HTMLFormElement).reset();
   };
@@ -51,13 +51,13 @@ export default function ContactPage() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-2 border-2 border-aurora/40 bg-aurora/5 mb-6">
               <span className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">Байланыс Арнасы Ашық</span>
+              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">قناة الاتصال مفتوحة</span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-background">
-              ЖЕР <span className="gradient-text">БАСҚАРУЫ</span>
+              المركز <span className="gradient-text">الأرضي</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-background/70 font-body font-light">
-              Миссия басқарумен байланыс реттілігін бастау. Жауап уақыты: 24 сағаттық орбиталық терезе.
+              بدء تسلسل الاتصال مع مركز التحكم. وقت الاستجابة: نافذة مدارية 24 ساعة.
             </p>
           </motion.div>
         </div>
@@ -87,9 +87,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h2 className="text-xl font-display font-bold uppercase tracking-cosmos text-background">
-                      Трансляция Формасы
+                      نموذج الإرسال
                     </h2>
-                    <p className="text-xs text-aurora/80 tracking-cosmos uppercase">Байланыс Реттілігін Бастау</p>
+                    <p className="text-xs text-aurora/80 tracking-cosmos uppercase">بدء تسلسل الاتصال</p>
                   </div>
                 </div>
 
@@ -119,19 +119,19 @@ export default function ContactPage() {
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
                       <Label htmlFor="name" className="font-display font-bold uppercase tracking-cosmos text-xs text-background/70 flex items-center gap-2">
-                        <span className="text-aurora">▸</span> Шақыру Белгісі
+                        <span className="text-aurora">▸</span> معرّف الاستدعاء
                       </Label>
                       <Input
                         id="name"
                         name="name"
-                        placeholder="атыңыз"
+                        placeholder="اسمك"
                         required
                         className="mt-1.5 h-12 bg-navy/50 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)]"
                       />
                     </div>
                     <div>
                       <Label htmlFor="email" className="font-display font-bold uppercase tracking-cosmos text-xs text-background/70 flex items-center gap-2">
-                        <span className="text-aurora">▸</span> Байланыс Сілтемесі
+                        <span className="text-aurora">▸</span> رابط الاتصال
                       </Label>
                       <Input
                         id="email"
@@ -146,12 +146,12 @@ export default function ContactPage() {
 
                   <div>
                     <Label htmlFor="subject" className="font-display font-bold uppercase tracking-cosmos text-xs text-background/70 flex items-center gap-2">
-                      <span className="text-aurora">▸</span> Тақырып Коды
+                      <span className="text-aurora">▸</span> رمز الموضوع
                     </Label>
                     <Input
                       id="subject"
                       name="subject"
-                      placeholder="трансляция тақырыбы"
+                      placeholder="موضوع الإرسال"
                       required
                       className="mt-1.5 h-12 bg-navy/50 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)]"
                     />
@@ -159,13 +159,13 @@ export default function ContactPage() {
 
                   <div>
                     <Label htmlFor="message" className="font-display font-bold uppercase tracking-cosmos text-xs text-background/70 flex items-center gap-2">
-                      <span className="text-aurora">▸</span> Хабарлама Жүктемесі
+                      <span className="text-aurora">▸</span> حمولة الرسالة
                     </Label>
                     <textarea
                       id="message"
                       name="message"
                       rows={5}
-                      placeholder="хабарламаңызды жіберіңіз..."
+                      placeholder="أرسل رسالتك..."
                       required
                       className="mt-1.5 w-full px-4 py-3 bg-navy/50 border-2 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)] resize-none focus:outline-none focus:ring-0"
                     />
@@ -180,12 +180,12 @@ export default function ContactPage() {
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">
                         <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        Жіберілуде...
+                        جارٍ الإرسال...
                       </span>
                     ) : (
                       <>
                         <SlPaperPlane size={18} />
-                        Трансляцияны Жіберу
+                        إرسال الرسالة
                       </>
                     )}
                   </Button>
@@ -207,9 +207,9 @@ export default function ContactPage() {
                     <SlEnvelopeOpen size={24} className="text-aurora" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">Тікелей Арна</h3>
+                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">القناة المباشرة</h3>
                     <p className="text-background/60 text-sm font-light mb-2">
-                      миссияға маңызды байланыстар үшін
+                      للاتصالات الحيوية للمهمة
                     </p>
                     <a
                       href="mailto:control@orbita.space"
@@ -227,14 +227,14 @@ export default function ContactPage() {
                     <SlLocationPin size={24} className="text-aurora" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">Координаттар</h3>
+                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">الإحداثيات</h3>
                     <p className="text-background/60 text-sm font-light mb-2">
-                      таратылған миссия басқару желісі
+                      شبكة التحكم في المهمة الموزعة
                     </p>
                     <p className="text-sm font-light text-background/80">
-                      Байқоңыр ғарыш айлағы, Қазақстан<br />
-                      Кеннеди ғарыш орталығы, FL<br />
-                      Гвиана ғарыш орталығы, Француз Гвианасы
+                      الرياض، المملكة العربية السعودية<br />
+                      جدة، المملكة العربية السعودية<br />
+                      الدمام، المملكة العربية السعودية
                     </p>
                   </div>
                 </div>
@@ -246,14 +246,14 @@ export default function ContactPage() {
                     <SlClock size={24} className="text-aurora" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">Жауап Терезесі</h3>
+                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">نافذة الاستجابة</h3>
                     <p className="text-background/60 text-sm font-light mb-2">
-                      орбиталық байланыс кестесі
+                      جدول الاتصالات المدارية
                     </p>
                     <p className="text-sm font-light text-background/80">
-                      Жалпы: 24 сағаттық орбита ішінде<br />
-                      Қолдау: 4 сағаттық терезе ішінде<br />
-                      Миссияға Маңызды: Лезде
+                      عام: خلال 24 ساعة مدارية<br />
+                      الدعم: خلال نافذة 4 ساعات<br />
+                      حيوية للمهمة: فورية
                     </p>
                   </div>
                 </div>
@@ -261,15 +261,15 @@ export default function ContactPage() {
 
               <div className="space-window p-6 border-2 border-primary/40 bg-primary/5">
                 <h3 className="font-display font-bold uppercase tracking-cosmos mb-2 text-background">
-                  <span className="text-aurora">◆</span> Кәсіпорын Миссиялары
+                  <span className="text-aurora">◆</span> مهام المؤسسات
                 </h3>
                 <p className="text-sm text-background/70 font-light mb-4">
-                  Терең ғарыш экспедициялары, арнайы жүктеме конфигурациялары, немесе ақ белгі миссия басқаруы?
-                  Біздің кәсіпорын флотымыз күтуде тұр.
+                  بعثات الفضاء العميق، تكوينات الحمولة المخصصة، أو إدارة المهام ذات العلامة البيضاء؟
+                  أسطول المؤسسات لدينا في الانتظار.
                 </p>
                 <Link href="/contact?type=business">
                   <Button variant="outline" className="border-2 border-aurora/40 hover:bg-aurora/5 hover:border-aurora font-display font-bold uppercase tracking-cosmos text-aurora">
-                    Флот Қолбасшылығымен Байланысу
+                    الاتصال بقيادة الأسطول
                   </Button>
                 </Link>
               </div>

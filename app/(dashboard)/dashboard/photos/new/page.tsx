@@ -142,11 +142,11 @@ export default function NewPhotoPage() {
             className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-4 group"
           >
             <SlArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            Басқару тақтасына оралу
+            Басқару тақтаа оралу
           </Link>
           <h1 className="text-3xl font-bold text-white">Фотосурет жүктеу</h1>
           <p className="text-slate-400 mt-2">
-            Шынайы фотографияңызды әлеммен бөлісіңіз
+            Шыайы фотографияңыз әлемمع бөлісіңіз
           </p>
         </motion.div>
 
@@ -169,7 +169,7 @@ export default function NewPhotoPage() {
               <div>
                 <p className="font-semibold text-white">AI автотегтеу</p>
                 <p className="text-sm text-slate-500">
-                  GPT-4.1 Vision тақырып, сипаттама және тегтер жасайды
+                  GPT-4.1 Vision ينشئ العنوان والوصف والعلامات
                 </p>
               </div>
             </div>
@@ -231,10 +231,10 @@ export default function NewPhotoPage() {
                   </motion.div>
                   <div>
                     <p className="text-xl font-medium text-white">
-                      Фотоңызды осында тастаңыз
+                      Фотоңыз ода тастаңыз
                     </p>
                     <p className="text-slate-500 mt-2">
-                      немесе <span className="text-amber-500 hover:underline">файлдарды шолыңыз</span>
+                      أو <span className="text-amber-500 hover:underline">файлдар шолыңыз</span>
                     </p>
                   </div>
                   <div className="flex items-center gap-4 text-xs text-slate-600">
@@ -299,8 +299,8 @@ export default function NewPhotoPage() {
                     </motion.div>
                     <p className="text-white font-semibold text-lg">
                       {uploadPhase === "uploading" && "Жүктелуде..."}
-                      {uploadPhase === "analyzing" && "AI талдауда..."}
-                      {uploadPhase === "done" && "Дайын!"}
+                      {uploadPhase === "analyzing" && "AI جارٍ التحليل..."}
+                      {uploadPhase === "done" && "Дайы!"}
                     </p>
                     <div className="w-48 h-2 bg-slate-800 rounded-full mt-4 overflow-hidden">
                       <motion.div
@@ -322,12 +322,12 @@ export default function NewPhotoPage() {
                   className="space-y-4"
                 >
                   <div className="space-y-2">
-                    <Label htmlFor="title" className="text-white">Тақырып</Label>
+                    <Label htmlFor="title" className="text-white">العنوان</Label>
                     <Input
                       id="title"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
-                      placeholder="Фотоңызға тақырып енгізіңіз"
+                      placeholder="Фотоңызإلى тақырып егізіңіз"
                       className="bg-slate-900 border-slate-700 h-12"
                     />
                   </div>
@@ -337,7 +337,7 @@ export default function NewPhotoPage() {
                       id="description"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
-                      placeholder="Фотоңызды сипаттаңыз..."
+                      placeholder="Фотоңыз сипаттаңыз..."
                       rows={3}
                       className="bg-slate-900 border-slate-700"
                     />
@@ -358,7 +358,7 @@ export default function NewPhotoPage() {
                     <div>
                       <p className="font-medium text-white">AI автоталдау қосулы</p>
                       <p className="text-sm text-slate-400">
-                        Тақырып, сипаттама және тегтер автоматты түрде жасалады
+                        العنوان, сипаттама жәе тегтер автоматты түрде жасала
                       </p>
                     </div>
                   </div>
@@ -383,7 +383,7 @@ export default function NewPhotoPage() {
             {uploading ? (
               <>
                 <SlRefresh className="w-5 h-5 mr-2 animate-spin" />
-                Өңделуде...
+                جارٍ المعالجة...
               </>
             ) : (
               <>
@@ -398,7 +398,7 @@ export default function NewPhotoPage() {
             disabled={uploading}
             className="border-slate-700 hover:bg-slate-800 h-12 px-6"
           >
-            Болдырмау
+            إلغاء
           </Button>
         </motion.div>
 
@@ -413,14 +413,14 @@ export default function NewPhotoPage() {
             <SlPaperPlane className="w-5 h-5 text-blue-400" />
             <div>
               <p className="text-sm text-slate-400">
-                <span className="text-blue-400 font-medium">Кеңес:</span> Фотосуреттерді тікелей Telegram арқылы да жүктей аласыз!
+                <span className="text-blue-400 font-medium">Кеңес:</span> يمكنك أيضاً تحميل الصور مباشرة عبر Telegram!
               </p>
             </div>
             <Link
               href="/dashboard"
               className="ml-auto text-sm text-blue-400 hover:underline whitespace-nowrap"
             >
-              Telegram қосу
+              توصيل Telegram
             </Link>
           </div>
         </motion.div>

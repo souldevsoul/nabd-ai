@@ -3,8 +3,8 @@ import { Header, Footer } from "@/components/layout";
 import { SlCheck, SlClose } from "react-icons/sl";
 
 export const metadata: Metadata = {
-  title: "Лицензиялық келісім",
-  description: "Vertex-тегі фотосурет лицензиялау опциялары мен пайдалану құқықтарын түсіну.",
+  title: "اتفاقية الترخيص",
+  description: "فهم خيارات ترخيص الصور وحقوق الاستخدام في NABD.",
 };
 
 const licenseComparison = [
@@ -67,23 +67,23 @@ export default function LicenseAgreementPage() {
 
       <article className="pt-32 pb-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-black tracking-tight mb-4">Лицензиялық келісім</h1>
-          <p className="text-muted-foreground mb-8">Соңғы жаңарту: 1 желтоқсан 2024</p>
+          <h1 className="text-4xl font-black tracking-tight mb-4">اتفاقية الترخيص</h1>
+          <p className="text-muted-foreground mb-8">آخر تحديث: 1 ديسمبر 2024</p>
 
           {/* License Comparison */}
           <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6">Лицензия түрлері</h2>
+            <h2 className="text-2xl font-bold mb-6">أنواع التراخيص</h2>
             <div className="stat-card overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-white/10">
-                      <th className="text-left py-4 px-4 font-semibold">Мүмкіндік</th>
+                      <th className="text-left py-4 px-4 font-semibold">الميزة</th>
                       <th className="text-center py-4 px-4 font-semibold">
-                        <span className="text-amber-400">Стандартты</span>
+                        <span className="text-amber-400">قياسي</span>
                       </th>
                       <th className="text-center py-4 px-4 font-semibold">
-                        <span className="text-emerald-400">Кеңейтілген</span>
+                        <span className="text-emerald-400">موسّع</span>
                       </th>
                     </tr>
                   </thead>

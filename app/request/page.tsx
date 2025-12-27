@@ -107,21 +107,21 @@ function RequestContent() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/30 bg-primary/5">
               <RiSparklingLine className="text-primary" size={14} />
-              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">Миссия Брифингі</span>
+              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">المهمة Брифигі</span>
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.95] mb-8">
-              Экипажды
-              <span className="block font-bold gradient-text mt-2">Сұрау</span>
+              الطاقم
+              <span className="block font-bold gradient-text mt-2">طلب</span>
             </h1>
 
             <div className="w-32 h-1 cosmic-line mb-8" />
 
             <p className="text-muted-foreground text-xl font-light leading-relaxed mb-4">
-              Миссия параметрлеріңіз туралы бізге хабарлаңыз.
+              المهمة параметрлеріңіз туралы бізге хабарлаңыз.
             </p>
             <p className="text-foreground/70 text-lg font-light leading-relaxed mb-8">
-              Біздің ғарышкерлер оңтайлы траекторияны жұлдызды миссия сәттілігі үшін сызады.
+              لدينا رائد فضاءлер оңтайлы траекторияы жұлз مهمة сәттілігі үші за.
             </p>
 
             <div className="flex flex-col gap-4 text-sm text-muted-foreground">
@@ -129,19 +129,19 @@ function RequestContent() {
                 <div className="w-8 h-8 border border-primary/30 flex items-center justify-center">
                   <span className="text-primary font-mono">01</span>
                 </div>
-                <span>Миссия параметрлерін сипаттаңыз</span>
+                <span>المهمة параметрлері сипаттаңыз</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border border-primary/30 flex items-center justify-center">
                   <span className="text-primary font-mono">02</span>
                 </div>
-                <span>AI сәйкес ғарышкерлерді табады</span>
+                <span>AI сәйкес رائد فضاءлерді таба</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border border-primary/30 flex items-center justify-center">
                   <span className="text-primary font-mono">03</span>
                 </div>
-                <span>Экипаж мүшесін таңдап, миссияны бастаңыз</span>
+                <span>اختر عضو طاقم و مهمةы бастаңыз</span>
               </div>
             </div>
           </motion.div>
@@ -194,12 +194,12 @@ function RequestContent() {
               className="elite-card"
             >
               <label className="block text-sm font-display font-medium tracking-wide mb-4 font-mono">
-                Миссия Параметрлері
+                المهمة Параметрлері
               </label>
               <Textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Миссия мақсаты: Ұйым үшін AI трансформация жүйесін орналастыру. Талаптар: Стратегиялық траектория жоспарлау, озық аналитика жүктемесі, миссияға маңызды сенімділікпен арнайы іске асыру..."
+                placeholder="المهمة мақсаты: Ұйым үші AI трасформация жүйесі ораластыру. Талаптар: Стратегиялық траектория жоспарлау, озық аалитика жүктемесі, مهمةإلى маңыз сеімділікпе арайы іске ару..."
                 className="min-h-[200px] text-base resize-none bg-muted border-border focus:border-primary focus:ring-2 focus:ring-primary/20 mb-6 font-mono"
                 disabled={loading}
               />
@@ -225,11 +225,11 @@ function RequestContent() {
                     >
                       <RiSearchLine size={18} />
                     </motion.div>
-                    Экипаж Тізімін Сканерлеу...
+                    قائمة الطاقم جارٍ المسح...
                   </>
                 ) : (
                   <>
-                    Сұрауды Іске Қосу
+                    طلب إطلاق
                     <RiArrowRightLine className="ml-2" size={18} />
                   </>
                 )}
@@ -249,10 +249,10 @@ function RequestContent() {
                   <RiCheckLine size={28} className="text-primary" />
                 </div>
                 <h2 className="font-display text-2xl font-bold tracking-wide mb-3">
-                  МИССИЯ РАСТАЛДЫ - {result.matches.length} Ғарышкер Тағайындалды
+                  المهمة تم التأكيد - {result.matches.length} Ғарышкер Таإلىйыдал
                 </h2>
                 <p className="text-muted-foreground text-sm font-mono">
-                  Докингке және миссияны бастауға оңтайлы экипаж мүшесін таңдаңыз.
+                  Докигке و مهمةы бастауإلى оңтайлы экипаж мүшесі таңдаңыз.
                 </p>
               </div>
 
@@ -294,9 +294,9 @@ function RequestContent() {
                             <RiStarFill size={14} className="text-primary" />
                             {match.specialist.rating.toFixed(1)}
                           </span>
-                          <span>{match.specialist.completedTasks} миссия аяқталды</span>
+                          <span>{match.specialist.completedTasks} مهمة аяқтал</span>
                           <span className="text-primary font-medium">
-                            {Math.round(match.confidence * 100)}% траектория сәйкестігі
+                            {Math.round(match.confidence * 100)}% توافق المسار
                           </span>
                         </div>
 
@@ -308,7 +308,7 @@ function RequestContent() {
                       {/* Price */}
                       <div className="text-right flex-shrink-0">
                         <div className="font-display text-2xl font-bold text-foreground">${match.price}</div>
-                        <div className="text-xs text-muted-foreground font-mono">миссия үшін</div>
+                        <div className="text-xs text-muted-foreground font-mono">مهمة үші</div>
                       </div>
                     </div>
 
@@ -321,14 +321,14 @@ function RequestContent() {
                         {result.isAuthenticated ? (
                           <Link href={`/dashboard/wallet`}>
                             <Button className="w-full py-5 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-display tracking-wider uppercase text-sm shadow-lg shadow-secondary/20">
-                              {match.specialist.firstName} бен Орналастыру
+                              {match.specialist.firstName} مع نشر
                               <RiArrowRightLine className="ml-2" size={16} />
                             </Button>
                           </Link>
                         ) : (
                           <Link href={`/login?callbackUrl=${encodeURIComponent(`/request?q=${encodeURIComponent(description)}`)}`}>
                             <Button className="w-full py-5 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-display tracking-wider uppercase text-sm shadow-lg shadow-secondary/20">
-                              {match.specialist.firstName} бен Орналастыру үшін Кіру
+                              {match.specialist.firstName} مع نشر үші تسجيل دخول
                               <RiArrowRightLine className="ml-2" size={16} />
                             </Button>
                           </Link>
@@ -349,7 +349,7 @@ function RequestContent() {
                   }}
                   className="font-display tracking-wider uppercase text-xs border-border hover:border-primary hover:text-primary"
                 >
-                  Жаңа Миссияны Жоспарлау
+                  جديد المهمةы Жоспарлау
                 </Button>
               </div>
             </motion.div>
@@ -367,12 +367,12 @@ function RequestLoading() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/30 bg-primary/5">
             <RiSparklingLine className="text-primary" size={14} />
-            <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">Миссия Брифингі</span>
+            <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">المهمة Брифигі</span>
           </div>
 
           <h1 className="font-display text-5xl md:text-6xl font-light text-foreground leading-tight mb-6">
-            Экипажды
-            <span className="block font-bold gradient-text">Сұрау</span>
+            الطاقم
+            <span className="block font-bold gradient-text">طلب</span>
           </h1>
 
           <div className="w-24 h-0.5 cosmic-line mx-auto mb-8" />

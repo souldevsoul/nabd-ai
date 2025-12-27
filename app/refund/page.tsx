@@ -3,7 +3,7 @@ import { Header, Footer } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "Қайтару саясаты",
-  description: "Vertex қайтару саясаты және ЕО тұтынушыларының шегіну құқықтары.",
+  description: "Vertex қайтару саясаты жәе ЕО тұтыушыларыың шегіу құқықтары.",
 };
 
 export default function RefundPage() {
@@ -14,7 +14,7 @@ export default function RefundPage() {
       <article className="pt-32 pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-black tracking-tight mb-4">Қайтару саясаты</h1>
-          <p className="text-muted-foreground mb-8">Соңғы жаңарту: 24 желтоқсан 2024</p>
+          <p className="text-muted-foreground mb-8">آخر تحديث: 24 ديسمبر 2024</p>
 
           <div className="prose prose-invert prose-amber max-w-none">
             <section className="mb-12">

@@ -3,7 +3,7 @@ import { Header, Footer } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "Cookie саясаты",
-  description: "Vertex cookie файлдарын және ұқсас бақылау технологияларын қалай пайдаланатынын біліңіз.",
+  description: "Vertex cookie файлдары жәе ұқсас бақылау техологиялары қалай пайдаتمатыы біліңіз.",
 };
 
 export default function CookiesPage() {
@@ -14,7 +14,7 @@ export default function CookiesPage() {
       <article className="pt-32 pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-black tracking-tight mb-4">Cookie саясаты</h1>
-          <p className="text-muted-foreground mb-8">Соңғы жаңарту: 24 желтоқсан 2024</p>
+          <p className="text-muted-foreground mb-8">آخر تحديث: 24 ديسمبر 2024</p>
 
           <div className="prose prose-invert prose-amber max-w-none">
             <section className="mb-12">

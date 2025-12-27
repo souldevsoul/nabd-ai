@@ -334,7 +334,7 @@ export default function PricingPage() {
             </div>
 
             <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-light text-black leading-[0.9] mb-10">
-              Инвестиция
+              استثمار
               <span className="block font-bold bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent mt-4">
                 Озық деңгейге
               </span>
@@ -347,10 +347,10 @@ export default function PricingPage() {
             </div>
 
             <p className="text-gray-600 text-xl md:text-2xl font-light max-w-2xl mx-auto leading-relaxed mb-4">
-              Көрнекті тұлғаларға арналған элиталық кредиттер.
+              أرصدة نخبوية للشخصيات الب الرزة.
             </p>
             <p className="text-black text-lg md:text-xl font-medium max-w-xl mx-auto">
-              Кредиттердің мерзімі өтпейді. 15%-ға дейін көлемдік жеңілдіктер.
+              الأرصدة لا تنتهي صلاحيتها. 15%-إلى дейі көлемдік жеңілдіктер.
             </p>
 
             {/* Orbital stats */}

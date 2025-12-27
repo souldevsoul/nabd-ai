@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { Header, Footer } from "@/components/layout";
 
 export const metadata: Metadata = {
-  title: "Қызмет шарттары",
-  description: "Vertex-тің AI консалтинг қызметтерін пайдалану шарттары мен ережелері.",
+  title: "شروط الخدمة",
+  description: "شروط وأحكام استخدام خدمات استشارات الذكاء الاصطناعي في NABD.",
 };
 
 export default function TermsPage() {
@@ -13,14 +13,14 @@ export default function TermsPage() {
 
       <article className="pt-32 pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-black tracking-tight mb-4">Қызмет шарттары</h1>
-          <p className="text-muted-foreground mb-8">Соңғы жаңарту: 20 желтоқсан 2025</p>
+          <h1 className="text-4xl font-black tracking-tight mb-4">شروط الخدمة</h1>
+          <p className="text-muted-foreground mb-8">آخر تحديث: 20 ديسمبر 2025</p>
 
           <div className="prose prose-invert prose-amber max-w-none">
             <section className="mb-12">
               <h2 className="text-2xl font-bold mb-4">1. Introduction and Acceptance</h2>
               <p className="text-muted-foreground mb-4">
-                These Terms of Service govern your use of Vertex&apos;s AI consulting platform and services, operated by NewCo Ltd. (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), registered at New Address 1, Company No: NEW123.
+                These Terms of Service govern your use of NABD&apos;s AI consulting platform and services, operated by NewCo Ltd. (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), registered at New Address 1, Company No: NEW123.
               </p>
               <p className="text-muted-foreground mb-4">
                 By accessing or using our services, you agree to be bound by these Terms. If you do not agree, you may not use our services.
@@ -33,7 +33,7 @@ export default function TermsPage() {
             <section className="mb-12">
               <h2 className="text-2xl font-bold mb-4">2. Services Description</h2>
               <p className="text-muted-foreground mb-4">
-                Vertex provides a premium AI consulting platform connecting individual clients with elite AI specialists. Our services include:
+                NABD provides a premium AI consulting platform connecting individual clients with elite AI specialists. Our services include:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
                 <li>Access to verified AI consultants and specialists</li>
@@ -65,7 +65,7 @@ export default function TermsPage() {
 
               <h3 className="text-xl font-semibold mb-3">4.1 Credit Purchases</h3>
               <p className="text-muted-foreground mb-4">
-                Credits are purchased directly as one-time transactions. Vertex does not operate on a subscription model. Each credit purchase is a separate contract for digital content.
+                Credits are purchased directly as one-time transactions. NABD does not operate on a subscription model. Each credit purchase is a separate contract for digital content.
               </p>
               <p className="text-muted-foreground mb-4">
                 Exchange rate: 10 credits = 1 USD (or equivalent in EUR). Prices are displayed in your local currency at checkout.

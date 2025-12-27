@@ -102,7 +102,7 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-400 mb-4">{error || "Басқару тақтасын жүктеу сәтсіз аяқталды"}</p>
+          <p className="text-red-400 mb-4">{error || "Басқару тақта жүктеу сәтсіз аяқтал"}</p>
           <Button onClick={() => window.location.reload()}>Қайталау</Button>
         </div>
       </div>
@@ -111,7 +111,7 @@ export default function DashboardPage() {
 
   const stats = [
     {
-      title: "Портфолио құны",
+      title: "قيمة المحفظة",
       value: `${data.stats.walletBalance.toLocaleString()} кредит`,
       change: `$${(data.stats.walletBalance / 10).toFixed(2)} USD`,
       icon: SlWallet,
@@ -119,9 +119,9 @@ export default function DashboardPage() {
       bgColor: "bg-primary/10",
     },
     {
-      title: "Белсенді тапсырыстар",
+      title: "Белседі тапрыстар",
       value: data.stats.activeOrders.toString(),
-      change: "Орындалуда",
+      change: "قيد التنفيذ",
       icon: SlRocket,
       color: "text-blue-400",
       bgColor: "bg-blue-500/10",
@@ -129,15 +129,15 @@ export default function DashboardPage() {
     {
       title: "Кеңестер",
       value: data.stats.completedOrders.toString(),
-      change: "Аяқталды",
+      change: "Аяқтал",
       icon: SlCheck,
       color: "text-emerald-400",
       bgColor: "bg-emerald-500/10",
     },
     {
-      title: "Инвестиция",
+      title: "استثمار",
       value: `${data.stats.totalSpent.toLocaleString()}`,
-      change: "Бөлінген кредиттер",
+      change: "Бөліге кредиттер",
       icon: SlGraph,
       color: "text-purple-400",
       bgColor: "bg-purple-500/10",
@@ -153,9 +153,9 @@ export default function DashboardPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="text-3xl font-display font-bold uppercase">Басқару тақтасы</h1>
+          <h1 className="text-3xl font-display font-bold uppercase">Басқару тақта</h1>
           <p className="mt-2 text-muted-foreground font-body">
-            Қош келдіңіз. Стратегиялық тапсырмаларыңызды және серіктестіктеріңізді қадағалаңыз.
+            مرحباً بك. Стратегиялық тапрмаларыңыз жәе серіктестіктеріңізді қадаإلىлаңыз.
           </p>
         </motion.div>
 
@@ -175,13 +175,13 @@ export default function DashboardPage() {
           <Link href="/request">
             <Button variant="outline" className="gap-2 border-border hover:border-primary/50">
               <SlBriefcase size={18} />
-              Жаңа кеңес
+              جديد кеңес
             </Button>
           </Link>
           <Link href="/dashboard/wallet">
             <Button variant="outline" className="gap-2 border-border hover:border-primary/50">
               <SlPlus size={18} />
-              Кредит қосу
+              إضافة رصيد
             </Button>
           </Link>
         </motion.div>
@@ -225,22 +225,22 @@ export default function DashboardPage() {
             <Card className="glass border-border">
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="text-lg font-semibold">
-                  Соңғы тапсырыстар
+                  Соңғы тапрыстар
                 </CardTitle>
                 <Link
                   href="/dashboard/purchases"
                   className="text-sm text-primary hover:text-primary/80"
                 >
-                  Барлығын көру
+                  Барлығы көру
                 </Link>
               </CardHeader>
               <CardContent>
                 {data.recentOrders.length === 0 ? (
                   <div className="text-center py-8 text-muted-foreground">
                     <SlBriefcase className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                    <p>Тапсырыстар жоқ</p>
+                    <p>Тапрыстар жоқ</p>
                     <Link href="/specialists" className="text-primary text-sm hover:underline">
-                      Серіктестермен танысыңыз
+                      Серіктестерمع таыңыз
                     </Link>
                   </div>
                 ) : (
@@ -304,7 +304,7 @@ export default function DashboardPage() {
                   href="/specialists"
                   className="text-sm text-primary hover:text-primary/80"
                 >
-                  Барлығын қарау
+                  Барлығы қарау
                 </Link>
               </CardHeader>
               <CardContent>
@@ -362,9 +362,9 @@ export default function DashboardPage() {
                 <SlRocket size={24} className="text-primary" />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold">Үздіктікке дайынсыз ба?</h3>
+                <h3 className="font-semibold">Үздіктікке дайыз ба?</h3>
                 <p className="text-sm text-muted-foreground">
-                  Стратегиялық міндетіңізді жіберіңіз және нәтижелерді дәлдікпен жеткізетін білікті кеңесшілермен байланысыңыз.
+                  أرسل مهمتك الاستراتيجية واتصل بمستشارين مؤهلين يقدمون النتائج بدقة.
                 </p>
               </div>
               <Link href="/request">

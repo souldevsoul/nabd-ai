@@ -8,8 +8,8 @@ import { db } from "@/lib/db";
 import { SlCamera, SlLocationPin, SlPicture } from "react-icons/sl";
 
 export const metadata: Metadata = {
-  title: "Фотографтар",
-  description: "Vertex-те талантты фотографтарды табыңыз. Әрбір жасаушы расталған, әрбір кескін түпнұсқа.",
+  title: "المصورون",
+  description: "NABD-те таتمтты صورةграфтар табыңыз. Әрбір жасаушы расталإلى, әрбір кескі түпұсқа.",
 };
 
 async function getPhotographers() {
@@ -52,11 +52,11 @@ export default async function PhotographersPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl font-display font-bold uppercase tracking-tight sm:text-6xl">
-              Біздің <span className="gradient-text">Фотографтармен</span> Танысыңыз
+              لدينا <span className="gradient-text">المصورونمع</span> Таыңыз
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground font-body font-light">
-              Әлемнің түкпір-түкпірінен келген талантты жасаушылар, әрқайсысы расталған және
-              шынайы адам жасаған фотографиясы үшін даңқталған.
+              منشئون موهوبون من جميع أنحاء العالم، كل منهم موثق ومحتفى به
+              шыайы адам жасаإلى صورةграфия үші даңқталإلى.
             </p>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default async function PhotographersPage() {
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                     <span className="flex items-center gap-1">
                       <SlPicture size={14} className="text-amber-400" />
-                      {photographer._count.photos} фото
+                      {photographer._count.photos} صورة
                     </span>
                   </div>
 
@@ -146,11 +146,11 @@ export default async function PhotographersPage() {
           {photographers.length === 0 && (
             <div className="text-center py-20">
               <SlCamera size={48} className="mx-auto text-muted-foreground mb-4" />
-              <h3 className="text-xl font-display font-bold uppercase mb-2">Әзірге фотографтар жоқ</h3>
-              <p className="text-muted-foreground mb-6">Біздің қоғамдастыққа қосылған бірінші болыңыз!</p>
+              <h3 className="text-xl font-display font-bold uppercase mb-2">Әзірге صورةграфтар жоқ</h3>
+              <p className="text-muted-foreground mb-6">كن أول من ينضم إلى مجتمعنا!</p>
               <Link href="/register?role=photographer">
                 <Button className="bg-amber-500 hover:bg-amber-400 text-black font-bold">
-                  Фотограф Болу
+                  كن مصوراً
                 </Button>
               </Link>
             </div>
@@ -162,15 +162,15 @@ export default async function PhotographersPage() {
       <section className="border-t border-white/5 bg-black/30 py-20">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <h2 className="text-3xl font-display font-bold uppercase mb-4">
-            Жұмысыңызды көрсетуге дайынсыз ба?
+            هل أنت جاهز لعرض عملك؟
           </h2>
           <p className="text-muted-foreground mb-8">
-            Расталған фотографтар қоғамдастығына қосылыңыз және шынайы фотографияңыздан табыс табуды бастаңыз.
+            موثق صورةграфтар қоإلىмдастығыа қолыңыз و шыайы صورةграфияңызда табыс табу бастаңыз.
           </p>
           <Link href="/register?role=photographer">
             <Button size="lg" className="bg-amber-500 hover:bg-amber-400 text-black font-bold gap-2">
               <SlCamera size={20} />
-              Фотограф Ретінде Қосылу
+              انضم كمصور
             </Button>
           </Link>
         </div>

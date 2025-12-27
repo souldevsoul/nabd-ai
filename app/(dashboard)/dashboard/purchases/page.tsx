@@ -110,9 +110,9 @@ export default function PurchasesPage() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white">Менің сатып алуларым</h1>
+        <h1 className="text-3xl font-bold text-white">Меің сатып алуларым</h1>
         <p className="text-slate-400 mt-1">
-          Лицензияланған фотосуреттерді жүктеп алыңыз және басқарыңыз
+          Лицезияتمإلى фотосуреттерді жүктеп алыңыз жәе басқарыңыз
         </p>
       </div>
 
@@ -181,7 +181,7 @@ export default function PurchasesPage() {
                     </div>
                     <div className="flex items-center gap-1 text-slate-400">
                       <SlDoc className="w-3.5 h-3.5" />
-                      <span>{remainingDownloads} жүктеп алу қалды</span>
+                      <span>{remainingDownloads} жүктеп алу қал</span>
                     </div>
                   </div>
 
@@ -198,7 +198,7 @@ export default function PurchasesPage() {
                     )}
                   >
                     <SlCloudDownload className="w-4 h-4 mr-2" />
-                    {remainingDownloads > 0 ? "Жүктеу" : "Лимит аяқталды"}
+                    {remainingDownloads > 0 ? "تحميل" : "Лимит аяқтал"}
                   </Button>
                 </div>
               </motion.div>
@@ -218,11 +218,11 @@ export default function PurchasesPage() {
             Сатып алулар жоқ
           </h3>
           <p className="text-slate-400 mb-6">
-            Галереяны қарап, жинағыңызды құру үшін фотосуреттер сатып алыңыз
+            تصفح المعرض واشترِ الصور لبناء مجموعتك
           </p>
           <Link href="/gallery">
             <Button className="bg-amber-500 hover:bg-amber-400 text-black font-semibold">
-              Галереяны қарау
+              Галереяы қарау
             </Button>
           </Link>
         </motion.div>

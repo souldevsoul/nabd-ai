@@ -22,78 +22,78 @@ import {
 const benefits = [
   {
     icon: RiMoneyDollarCircleLine,
-    title: "Миссия Өтемақысы",
-    description: "Миссияға маңызды тәжірибені көрсететін басқару ставкалары. Үздік ғарышкерлер миссия үшін $500+ табады.",
+    title: "المهمة Өтемақы",
+    description: "المهمةإلى маңыз тәжіриمعі көрсететі басқару ставкалары. Үздік رائد فضاءлер مهمة үші $500+ таба.",
   },
   {
     icon: RiVipCrownLine,
-    title: "Жұлдызды Клиенттер",
-    description: "Fortune 500 миссия басқару орталықтары мен орбиталық сәттілік бастамалары үшін шешімдерді орналастыру.",
+    title: "عملاء نجميون",
+    description: "Fortune 500 مهمة басқару орталықтары مع орбиталық сәттілік бастамалары үші шешімдерді ораластыру.",
   },
   {
     icon: RiGlobalLine,
-    title: "Орбиталық Қамту",
-    description: "Жаһандық миссия желісіне қатынас. Кез келген іске қосу орнынан орынға тәуелсіз орналастырулар.",
+    title: "تغطية مدارية",
+    description: "Жаһақ مهمة желісіе қатыас. Кез келге іске қосу орыа орыإلى тәуелсіз ораластырулар.",
   },
   {
     icon: RiTimeLine,
-    title: "Миссия Автономиясы",
-    description: "Траекторияларыңызды таңдаңыз. Қолжетімділік терезелерін орнатыңыз. Толық миссия басқару билігі.",
+    title: "المهمة Автоомия",
+    description: "Траекторияларыңыз таңдаңыз. Қолжетімділік терезелері орاسمك. Толық مهمة سلطة التحكم.",
   },
   {
     icon: RiShieldCheckLine,
-    title: "Миссия Қауіпсіздігі",
-    description: "Қорғалған платформа операциялары. ORBITA барлық миссия логистикасын және экипаж растауын басқарады.",
+    title: "المهمة Қауіпсіздігі",
+    description: "Қорإلىлإلى платформа операциялары. NABD барлық مهمة логистика و экипаж растауы басқара.",
   },
   {
     icon: RiTeamLine,
-    title: "Экипаж Желісі",
-    description: "Миссияға маңызды орналастыруларда элиталық ғарышкерлерге қосылыңыз. Бірлескен орбиталық операциялар.",
+    title: "شبكة الطاقم",
+    description: "المهمةإلى маңыз ораластыруларда элиталық رائد فضاءлерге қолыңыз. Бірлеске орбиталық операциялар.",
   },
 ];
 
 const requirements = [
-  "AI, машиналық оқыту немесе деректер ғылымындағы көрсетілетін тәжірибе",
-  "Саладағы кемінде 5 жылдық кәсіби тәжірибе",
-  "Табысты іске асырулар немесе кеңес беру жұмыстарының портфолиосы",
-  "Ерекше қарым-қатынас және консалтинг қабілеттері",
-  "Алдыңғы клиенттерден немесе жұмыс берушілерден кәсіби сілтемелер",
-  "Озық деңгей мен клиент қанағаттануына міндеттеме",
+  "خبرة يمكن إثباتها في الذكاء الاصطناعي، التعلم الآلي أو علم البيانات",
+  "خبرة مهنية لا تقل عن 5 سنوات في المجال",
+  "مجموعة من التنفيذات الناجحة أو أعمال الاستشارات",
+  "مهارات اتصال واستشارة استثنائية",
+  "مراجع مهنية من عملاء أو أرباب عمل سابقين",
+  "Озық деңгей مع клиет қааإلىттауыа мідеттеме",
 ];
 
 const process = [
   {
     step: "01",
-    title: "Іске Қосуға Дейін",
-    description: "Экипаж өтінімін толтырыңыз. Миссия тәжірибесін, техникалық мүмкіндіктерді және траектория тарихын жіберіңіз.",
+    title: "قبل الإطلاق",
+    description: "Экипаж өтіімі толтырыңыз. المهمة тәжірибесі, техикалық мүмкідіктерді و траектория тарихы жіберіңіз.",
   },
   {
     step: "02",
-    title: "Миссия Шолу",
-    description: "Ұшу қолбасшылығы куәліктеріңізді, орналастыру портфолиосын және экипаж сілтемелерін бағалайды.",
+    title: "المهمة Шолу",
+    description: "قيادة الطيران تقيّم بيانات اعتمادك ومحفظة النشر ومراجع الطاقم.",
   },
   {
     step: "03",
-    title: "Экипаж Сұхбаты",
-    description: "Таңдалған үміткерлер қабілеттілікті бағалау және экипаж үйлесімділігі үшін миссия басқарумен докингтеледі.",
+    title: "مقابلة الطاقم",
+    description: "Таңдалإلى үміткерлер қабілеттілікті баإلىлау و экипаж үйлесімділігі үші مهمة басқаруمع докигтеледі.",
   },
   {
     step: "04",
-    title: "Ұшу Сертификаты",
-    description: "Орбиталық платформа қауіпсіздігі үшін жеке куәлік растау және миссия рұқсат хаттамалары.",
+    title: "شهادة الطيران",
+    description: "المدارлық платформа қауіпсіздігі үші жеке куәлік растау و مهمة рұқсат хаттамалары.",
   },
   {
     step: "05",
-    title: "Іске Қосу",
-    description: "Экипажды қабылдау, миссия профилін белсендіру және ORBITA басқару желісіне біріктіру.",
+    title: "إطلاق",
+    description: "الطاقم қабылдау, مهمة профилі белседіру و NABD басқару желісіе біріктіру.",
   },
 ];
 
 const stats = [
-  { value: "$500+", label: "Орташа Миссия Бағасы" },
-  { value: "< 5%", label: "Экипаж Таңдау Деңгейі" },
-  { value: "98%", label: "Миссия Сәттілік Деңгейі" },
-  { value: "50+", label: "Жаһандық Іске Қосу Орындары" },
+  { value: "$500+", label: "Орташа المهمة Баإلى" },
+  { value: "< 5%", label: "معدل اختيار الطاقم" },
+  { value: "98%", label: "المهمة نجاح Деңгейі" },
+  { value: "50+", label: "Жаһақ إطلاق Орыдары" },
 ];
 
 export default function BecomePartnerPage() {
@@ -150,24 +150,24 @@ export default function BecomePartnerPage() {
             >
               <RiVipCrownLine className="text-primary" size={16} />
               <span className="text-sm tracking-[0.4em] uppercase text-primary font-bold">
-                Экипаж Жалдауы
+                تجنيد الطاقم
               </span>
             </motion.div>
 
             {/* Main headline - larger and bolder */}
             <h1 className="font-display text-6xl md:text-8xl xl:text-9xl font-light text-foreground leading-[0.9] tracking-tight mb-8">
-              <span className="block">Экипажқа</span>
-              <span className="block font-bold gradient-text mt-4">Қосылыңыз</span>
+              <span className="block">إلى الطاقم</span>
+              <span className="block font-bold gradient-text mt-4">انضم</span>
             </h1>
 
             {/* Cosmic divider */}
             <div className="mx-auto w-40 h-1 cosmic-line mb-10" />
 
             <p className="text-muted-foreground text-xl md:text-2xl font-light leading-relaxed max-w-3xl mx-auto mb-6">
-              ORBITA маңызды орбиталық орналастыруларға миссияға дайын AI ғарышкерлерін іздейді.
+              NABD маңыз орбиталық ораластыруларإلى مهمةإلى ذكاء اصطناعي جاهز رائد فضاءлері іздейді.
             </p>
             <p className="text-foreground/80 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto mb-16">
-              Егер сіз миссияға қабілетті және озық деңгейге ұмтылатын болсаңыз, іске қосу реттілігін аяқтаңыз.
+              Егер сіз مهمةإلى қабілетті و إذا كنت ملتزماً بالتميز، أكمل تسلسل الإطلاق.
             </p>
 
             {/* CTA Button */}
@@ -177,7 +177,7 @@ export default function BecomePartnerPage() {
                 whileTap={{ scale: 0.95 }}
                 className="group inline-flex items-center gap-4 px-14 py-7 bg-secondary text-secondary-foreground font-display text-base tracking-[0.3em] uppercase shadow-2xl shadow-secondary/40 hover:shadow-3xl hover:shadow-secondary/50 transition-all duration-500 border-2 border-secondary/50"
               >
-                Іске Қосу Реттілігін Аяқтау
+                إطلاق Реттілігі Аяқтау
                 <RiArrowRightLine
                   className="group-hover:translate-x-2 transition-transform duration-500"
                   size={20}
@@ -196,21 +196,21 @@ export default function BecomePartnerPage() {
                 <div className="w-10 h-10 border border-primary/30 flex items-center justify-center">
                   <RiShieldCheckLine size={18} className="text-primary" />
                 </div>
-                <span className="tracking-wider font-light">Толық Тексерілген</span>
+                <span className="tracking-wider font-light">تم التحقق بالكامل</span>
               </div>
               <div className="w-px h-8 bg-border hidden sm:block" />
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 border border-primary/30 flex items-center justify-center">
                   <RiAwardLine size={18} className="text-primary" />
                 </div>
-                <span className="tracking-wider font-light">Эксклюзивті Желі</span>
+                <span className="tracking-wider font-light">شبكة حصرية</span>
               </div>
               <div className="w-px h-8 bg-border hidden sm:block" />
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 border border-primary/30 flex items-center justify-center">
                   <RiStarLine size={18} className="text-primary" />
                 </div>
-                <span className="tracking-wider font-light">Премиум Өтемақы</span>
+                <span className="tracking-wider font-light">تعويض متميز</span>
               </div>
             </motion.div>
           </motion.div>
@@ -257,11 +257,11 @@ export default function BecomePartnerPage() {
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 border border-primary/30 bg-primary/5">
               <RiTrophyLine className="text-primary" size={14} />
               <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">
-                Экипаж Артықшылықтары
+                امتيازات الطاقم
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-6xl font-light text-foreground mb-4">
-              Неліктен <span className="font-bold gradient-text">Ғарышкерлер</span> ORBITA Таңдайды
+              لماذا <span className="font-bold gradient-text">رواد الفضاء</span> يختارون NABD
             </h2>
             <div className="w-24 h-0.5 cosmic-line mx-auto mt-6" />
           </motion.div>
@@ -305,15 +305,15 @@ export default function BecomePartnerPage() {
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 border border-primary/30 bg-primary/5">
               <RiUserStarLine className="text-primary" size={14} />
               <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">
-                Экипаж Талаптары
+                متطلبات الطاقم
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-6xl font-light text-foreground mb-4">
-              Миссия <span className="font-bold gradient-text">Дайындығы</span>
+              المهمة <span className="font-bold gradient-text">Дайығы</span>
             </h2>
             <div className="w-24 h-0.5 cosmic-line mx-auto mt-6" />
             <p className="text-muted-foreground text-lg font-light mt-8 max-w-2xl mx-auto">
-              ORBITA миссияға маңызды стандарттарды сақтайды. Біздің экипаж таңдау деңгейі орбиталық озық деңгейді көрсетеді.
+              NABD مهمةإلى маңыз стадарттар сақтай. لدينا экипаж таңдау деңгейі орбиталық озық деңгейді көрсетеді.
             </p>
           </motion.div>
 
@@ -356,11 +356,11 @@ export default function BecomePartnerPage() {
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 border border-primary/30 bg-primary/5">
               <RiSparklingLine className="text-primary" size={14} />
               <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">
-                Іске Қосу Реттілігі
+                إطلاق Реттілігі
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-6xl font-light text-foreground mb-4">
-              <span className="font-bold gradient-text">Орбитаға</span> Траектория
+              <span className="font-bold gradient-text">مسار</span> إلى المدار
             </h2>
             <div className="w-24 h-0.5 cosmic-line mx-auto mt-6" />
           </motion.div>
@@ -413,23 +413,23 @@ export default function BecomePartnerPage() {
             <div className="inline-flex items-center gap-2 px-6 py-3 mb-12 border border-primary/30 bg-primary/5">
               <RiVipCrownLine className="text-primary" size={14} />
               <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">
-                Экипаж Жалдауы
+                تجنيد الطاقم
               </span>
             </div>
 
             <h2 className="font-display text-5xl md:text-7xl font-light text-foreground mb-4">
-              Сіз
+              أنت
             </h2>
             <h2 className="font-display text-5xl md:text-7xl font-bold gradient-text mb-10">
-              Миссияға Дайынсыз Ба?
+              المهمةإلى Дайыз Ба?
             </h2>
 
             <div className="w-32 h-0.5 cosmic-line mx-auto mb-10" />
 
             <p className="text-muted-foreground text-lg md:text-xl font-light mb-14 max-w-3xl mx-auto leading-relaxed">
-              Біз маңызды орбиталық орналастыруларға миссияға қабілетті AI ғарышкерлерін жалдаймыз.
+              Біз маңыз орбиталық ораластыруларإلى مهمةإلى қабілетті AI رائد فضاءлері жалдаймыз.
               <span className="block mt-3 text-foreground/80">
-                Іске қосу реттілігі қатал. Миссиялар жұлдызды.
+                تسلسل الإطلاق صارم. المهمةлар жұлз.
               </span>
             </p>
 
@@ -439,7 +439,7 @@ export default function BecomePartnerPage() {
                 whileTap={{ scale: 0.98 }}
                 className="group inline-flex items-center gap-4 px-14 py-6 bg-secondary text-secondary-foreground font-display text-sm tracking-widest uppercase shadow-xl shadow-secondary/20 hover:shadow-2xl hover:shadow-secondary/30 transition-all duration-500"
               >
-                Іске Қосу Реттілігін Аяқтау
+                إطلاق Реттілігі Аяқтау
                 <RiArrowRightLine
                   className="group-hover:translate-x-2 transition-transform duration-500"
                   size={20}
@@ -448,7 +448,7 @@ export default function BecomePartnerPage() {
             </Link>
 
             <p className="text-muted-foreground text-sm mt-10 tracking-wide font-mono">
-              Өтінімдер үздіксіз негізде қаралады. Миссия рұқсаты 10 жұмыс күні ішінде.
+              Өтіімдер үздіксіз егізде қарала. المهمة рұқсаты 10 жұмыс في ішіде.
             </p>
           </motion.div>
         </div>

@@ -77,11 +77,11 @@ interface TaskDetailDrawerProps {
 }
 
 const statusConfig: Record<string, { label: string; color: string }> = {
-  PENDING: { label: "Күтілуде", color: "bg-amber-500/10 text-amber-500 border-amber-500/20" },
-  ACCEPTED: { label: "Қабылданды", color: "bg-blue-500/10 text-blue-500 border-blue-500/20" },
-  IN_PROGRESS: { label: "Орындалуда", color: "bg-purple-500/10 text-purple-500 border-purple-500/20" },
-  COMPLETED: { label: "Аяқталды", color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" },
-  RATED: { label: "Бағаланды", color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" },
+  PENDING: { label: "في الانتظار", color: "bg-amber-500/10 text-amber-500 border-amber-500/20" },
+  ACCEPTED: { label: "Қабылда", color: "bg-blue-500/10 text-blue-500 border-blue-500/20" },
+  IN_PROGRESS: { label: "قيد التنفيذ", color: "bg-purple-500/10 text-purple-500 border-purple-500/20" },
+  COMPLETED: { label: "Аяқтал", color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" },
+  RATED: { label: "Баإلىتم", color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" },
 };
 
 export function TaskDetailDrawer({
@@ -119,12 +119,12 @@ export function TaskDetailDrawer({
         setAssignment(data.assignment);
         setCanSend(data.access.canSend);
       } else if (res.status === 404) {
-        setError("Тапсырма табылмады");
+        setError("Тапрма табылма");
       } else {
-        setError("Тапсырманы жүктеу сәтсіз аяқталды");
+        setError("Тапрмаы жүктеу сәтсіз аяқтал");
       }
     } catch (err) {
-      setError("Тапсырманы жүктеу сәтсіз аяқталды");
+      setError("Тапрмаы жүктеу сәтсіз аяқтал");
     } finally {
       setLoading(false);
     }
@@ -167,10 +167,10 @@ export function TaskDetailDrawer({
           <div className="flex items-start justify-between">
             <div className="flex-1 pr-4">
               <DrawerTitle className="text-xl font-display">
-                {assignment?.request.task?.displayName || "Тапсырма мәліметтері"}
+                {assignment?.request.task?.displayName || "Тапрма мәліметтері"}
               </DrawerTitle>
               <DrawerDescription>
-                {assignment?.request.task?.category || "Арнайы тапсырма"}
+                {assignment?.request.task?.category || "Арайы тапрма"}
               </DrawerDescription>
             </div>
             <div className="flex items-center gap-2">
@@ -222,7 +222,7 @@ export function TaskDetailDrawer({
                       </span>
                       <span className="flex items-center gap-1">
                         <SlCheck className="w-3 h-3" />
-                        {assignment.specialist.completedTasks} аяқталды
+                        {assignment.specialist.completedTasks} аяқтал
                       </span>
                     </div>
                   </div>
@@ -247,7 +247,7 @@ export function TaskDetailDrawer({
                   </div>
                   <div className="flex-1">
                     <h3 className="font-display font-bold">
-                      {assignment.request.user.name || "Тапсырыс беруші"}
+                      {assignment.request.user.name || "Тапрыс беруші"}
                     </h3>
                     <p className="text-sm text-muted-foreground">
                       {assignment.request.user.email}
@@ -279,19 +279,19 @@ export function TaskDetailDrawer({
                 <div className="space-y-2">
                   <TimelineItem
                     icon={<SlClock className="w-3 h-3" />}
-                    label="Жасалды"
+                    label="Жасал"
                     date={assignment.createdAt}
                     completed
                   />
                   <TimelineItem
                     icon={<SlRocket className="w-3 h-3" />}
-                    label="Басталды"
+                    label="Бастал"
                     date={assignment.startedAt}
                     completed={!!assignment.startedAt}
                   />
                   <TimelineItem
                     icon={<SlBadge className="w-3 h-3" />}
-                    label="Аяқталды"
+                    label="Аяқтал"
                     date={assignment.completedAt}
                     completed={!!assignment.completedAt}
                   />
@@ -307,7 +307,7 @@ export function TaskDetailDrawer({
                       disabled={actionLoading}
                       className="flex-1"
                     >
-                      {actionLoading ? "Өңделуде..." : "Тапсырманы қабылдау"}
+                      {actionLoading ? "جارٍ المعالجة..." : "Тапрмаы қабылдау"}
                     </Button>
                   )}
                   {assignment.status === "ACCEPTED" && (
@@ -316,7 +316,7 @@ export function TaskDetailDrawer({
                       disabled={actionLoading}
                       className="flex-1"
                     >
-                      {actionLoading ? "Өңделуде..." : "Жұмысты бастау"}
+                      {actionLoading ? "جارٍ المعالجة..." : "Жұмысты бастау"}
                     </Button>
                   )}
                   {assignment.status === "IN_PROGRESS" && (
@@ -325,7 +325,7 @@ export function TaskDetailDrawer({
                       disabled={actionLoading}
                       className="flex-1"
                     >
-                      {actionLoading ? "Өңделуде..." : "Аяқталды деп белгілеу"}
+                      {actionLoading ? "جارٍ المعالجة..." : "Аяқтал деп белгілеу"}
                     </Button>
                   )}
                 </div>
@@ -334,7 +334,7 @@ export function TaskDetailDrawer({
               {/* Chat section */}
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground mb-3">
-                  Әңгіме
+                  محادثة
                 </h3>
                 <TaskChat
                   assignmentId={assignment.id}
@@ -344,7 +344,7 @@ export function TaskDetailDrawer({
                   specialistName={
                     userRole === "buyer"
                       ? assignment.specialist.firstName
-                      : assignment.request.user.name || "Тапсырыс беруші"
+                      : assignment.request.user.name || "Тапрыс беруші"
                   }
                 />
               </div>

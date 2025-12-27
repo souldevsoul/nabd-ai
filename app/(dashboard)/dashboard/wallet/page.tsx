@@ -79,8 +79,8 @@ export default function WalletPage() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white">Әмиян</h1>
-        <p className="text-slate-400 mt-1">Кредиттеріңізді басқарыңыз және транзакция тарихын қараңыз</p>
+        <h1 className="text-3xl font-bold text-white">Әмия</h1>
+        <p className="text-slate-400 mt-1">Кредиттеріңізді басқарыңыз жәе тразакция тарихы қараңыз</p>
       </div>
 
       {/* Balance Card */}
@@ -99,7 +99,7 @@ export default function WalletPage() {
               <SlWallet className="w-5 h-5 text-amber-500" />
             </div>
             <div>
-              <p className="text-sm text-slate-400">Ағымдағы баланс</p>
+              <p className="text-sm text-slate-400">Ағымдағы баتمс</p>
               <p className="text-2xl font-bold text-white">
                 {walletData?.balance.toLocaleString() || 0}
               </p>
@@ -118,7 +118,7 @@ export default function WalletPage() {
               <SlBasket className="w-5 h-5 text-red-400" />
             </div>
             <div>
-              <p className="text-sm text-slate-400">Жалпы шығын</p>
+              <p className="text-sm text-slate-400">Жалпы шығы</p>
               <p className="text-2xl font-bold text-white">
                 {walletData?.totalSpent.toLocaleString() || 0}
               </p>
@@ -148,7 +148,7 @@ export default function WalletPage() {
 
       {/* Transaction History */}
       <div>
-        <h2 className="text-xl font-semibold text-white mb-4">Соңғы транзакциялар</h2>
+        <h2 className="text-xl font-semibold text-white mb-4">Соңғы тразакциялар</h2>
         <div className="space-y-3">
           {walletData?.recentTransactions && walletData.recentTransactions.length > 0 ? (
             walletData.recentTransactions.map((tx, index) => {
@@ -189,7 +189,7 @@ export default function WalletPage() {
                       {tx.amount > 0 ? "+" : ""}{tx.amount.toLocaleString()}
                     </p>
                     <p className="text-sm text-slate-500">
-                      Баланс: {tx.balance.toLocaleString()}
+                      الرصيد: {tx.balance.toLocaleString()}
                     </p>
                   </div>
                 </motion.div>
@@ -198,8 +198,8 @@ export default function WalletPage() {
           ) : (
             <div className="text-center py-12">
               <SlWallet className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-              <p className="text-slate-400">Транзакциялар жоқ</p>
-              <p className="text-sm text-slate-500">Бастау үшін кредит қосыңыз</p>
+              <p className="text-slate-400">Тразакциялар жоқ</p>
+              <p className="text-sm text-slate-500">Бастау үші кредит қоңыз</p>
             </div>
           )}
         </div>

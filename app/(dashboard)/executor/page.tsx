@@ -139,8 +139,8 @@ export default function ExecutorDashboard() {
         <Header />
         <main className="pt-32 pb-20">
           <div className="mx-auto max-w-2xl px-4 text-center">
-            <h1 className="text-3xl font-display font-bold mb-4">Орындаушы басқару тақтасы</h1>
-            <p className="text-muted-foreground mb-8">Орындаушы басқару тақтасына кіру үшін жүйеге кіріңіз.</p>
+            <h1 className="text-3xl font-display font-bold mb-4">Орыдаушы басқару тақта</h1>
+            <p className="text-muted-foreground mb-8">قم بتسجيل الدخول للوصول إلى لوحة تحكم المنفذ.</p>
             <Link href="/login">
               <Button>Кіру</Button>
             </Link>
@@ -157,12 +157,12 @@ export default function ExecutorDashboard() {
         <Header />
         <main className="pt-32 pb-20">
           <div className="mx-auto max-w-2xl px-4 text-center">
-            <h1 className="text-3xl font-display font-bold mb-4">Маман емес</h1>
+            <h1 className="text-3xl font-display font-bold mb-4">Мама емес</h1>
             <p className="text-muted-foreground mb-8">
-              Аккаунтыңыз маман профиліне байланыстырылмаған. Орындаушы болу үшін әкімшімен байланысыңыз.
+              حسابك غير مرتبط بملف متخصص. اتصل بالإدارة لتصبح منفذاً.
             </p>
             <Link href="/dashboard">
-              <Button>Басқару тақтасына оралу</Button>
+              <Button>Басқару тақтаа оралу</Button>
             </Link>
           </div>
         </main>
@@ -189,10 +189,10 @@ export default function ExecutorDashboard() {
               />
               <div>
                 <h1 className="text-2xl font-display font-bold">
-                  Қош келдіңіз, {specialist.firstName}
+                  مرحباً بك, {specialist.firstName}
                 </h1>
                 <p className="text-muted-foreground">
-                  Орындаушы тақтасы • {specialist.rating.toFixed(1)} ★ Рейтинг
+                  Орыдаушы тақта • {specialist.rating.toFixed(1)} ★ Рейтиг
                 </p>
               </div>
             </div>
@@ -201,7 +201,7 @@ export default function ExecutorDashboard() {
                 <Link href="/executor/telegram">
                   <Button variant="outline" className="gap-2">
                     <SlBell className="w-4 h-4" />
-                    Telegram қосу
+                    توصيل Telegram
                   </Button>
                 </Link>
               )}
@@ -237,7 +237,7 @@ export default function ExecutorDashboard() {
                   <SlRocket className="w-5 h-5 text-purple-500" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Орындалуда</p>
+                  <p className="text-sm text-muted-foreground">قيد التنفيذ</p>
                   <p className="text-2xl font-bold">{stats.inProgress}</p>
                 </div>
               </div>
@@ -254,7 +254,7 @@ export default function ExecutorDashboard() {
                   <SlCheck className="w-5 h-5 text-emerald-500" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Аяқталды</p>
+                  <p className="text-sm text-muted-foreground">Аяқтал</p>
                   <p className="text-2xl font-bold">{stats.completed}</p>
                 </div>
               </div>
@@ -281,7 +281,7 @@ export default function ExecutorDashboard() {
           {/* Assignments */}
           <div className="sexy-card">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-display font-bold">Сіздің тапсырмаларыңыз</h2>
+              <h2 className="text-lg font-display font-bold">Сіздің тапрмаларыңыз</h2>
               <span className="text-sm text-muted-foreground">
                 {assignments.length} жалпы
               </span>
@@ -290,9 +290,9 @@ export default function ExecutorDashboard() {
             {assignments.length === 0 ? (
               <div className="text-center py-12">
                 <SlBriefcase className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
-                <p className="text-muted-foreground">Тапсырмалар жоқ</p>
+                <p className="text-muted-foreground">Тапрмалар жоқ</p>
                 <p className="text-sm text-muted-foreground/70 mt-1">
-                  Жаңа тапсырмалар осында көрсетіледі
+                  جديد тапрмалар ода көрсетіледі
                 </p>
               </div>
             ) : (
@@ -318,7 +318,7 @@ export default function ExecutorDashboard() {
                           {assignment.request.description}
                         </p>
                         <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                          <span>Тапсырыс беруші: {assignment.request.user.name || assignment.request.user.email}</span>
+                          <span>Тапрыс беруші: {assignment.request.user.name || assignment.request.user.email}</span>
                           <span>•</span>
                           <span>${assignment.price.toFixed(0)} кредит</span>
                           {assignment.confidence && (
@@ -356,13 +356,13 @@ export default function ExecutorDashboard() {
                             disabled={actionLoading === assignment.id}
                             className="bg-emerald-500 hover:bg-emerald-600"
                           >
-                            {actionLoading === assignment.id ? "..." : "Аяқталды деп белгілеу"}
+                            {actionLoading === assignment.id ? "..." : "Аяқтал деп белгілеу"}
                           </Button>
                         )}
                         {assignment.status === "COMPLETED" && (
                           <div className="flex items-center gap-1 text-emerald-500 text-sm">
                             <SlCheck className="w-4 h-4" />
-                            Орындалды
+                            مكتمل
                           </div>
                         )}
                       </div>
@@ -383,14 +383,14 @@ export default function ExecutorDashboard() {
             >
               <div className="flex flex-col md:flex-row md:items-center gap-4">
                 <div className="flex-1">
-                  <h3 className="font-display font-bold mb-1">Хабарландырулар үшін Telegram қосу</h3>
+                  <h3 className="font-display font-bold mb-1">Хабарتمрулар үші توصيل Telegram</h3>
                   <p className="text-sm text-muted-foreground">
-                    Жаңа тапсырмалар тағайындалғанда жедел хабарландырулар алыңыз және тапсырмаларды тікелей Telegram арқылы басқарыңыз.
+                    جديد тапрмалар таإلىйыдалإلىда жедел хабарتمрулар алыңыз жәе тапрмалар тікелей Telegram арқылы басқарыңыз.
                   </p>
                 </div>
                 <Link href="/executor/telegram">
                   <Button className="gap-2">
-                    Telegram қосу
+                    توصيل Telegram
                     <SlArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>

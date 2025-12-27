@@ -44,16 +44,16 @@ interface Photo {
 }
 
 const categories = [
-  { value: "all", label: "Барлық Санаттар" },
-  { value: "landscape", label: "Көрініс" },
-  { value: "portrait", label: "Портрет" },
-  { value: "street", label: "Көше" },
-  { value: "architecture", label: "Сәулет" },
-  { value: "wildlife", label: "Жабайы Табиғат" },
-  { value: "food", label: "Тағам" },
-  { value: "abstract", label: "Абстракт" },
-  { value: "travel", label: "Саяхат" },
-  { value: "urban", label: "Қалалық" },
+  { value: "all", label: "جميع الفئات" },
+  { value: "landscape", label: "منظر طبيعي" },
+  { value: "portrait", label: "صورة شخصية" },
+  { value: "street", label: "شارع" },
+  { value: "architecture", label: "عمارة" },
+  { value: "wildlife", label: "حياة برية" },
+  { value: "food", label: "طعام" },
+  { value: "abstract", label: "تجريدي" },
+  { value: "travel", label: "سفر" },
+  { value: "urban", label: "حضري" },
 ];
 
 export default function GalleryPage() {
@@ -135,32 +135,32 @@ export default function GalleryPage() {
               >
                 <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 border border-primary/30 bg-primary/5">
                   <SlCamera className="text-primary" size={14} />
-                  <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">Расталған Галерея</span>
+                  <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">معرض موثق</span>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold uppercase leading-[0.9] mb-8">
-                  <span className="gradient-text block">Расталған</span>
-                  <span className="text-foreground font-light mt-2 block">Фотографияны</span>
-                  <span className="text-foreground font-light">Зерттеу</span>
+                  <span className="gradient-text block">موثق</span>
+                  <span className="text-foreground font-light mt-2 block">الصور</span>
+                  <span className="text-foreground font-light">استكشاف</span>
                 </h1>
 
                 <div className="w-32 h-1 cosmic-line mb-8" />
 
                 <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed mb-4 max-w-xl">
-                  Әрбір фото расталған. Әрбір жасаушы аталған.
+                  كل صورة موثقة. كل مبدع معتمد.
                 </p>
                 <p className="text-lg text-foreground/70 font-light leading-relaxed max-w-lg">
-                  Әлемнен шынайы адам жасаған фотографияны табыңыз.
+                  اكتشف صوراً حقيقية من صنع الإنسان من جميع أنحاء العالم.
                 </p>
 
                 <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <SlCamera size={16} className="text-primary" />
-                    <span>{photos.length} фото</span>
+                    <span>{photos.length} صورة</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
-                    <span>100% расталған</span>
+                    <span>100% موثق</span>
                   </div>
                 </div>
               </motion.div>
@@ -217,7 +217,7 @@ export default function GalleryPage() {
                 {/* Verification badge overlay */}
                 <div className="absolute top-4 right-4 flex items-center gap-2 px-4 py-2 bg-background/80 backdrop-blur-sm border border-primary/30">
                   <VerificationShield size={16} />
-                  <span className="text-xs font-medium text-foreground">Расталған</span>
+                  <span className="text-xs font-medium text-foreground">موثق</span>
                 </div>
               </motion.div>
             </div>
@@ -236,7 +236,7 @@ export default function GalleryPage() {
                     className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                   />
                   <Input
-                    placeholder="Фотолар, фотографтар немесе тегтерді іздеу..."
+                    placeholder="Фотолар, صورةграфтар أو البحث عن العلامات..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-10 bg-white/5 border-white/10"
@@ -247,7 +247,7 @@ export default function GalleryPage() {
                   onValueChange={setSelectedCategory}
                 >
                   <SelectTrigger className="w-full sm:w-48 bg-white/5 border-white/10">
-                    <SelectValue placeholder="Санат" />
+                    <SelectValue placeholder="فئة" />
                   </SelectTrigger>
                   <SelectContent>
                     {categories.map((cat) => (
@@ -305,7 +305,7 @@ export default function GalleryPage() {
                     className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm text-muted-foreground hover:text-foreground"
                   >
                     <SlClose size={14} />
-                    Тазалау
+                    مسح
                   </button>
                 )}
               </div>
@@ -319,7 +319,7 @@ export default function GalleryPage() {
             {/* Results count */}
             <div className="mb-6 flex items-center justify-between">
               <p className="text-sm text-muted-foreground">
-                {filteredPhotos.length} фото табылды
+                {filteredPhotos.length} صورة табыл
               </p>
             </div>
 
@@ -414,9 +414,9 @@ export default function GalleryPage() {
                 <div className="mx-auto mb-4 w-16 h-16 rounded-full bg-white/5 flex items-center justify-center">
                   <SlCamera size={32} className="text-muted-foreground" />
                 </div>
-                <h3 className="text-lg font-display font-bold uppercase">Фотолар табылмады</h3>
+                <h3 className="text-lg font-display font-bold uppercase">لم يتم العثور على صور</h3>
                 <p className="mt-2 text-muted-foreground">
-                  Іздеуіңізді немесе сүзгілеріңізді реттеуді көріңіз
+                  حاول تعديل بحثك أو مرشحاتك
                 </p>
                 <Button
                   variant="outline"
@@ -427,7 +427,7 @@ export default function GalleryPage() {
                     setSelectedTags([]);
                   }}
                 >
-                  Барлық сүзгілерді тазалау
+                  مسح جميع المرشحات
                 </Button>
               </motion.div>
             )}

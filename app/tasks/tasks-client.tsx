@@ -97,21 +97,21 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/30 bg-primary/5">
               <RiSparklingLine className="text-primary" size={14} />
-              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">Миссия Каталогы</span>
+              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">كتالوج المهام</span>
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.95] mb-6">
-              Миссия
-              <span className="block font-bold gradient-text mt-2">Жүктемелері</span>
+              المهمة
+              <span className="block font-bold gradient-text mt-2">الحمولات</span>
             </h1>
 
             <div className="w-32 h-1 cosmic-line ml-auto mb-8" />
 
             <p className="text-muted-foreground text-xl font-light leading-relaxed mb-4">
-              Орбиталық сәттілік үшін миссияға маңызды AI шешімдері.
+              حلول ذكاء اصطناعي حيوية للمهمة من أجل النجاح المداري.
             </p>
             <p className="text-foreground/70 text-lg font-light leading-relaxed">
-              Ғарыш дәуіріндегі сенімділік. Жұлдызды нәтижелер.
+              موثوقية عصر الفضاء. نتائج نجمية.
             </p>
           </motion.div>
         </div>
@@ -131,7 +131,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                   : "border-border hover:border-primary hover:text-primary"
               }`}
             >
-              Барлық Миссиялар ({tasks.length})
+              الكل المهمةлар ({tasks.length})
             </Button>
             {categories.map((cat) => (
               <Button
@@ -169,7 +169,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                   {category}
                 </h2>
                 <span className="text-sm text-muted-foreground font-light">
-                  ({categoryTasks.length} миссия)
+                  ({categoryTasks.length} مهمة)
                 </span>
               </motion.div>
 
@@ -207,7 +207,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                             </h3>
                             <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
                               <RiTeamLine size={12} />
-                              <span>{task._count.specialists} ғарышкер</span>
+                              <span>{task._count.specialists} رائد فضاء</span>
                             </div>
                           </div>
                         </div>
@@ -219,7 +219,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                         <div className="mt-6 pt-6 border-t border-border group-hover:border-primary/20 transition-colors duration-500 flex items-center justify-between">
                           <div>
                             <span className="text-2xl font-display font-bold text-foreground">{task.basePrice}</span>
-                            <span className="text-sm text-muted-foreground ml-1">кредит</span>
+                            <span className="text-sm text-muted-foreground ml-1">رصيد</span>
                           </div>
                           <Link href={`/request?task=${task.name}`}>
                             <Button
@@ -227,7 +227,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                               variant="outline"
                               className="font-display tracking-wider uppercase text-xs gap-2 border-border hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300"
                             >
-                              Орналастыру
+                              نشر
                               <RiArrowRightLine size={12} />
                             </Button>
                           </Link>
@@ -295,27 +295,27 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
               >
                 <RiSparklingLine className="text-primary" size={16} />
               </motion.div>
-              <span className="text-xs tracking-[0.4em] uppercase text-primary font-bold">Арнайы Миссия</span>
+              <span className="text-xs tracking-[0.4em] uppercase text-primary font-bold">Арайы المهمة</span>
             </div>
 
             <h2 className="font-display text-4xl md:text-6xl font-light text-foreground mb-6 leading-tight">
-              Арнайы Траектория
-              <span className="block font-bold gradient-text mt-2">Қажет Пе?</span>
+              مسار مخصص
+              <span className="block font-bold gradient-text mt-2">مطلوب؟</span>
             </h2>
 
             <div className="w-32 h-1 cosmic-line mx-auto mb-8" />
 
             <p className="text-muted-foreground text-lg font-light mb-4 leading-relaxed max-w-2xl mx-auto">
-              Миссия параметрлеріңіз туралы бізге хабарлаңыз, біз экипаж тізімінен идеалды ғарышкерді тағайындаймыз.
+              المهمة параметрлеріңіз туралы бізге хабарлаңыз, біз экипаж тізіміе идеал رائد فضاءді таإلىйыдаймыз.
             </p>
             <p className="text-foreground/60 text-base font-light mb-12 leading-relaxed max-w-xl mx-auto">
-              Миссия брифингі. AI сәйкестендіру. Экипаж іріктеу.
+              المهمة брифигі. AI сәйкестедіру. Экипаж іріктеу.
             </p>
 
             <Link href="/request">
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button className="px-12 py-7 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-display tracking-[0.2em] uppercase text-sm shadow-2xl shadow-secondary/30 border border-secondary/50">
-                  Экипажды Сұрау
+                  طلب طاقم
                   <RiArrowRightLine className="ml-3" size={18} />
                 </Button>
               </motion.div>
@@ -324,11 +324,11 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
             <div className="mt-10 flex items-center justify-center gap-8 text-xs text-muted-foreground font-mono">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                <span>AI Сәйкестендіру</span>
+                <span>مطابقة الذكاء الاصطناعي</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-                <span>Жедел Тағайындау</span>
+                <span>تعيين سريع</span>
               </div>
             </div>
           </motion.div>

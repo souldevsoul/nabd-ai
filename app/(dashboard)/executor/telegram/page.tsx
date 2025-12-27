@@ -50,8 +50,8 @@ export default function ExecutorTelegramPage() {
         <Header />
         <main className="pt-32 pb-20">
           <div className="mx-auto max-w-2xl px-4 text-center">
-            <h1 className="text-3xl font-display font-bold mb-4">Telegram қосу</h1>
-            <p className="text-muted-foreground mb-8">Telegram аккаунтын қосу үшін кіріңіз.</p>
+            <h1 className="text-3xl font-display font-bold mb-4">توصيل Telegram</h1>
+            <p className="text-muted-foreground mb-8">Telegram قم بتسجيل الدخول لتوصيل حسابك.</p>
             <Link href="/login">
               <Button>Кіру</Button>
             </Link>
@@ -74,7 +74,7 @@ export default function ExecutorTelegramPage() {
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8"
           >
             <SlArrowLeft className="w-4 h-4" />
-            Басқару тақтасына оралу
+            Басқару тақтаа оралу
           </Link>
 
           <div className="sexy-card">
@@ -83,9 +83,9 @@ export default function ExecutorTelegramPage() {
                 <SlBell className="w-8 h-8 text-primary" />
               </div>
               <div>
-                <h1 className="text-2xl font-display font-bold">Telegram қосу</h1>
+                <h1 className="text-2xl font-display font-bold">توصيل Telegram</h1>
                 <p className="text-muted-foreground">
-                  Жаңа тапсырмалар үшін жедел хабарландырулар алыңыз
+                  جديد тапрмалар үші жедел хабарتمрулар алыңыз
                 </p>
               </div>
             </div>
@@ -95,9 +95,9 @@ export default function ExecutorTelegramPage() {
                 <div className="flex items-center gap-3">
                   <SlCheck className="w-5 h-5 text-emerald-500" />
                   <div>
-                    <p className="font-medium text-emerald-500">Telegram қосылды!</p>
+                    <p className="font-medium text-emerald-500">Telegram متصل!</p>
                     <p className="text-sm text-muted-foreground">
-                      Жаңа тапсырмалар үшін хабарландырулар аласыз.
+                      جديد тапрмалар үші хабарتمрулар алаз.
                     </p>
                   </div>
                 </div>
@@ -105,14 +105,14 @@ export default function ExecutorTelegramPage() {
             ) : (
               <div className="space-y-6">
                 <div className="p-4 rounded-xl bg-muted/50">
-                  <h3 className="font-medium mb-4">Telegram-ды қалай қосуға болады:</h3>
+                  <h3 className="font-medium mb-4">Telegram- қалай қосуإلى سيكون:</h3>
                   <ol className="space-y-3 text-sm text-muted-foreground">
                     <li className="flex gap-3">
                       <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-medium flex items-center justify-center">
                         1
                       </span>
                       <span>
-                        Telegram ашып, <strong>@VertexExecutorBot</strong> іздеңіз
+                        Telegram افتح، <strong>@VertexExecutorBot</strong> іздеңіз
                       </span>
                     </li>
                     <li className="flex gap-3">
@@ -120,7 +120,7 @@ export default function ExecutorTelegramPage() {
                         2
                       </span>
                       <span>
-                        <strong>Бастау</strong> түймесін басып әңгімені бастаңыз
+                        <strong>Бастау</strong> түймесі бап әңгіمعі бастаңыз
                       </span>
                     </li>
                     <li className="flex gap-3">
@@ -128,7 +128,7 @@ export default function ExecutorTelegramPage() {
                         3
                       </span>
                       <span>
-                        <code className="px-1.5 py-0.5 rounded bg-muted text-foreground">/link</code> командасын жіберіңіз
+                        <code className="px-1.5 py-0.5 rounded bg-muted text-foreground">/link</code> комада жіберіңіз
                       </span>
                     </li>
                     <li className="flex gap-3">
@@ -136,7 +136,7 @@ export default function ExecutorTelegramPage() {
                         4
                       </span>
                       <span>
-                        Байланысты аяқтау үшін боттың нұсқауларын орындаңыз
+                        Байتمысты аяқтау үші боттың ұсқаулары орыдаңыз
                       </span>
                     </li>
                   </ol>
@@ -150,7 +150,7 @@ export default function ExecutorTelegramPage() {
                   >
                     <Button className="w-full gap-2">
                       <SlBell className="w-4 h-4" />
-                      Telegram ботын ашу
+                      فتح بوت Telegram
                     </Button>
                   </a>
                   <Button
@@ -158,12 +158,12 @@ export default function ExecutorTelegramPage() {
                     onClick={checkTelegramStatus}
                     className="w-full"
                   >
-                    Байланыс күйін тексеру
+                    Байتمыс күйі тексеру
                   </Button>
                 </div>
 
                 <div className="text-xs text-muted-foreground text-center">
-                  <p>Байланыстырғаннан кейін тапсырмаларды тікелей Telegram арқылы басқара аласыз:</p>
+                  <p>بعد الربط، يمكنك إدارة المهام مباشرة عبر Telegram:</p>
                   <p className="mt-1">
                     <code>/tasks</code> · <code>/accept</code> · <code>/start</code> · <code>/complete</code> · <code>/stats</code>
                   </p>

@@ -125,9 +125,9 @@ export function TaskChat({
     yesterday.setDate(yesterday.getDate() - 1);
 
     if (date.toDateString() === today.toDateString()) {
-      return "Бүгін";
+      return "Бүгі";
     } else if (date.toDateString() === yesterday.toDateString()) {
-      return "Кеше";
+      return "الأمس";
     }
     return date.toLocaleDateString();
   };
@@ -160,8 +160,8 @@ export function TaskChat({
             <h3 className="font-medium text-muted-foreground">Әлі хабарлар жоқ</h3>
             <p className="text-sm text-muted-foreground/70">
               {canSend
-                ? `${specialistName || "маманмен"} әңгіме бастаңыз`
-                : "Бұл тапсырма үшін хабарласу қол жетімді емес"}
+                ? `${specialistName || "мамаمع"} әңгіме бастаңыз`
+                : "الدردشة غير متاحة لهذه المهمة"}
             </p>
           </div>
         ) : (
@@ -225,7 +225,7 @@ export function TaskChat({
                           >
                             {isAdmin && (
                               <span className="text-purple-500 font-medium">
-                                Әкімші ·{" "}
+                                المسؤول ·{" "}
                               </span>
                             )}
                             {message.sender.name || "Белгісіз"}
@@ -280,13 +280,13 @@ export function TaskChat({
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-2">
-            Жіберу үшін Enter басыңыз, жаңа жол үшін Shift+Enter
+            اضغط Enter للإرسال، Shift+Enter لسطر جديد
           </p>
         </div>
       ) : (
         <div className="p-4 border-t border-border bg-muted/50">
           <p className="text-sm text-muted-foreground text-center">
-            Хабарласу тек белсенді тапсырмалар үшін қол жетімді
+            الدردشة متاحة فقط للمهام النشطة
           </p>
         </div>
       )}

@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { Header, Footer } from "@/components/layout";
 
 export const metadata: Metadata = {
-  title: "Құпиялылық саясаты",
-  description: "Vertex GDPR бойынша жеке ақпаратыңызды қалай жинайтынын, пайдаланатынын және қорғайтынын біліңіз.",
+  title: "سياسة الخصوصية",
+  description: "NABD GDPR бойыша жеке ақпарاسمك қалай жиайтыы, пайдаتمатыы و қорإلىйтыы біліңіз.",
 };
 
 export default function PrivacyPage() {
@@ -13,17 +13,17 @@ export default function PrivacyPage() {
 
       <article className="pt-32 pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-black tracking-tight mb-4">Құпиялылық саясаты</h1>
-          <p className="text-muted-foreground mb-8">Соңғы жаңарту: 20 желтоқсан 2025</p>
+          <h1 className="text-4xl font-black tracking-tight mb-4">سياسة الخصوصية</h1>
+          <p className="text-muted-foreground mb-8">آخر تحديث: 20 ديسمبر 2025</p>
 
           <div className="prose prose-invert prose-amber max-w-none">
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">1. Кіріспе</h2>
+              <h2 className="text-2xl font-bold mb-4">1. المقدمة</h2>
               <p className="text-muted-foreground mb-4">
                 NewCo Ltd. (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), Company No: NEW123, registered at New Address 1, is committed to protecting your privacy and personal data in accordance with the General Data Protection Regulation (GDPR) and applicable data protection laws.
               </p>
               <p className="text-muted-foreground mb-4">
-                This Privacy Policy explains how we collect, use, store, and protect your personal data when you use the Vertex platform and services.
+                This Privacy Policy explains how we collect, use, store, and protect your personal data when you use the NABD platform and services.
               </p>
               <p className="text-muted-foreground">
                 We are the data controller for the personal data we process. Our Data Protection Officer can be contacted at dpo@vertex.ai.
@@ -31,9 +31,9 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">2. Біз жинайтын жеке деректер</h2>
+              <h2 className="text-2xl font-bold mb-4">2. البيانات الشخصية التي نجمعها</h2>
 
-              <h3 className="text-xl font-semibold mb-3">2.1 Сіз ұсынатын ақпарат</h3>
+              <h3 className="text-xl font-semibold mb-3">2.1 أنت ұаты ақпарат</h3>
               <ul className="list-disc pl-6 text-muted-foreground mb-4 space-y-2">
                 <li>Account information: name, email address, password (encrypted)</li>
                 <li>Payment information: billing address, payment card details (processed by our payment provider)</li>
@@ -42,21 +42,21 @@ export default function PrivacyPage() {
                 <li>Service requests: project descriptions, requirements</li>
               </ul>
 
-              <h3 className="text-xl font-semibold mb-3">2.2 Автоматты түрде жиналатын ақпарат</h3>
+              <h3 className="text-xl font-semibold mb-3">2.2 المعلومات التي يتم جمعها تلقائياً</h3>
               <ul className="list-disc pl-6 text-muted-foreground mb-4 space-y-2">
                 <li>Technical data: IP address, browser type and version, device information</li>
                 <li>Usage data: pages visited, time spent, interaction patterns</li>
                 <li>Cookies and tracking technologies (see our <a href="/cookies" className="text-primary hover:underline">Cookie Policy</a>)</li>
               </ul>
 
-              <h3 className="text-xl font-semibold mb-3">2.3 Үшінші тараптардан алынған ақпарат</h3>
+              <h3 className="text-xl font-semibold mb-3">2.3 المعلومات المستلمة من أطراف ثالثة</h3>
               <p className="text-muted-foreground">
                 We may receive data from payment processors, analytics providers, and security services necessary to operate our platform.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">3. Өңдеудің заңды негіздері мен мақсаттары</h2>
+              <h2 className="text-2xl font-bold mb-4">3. الأسس القانونية والأغراض للمعالجة</h2>
               <p className="text-muted-foreground mb-4">
                 We process your personal data only when we have a lawful basis:
               </p>
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">4. Деректерді бөлісу және ашу</h2>
+              <h2 className="text-2xl font-bold mb-4">4. مشاركة البيانات والإفصاح عنها</h2>
               <p className="text-muted-foreground mb-4">
                 We do not sell your personal data. We share data only as follows:
               </p>
@@ -117,7 +117,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">5. Халықаралық деректерді тасымалдау</h2>
+              <h2 className="text-2xl font-bold mb-4">5. نقل البيانات الدولية</h2>
               <p className="text-muted-foreground mb-4">
                 Your data is primarily stored within the European Economic Area (EEA). Where we transfer data outside the EEA, we ensure appropriate safeguards are in place:
               </p>
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">6. Деректерді сақтау</h2>
+              <h2 className="text-2xl font-bold mb-4">6. الاحتفاظ بالبيانات</h2>
               <p className="text-muted-foreground mb-4">
                 We retain personal data only as long as necessary:
               </p>
@@ -142,7 +142,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">7. Деректер қауіпсіздігі</h2>
+              <h2 className="text-2xl font-bold mb-4">7. أمان البيانات</h2>
               <p className="text-muted-foreground mb-4">
                 We implement appropriate technical and organizational measures to protect your data:
               </p>
@@ -159,7 +159,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">8. GDPR бойынша сіздің құқықтарыңыз</h2>
+              <h2 className="text-2xl font-bold mb-4">8. حقوقك بموجب اللائحة العامة لحماية البيانات</h2>
               <p className="text-muted-foreground mb-4">
                 You have the following rights regarding your personal data:
               </p>
@@ -205,42 +205,42 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">9. Cookie файлдары және бақылау</h2>
+              <h2 className="text-2xl font-bold mb-4">9. ملفات تعريف الارتباط والتتبع</h2>
               <p className="text-muted-foreground">
                 We use cookies and similar technologies. For detailed information, see our <a href="/cookies" className="text-primary hover:underline">Cookie Policy</a>. You can manage cookie preferences through your browser settings or our cookie consent tool.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">10. Маркетингтік байланыстар</h2>
+              <h2 className="text-2xl font-bold mb-4">10. الاتصالات التسويقية</h2>
               <p className="text-muted-foreground">
                 We send marketing communications only with your consent. You may unsubscribe at any time using the link in our emails or by contacting privacy@vertex.ai. We will process your opt-out within 48 hours.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">11. Балалардың құпиялылығы</h2>
+              <h2 className="text-2xl font-bold mb-4">11. خصوصية الأطفال</h2>
               <p className="text-muted-foreground">
                 Our services are not intended for individuals under 16 years of age. We do not knowingly collect personal data from children. If you believe we have collected data from a child, please contact us immediately at privacy@vertex.ai.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">12. Автоматтандырылған шешім қабылдау</h2>
+              <h2 className="text-2xl font-bold mb-4">12. اتخاذ القرار الآلي</h2>
               <p className="text-muted-foreground">
                 We may use automated systems to match clients with specialists. You have the right to request human review of automated decisions that significantly affect you.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">13. Саясатқа өзгерістер</h2>
+              <h2 className="text-2xl font-bold mb-4">13. التغييرات على السياسة</h2>
               <p className="text-muted-foreground">
                 We may update this Privacy Policy from time to time. Material changes will be notified to you by email or prominent notice on our platform at least 30 days in advance. The &quot;Last updated&quot; date will be revised accordingly.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">14. Байланыс ақпараты</h2>
+              <h2 className="text-2xl font-bold mb-4">14. معلومات الاتصال</h2>
               <p className="text-muted-foreground mb-4">
                 For questions, concerns, or to exercise your rights, please contact:
               </p>

@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { SlDocs, SlKey, SlBulb, SlShield, SlBookOpen, SlDocs as SlTerminal } from "react-icons/sl";
 
 export const metadata: Metadata = {
-  title: "API құжаттамасы",
-  description: "Vertex-тің тексерілген фотосуреттерін біздің REST API арқылы қолданбаларыңызға біріктіріңіз.",
+  title: "وثائق API",
+  description: "NABD-тің тексерілге صورةсуреттері біздің REST API арқылы қолдабаларыңызإلى біріктіріңіз.",
 };
 
 const endpoints = [
@@ -84,23 +84,23 @@ export default function ApiDocsPage() {
               <SlDocs size={32} />
             </div>
             <h1 className="text-5xl font-black tracking-tight sm:text-6xl">
-              <span className="gradient-text">API</span> құжаттамасы
+              <span className="gradient-text">API</span> وثائق
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground font-light">
-              Тексерілген, түпнұсқа фотосуреттерді қолданбаларыңызға біріктіріңіз.
-              Аутентификация, іздеу және жүктеу мүмкіндіктері бар толық REST API.
+              موثق، أصلي صورةсуреттерді қолдабаларыңызإلى біріктіріңіз.
+              REST API كامل مع قدرات المصادقة والبحث والتنزيل.
             </p>
             <div className="mt-8 flex gap-4 justify-center">
               <Link href="/register?plan=pro">
                 <Button size="lg" className="bg-amber-500 hover:bg-amber-400 text-black font-bold gap-2">
                   <SlKey size={18} />
-                  API кілтін алу
+                  احصل على مفتاح API
                 </Button>
               </Link>
               <Link href="#endpoints">
                 <Button size="lg" variant="outline" className="border-white/20 hover:bg-white/5 gap-2">
                   <SlBookOpen size={18} />
-                  Соңғы нүктелерді көру
+                  عرض نقاط النهاية
                 </Button>
               </Link>
             </div>
@@ -144,7 +144,7 @@ export default function ApiDocsPage() {
       {/* Authentication */}
       <section className="border-t border-white/5 bg-black/30 py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-6">Аутентификация</h2>
+          <h2 className="text-2xl font-bold mb-6">المصادقة</h2>
           <div className="stat-card">
             <p className="text-muted-foreground mb-4">
               All API requests require authentication using a Bearer token. Include your
@@ -166,7 +166,7 @@ export default function ApiDocsPage() {
       {/* Endpoints */}
       <section id="endpoints" className="py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-6">Соңғы нүктелер</h2>
+          <h2 className="text-2xl font-bold mb-6">نقاط النهاية</h2>
           <div className="space-y-3">
             {endpoints.map((endpoint, i) => (
               <div key={i} className="stat-card">
@@ -194,7 +194,7 @@ export default function ApiDocsPage() {
       {/* Code Example */}
       <section className="border-t border-white/5 bg-black/30 py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-6">Мысал: Фотосуреттерді іздеу</h2>
+          <h2 className="text-2xl font-bold mb-6">مثال: البحث عن الصور</h2>
           <div className="stat-card">
             <pre className="bg-black/50 rounded-lg p-4 overflow-x-auto text-sm">
               <code className="text-muted-foreground">{codeExample}</code>
@@ -206,7 +206,7 @@ export default function ApiDocsPage() {
       {/* Response Format */}
       <section className="py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-6">Жауап форматы</h2>
+          <h2 className="text-2xl font-bold mb-6">تنسيق الاستجابة</h2>
           <div className="stat-card">
             <p className="text-muted-foreground mb-4">
               All responses are in JSON format. Photo objects include:
@@ -239,7 +239,7 @@ export default function ApiDocsPage() {
       {/* Rate Limits */}
       <section className="border-t border-white/5 bg-black/30 py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-6">Жылдамдық шектеулері</h2>
+          <h2 className="text-2xl font-bold mb-6">حدود المعدل</h2>
           <div className="stat-card">
             <div className="grid gap-4 md:grid-cols-3">
               <div>
@@ -268,19 +268,19 @@ export default function ApiDocsPage() {
       {/* CTA */}
       <section className="py-20">
         <div className="mx-auto max-w-2xl px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Біріктіруге дайынсыз ба?</h2>
+          <h2 className="text-3xl font-bold mb-4">هل أنت جاهز للتكامل؟</h2>
           <p className="text-muted-foreground mb-8">
-            API-мен бүгін бастаңыз. Толық құжаттама және қолдау қосылған.
+            ابدأ مع API اليوم. الوثائق الكاملة والدعم متضمنة.
           </p>
           <div className="flex gap-4 justify-center">
             <Link href="/register?plan=pro">
               <Button size="lg" className="bg-amber-500 hover:bg-amber-400 text-black font-bold">
-                API қол жеткізуді алу
+                احصل على وصول API
               </Button>
             </Link>
             <Link href="/contact?type=business">
               <Button size="lg" variant="outline" className="border-white/20 hover:bg-white/5">
-                Сатумен байланысу
+                اتصل بالمبيعات
               </Button>
             </Link>
           </div>

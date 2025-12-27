@@ -32,9 +32,9 @@ export function ShareButton({ title, url }: ShareButtonProps) {
   const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      toast.success("Сілтеме алмасу буферіне көшірілді!");
+      toast.success("Сілтеме алмасу буферіе көшірілді!");
     } catch {
-      toast.error("Сілтемені көшіру сәтсіз аяқталды");
+      toast.error("Сілтеمعі көшіру сәтсіз аяқтал");
     }
   };
 
@@ -42,7 +42,7 @@ export function ShareButton({ title, url }: ShareButtonProps) {
     <button
       onClick={handleShare}
       className="p-2 rounded-lg bg-zinc-800 text-zinc-400 hover:text-white transition-colors"
-      aria-label="Фотосуретпен бөлісу"
+      aria-label="Фотосуретпе бөлісу"
     >
       <SlShare className="w-5 h-5" />
     </button>

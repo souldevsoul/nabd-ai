@@ -39,14 +39,14 @@ function LoginForm() {
       });
 
       if (result?.error) {
-        toast.error("Аутентификация сәтсіз аяқталды - жарамсыз деректер");
+        toast.error("المصادقة сәтсіз аяқтал - بيانات غير صالحة");
       } else {
-        toast.success("ҚОЛ ЖЕТКІЗУ РҰҚСАТ ЕТІЛДІ - Қош келдіңіз, ғарышкер");
+        toast.success("ҚОЛ ЖЕТКІЗУ РҰҚСАТ ЕТІЛДІ - مرحباً بك, رائد فضاء");
         router.push(callbackUrl);
         router.refresh();
       }
     } catch {
-      toast.error("Бірдеңе дұрыс болмады.");
+      toast.error("Бірдеңе дұрыс болма.");
     } finally {
       setIsLoading(false);
     }
@@ -71,7 +71,7 @@ function LoginForm() {
           className="inline-flex items-center gap-2 text-sm text-background/60 hover:text-background transition-colors mb-8"
         >
           <RiArrowLeftLine size={16} />
-          <span className="tracking-cosmos uppercase text-xs">Базаға қайту</span>
+          <span className="tracking-cosmos uppercase text-xs">Базаإلى қайту</span>
         </Link>
 
         <div className="p-10 space-window backdrop-blur-xl relative overflow-hidden">
@@ -87,9 +87,9 @@ function LoginForm() {
             </div>
             <Logo size="lg" className="justify-center mb-4" />
             <h1 className="text-2xl font-display font-bold text-background tracking-cosmos uppercase mb-2">
-              Экипаждың аутентификациясы
+              الطاقمң аутетификация
             </h1>
-            <p className="text-xs text-aurora/80 tracking-widest uppercase">Миссияға қол жеткізу үшін қажет</p>
+            <p className="text-xs text-aurora/80 tracking-widest uppercase">المهمةمطلوب للوصول إلى</p>
             <div className="w-24 h-px bg-aurora/60 mx-auto mt-6" />
           </div>
 
@@ -106,7 +106,7 @@ function LoginForm() {
                 />
                 <Input
                   type="email"
-                  placeholder="ғарышкер@orbita.space"
+                  placeholder="رائد فضاء@orbita.space"
                   className="pl-12 h-14 bg-navy/50 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 tracking-wide transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)]"
                   {...register("email")}
                 />
@@ -117,14 +117,14 @@ function LoginForm() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label className="text-xs text-background/70 uppercase tracking-cosmos flex items-center gap-2">
-                  <span className="text-aurora">▸</span> Қол жеткізу коды
+                  <span className="text-aurora">▸</span> رمز الوصول
                 </Label>
                 <button
                   type="button"
-                  onClick={() => toast.info("Кодты қалпына келтіру үшін миссия бақылауымен байланысыңыз.")}
+                  onClick={() => toast.info("لاستعادة الرمز مهمة бақылауыمع اتصل.")}
                   className="text-xs text-aurora/60 hover:text-aurora tracking-cosmos uppercase transition-colors"
                 >
-                  Қалпына келтіру?
+                  استعادة؟
                 </button>
               </div>
               <div className="relative group">
@@ -158,10 +158,10 @@ function LoginForm() {
               {isLoading ? (
                 <span className="flex items-center gap-2">
                   <RiLoader4Line size={20} className="animate-spin" />
-                  Аутентификация жүріп жатыр...
+                  المصادقة жүріп жатыр...
                 </span>
               ) : (
-                "Қол жеткізу тізбегін бастау"
+                "بدء تسلسل الوصول"
               )}
             </Button>
           </form>
@@ -170,7 +170,7 @@ function LoginForm() {
           <div className="mt-10 text-center relative">
             <div className="w-24 h-px bg-aurora/30 mx-auto mb-6" />
             <p className="text-xs text-background/60 tracking-cosmos uppercase">
-              Жаңа жұмысшы?{" "}
+              جديد жұмысшы?{" "}
               <Link href="/register" className="text-aurora hover:text-aurora/80 transition-colors">
                 Рұқсат сұрау
               </Link>
@@ -182,7 +182,7 @@ function LoginForm() {
         <div className="mt-8 text-center">
           <p className="text-xs text-aurora/40 tracking-cosmos uppercase flex items-center justify-center gap-2">
             <span className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-            Қауіпсіз арна белсенді
+            Қауіпсіз ара белседі
           </p>
         </div>
       </div>

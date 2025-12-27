@@ -119,7 +119,7 @@ export default function BuyerTaskDetailPage({
         <main className="pt-32 pb-20">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <h1 className="text-3xl font-display font-bold mb-4">Кіру қажет</h1>
-            <p className="text-muted-foreground mb-8">Бұл тапсырманы көру үшін кіріңіз.</p>
+            <p className="text-muted-foreground mb-8">قم بتسجيل الدخول لعرض هذه المهمة.</p>
             <Link href="/login">
               <Button>Кіру</Button>
             </Link>
@@ -140,7 +140,7 @@ export default function BuyerTaskDetailPage({
               {error || "Task Not Found"}
             </h1>
             <Link href="/dashboard">
-              <Button>Басқару тақтасына оралу</Button>
+              <Button>Басқару тақтаа оралу</Button>
             </Link>
           </div>
         </main>
@@ -163,7 +163,7 @@ export default function BuyerTaskDetailPage({
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8"
           >
             <SlArrowLeft className="w-4 h-4" />
-            Басқару тақтасына оралу
+            Басқару тақтаа оралу
           </Link>
 
           <div className="grid lg:grid-cols-[1fr,320px] gap-6">
@@ -187,7 +187,7 @@ export default function BuyerTaskDetailPage({
 
                 <div className="prose prose-sm max-w-none">
                   <h3 className="text-sm font-medium text-muted-foreground mb-2">
-                    Тапсырма сипаттамасы
+                    Тапрма сипаттама
                   </h3>
                   <p className="text-foreground whitespace-pre-wrap">
                     {assignment.request.description}
@@ -210,7 +210,7 @@ export default function BuyerTaskDetailPage({
               {/* Chat section */}
               <div className="sexy-card">
                 <h2 className="text-lg font-display font-bold mb-4">
-                  Әңгіме
+                  محادثة
                 </h2>
                 <TaskChat
                   assignmentId={assignment.id}
@@ -226,7 +226,7 @@ export default function BuyerTaskDetailPage({
             <div className="space-y-6">
               <div className="sexy-card">
                 <h2 className="text-sm font-medium text-muted-foreground mb-4">
-                  Тағайындалған маман
+                  Таإلىйыдалإلى мама
                 </h2>
                 <div className="flex items-center gap-4 mb-4">
                   <img
@@ -255,13 +255,13 @@ export default function BuyerTaskDetailPage({
 
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <SlCheck className="w-4 h-4" />
-                  <span>{assignment.specialist.completedTasks} тапсырма аяқталды</span>
+                  <span>{assignment.specialist.completedTasks} тапрма аяқтал</span>
                 </div>
 
                 {assignment.confidence && (
                   <div className="mt-4 pt-4 border-t border-border">
                     <div className="text-xs text-muted-foreground mb-1">
-                      AI сәйкестік сенімділігі
+                      ثقة مطابقة الذكاء الاصطناعي
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
@@ -285,17 +285,17 @@ export default function BuyerTaskDetailPage({
                 </h2>
                 <div className="space-y-3">
                   <TimelineItem
-                    label="Құрылды"
+                    label="Құрыл"
                     date={assignment.createdAt}
                     completed
                   />
                   <TimelineItem
-                    label="Басталды"
+                    label="Бастал"
                     date={assignment.startedAt}
                     completed={!!assignment.startedAt}
                   />
                   <TimelineItem
-                    label="Аяқталды"
+                    label="Аяқтал"
                     date={assignment.completedAt}
                     completed={!!assignment.completedAt}
                   />

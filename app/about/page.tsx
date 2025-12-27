@@ -10,41 +10,41 @@ import { RiVipCrownLine, RiAwardLine, RiShieldStarLine, RiShieldKeyholeLine, RiS
 const missionParameters = [
   {
     icon: RiRocketLine,
-    title: "ЖЫЛДАМДЫҚ",
+    title: "السرعة",
     code: "PARAM-001",
-    description: "Әзірлеу циклдарындағы максималды үдеу. Элиталық мамандар теңдессіз орбиталық жылдамдықта өзгертетін нәтижелерді ұсынады.",
+    description: "تسريع أقصى في دورات التطوير. متخصصون نخبة يقدمون نتائج تحويلية بسرعة مدارية لا مثيل لها.",
   },
   {
     icon: RiShieldKeyholeLine,
-    title: "ҚАУІПСІЗДІК",
+    title: "الأمان",
     code: "PARAM-002",
-    description: "Әскери деңгейдегі шифрлау хаттамалары. Барлық миссияға маңызды деректер тек сіздің басқару модуліңізде қалады.",
+    description: "Әскери деңгейдегі шифрлау хаттамалары. الكل مهمةإلى маңыз деректер тек сіздің басқару модуліңізде қала.",
   },
   {
     icon: RiPriceTag3Line,
-    title: "ДӘЛДІК",
+    title: "الدقة",
     code: "PARAM-003",
-    description: "Есептелген траектория түзетулері. Әрбір миссия хирургиялық дәлдікпен орындалады, ең талапшыл спецификацияларды асырады.",
+    description: "Есептелге траектория түзетулері. Әрбір مهمة хирургиялық дәлдікпе орыдала, ең талапшыл спецификациялар ара.",
   },
   {
     icon: RiSparklingLine,
-    title: "МҰРА",
+    title: "الإرث",
     code: "PARAM-004",
-    description: "Ұрпақтық әсер. Біз орбиталық циклдар бойында тұрақты бәсекелік артықшылық жасайтын шешімдерді құрастырамыз.",
+    description: "تأثير على الأجيال. نحن نصنع حلولاً تخلق ميزة تنافسية دائمة عبر الدورات المدارية.",
   },
 ];
 
 const flightManifest = [
-  { value: "2025", label: "МИССИЯ БАСТАЛДЫ", code: "EST" },
-  { value: "ЭЛИТА", label: "ЭКИПАЖ КЛАСЫ", code: "TIER" },
-  { value: "∞", label: "ОРБИТА ҚАБІЛЕТІ", code: "RANGE" },
-  { value: "100%", label: "СӘТТІЛІК ДЕҢГЕЙІ", code: "PERF" },
+  { value: "2025", label: "بدء المهمة", code: "EST" },
+  { value: "النخبة", label: "فئة الطاقم", code: "TIER" },
+  { value: "∞", label: "قدرة المدار", code: "RANGE" },
+  { value: "100%", label: "معدل النجاح", code: "PERF" },
 ];
 
 const crewRoster = [
-  { role: "МИССИЯ КОМАНДИРІ", position: "Стратегиялық AI Операциялар", code: "CDR" },
-  { role: "ҰШЫРУ ИНЖЕНЕРІ", position: "Техникалық Жүйелер", code: "FE" },
-  { role: "ЖҮКТЕМЕ МАМАНЫ", position: "Арнайы Шешімдер", code: "PS" },
+  { role: "قائد المهمة", position: "عمليات الذكاء الاصطناعي الاستراتيجية", code: "CDR" },
+  { role: "مهندس طيران", position: "أنظمة فنية", code: "FE" },
+  { role: "متخصص الحمولة", position: "حلول متخصصة", code: "PS" },
 ];
 
 export default function AboutPage() {
@@ -97,14 +97,14 @@ export default function AboutPage() {
                   transition={{ duration: 2, repeat: Infinity }}
                   className="w-2 h-2 bg-aurora rounded-full"
                 />
-                <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">Миссия Жіктелімі: Элита</span>
+                <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">المهمة Жіктелімі: Элита</span>
               </div>
 
               <Logo size="lg" className="mb-8" />
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-extrabold uppercase tracking-tight text-background leading-[0.9] mb-6">
-                МИССИЯ
-                <span className="block gradient-text mt-2">БРИФИНГІ</span>
+                المهمة
+                <span className="block gradient-text mt-2">إحاطة</span>
               </h1>
 
               <div className="w-32 h-1 bg-aurora mb-8" />
@@ -119,13 +119,13 @@ export default function AboutPage() {
             >
               <div className="space-y-6">
                 <p className="text-xl md:text-2xl text-background/80 font-body font-light leading-relaxed">
-                  ORBITA AI консалтинг озық деңгейінің шыңын білдіреді.
+                  NABD تمثل ذروة التميز في استشارات الذكاء الاصطناعي.
                 </p>
                 <p className="text-lg text-background/70 font-body font-light leading-relaxed">
-                  Миссия басқарудан стратегиялық кеңес беретін элиталық ерекше кеңесшілер экипажы.
+                  المهمة طاقم من المستشارين النخبة الاستثنائيين من التحكم إلى الاستشارات الاستراتيجية.
                 </p>
                 <p className="text-base text-background/60 font-body font-light leading-relaxed">
-                  Көреген адамдар AI тәжірибесінің ғарышына қол жеткізетін жер.
+                  حيث يصل أصحاب الرؤية إلى فضاء خبرة الذكاء الاصطناعي.
                 </p>
 
                 {/* Floating stats */}
@@ -137,7 +137,7 @@ export default function AboutPage() {
                     className="text-center"
                   >
                     <div className="text-3xl font-display font-bold text-aurora mb-1">2025</div>
-                    <div className="text-xs text-background/50 uppercase tracking-wider">Іске Қосу</div>
+                    <div className="text-xs text-background/50 uppercase tracking-wider">إطلاق</div>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -146,7 +146,7 @@ export default function AboutPage() {
                     className="text-center"
                   >
                     <div className="text-3xl font-display font-bold text-aurora mb-1">100%</div>
-                    <div className="text-xs text-background/50 uppercase tracking-wider">Сәттілік</div>
+                    <div className="text-xs text-background/50 uppercase tracking-wider">نجاح</div>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -155,7 +155,7 @@ export default function AboutPage() {
                     className="text-center"
                   >
                     <div className="text-3xl font-display font-bold text-aurora mb-1">∞</div>
-                    <div className="text-xs text-background/50 uppercase tracking-wider">Орбита</div>
+                    <div className="text-xs text-background/50 uppercase tracking-wider">المدار</div>
                   </motion.div>
                 </div>
               </div>
@@ -175,22 +175,22 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 border border-aurora/40 bg-aurora/5 mb-4">
-                <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">Миссия Мақсаты</span>
+                <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">المهمة Мақсаты</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-display font-extrabold uppercase mb-6 text-background">
-                Біздің Іске Қосу Директивасы
+                لدينا إطلاق Директива
               </h2>
               <p className="text-background/70 mb-4 leading-relaxed font-light">
-                ORBITA экипаж мүшелері AI өзгертетін шешімдерін іздейтін көреген адамдарға сенімді миссия мамандары ретінде тұрады.
-                Біз ерекше нәтижелерді жеткізетін күрделі стратегиялардың артындағы үнсіз күшпіз.
+                NABD экипаж мүшелері AI өзгертеті шешімдері іздейті көреге адамдарإلى сеімді مهمة мамадары ретіде тұра.
+                نحن القوة الصامتة وراء الاستراتيجيات المعقدة التي تقدم نتائج استثنائية.
               </p>
               <p className="text-background/70 mb-4 leading-relaxed font-light">
-                Біздің мамандар AI стратегиясы, озық аналитика және жеке миссия параметрлеріне калибрленген арнайы шешімдерде
-                теңдессіз шеберлік әкеледі. Әрбір тапсырма ең жоғары дәлдікпен жүргізіледі.
+                لدينا мамадар AI стратегия, озық аалитика و жеке مهمة параметрлеріе калибрлеге арайы шешімдерде
+                المعايرة لمعايير المهمة الفردية. كل مهمة منفذة بأعلى دقة.
               </p>
               <p className="text-background/70 leading-relaxed font-light">
-                Бұл нарық емес. Бұл ғарыштың көрнекті AI кеңесшілерінің эксклюзивті басқару орталығы,
-                тек орбиталық озық деңгейден басқасын талап ететіндерге арналған.
+                هذه ليست سوقاً. هذا مركز تحكم حصري لمستشاري الذكاء الاصطناعي الأبرز في الفضاء،
+                مخصص فقط لمن لا يطلبون شيئاً أقل من التميز المداري.
               </p>
             </motion.div>
             <motion.div
@@ -204,9 +204,9 @@ export default function AboutPage() {
                 <div className="text-center">
                   <RiAwardLine className="w-24 h-24 text-aurora mx-auto mb-6 cosmic-glow-pulse" />
                   <p className="text-2xl font-display font-bold uppercase text-aurora mb-2 tracking-cosmos">
-                    Элиталық Миссия Мәртебесі
+                    Элиталық المهمة Мәртебесі
                   </p>
-                  <p className="text-background/70">Көрегендікпен басқару үшін эксклюзивті құрастырылған</p>
+                  <p className="text-background/70">مصمم حصرياً للتحكم البصير</p>
                 </div>
               </div>
             </motion.div>
@@ -252,13 +252,13 @@ export default function AboutPage() {
             className="text-center mb-12"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 border border-aurora/40 bg-aurora/5 mb-4">
-              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">Негізгі Жүйелер</span>
+              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">أنظمة أساسية</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-display font-extrabold uppercase mb-4 text-background">
-              Миссия Параметрлері
+              المهمة Параметрлері
             </h2>
             <p className="text-background/70 max-w-2xl mx-auto font-light">
-              Әрбір ORBITA миссиясының тапсырмасын анықтайтын ерекшелік бағандары
+              كل NABD مهمةың тапрма аықтайты ерекшелік баإلىдары
             </p>
           </motion.div>
 
@@ -302,13 +302,13 @@ export default function AboutPage() {
             className="text-center mb-12"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 border border-aurora/40 bg-aurora/5 mb-4">
-              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">Персонал</span>
+              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">الموظفين</span>
             </div>
             <h2 className="text-2xl md:text-3xl font-display font-extrabold uppercase mb-4 text-background">
-              Экипаж Мамандандырулары
+              تخصصات الطاقم
             </h2>
             <p className="text-background/70 max-w-2xl mx-auto font-light">
-              Бәсекелік артықшылықты анықтайтын пәндер бойынша стратегиялық кеңес
+              استشارات استراتيجية في المواضيع التي تحدد الميزة التنافسية
             </p>
           </motion.div>
 
@@ -345,14 +345,14 @@ export default function AboutPage() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-2 border-2 border-aurora/40 bg-aurora/5 mb-6">
               <span className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">Жалдау Белсенді</span>
+              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">التوظيف نشط</span>
             </div>
             <h2 className="text-2xl md:text-3xl font-display font-extrabold uppercase mb-4 text-background">
-              Миссия Рұқсатын Сұрау
+              المهمة Рұқсаты طلب
             </h2>
             <p className="text-background/70 mb-8 max-w-2xl mx-auto font-light">
-              ORBITA қатынасы тек шақыру бойынша. Сұрауыңызды жіберіңіз, ал біздің миссия басқару командасы
-              ғарыштың ең көрнекті AI мамандарына қатынасыңыз үшін сіздің сәйкестігіңізді бағалайды.
+              الوصول إلى NABD بالدعوة فقط. طلبыңыз жіберіңіз, ал біздің مهمة басқару комада
+              بتقييم توافقك للوصول إلى أبرز متخصصي الذكاء الاصطناعي في الفضاء.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/request">
@@ -361,7 +361,7 @@ export default function AboutPage() {
                   className="bg-primary hover:bg-primary/90 text-white font-display font-bold uppercase tracking-cosmos shadow-lg shadow-primary/25 hover:shadow-[0_0_30px_rgba(30,64,175,0.5)] transition-all"
                 >
                   <RiRocketLine size={20} className="mr-2" />
-                  Кеңес Сұрау
+                  طلب استشارة
                 </Button>
               </Link>
               <Link href="/specialists">
@@ -370,7 +370,7 @@ export default function AboutPage() {
                   variant="outline"
                   className="border-2 border-aurora/30 hover:bg-aurora/5 hover:border-aurora font-display font-bold uppercase tracking-cosmos text-aurora"
                 >
-                  Экипаж Тізімін Көру
+                  عرض قائمة الطاقم
                 </Button>
               </Link>
             </div>

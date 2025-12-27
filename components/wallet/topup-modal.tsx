@@ -24,7 +24,7 @@ interface TopupModalProps {
 
 const quickAmounts = [
   { credits: 100, price: 10, label: "Бастауыш" },
-  { credits: 500, price: 50, label: "Танымал", popular: true },
+  { credits: 500, price: 50, label: "شائع", popular: true },
   { credits: 1000, price: 100, label: "Кәсіби" },
 ];
 
@@ -92,10 +92,10 @@ export function TopupModal({ open, onOpenChange, currentBalance, onSuccess }: To
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-xl">
             <SlWallet className="w-5 h-5 text-amber-500" />
-            Кредит қосу
+            إضافة رصيد
           </DialogTitle>
           <DialogDescription>
-            Фотосуреттерді сатып алу үшін кредит сатып алыңыз. 10 кредит = $1 USD
+            اشترِ أرصدة لشراء الصور. 10 أرصدة = $1 USD
           </DialogDescription>
         </DialogHeader>
 
@@ -116,9 +116,9 @@ export function TopupModal({ open, onOpenChange, currentBalance, onSuccess }: To
               >
                 <SlCheck className="w-8 h-8 text-emerald-500" />
               </motion.div>
-              <h3 className="text-xl font-semibold text-white mb-2">Кредиттер қосылды!</h3>
+              <h3 className="text-xl font-semibold text-white mb-2">Кредиттер қол!</h3>
               <p className="text-zinc-400">
-                +{effectiveAmount.toLocaleString()} кредит әмиянға қосылды
+                +{effectiveAmount.toLocaleString()} кредит әмияإلى қол
               </p>
             </motion.div>
           ) : (
@@ -131,7 +131,7 @@ export function TopupModal({ open, onOpenChange, currentBalance, onSuccess }: To
             >
               {/* Current Balance */}
               <div className="flex items-center justify-between p-3 rounded-lg bg-zinc-800/50">
-                <span className="text-sm text-zinc-400">Ағымдағы баланс</span>
+                <span className="text-sm text-zinc-400">Ағымдағы баتمс</span>
                 <span className="font-semibold text-white">
                   {currentBalance.toLocaleString()} кредит
                 </span>
@@ -147,17 +147,17 @@ export function TopupModal({ open, onOpenChange, currentBalance, onSuccess }: To
                   <SlEnvolopeLetter className="w-12 h-12 text-amber-500 mx-auto" />
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">
-                      Кредит сатып алу үшін қолдау қызметіне хабарласыңыз
+                      Кредит сатып алу үші қолдау қызметіе хабарлаңыз
                     </h3>
                     <p className="text-sm text-zinc-300 mb-4">
-                      Тіркелгіңізге кредит қосу үшін біздің қолдау тобымызға хабарласыңыз. Біз сізге қажетті кредиттерді алуға көмектесеміз.
+                      اتصل بفريق الدعم لدينا لإضافة أرصدة إلى حسابك. سنساعدك في الحصول على الأرصدة التي تحتاجها.
                     </p>
                     <Button
                       onClick={() => window.location.href = "mailto:support@vertex.ai"}
                       className="bg-amber-500 hover:bg-amber-400 text-black font-semibold"
                     >
                       <SlEnvolopeLetter className="w-4 h-4 mr-2" />
-                      Қолдау қызметіне хабарласу
+                      Қолдау қызметіе хабарласу
                     </Button>
                   </div>
                 </motion.div>
@@ -182,7 +182,7 @@ export function TopupModal({ open, onOpenChange, currentBalance, onSuccess }: To
                   >
                     {option.popular && (
                       <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-amber-500 text-black text-xs font-semibold">
-                        Танымал
+                        شائع
                       </span>
                     )}
                     <p className="text-2xl font-bold text-white">{option.credits}</p>
@@ -193,12 +193,12 @@ export function TopupModal({ open, onOpenChange, currentBalance, onSuccess }: To
 
               {/* Custom Amount */}
               <div className="space-y-2">
-                <label className="text-sm text-zinc-400">Немесе өз мөлшеріңізді енгізіңіз</label>
+                <label className="text-sm text-zinc-400">Немесе өз мөлшеріңізді егізіңіз</label>
                 <div className="relative">
                   <SlWallet className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                   <Input
                     type="text"
-                    placeholder="Кредит енгізіңіз (мин 10)"
+                    placeholder="Кредит егізіңіз (ми 10)"
                     value={customAmount}
                     onChange={(e) => handleCustomChange(e.target.value)}
                     className="pl-10 bg-zinc-800 border-zinc-700"
@@ -252,13 +252,13 @@ export function TopupModal({ open, onOpenChange, currentBalance, onSuccess }: To
                     <SlCreditCard className="w-5 h-5 mr-2" />
                     {effectiveAmount >= 10
                       ? `$${priceUsd.toFixed(2)} төлеу`
-                      : "Сомасын таңдаңыз"}
+                      : "Сома таңдаңыз"}
                   </>
                 )}
               </Button>
 
               <p className="text-xs text-center text-zinc-500">
-                Қауіпсіз төлем өңдеу. Кредиттердің мерзімі бітпейді.
+                معالجة دفع آمنة. الأرصدة لا تنتهي صلاحيتها.
               </p>
               </>
               )}

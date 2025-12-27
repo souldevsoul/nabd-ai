@@ -241,6 +241,59 @@ const buttonMustBeClickableRule = {
   },
 };
 
+// Custom ESLint rule to detect non-Arabic text (Kazakh/Cyrillic) in BURJ
+// BURJ is Arabic-only site - no Kazakh or Russian allowed
+const noKazakhTextRule = {
+  meta: {
+    type: "problem",
+    docs: {
+      description: "Detect Kazakh/Cyrillic text that should be translated to Arabic",
+    },
+    messages: {
+      kazakhDetected: "Kazakh/Cyrillic text detected: '{{text}}'. BURJ is Arabic-only - translate to Arabic.",
+    },
+  },
+  create(context) {
+    // Kazakh-specific Cyrillic characters: Ә, Ғ, Қ, Ң, Ө, Ұ, Ү, Һ, І (and lowercase)
+    // Plus common Cyrillic: а-я, А-Я
+    const kazakhPattern = /[ӘәҒғҚқҢңӨөҰұҮүҺһІіА-Яа-яЁё]/;
+
+    function checkForKazakh(node, value) {
+      if (typeof value !== "string") return;
+      if (kazakhPattern.test(value)) {
+        // Get a preview of the text (first 50 chars)
+        const preview = value.length > 50 ? value.substring(0, 50) + "..." : value;
+        context.report({
+          node,
+          messageId: "kazakhDetected",
+          data: { text: preview },
+        });
+      }
+    }
+
+    return {
+      // Check string literals
+      Literal(node) {
+        if (typeof node.value === "string") {
+          checkForKazakh(node, node.value);
+        }
+      },
+      // Check template literals
+      TemplateLiteral(node) {
+        node.quasis.forEach(quasi => {
+          if (quasi.value.cooked) {
+            checkForKazakh(node, quasi.value.cooked);
+          }
+        });
+      },
+      // Check JSX text
+      JSXText(node) {
+        checkForKazakh(node, node.value);
+      },
+    };
+  },
+};
+
 // Custom ESLint rule to enforce ORBITA dark space theme
 const orbitaDarkThemeRule = {
   meta: {
@@ -306,12 +359,13 @@ const orbitaDarkThemeRule = {
   },
 };
 
-// Custom plugin with ORBITA rules
+// Custom plugin with BURJ rules
 const vertexPlugin = {
   rules: {
     "valid-internal-links": internalLinksRule,
     "button-must-be-clickable": buttonMustBeClickableRule,
-    "orbita-dark-theme": orbitaDarkThemeRule,
+    "burj-dark-theme": orbitaDarkThemeRule,
+    "no-kazakh-text": noKazakhTextRule,
   },
 };
 
@@ -482,7 +536,8 @@ const eslintConfig = defineConfig([
     rules: {
       "vertex/valid-internal-links": "error",
       "vertex/button-must-be-clickable": "error",
-      "vertex/orbita-dark-theme": "error",
+      "vertex/burj-dark-theme": "error",
+      "vertex/no-kazakh-text": "error",
     },
   },
   // Three.js components - allow impure functions

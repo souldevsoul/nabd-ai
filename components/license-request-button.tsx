@@ -37,7 +37,7 @@ export function LicenseRequestButton({
 
   const handleRequest = async () => {
     if (!isAuthenticated) {
-      toast.error("Лицензия сұрау үшін жүйеге кіріңіз");
+      toast.error("Лицезия сұрау үші жүйеге кіріңіз");
       router.push(`/login?callbackUrl=/gallery/${photoId}`);
       return;
     }
@@ -58,13 +58,13 @@ export function LicenseRequestButton({
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Лицензия сұрау сәтсіз аяқталды");
+        throw new Error(data.error || "Лицезия сұрау сәтсіз аяқтал");
       }
 
-      toast.success("Лицензия сұрауы сәтті жіберілді!");
+      toast.success("تم إرسال طلب الترخيص بنجاح!");
       router.push("/dashboard?tab=requests");
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Сұрау сәтсіз аяқталды");
+      toast.error(error instanceof Error ? error.message : "Сұрау сәтсіз аяқтал");
     } finally {
       setIsLoading(false);
     }
@@ -89,10 +89,10 @@ export function LicenseRequestButton({
         {isLoading ? (
           <>
             <SlRefresh className="w-4 h-4 animate-spin" />
-            Жіберілуде...
+            جارٍ الإرسال...
           </>
         ) : (
-          "Лицензия сұрау"
+          "Лицезия сұрау"
         )}
       </button>
     </div>

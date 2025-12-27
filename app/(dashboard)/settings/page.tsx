@@ -210,31 +210,31 @@ export default function SettingsPage() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white">Баптаулар</h1>
-        <p className="text-slate-400 mt-2">Аккаунт параметрлері мен интеграцияларды басқарыңыз</p>
+        <h1 className="text-3xl font-bold text-white">الإعدادات</h1>
+        <p className="text-slate-400 mt-2">إدارة معايير الحساب والتكاملات</p>
       </div>
 
       {/* Profile Settings */}
-      <SettingsSection title="Профиль" description="Жеке ақпаратыңызды жаңартыңыз">
+      <SettingsSection title="الملف الشخصي" description="تحديث معلوماتك الشخصية">
         <div className="space-y-4">
           <div>
-            <label className="block text-sm text-slate-400 mb-2">Электрондық пошта</label>
+            <label className="block text-sm text-slate-400 mb-2">البريد الإلكتروني</label>
             <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700">
               <SlEnvelopeOpen className="w-5 h-5 text-slate-500" />
               <span className="text-white">{settings?.email}</span>
               <span className="ml-auto flex items-center gap-1 text-xs text-emerald-400">
-                <SlCheck className="w-3 h-3" /> Расталған
+                <SlCheck className="w-3 h-3" /> تم التحقق
               </span>
             </div>
           </div>
           <div>
-            <label className="block text-sm text-slate-400 mb-2">Көрсетілетін аты</label>
+            <label className="block text-sm text-slate-400 mb-2">الاسم المعروض</label>
             <input
               ref={nameRef}
               type="text"
               defaultValue={settings?.name || ""}
               className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-              placeholder="Сіздің атыңыз"
+              placeholder="اسمك"
             />
           </div>
         </div>
@@ -242,8 +242,8 @@ export default function SettingsPage() {
 
       {/* Telegram Integration */}
       <SettingsSection
-        title="Telegram интеграциясы"
-        description="Жедел хабарландырулар үшін Telegram аккаунтыңызды қосыңыз"
+        title="تكامل Telegram"
+        description="قم بتوصيل حساب Telegram الخاص بك للإشعارات الفورية"
       >
         {settings?.telegramUserId ? (
           <div className="space-y-4">
@@ -253,13 +253,13 @@ export default function SettingsPage() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <p className="text-white font-semibold">Telegram қосылды</p>
+                  <p className="text-white font-semibold">Telegram متصل</p>
                   <SlCheck className="w-4 h-4 text-emerald-400" />
                 </div>
                 <p className="text-sm text-slate-400">
-                  @{settings.telegramUsername || "Пайдаланушы"}
+                  @{settings.telegramUsername || "مستخدم"}
                   <span className="text-slate-600 ml-2">
-                    {new Date(settings.telegramLinkedAt!).toLocaleDateString()} бастап
+                    {new Date(settings.telegramLinkedAt!).toLocaleDateString()} منذ
                   </span>
                 </p>
               </div>
@@ -268,24 +268,24 @@ export default function SettingsPage() {
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 transition-colors"
               >
                 <SlClose className="w-4 h-4" />
-                Ажырату
+                فصل
               </button>
             </div>
 
             <div className="p-4 rounded-xl bg-slate-800/30 border border-slate-700">
-              <h4 className="text-white font-medium mb-2">Хабарландыру параметрлері</h4>
+              <h4 className="text-white font-medium mb-2">إعدادات الإشعارات</h4>
               <div className="space-y-3">
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" defaultChecked className="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500" />
-                  <span className="text-slate-300">Жаңа лицензия сұраулары</span>
+                  <span className="text-slate-300">طلبات ترخيص جديدة</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" defaultChecked className="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500" />
-                  <span className="text-slate-300">Фото растау жаңартулары</span>
+                  <span className="text-slate-300">تحديثات التحقق من الصور</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" defaultChecked className="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500" />
-                  <span className="text-slate-300">Төлем хабарландырулары</span>
+                  <span className="text-slate-300">إشعارات الدفع</span>
                 </label>
               </div>
             </div>
@@ -298,9 +298,9 @@ export default function SettingsPage() {
                   <SlPaperPlane className="w-6 h-6 text-blue-400" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-white font-semibold">Telegram қосу</h4>
+                  <h4 className="text-white font-semibold">توصيل Telegram</h4>
                   <p className="text-sm text-slate-400 mt-1">
-                    Лицензия сұраулары, фото растаулар және басқа да жедел хабарландырулар алу үшін Telegram аккаунтыңызды қосыңыз.
+                    Лицезия сұраулары, фото растаулар жәе басқа да жедел хабарتمрулар алу үші Telegram аккаутыңыз қоңыз.
                   </p>
                 </div>
               </div>
@@ -312,19 +312,19 @@ export default function SettingsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20"
               >
-                <h4 className="text-amber-400 font-semibold mb-3">Аккаунтыңызды байланыстырыңыз</h4>
+                <h4 className="text-amber-400 font-semibold mb-3">ربط حسابك</h4>
                 <ol className="space-y-3 text-sm text-slate-300">
                   <li className="flex gap-2">
                     <span className="text-amber-500 font-bold">1.</span>
-                    <span>Telegram ашып, <code className="px-1.5 py-0.5 rounded bg-slate-800 text-amber-400">@VertexBot</code> іздеңіз</span>
+                    <span>افتح Telegram وابحث عن <code className="px-1.5 py-0.5 rounded bg-slate-800 text-amber-400">@NABDBot</code></span>
                   </li>
                   <li className="flex gap-2">
                     <span className="text-amber-500 font-bold">2.</span>
-                    <span>Ботпен чатты бастаңыз</span>
+                    <span>ابدأ محادثة مع البوت</span>
                   </li>
                   <li className="flex gap-2">
                     <span className="text-amber-500 font-bold">3.</span>
-                    <span>Осы кодты жіберіңіз:</span>
+                    <span>أرسل هذا الرمز:</span>
                   </li>
                 </ol>
                 <div className="mt-4 flex items-center gap-2">
@@ -339,7 +339,7 @@ export default function SettingsPage() {
                   </button>
                 </div>
                 <p className="mt-3 text-xs text-slate-500">
-                  Бұл код {new Date(telegramToken.expiresAt).toLocaleTimeString()} дейін жарамды
+                  هذا الرمز صالح حتى {new Date(telegramToken.expiresAt).toLocaleTimeString()}
                 </p>
               </motion.div>
             ) : (
@@ -348,7 +348,7 @@ export default function SettingsPage() {
                 className="flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-semibold transition-colors"
               >
                 <SlLink className="w-5 h-5" />
-                Байланыс кодын жасау
+                إنشاء رمز الربط
               </button>
             )}
 
@@ -359,7 +359,7 @@ export default function SettingsPage() {
               className="flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition-colors"
             >
               <SlShareAlt className="w-5 h-5" />
-              Telegram-да @VertexBot ашу
+              فتح @NABDBot في Telegram
             </a>
           </div>
         )}
@@ -367,11 +367,11 @@ export default function SettingsPage() {
 
       {/* Photographer Profile (if applicable) */}
       {settings?.photographerProfile && (
-        <SettingsSection title="Фотограф профилі" description="Ашық профиліңізді реттеңіз">
+        <SettingsSection title="ملف المصور" description="تحرير ملفك العام">
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Көрсетілетін аты</label>
+                <label className="block text-sm text-slate-400 mb-2">الاسم المعروض</label>
                 <input
                   ref={displayNameRef}
                   type="text"
@@ -380,7 +380,7 @@ export default function SettingsPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Тақырып</label>
+                <label className="block text-sm text-slate-400 mb-2">العنوان</label>
                 <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700">
                   <span className="text-slate-500">@</span>
                   <span className="text-white">{settings.photographerProfile.handle}</span>
@@ -389,7 +389,7 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <label className="block text-sm text-slate-400 mb-2">Өмірбаян</label>
+              <label className="block text-sm text-slate-400 mb-2">السيرة الذاتية</label>
               <textarea
                 ref={bioRef}
                 defaultValue={settings.photographerProfile.bio || ""}
@@ -401,17 +401,17 @@ export default function SettingsPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Орналасқан жері</label>
+                <label className="block text-sm text-slate-400 mb-2">Ораласқа жері</label>
                 <input
                   ref={locationRef}
                   type="text"
                   defaultValue={settings.photographerProfile.location || ""}
                   className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                  placeholder="Қала, Ел"
+                  placeholder="المدينة، البلد"
                 />
               </div>
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Веб-сайт</label>
+                <label className="block text-sm text-slate-400 mb-2">الموقع الإلكتروني</label>
                 <input
                   ref={websiteRef}
                   type="url"
@@ -462,7 +462,7 @@ export default function SettingsPage() {
       )}
 
       {/* Security */}
-      <SettingsSection title="Қауіпсіздік" description="Құпия сөз және қауіпсіздік баптауларын басқарыңыз">
+      <SettingsSection title="الأمان" description="Құпия сөз жәе қауіпсіздік баптаулары басқарыңыз">
         <div className="space-y-4">
           <button
             onClick={() => setShowPasswordModal(true)}
@@ -471,7 +471,7 @@ export default function SettingsPage() {
             <SlLock className="w-5 h-5 text-slate-400" />
             <div>
               <p className="text-white font-medium">Құпия сөзді өзгерту</p>
-              <p className="text-sm text-slate-500">Аккаунтыңызды қауіпсіз ұстау үшін құпия сөзді жаңартыңыз</p>
+              <p className="text-sm text-slate-500">Аккаутыңыз қауіпсіз ұстау үші құпия сөзді жаңартыңыз</p>
             </div>
           </button>
           <button
@@ -480,8 +480,8 @@ export default function SettingsPage() {
           >
             <SlShield className="w-5 h-5 text-slate-400" />
             <div>
-              <p className="text-white font-medium">Екі факторлы аутентификация</p>
-              <p className="text-sm text-slate-500">Аккаунтыңызға қосымша қауіпсіздік қабаты қосыңыз</p>
+              <p className="text-white font-medium">Екі факторлы аутетификация</p>
+              <p className="text-sm text-slate-500">Аккаутыңызإلى қомша қауіпсіздік қабаты қоңыз</p>
             </div>
           </button>
         </div>
@@ -494,7 +494,7 @@ export default function SettingsPage() {
           disabled={saving}
           className="px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-semibold transition-colors disabled:opacity-50"
         >
-          {saving ? "Сақталуда..." : "Өзгерістерді сақтау"}
+          {saving ? "جارٍ الحفظ..." : "حفظ التغييرات"}
         </button>
       </div>
 
@@ -524,27 +524,27 @@ export default function SettingsPage() {
                     value={passwordForm.current}
                     onChange={(e) => setPasswordForm(p => ({ ...p, current: e.target.value }))}
                     className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                    placeholder="Ағымдағы құпия сөзді енгізіңіз"
+                    placeholder="Ағымдағы құпия сөзді егізіңіз"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">Жаңа құпия сөз</label>
+                  <label className="block text-sm text-slate-400 mb-2">جديد құпия сөз</label>
                   <input
                     type="password"
                     value={passwordForm.new}
                     onChange={(e) => setPasswordForm(p => ({ ...p, new: e.target.value }))}
                     className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                    placeholder="Жаңа құпия сөзді енгізіңіз"
+                    placeholder="جديد құпия сөзді егізіңіз"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">Жаңа құпия сөзді растау</label>
+                  <label className="block text-sm text-slate-400 mb-2">جديد құпия сөзді растау</label>
                   <input
                     type="password"
                     value={passwordForm.confirm}
                     onChange={(e) => setPasswordForm(p => ({ ...p, confirm: e.target.value }))}
                     className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                    placeholder="Жаңа құпия сөзді растаңыз"
+                    placeholder="جديد құпия сөзді растаңыз"
                   />
                 </div>
               </div>
@@ -556,14 +556,14 @@ export default function SettingsPage() {
                   }}
                   className="flex-1 px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 transition-colors"
                 >
-                  Болдырмау
+                  إلغاء
                 </button>
                 <button
                   onClick={handleChangePassword}
                   disabled={isUpdatingPassword || !passwordForm.current || !passwordForm.new}
                   className="flex-1 px-4 py-2 rounded-lg bg-amber-500 text-black font-semibold hover:bg-amber-400 transition-colors disabled:opacity-50"
                 >
-                  {isUpdatingPassword ? "Жаңартылуда..." : "Құпия сөзді жаңарту"}
+                  {isUpdatingPassword ? "جديدртылуда..." : "Құпия сөзді жаңарту"}
                 </button>
               </div>
             </motion.div>
@@ -588,14 +588,14 @@ export default function SettingsPage() {
               className="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-xl font-bold text-white mb-4">Екі факторлы аутентификация</h3>
+              <h3 className="text-xl font-bold text-white mb-4">Екі факторлы аутетификация</h3>
               <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 mb-6">
                 <div className="flex items-start gap-3">
                   <SlShield className="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-amber-400 font-semibold">Жақын арада</p>
+                    <p className="text-amber-400 font-semibold">Жақы арада</p>
                     <p className="text-sm text-slate-400 mt-1">
-                      Екі факторлы аутентификация жақын арада қолжетімді болады. Әзірше аккаунтыңызды қорғау үшін күшті, бірегей құпия сөз қолданыңыз.
+                      المصادقة الثنائية ستكون متاحة قريباً. في الوقت الحالي، استخدم كلمة مرور قوية وفريدة لحماية حسابك.
                     </p>
                   </div>
                 </div>
@@ -604,7 +604,7 @@ export default function SettingsPage() {
                 onClick={() => setShowTwoFactorModal(false)}
                 className="w-full px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 transition-colors"
               >
-                Жабу
+                إغلاق
               </button>
             </motion.div>
           </motion.div>

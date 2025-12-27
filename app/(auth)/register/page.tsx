@@ -47,7 +47,7 @@ function RegisterForm() {
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Registration failed");
 
-      toast.success("ОРБИТА ЖЕТІЛДІ - Миссия дайын, экипажға қош келдіңіз!");
+      toast.success("ОРБИТА ЖЕТІЛДІ - المهمة дайы, экипажإلى қош келдіңіз!");
 
       const signInResult = await signIn("credentials", {
         email: data.email,
@@ -62,7 +62,7 @@ function RegisterForm() {
         router.refresh();
       }
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Тіркеу сәтсіз аяқталды");
+      toast.error(error instanceof Error ? error.message : "فشل التسجيل");
     } finally {
       setIsLoading(false);
     }
@@ -86,7 +86,7 @@ function RegisterForm() {
 
       {/* Rocket stages indicator - right side */}
       <div className="absolute right-12 top-1/2 -translate-y-1/2 space-y-6 hidden lg:block">
-        {['Іске қосуға дейін', 'Ұшыру', 'Орбита'].map((stage, idx) => (
+        {['قبل الإطلاق', 'الإطلاق', 'المدار'].map((stage, idx) => (
           <div key={stage} className="flex items-center gap-3">
             <div className={`w-3 h-3 rounded-full ${idx === 0 ? 'bg-aurora animate-pulse' : 'bg-aurora/20'}`} />
             <span className="text-xs text-background/40 tracking-cosmos uppercase">{stage}</span>
@@ -102,7 +102,7 @@ function RegisterForm() {
           className="inline-flex items-center gap-2 text-sm text-background/60 hover:text-background transition-colors mb-8"
         >
           <RiArrowLeftLine size={16} />
-          <span className="tracking-cosmos uppercase text-xs">Іске қосуды тоқтату</span>
+          <span className="tracking-cosmos uppercase text-xs">إيقاف الإطلاق</span>
         </Link>
 
         <div className="p-10 space-window backdrop-blur-xl relative overflow-hidden">
@@ -118,9 +118,9 @@ function RegisterForm() {
             </div>
             <Logo size="lg" className="justify-center mb-4" />
             <h1 className="text-2xl font-display font-bold text-background tracking-cosmos uppercase mb-2">
-              Экипажды тіркеу
+              الطاقم тіркеу
             </h1>
-            <p className="text-xs text-aurora/80 tracking-widest uppercase">Қабылдау тізбегін бастау</p>
+            <p className="text-xs text-aurora/80 tracking-widest uppercase">بدء تسلسل الإعداد</p>
             <div className="w-24 h-px bg-aurora/60 mx-auto mt-6" />
           </div>
 
@@ -144,7 +144,7 @@ function RegisterForm() {
                 "text-xs tracking-cosmos uppercase",
                 selectedRole === "PHOTOGRAPHER" ? "text-background" : "text-background/50"
               )}>
-                Жасаушы
+                منشئ
               </span>
               {selectedRole === "PHOTOGRAPHER" && (
                 <div className="absolute top-0 right-0 w-2 h-2 bg-aurora animate-pulse" />
@@ -168,7 +168,7 @@ function RegisterForm() {
                 "text-xs tracking-cosmos uppercase",
                 selectedRole === "BUYER" ? "text-background" : "text-background/50"
               )}>
-                Коллекционер
+                جامع
               </span>
               {selectedRole === "BUYER" && (
                 <div className="absolute top-0 right-0 w-2 h-2 bg-aurora animate-pulse" />
@@ -180,13 +180,13 @@ function RegisterForm() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 relative">
             <div className="space-y-2">
               <Label className="text-xs text-background/70 uppercase tracking-cosmos flex items-center gap-2">
-                <span className="text-aurora">▸</span> Шақыру белгісі
+                <span className="text-aurora">▸</span> معرّف الاستدعاء
               </Label>
               <div className="relative group">
                 <RiUserLine size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-aurora/60 group-focus-within:text-aurora transition-colors" />
                 <Input
                   type="text"
-                  placeholder="Экипаж мүшесінің аты"
+                  placeholder="اسم عضو الطاقم"
                   className="pl-12 h-14 bg-navy/50 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 tracking-wide transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)]"
                   {...register("name")}
                 />
@@ -196,13 +196,13 @@ function RegisterForm() {
 
             <div className="space-y-2">
               <Label className="text-xs text-background/70 uppercase tracking-cosmos flex items-center gap-2">
-                <span className="text-aurora">▸</span> Байланыс арнасы
+                <span className="text-aurora">▸</span> قناة الاتصال
               </Label>
               <div className="relative group">
                 <RiMailLine size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-aurora/60 group-focus-within:text-aurora transition-colors" />
                 <Input
                   type="email"
-                  placeholder="астронавт@orbita.space"
+                  placeholder="astronaut@nabd.space"
                   className="pl-12 h-14 bg-navy/50 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 tracking-wide transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)]"
                   {...register("email")}
                 />
@@ -213,7 +213,7 @@ function RegisterForm() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label className="text-xs text-background/70 uppercase tracking-cosmos flex items-center gap-2">
-                  <span className="text-aurora">▸</span> Қауіпсіздік кілті
+                  <span className="text-aurora">▸</span> الأمان кілті
                 </Label>
                 <div className="relative group">
                   <RiLockLine size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-aurora/60 group-focus-within:text-aurora transition-colors" />
@@ -267,7 +267,7 @@ function RegisterForm() {
               ) : (
                 <span className="flex items-center gap-2">
                   <RiRocketLine size={18} />
-                  Іске қосу тізбегін бастау
+                  Іске қосу тізбегі бастау
                 </span>
               )}
             </Button>
@@ -277,18 +277,18 @@ function RegisterForm() {
           <div className="mt-8 text-center relative">
             <div className="w-24 h-px bg-aurora/30 mx-auto mb-6" />
             <p className="text-xs text-background/60 tracking-cosmos uppercase">
-              Экипаж мүшесісіз бе?{" "}
+              هل أنت عضو في الطاقم؟{" "}
               <Link href="/login" className="text-aurora hover:text-aurora/80 transition-colors">
-                Порталға кіру
+                Порталإلى кіру
               </Link>
             </p>
           </div>
 
           <p className="mt-6 text-center text-xs text-background/40 leading-relaxed">
-            Тіркелу арқылы сіз біздің{" "}
-            <Link href="/terms" className="underline hover:text-aurora/60">Шарттарымызбен</Link>
-            {" "}және{" "}
-            <Link href="/privacy" className="underline hover:text-aurora/60">Құпиялылық саясатымен</Link> келісесіз
+            تسجيل арқылы сіз біздің{" "}
+            <Link href="/terms" className="underline hover:text-aurora/60">Шарттарымызمع</Link>
+            {" "}و{" "}
+            <Link href="/privacy" className="underline hover:text-aurora/60">سياسة الخصوصيةمع</Link> келісесіз
           </p>
         </div>
 
@@ -296,7 +296,7 @@ function RegisterForm() {
         <div className="mt-8 text-center">
           <p className="text-xs text-aurora/40 tracking-cosmos uppercase flex items-center justify-center gap-2">
             <span className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-            Іске қосуға дейінгі кезең белсенді
+            قبل الإطلاقгі кезең белседі
           </p>
         </div>
       </div>

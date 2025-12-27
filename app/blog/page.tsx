@@ -72,14 +72,14 @@ const blogPosts = [
   },
 ];
 
-const categories = ["Барлығы", "Салалық Түсініктер", "Білім", "Жасаушы Кеңестері", "Технология", "Компания"];
+const categories = ["الكل", "رؤى الصناعة", "تعليم", "نصائح المنشئين", "التكنولوجيا", "الشركة"];
 
 export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState("Барлығы");
+  const [selectedCategory, setSelectedCategory] = useState("الكل");
   const [email, setEmail] = useState("");
   const [subscribing, setSubscribing] = useState(false);
 
-  const filteredPosts = selectedCategory === "Барлығы"
+  const filteredPosts = selectedCategory === "الكل"
     ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory);
 
@@ -89,12 +89,12 @@ export default function BlogPage() {
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) {
-      toast.error("Электрондық поштаңызды енгізіңіз");
+      toast.error("أدخل عنوان بريدك الإلكتروني");
       return;
     }
     setSubscribing(true);
     await new Promise(resolve => setTimeout(resolve, 1000));
-    toast.success("Жазылғаныңызға рахмет!");
+    toast.success("شكراً لاشتراكك!");
     setEmail("");
     setSubscribing(false);
   };
@@ -116,11 +116,11 @@ export default function BlogPage() {
             className="text-center"
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold uppercase tracking-tight">
-              <span className="gradient-text">TENSOR</span> БЛОГЫ
+              <span className="gradient-text">NABD</span> مدونة
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground font-body font-light">
-              шынайы фотография, растау технологиясы және
-              тұрақты шығармашылық мансап құру туралы түсініктер.
+              шыайы صورةالتصوير، تقنية التوثيق و
+              رؤى حول بناء مهنة إبداعية مستدامة.
             </p>
           </motion.div>
         </div>
@@ -242,7 +242,7 @@ export default function BlogPage() {
           ) : (
             !featuredPost && (
               <div className="text-center py-12">
-                <p className="text-muted-foreground font-light">осы санатта жазбалар табылмады.</p>
+                <p className="text-muted-foreground font-light">لم يتم العثور على منشورات في هذه الفئة.</p>
               </div>
             )
           )}
@@ -257,16 +257,16 @@ export default function BlogPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl md:text-3xl font-display font-extrabold uppercase mb-4">ЖАҢАРТУЛАРМЕН ТАНЫСЫҢЫЗ</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold uppercase mb-4">ابقَ على اطلاع</h2>
             <p className="text-muted-foreground mb-8 font-light">
-              шынайы фотография туралы соңғы түсініктерді поштаңызға алыңыз.
+              шыайы صورةграфия туралы соңғы түсііктерді поштаңызإلى алыңыз.
             </p>
             <form onSubmit={handleSubscribe} className="flex gap-3 max-w-md mx-auto">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="электрондық поштаңызды енгізіңіз"
+                placeholder="أدخل عنوان بريدك الإلكتروني"
                 className="flex-1 sexy-input"
               />
               <Button
@@ -274,7 +274,7 @@ export default function BlogPage() {
                 disabled={subscribing}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-display font-bold uppercase tracking-wide shadow-lg shadow-primary/25 disabled:opacity-50"
               >
-                {subscribing ? "..." : "Жазылу"}
+                {subscribing ? "..." : "اشترك"}
               </Button>
             </form>
           </motion.div>

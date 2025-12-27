@@ -48,11 +48,11 @@ interface OnboardingData {
 }
 
 const steps = [
-  { id: 1, title: "Профиль", icon: SlUser, description: "Фотограф профилін жасаңыз" },
-  { id: 2, title: "Байланысу", icon: SlGlobe, description: "Әлеуметтік желілерді байланыстырыңыз" },
-  { id: 3, title: "Telegram", icon: SlPaperPlane, description: "Мобильді жүктеуді қосыңыз" },
-  { id: 4, title: "Растау", icon: SlShield, description: "Жеке басты растаңыз" },
-  { id: 5, title: "Іске қосу", icon: SlStar, description: "Қарап шығып, іске қосыңыз" },
+  { id: 1, title: "الملف الشخصي", icon: SlUser, description: "ملف المصور قم بإنشاء" },
+  { id: 2, title: "الاتصال", icon: SlGlobe, description: "ربط الشبكات الاجتماعية" },
+  { id: 3, title: "Telegram", icon: SlPaperPlane, description: "Мобильді жүктеуді қоңыз" },
+  { id: 4, title: "التحقق", icon: SlShield, description: "التحقق من الهوية الشخصية" },
+  { id: 5, title: "Іске қосу", icon: SlStar, description: "Қарап шығып, іске қоңыз" },
 ];
 
 function StepIndicator({
@@ -260,13 +260,13 @@ export default function OnboardingPage() {
             {currentStep === 1 && (
               <>
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">Көрсетілетін аты *</label>
+                  <label className="block text-sm text-slate-400 mb-2">الاسم المعروض *</label>
                   <input
                     type="text"
                     value={data.displayName}
                     onChange={(e) => updateData("displayName", e.target.value)}
                     className={`w-full px-4 py-3 rounded-xl bg-slate-800 border ${errors.displayName ? "border-red-500" : "border-slate-700"} text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50`}
-                    placeholder="Жон Доу Фотография"
+                    placeholder="جون دو للتصوير"
                   />
                   {errors.displayName && (
                     <p className="text-red-400 text-sm mt-1">{errors.displayName}</p>
@@ -282,7 +282,7 @@ export default function OnboardingPage() {
                       value={data.handle}
                       onChange={(e) => updateData("handle", e.target.value.toLowerCase())}
                       className="flex-1 bg-transparent text-white placeholder:text-slate-500 focus:outline-none ml-1"
-                      placeholder="жондоу"
+                      placeholder="жодоу"
                     />
                   </div>
                   {errors.handle && (
@@ -291,18 +291,18 @@ export default function OnboardingPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">Өмірбаян</label>
+                  <label className="block text-sm text-slate-400 mb-2">السيرة الذاتية</label>
                   <textarea
                     value={data.bio}
                     onChange={(e) => updateData("bio", e.target.value)}
                     rows={3}
                     className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 resize-none"
-                    placeholder="Фотосуретіңіз туралы әлемге айтыңыз..."
+                    placeholder="أخبر العالم عن صورتك..."
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">Орналасқан жері</label>
+                  <label className="block text-sm text-slate-400 mb-2">Ораласқа жері</label>
                   <div className="flex items-center px-4 py-3 rounded-xl bg-slate-800 border border-slate-700">
                     <SlLocationPin className="w-5 h-5 text-slate-500 mr-2" />
                     <input
@@ -310,7 +310,7 @@ export default function OnboardingPage() {
                       value={data.location}
                       onChange={(e) => updateData("location", e.target.value)}
                       className="flex-1 bg-transparent text-white placeholder:text-slate-500 focus:outline-none"
-                      placeholder="Алматы, Қазақстан"
+                      placeholder="Алматы, Қазақста"
                     />
                   </div>
                 </div>
@@ -320,7 +320,7 @@ export default function OnboardingPage() {
             {currentStep === 2 && (
               <>
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">Веб-сайт</label>
+                  <label className="block text-sm text-slate-400 mb-2">الموقع الإلكتروني</label>
                   <div className="flex items-center px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 transition-all focus-within:ring-2 focus-within:ring-amber-500/50 focus-within:border-amber-500/50">
                     <SlGlobe className="w-5 h-5 text-slate-500 mr-2" />
                     <input
@@ -364,7 +364,7 @@ export default function OnboardingPage() {
                 </div>
 
                 <p className="text-sm text-slate-500 text-center">
-                  Әлеуметтік сілтемелер міндетті емес, бірақ сатып алушылардың сенімін арттырады
+                  الروابط الاجتماعية اختيارية لكنها تزيد من ثقة المشترين
                 </p>
               </>
             )}
@@ -383,8 +383,8 @@ export default function OnboardingPage() {
                   </motion.div>
                   <h3 className="text-xl font-bold text-white mb-2">Telegram арқылы жүктеу</h3>
                   <p className="text-slate-400 text-sm max-w-md mx-auto">
-                    Телефоныңыздан тікелей фотосуреттерді жүктеу үшін Telegram-ды қосыңыз.
-                    Ботымызға фотосуреттер жіберіңіз, олар тақтаңызда пайда болады!
+                    قم بتوصيل Telegram لتحميل الصور مباشرة من هاتفك.
+                    أرسل الصور إلى البوت الخاص بنا، وستظهر في لوحة التحكم!
                   </p>
                 </div>
 
@@ -392,9 +392,9 @@ export default function OnboardingPage() {
                   {/* Features list */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     {[
-                      { icon: SlCamera, title: "Лездік жүктеу", desc: "Фотоларды тікелей жіберіңіз" },
-                      { icon: SlBot, title: "AI авто-тег", desc: "GPT-4.1 көрінісін талдау" },
-                      { icon: SlEnergy, title: "Жылдам басқару", desc: "Статистика мен сұрауларды көру" },
+                      { icon: SlCamera, title: "Лездік жүктеу", desc: "Фотолар тікелей жіберіңіз" },
+                      { icon: SlBot, title: "AI авто-тег", desc: "GPT-4.1 көріісі талдау" },
+                      { icon: SlEnergy, title: "Жылдам басқару", desc: "Статистика مع сұраулар көру" },
                     ].map((feature, idx) => (
                       <motion.div
                         key={feature.title}
@@ -413,7 +413,7 @@ export default function OnboardingPage() {
                   {/* Connection instructions */}
                   <div className="p-5 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-500/20">
                     <p className="text-sm text-slate-400 mb-3">
-                      <span className="text-blue-400 font-medium">1-қадам:</span> Telegram-ды ашып, ботымызбен чатты бастаңыз
+                      <span className="text-blue-400 font-medium">1-қадам:</span> Telegram- افتح، ботымызمع чатты бастаңыз
                     </p>
                     <a
                       href="https://t.me/VertexBot"
@@ -434,7 +434,7 @@ export default function OnboardingPage() {
                       className="p-5 rounded-xl bg-slate-800/50 border border-slate-700"
                     >
                       <p className="text-sm text-slate-400 mb-3">
-                        <span className="text-amber-400 font-medium">2-қадам:</span> Бұл кодты ботқа жіберіңіз
+                        <span className="text-amber-400 font-medium">2-қадам:</span> هذا الرمزты ботқа жіберіңіз
                       </p>
                       <div className="flex items-center gap-2">
                         <code className="flex-1 px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-amber-400 font-mono text-lg tracking-wider text-center">
@@ -462,13 +462,13 @@ export default function OnboardingPage() {
                     >
                       <SlCheck className="w-6 h-6 text-emerald-400" />
                       <div>
-                        <p className="text-emerald-400 font-medium">Telegram қосылды!</p>
-                        <p className="text-slate-400 text-sm">Енді Telegram арқылы фотосуреттерді жүктей аласыз</p>
+                        <p className="text-emerald-400 font-medium">Telegram متصل!</p>
+                        <p className="text-slate-400 text-sm">Еді Telegram арқылы фотосуреттерді жүктей алаз</p>
                       </div>
                     </motion.div>
                   ) : (
                     <p className="text-sm text-slate-500 text-center">
-                      Бұл қадамды өткізіп жіберіп, кейінірек тақтадан Telegram-ды қосуға болады
+                      Бұл қадам өткізіп жіберіп, кейіірек тақтада Telegram- қосуإلى бола
                     </p>
                   )}
                 </div>
@@ -483,20 +483,20 @@ export default function OnboardingPage() {
                     <div>
                       <h4 className="text-amber-400 font-semibold">Жеке басты растау қажет</h4>
                       <p className="text-sm text-slate-400 mt-1">
-                        AML (ақша жылыстауға қарсы) талаптарына сәйкес, жеке басыңызды растауымыз керек. Бұл ақпарат қауіпсіз сақталады және ешқашан бөліспейді.
+                        وفقاً لمتطلبات مكافحة غسل الأموال (AML)، نحتاج إلى التحقق من هويتك. يتم تخزين هذه المعلومات بشكل آمن ولن يتم مشاركتها أبداً.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">Толық заңды аты-жөні *</label>
+                  <label className="block text-sm text-slate-400 mb-2">Толық заң аты-жөі *</label>
                   <input
                     type="text"
                     value={data.fullLegalName}
                     onChange={(e) => updateData("fullLegalName", e.target.value)}
                     className={`w-full px-4 py-3 rounded-xl bg-slate-800 border ${errors.fullLegalName ? "border-red-500" : "border-slate-700"} text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50`}
-                    placeholder="Куәлігіңізде көрсетілгендей"
+                    placeholder="Куәлігіңізде көрсетілгедей"
                   />
                   {errors.fullLegalName && (
                     <p className="text-red-400 text-sm mt-1">{errors.fullLegalName}</p>
@@ -505,7 +505,7 @@ export default function OnboardingPage() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm text-slate-400 mb-2">Туған күні *</label>
+                    <label className="block text-sm text-slate-400 mb-2">Туإلى في *</label>
                     <input
                       type="date"
                       value={data.dateOfBirth}
@@ -517,7 +517,7 @@ export default function OnboardingPage() {
                     )}
                   </div>
                   <div>
-                    <label className="block text-sm text-slate-400 mb-2">Тұратын елі *</label>
+                    <label className="block text-sm text-slate-400 mb-2">Тұраты елі *</label>
                     <select
                       value={data.country}
                       onChange={(e) => updateData("country", e.target.value)}
@@ -553,13 +553,13 @@ export default function OnboardingPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm text-slate-400 mb-2">Куәлік нөмірі *</label>
+                    <label className="block text-sm text-slate-400 mb-2">رقم الشهادة *</label>
                     <input
                       type="text"
                       value={data.idNumber}
                       onChange={(e) => updateData("idNumber", e.target.value)}
                       className={`w-full px-4 py-3 rounded-xl bg-slate-800 border ${errors.idNumber ? "border-red-500" : "border-slate-700"} text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50`}
-                      placeholder="Куәлік нөмірі"
+                      placeholder="رقم الشهادة"
                     />
                     {errors.idNumber && (
                       <p className="text-red-400 text-sm mt-1">{errors.idNumber}</p>
@@ -581,9 +581,9 @@ export default function OnboardingPage() {
                   >
                     <SlStar className="w-10 h-10 text-black" />
                   </motion.div>
-                  <h3 className="text-xl font-bold text-white mb-2">Іске қосуға дайын!</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">جاهز للإطلاق!</h3>
                   <p className="text-slate-400 text-sm">
-                    Фотограф профилін аяқтау үшін шарттарымызды қабылдаңыз
+                    ملف المصور аяқтау үші шарттарымыз қабылдаңыз
                   </p>
                 </div>
 
@@ -609,10 +609,10 @@ export default function OnboardingPage() {
                       <div>
                         <p className="text-white font-medium">Қызмет шарттары</p>
                         <p className="text-sm text-slate-400 mt-1">
-                          Мен Vertex-тің Қызмет шарттарымен, Құпиялылық саясатымен және Фотосурет лицензиялау келісімімен келісемін.
+                          أوافق على شروط الخدمة وسياسة الخصوصية واتفاقية ترخيص الصور الخاصة بـ NABD.
                         </p>
                         <a href="/terms" className="text-amber-500 text-sm hover:underline mt-2 inline-block">
-                          Толық шарттарды оқу →
+                          Толық шарттар оқу →
                         </a>
                       </div>
                     </label>
@@ -637,12 +637,12 @@ export default function OnboardingPage() {
                         </div>
                       </div>
                       <div>
-                        <p className="text-white font-medium">AML және KYC сәйкестігі</p>
+                        <p className="text-white font-medium">AML жәе KYC сәйкестігі</p>
                         <p className="text-sm text-slate-400 mt-1">
-                          Мен ақша жылыстауға қарсы (AML) талаптарына жеке басты растауға келісемін.
+                          أوافق على التحقق من الهوية وفقاً لمتطلبات مكافحة غسل الأموال (AML).
                         </p>
                         <a href="/terms" className="text-amber-500 text-sm hover:underline mt-2 inline-block">
-                          AML саясатын оқу →
+                          قراءة سياسة مكافحة غسل الأموال →
                         </a>
                       </div>
                     </label>
@@ -681,7 +681,7 @@ export default function OnboardingPage() {
                 onClick={nextStep}
                 className="flex items-center gap-2 px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-semibold transition-colors"
               >
-                Жалғастыру
+                Жалإلىстыру
                 <SlArrowRight className="w-4 h-4" />
               </button>
             ) : (
@@ -693,11 +693,11 @@ export default function OnboardingPage() {
                 {isSubmitting ? (
                   <>
                     <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                    Өңдеу жүріп жатыр...
+                    المعالجة جارية...
                   </>
                 ) : (
                   <>
-                    Орнатуды аяқтау
+                    Орату аяқтау
                     <SlCheck className="w-4 h-4" />
                   </>
                 )}
@@ -709,7 +709,7 @@ export default function OnboardingPage() {
         {/* Security Note */}
         <p className="text-center text-sm text-slate-600 mt-6">
           <SlShield className="w-4 h-4 inline mr-1" />
-          Деректеріңіз шифрланған және қауіпсіз сақталады
+          Деректеріңіз шифрتمإلى жәе қауіпсіз сақтала
         </p>
       </div>
     </div>

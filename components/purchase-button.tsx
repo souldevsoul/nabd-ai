@@ -74,7 +74,7 @@ export function PurchaseButton({
       }
 
       if (!res.ok) {
-        setError(data.error || "Сатып алу сәтсіз аяқталды");
+        setError(data.error || "Сатып алу сәтсіз аяқтал");
         return;
       }
 
@@ -87,7 +87,7 @@ export function PurchaseButton({
       setPurchased(true);
       setToken(data.purchase.downloadToken);
     } catch (err) {
-      setError("Бірдеңе дұрыс болмады");
+      setError("Бірдеңе дұрыс болма");
     } finally {
       setLoading(false);
     }
@@ -149,14 +149,14 @@ export function PurchaseButton({
             >
               <div className="flex items-center gap-2 text-emerald-500 text-sm mb-2">
                 <SlCheck className="w-4 h-4" />
-                <span>Сатып алынды</span>
+                <span>Сатып алы</span>
               </div>
               <Button
                 onClick={handleDownload}
                 className="w-full bg-emerald-600 hover:bg-emerald-500 text-white"
               >
                 <SlCloudDownload className="w-4 h-4 mr-2" />
-                Жүктеу
+                تحميل
               </Button>
             </motion.div>
           ) : insufficientFunds ? (
@@ -171,7 +171,7 @@ export function PurchaseButton({
                 <div className="text-sm">
                   <p className="text-red-400 font-medium">Кредиттер жеткіліксіз</p>
                   <p className="text-zinc-400">
-                    Тағы {insufficientFunds.required - insufficientFunds.balance} кредит қажет
+                    المزيد {insufficientFunds.required - insufficientFunds.balance} кредит қажет
                   </p>
                 </div>
               </div>
@@ -180,7 +180,7 @@ export function PurchaseButton({
                 className="w-full bg-amber-500 hover:bg-amber-400 text-black font-semibold"
               >
                 <SlWallet className="w-4 h-4 mr-2" />
-                Кредит қосу
+                إضافة رصيد
               </Button>
             </motion.div>
           ) : (
@@ -201,7 +201,7 @@ export function PurchaseButton({
                 ) : (
                   <>
                     <SlBag className="w-4 h-4 mr-2" />
-                    Қазір сатып алу
+                    شراء الآن
                   </>
                 )}
               </Button>

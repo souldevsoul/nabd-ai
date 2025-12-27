@@ -93,7 +93,7 @@ export function WalletBalance({ variant = "header", className }: WalletBalancePr
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-zinc-400 mb-1">Сіздің балансыңыз</p>
+            <p className="text-sm text-zinc-400 mb-1">Сіздің баتمңыз</p>
             <div className="flex items-center gap-3">
               <SlWallet className="w-8 h-8 text-amber-500" />
               {loading ? (
@@ -116,7 +116,7 @@ export function WalletBalance({ variant = "header", className }: WalletBalancePr
             className="bg-amber-500 hover:bg-amber-400 text-black font-semibold"
           >
             <SlPlus className="w-4 h-4 mr-2" />
-            Кредит қосу
+            إضافة رصيد
           </Button>
         </div>
       </motion.div>

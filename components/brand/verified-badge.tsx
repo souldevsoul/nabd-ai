@@ -16,7 +16,7 @@ interface VerifiedBadgeProps {
 const variantConfig = {
   verified: {
     icon: SlShield,
-    label: "Расталған адам",
+    label: "تم التحقق адам",
     classes: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
     iconClass: "text-emerald-400",
   },
@@ -28,13 +28,13 @@ const variantConfig = {
   },
   rejected: {
     icon: SlCheck,
-    label: "Расталмаған",
+    label: "Расталмаإلى",
     classes: "bg-red-500/15 text-red-400 border-red-500/30",
     iconClass: "text-red-400",
   },
   photographer: {
     icon: SlCamera,
-    label: "Расталған фотограф",
+    label: "تم التحقق фотограф",
     classes: "bg-amber-500/15 text-amber-400 border-amber-500/30",
     iconClass: "text-amber-400",
   },
