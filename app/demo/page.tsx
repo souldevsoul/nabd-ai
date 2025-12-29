@@ -10,7 +10,7 @@ import {
   SlCheck,
   SlEnergy,
   SlLayers,
-  SlScreen,
+  SlBell,
 } from "react-icons/sl";
 
 const features = [
@@ -35,7 +35,7 @@ const features = [
     description: "Kanban-style board to track progress from pending to completed",
   },
   {
-    icon: SlScreen,
+    icon: SlBell,
     title: "Real-time Updates",
     description: "Instant notifications and live project status updates",
   },
