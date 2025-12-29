@@ -45,11 +45,11 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
     <div className="min-h-screen bg-background starfield">
       <Header />
 
-      {/* Hero - LEFT-ALIGNED with Astronaut Silhouette */}
+      {/* Hero - LEFT-ALIGNED with Medical Professional Silhouette */}
       <section className="pt-40 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 hero-gradient pointer-events-none" />
 
-        {/* Astronaut silhouette decoration on right */}
+        {/* Medical professional silhouette decoration on right */}
         <motion.div
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -73,21 +73,21 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/30 bg-primary/5">
               <RiSparklingLine className="text-primary" size={14} />
-              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">قائمة الطاقم</span>
+              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">قائمة الأطباء</span>
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.95] mb-6">
-              نشط
-              <span className="block font-bold gradient-text mt-2">رواد الفضاء</span>
+              أطباء
+              <span className="block font-bold gradient-text mt-2">متخصصون</span>
             </h1>
 
             <div className="w-32 h-1 cosmic-line mb-8" />
 
             <p className="text-muted-foreground text-xl font-light leading-relaxed mb-4">
-              لدينا элиталық экипажда مهمةإلى дайы мамадар.
+              لدينا فريق نخبة من الأطباء والاستشاريين الطبيين المتخصصين.
             </p>
             <p className="text-foreground/70 text-lg font-light leading-relaxed">
-              موثق тәжірибе. Жұлз өімділік. المدارлық сәттілік.
+              خبرة موثقة. أداء متميز. نتائج استثنائية.
             </p>
 
             <div className="mt-12 flex flex-col sm:flex-row gap-4">
@@ -97,7 +97,7 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
                   className="px-10 py-6 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-display tracking-wider uppercase text-sm shadow-lg shadow-secondary/20"
                 >
                   <SlBriefcase size={18} />
-                  المهمة Брифигі طلب
+                  طلب استشارة طبية
                   <RiArrowRightLine size={16} />
                 </Button>
               </Link>
@@ -121,7 +121,7 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
                     : "border-border hover:border-primary hover:text-primary"
                 }`}
               >
-                الكل رواد الفضاء ({specialists.length})
+                جميع الأطباء ({specialists.length})
               </Button>
               {categories.slice(0, 8).map((category) => (
                 <Button
@@ -161,7 +161,7 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
                 transition={{ delay: i * 0.05, duration: 0.6 }}
                 className="elite-card group relative rocket-hover"
               >
-                {/* Mission badge decoration */}
+                {/* Verified badge decoration */}
                 <div className="absolute top-4 right-4 w-8 h-8 border border-primary/30 rounded-full flex items-center justify-center opacity-50 group-hover:opacity-100 transition-opacity">
                   <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 </div>
@@ -180,7 +180,7 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
                     </div>
                     <span className="text-muted-foreground text-sm">•</span>
                     <span className="text-sm text-muted-foreground font-light">
-                      {specialist.completedTasks} مهمة
+                      {specialist.completedTasks} استشارة
                     </span>
                   </div>
                 </div>
@@ -212,12 +212,12 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
                 {/* Rate & CTA */}
                 <div className="pt-6 border-t border-border flex items-center justify-between">
                   <div>
-                    <div className="text-sm text-muted-foreground font-light mb-1 font-mono">المهمة Баإلى</div>
+                    <div className="text-sm text-muted-foreground font-light mb-1 font-mono">سعر الاستشارة</div>
                     <div className="flex items-baseline gap-1">
                       <span className="font-display text-2xl font-bold text-foreground">
                         ${specialist.hourlyRate}
                       </span>
-                      <span className="text-sm text-muted-foreground">/مهمة</span>
+                      <span className="text-sm text-muted-foreground">/استشارة</span>
                     </div>
                   </div>
                   <Link href={`/request?specialist=${specialist.id}`}>
@@ -251,29 +251,29 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
             >
               <SlBadge size={64} className="mx-auto text-muted-foreground/40 mb-6" />
               <h3 className="font-display text-2xl font-light text-foreground mb-3">
-                رواد الفضاء Қолжетімді Емес
+                لا يوجد أطباء متاحون حالياً
               </h3>
               <p className="text-muted-foreground font-light mb-8">
-                الكل أعضاء الطاقم نشطون حالياً مهمةларда. Жақыда тексеріңіз.
+                جميع الأطباء مشغولون حالياً بالاستشارات. يرجى المحاولة لاحقاً.
               </p>
               <Button
                 variant="outline"
                 onClick={() => setSelectedCategory(null)}
                 className="font-display tracking-wider uppercase text-xs"
               >
-                الكل رواد الفضاءді Көру
+                عرض جميع الأطباء
               </Button>
             </motion.div>
           )}
         </div>
       </section>
 
-      {/* Bespoke Solutions CTA - Enhanced with Rocket Graphics */}
+      {/* Bespoke Solutions CTA - Enhanced with Medical Pulse Graphics */}
       <section className="py-32 bg-gradient-to-br from-navy/40 via-background to-navy/30 border-t border-primary/20 relative overflow-hidden">
-        {/* Starfield background */}
+        {/* Pulse background */}
         <div className="absolute inset-0 constellation opacity-40" />
 
-        {/* Rocket launch graphic */}
+        {/* Heartbeat pulse graphic */}
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 0.15 }}
@@ -282,8 +282,8 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
           className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-96 hidden lg:block"
         >
           <div className="relative w-full h-full">
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-64 border-l-4 border-r-4 border-primary/30 clip-rocket" />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-32 border-t-4 border-primary/20" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%)'}} />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-64 border-l-4 border-r-4 border-primary/30" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-32 border-t-4 border-primary/20" />
             <motion.div
               animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 2, repeat: Infinity }}
@@ -306,27 +306,27 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
               >
                 <RiSparklingLine className="text-primary" size={16} />
               </motion.div>
-              <span className="text-xs tracking-[0.4em] uppercase text-primary font-bold">Арайы المهمة</span>
+              <span className="text-xs tracking-[0.4em] uppercase text-primary font-bold">استشارة خاصة</span>
             </div>
 
             <h2 className="font-display text-4xl md:text-6xl font-light text-foreground mb-6 leading-tight">
-              Арайы المهمة
-              <span className="block font-bold gradient-text mt-2">Жоспарлау مطلوب؟</span>
+              استشارة طبية
+              <span className="block font-bold gradient-text mt-2">متخصصة مطلوبة؟</span>
             </h2>
 
             <div className="w-32 h-1 cosmic-line mx-auto mb-8" />
 
             <p className="text-muted-foreground text-lg font-light mb-4 leading-relaxed max-w-2xl mx-auto">
-              المهمة أخبرنا عن أهدافك، وسنقوم بتعيين الأمثل من قائمة الطاقم النشطة رائد فضاءді таإلىйыдаймыз.
+              أخبرنا عن احتياجاتك الطبية، وسنقوم بتعيين أفضل طبيب متخصص من فريقنا النشط.
             </p>
             <p className="text-foreground/60 text-base font-light mb-12 leading-relaxed max-w-xl mx-auto">
-              Траектория жоспарлау. Экипаж таإلىйыдау. المهمة ұшыру.
+              تخطيط العلاج. تعيين الطبيب. بدء الاستشارة.
             </p>
 
             <Link href="/request">
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button className="px-12 py-7 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-display tracking-[0.2em] uppercase text-sm shadow-2xl shadow-secondary/30 border border-secondary/50">
-                  المهمة Брифигі طلب
+                  طلب استشارة طبية
                   <RiArrowRightLine className="ml-3" size={18} />
                 </Button>
               </motion.div>

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SlWallet, SlPlus, SlRefresh } from "react-icons/sl";
 import { Button } from "@/components/ui/button";
-import { TopupModal } from "./topup-modal";
+import { BuyCreditsModal } from "./buy-credits-modal";
 import { cn } from "@/lib/utils";
 
 interface WalletBalanceProps {
@@ -70,7 +70,7 @@ export function WalletBalance({ variant = "header", className }: WalletBalancePr
           <SlPlus className="w-3 h-3 opacity-60" />
         </motion.button>
 
-        <TopupModal
+        <BuyCreditsModal
           open={showTopup}
           onOpenChange={setShowTopup}
           currentBalance={balance || 0}
@@ -121,7 +121,7 @@ export function WalletBalance({ variant = "header", className }: WalletBalancePr
         </div>
       </motion.div>
 
-      <TopupModal
+      <BuyCreditsModal
         open={showTopup}
         onOpenChange={setShowTopup}
         currentBalance={balance || 0}

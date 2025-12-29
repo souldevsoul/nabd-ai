@@ -1,4 +1,4 @@
-# Vertex - User Flows
+# Catalyst - User Flows
 
 ## 1. Buyer Flows
 

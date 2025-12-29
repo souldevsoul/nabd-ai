@@ -59,6 +59,7 @@ model User {
   photographerRequests PhotoRequest[]   @relation("PhotographerRequests")
   taskRequests         TaskRequest[]
   taskMessages         TaskMessage[]
+  invoices             Invoice[]
 
   @@index([email])
   @@index([telegramUserId])
@@ -357,14 +358,18 @@ model CreditTransaction {
   balance     Int             // Balance after transaction
   description String?
   metadata    Json?           // Store payment info, photo ID, etc.
+  paymentId   String?         // External payment provider ID
 
   wallet     Wallet    @relation(fields: [walletId], references: [id], onDelete: Cascade)
   purchase   Purchase? @relation(fields: [purchaseId], references: [id])
   purchaseId String?
+  invoice    Invoice?  @relation(fields: [invoiceId], references: [id])
+  invoiceId  String?
 
   @@index([walletId])
   @@index([type])
   @@index([createdAt])
+  @@index([paymentId])
 }
 
 // ============================================
@@ -584,4 +589,37 @@ model TaskMessage {
 
   @@index([assignmentId])
   @@index([createdAt])
+}
+
+// ============================================
+// INVOICES & PAYMENTS
+// ============================================
+
+enum InvoiceStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+model Invoice {
+  id                  String        @id @default(cuid())
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+  userId              String
+  invoiceNumber       String        @unique
+  amount              Float         // Amount in currency units
+  creditsAmount       Int?          // Credits being purchased
+  currency            String        @default("EUR")
+  paymentId           String?       @unique  // External payment provider ID
+  status              InvoiceStatus @default(PENDING)
+  paidAt              DateTime?
+  threeDSData         Json?         // Store 3DS authentication data
+
+  user                User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  creditTransactions  CreditTransaction[]
+
+  @@index([userId])
+  @@index([paymentId])
+  @@index([status])
 }

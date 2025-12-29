@@ -3,8 +3,8 @@ import { db } from "@/lib/db";
 import { SpecialistsClient } from "./specialists-client";
 
 export const metadata: Metadata = {
-  title: "Crew Roster - ORBITA",
-  description: "Meet our crew of elite AI cosmonauts. Mission-ready specialists for stellar results.",
+  title: "قائمة الأطباء - نبض",
+  description: "تعرف على فريقنا من الأطباء والاستشاريين المتخصصين في الذكاء الاصطناعي الطبي.",
 };
 
 async function getSpecialists() {
