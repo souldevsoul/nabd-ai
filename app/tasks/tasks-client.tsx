@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Header, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n";
 import {
   RiRobot2Line, RiMessage2Line, RiBrainLine, RiSettings3Line, RiEditLine, RiFileList3Line,
   RiPieChart2Line, RiDashboard3Line, RiEye2Line, RiImageLine, RiFocus3Line, RiFileTextLine,
@@ -48,8 +49,9 @@ interface Task {
 
 export function TasksClient({ tasks }: { tasks: Task[] }) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const categories = Array.from(new Set(tasks.map((t) => t.category))).sort();
-  const filteredTasks = selectedCategory ? tasks.filter((t) => t.category === selectedCategory) : tasks;
+  const { t } = useTranslation();
+  const categories = Array.from(new Set(tasks.map((task) => task.category))).sort();
+  const filteredTasks = selectedCategory ? tasks.filter((task) => task.category === selectedCategory) : tasks;
 
   const tasksByCategory = filteredTasks.reduce((acc, task) => {
     if (!acc[task.category]) acc[task.category] = [];
@@ -97,21 +99,21 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/30 bg-primary/5">
               <RiSparklingLine className="text-primary" size={14} />
-              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">كتالوج المهام</span>
+              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">{t("tasks.catalog")}</span>
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.95] mb-6">
-              المهمة
-              <span className="block font-bold gradient-text mt-2">الحمولات</span>
+              {t("tasks.mission")}
+              <span className="block font-bold gradient-text mt-2">{t("tasks.payloads")}</span>
             </h1>
 
             <div className="w-32 h-1 cosmic-line ml-auto mb-8" />
 
             <p className="text-muted-foreground text-xl font-light leading-relaxed mb-4">
-              حلول ذكاء اصطناعي حيوية للمهمة من أجل النجاح المداري.
+              {t("tasks.description")}
             </p>
             <p className="text-foreground/70 text-lg font-light leading-relaxed">
-              موثوقية عصر الفضاء. نتائج نجمية.
+              {t("tasks.tagline")}
             </p>
           </motion.div>
         </div>
@@ -131,7 +133,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                   : "border-border hover:border-primary hover:text-primary"
               }`}
             >
-              الكل المهمةлар ({tasks.length})
+              {t("tasks.allTasks")} ({tasks.length})
             </Button>
             {categories.map((cat) => (
               <Button
@@ -145,7 +147,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                     : "border-border hover:border-primary hover:text-primary"
                 }`}
               >
-                {cat} ({tasks.filter((t) => t.category === cat).length})
+                {cat} ({tasks.filter((task) => task.category === cat).length})
               </Button>
             ))}
           </div>
@@ -169,7 +171,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                   {category}
                 </h2>
                 <span className="text-sm text-muted-foreground font-light">
-                  ({categoryTasks.length} مهمة)
+                  ({categoryTasks.length} {t("tasks.task")})
                 </span>
               </motion.div>
 
@@ -207,7 +209,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                             </h3>
                             <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
                               <RiTeamLine size={12} />
-                              <span>{task._count.specialists} رائد فضاء</span>
+                              <span>{task._count.specialists} {t("tasks.specialists")}</span>
                             </div>
                           </div>
                         </div>
@@ -219,7 +221,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                         <div className="mt-6 pt-6 border-t border-border group-hover:border-primary/20 transition-colors duration-500 flex items-center justify-between">
                           <div>
                             <span className="text-2xl font-display font-bold text-foreground">{task.basePrice}</span>
-                            <span className="text-sm text-muted-foreground ml-1">رصيد</span>
+                            <span className="text-sm text-muted-foreground ml-1">{t("common.credits")}</span>
                           </div>
                           <Link href={`/request?task=${task.name}`}>
                             <Button
@@ -227,7 +229,7 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
                               variant="outline"
                               className="font-display tracking-wider uppercase text-xs gap-2 border-border hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300"
                             >
-                              نشر
+                              {t("tasks.deploy")}
                               <RiArrowRightLine size={12} />
                             </Button>
                           </Link>
@@ -295,27 +297,27 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
               >
                 <RiSparklingLine className="text-primary" size={16} />
               </motion.div>
-              <span className="text-xs tracking-[0.4em] uppercase text-primary font-bold">Арайы المهمة</span>
+              <span className="text-xs tracking-[0.4em] uppercase text-primary font-bold">{t("tasks.customMission")}</span>
             </div>
 
             <h2 className="font-display text-4xl md:text-6xl font-light text-foreground mb-6 leading-tight">
-              مسار مخصص
-              <span className="block font-bold gradient-text mt-2">مطلوب؟</span>
+              {t("tasks.customPath")}
+              <span className="block font-bold gradient-text mt-2">{t("tasks.needed")}</span>
             </h2>
 
             <div className="w-32 h-1 cosmic-line mx-auto mb-8" />
 
             <p className="text-muted-foreground text-lg font-light mb-4 leading-relaxed max-w-2xl mx-auto">
-              المهمة параметрлеріңіз туралы бізге хабарлаңыз, біз экипаж тізіміе идеал رائد فضاءді таإلىйыдаймыз.
+              {t("tasks.ctaDescription")}
             </p>
             <p className="text-foreground/60 text-base font-light mb-12 leading-relaxed max-w-xl mx-auto">
-              المهمة брифигі. AI сәйкестедіру. Экипаж іріктеу.
+              {t("tasks.ctaTagline")}
             </p>
 
             <Link href="/request">
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button className="px-12 py-7 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-display tracking-[0.2em] uppercase text-sm shadow-2xl shadow-secondary/30 border border-secondary/50">
-                  طلب طاقم
+                  {t("tasks.requestCrew")}
                   <RiArrowRightLine className="ml-3" size={18} />
                 </Button>
               </motion.div>
@@ -324,11 +326,11 @@ export function TasksClient({ tasks }: { tasks: Task[] }) {
             <div className="mt-10 flex items-center justify-center gap-8 text-xs text-muted-foreground font-mono">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                <span>مطابقة الذكاء الاصطناعي</span>
+                <span>{t("tasks.aiMatching")}</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-                <span>تعيين سريع</span>
+                <span>{t("tasks.fastAssignment")}</span>
               </div>
             </div>
           </motion.div>

@@ -8,6 +8,7 @@ import { RiUser3Line } from "react-icons/ri";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TaskDetailDrawer } from "@/components/task-detail-drawer";
+import { useTranslation } from "@/lib/i18n";
 import {
   SlWallet,
   SlPeople,
@@ -65,6 +66,7 @@ export default function DashboardPage() {
   const [error, setError] = useState<string | null>(null);
   const [selectedAssignmentId, setSelectedAssignmentId] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { t } = useTranslation();
 
   const openTaskDrawer = (assignmentId: string) => {
     setSelectedAssignmentId(assignmentId);
@@ -102,8 +104,8 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-400 mb-4">{error || "Басқару тақта жүктеу сәтсіз аяқтал"}</p>
-          <Button onClick={() => window.location.reload()}>Қайталау</Button>
+          <p className="text-red-400 mb-4">{error || t("dashboard.loadFailed")}</p>
+          <Button onClick={() => window.location.reload()}>{t("dashboard.retry")}</Button>
         </div>
       </div>
     );
@@ -111,33 +113,33 @@ export default function DashboardPage() {
 
   const stats = [
     {
-      title: "قيمة المحفظة",
-      value: `${data.stats.walletBalance.toLocaleString()} кредит`,
-      change: `$${(data.stats.walletBalance / 10).toFixed(2)} USD`,
+      title: t("dashboard.walletValue"),
+      value: `${data.stats.walletBalance.toLocaleString()} ${t("common.credits")}`,
+      change: `$${(data.stats.walletBalance / 10).toFixed(2)} ${t("common.usd")}`,
       icon: SlWallet,
       color: "text-primary",
       bgColor: "bg-primary/10",
     },
     {
-      title: "Белседі тапрыстар",
+      title: t("dashboard.activeOrders"),
       value: data.stats.activeOrders.toString(),
-      change: "قيد التنفيذ",
+      change: t("dashboard.inProgress"),
       icon: SlRocket,
       color: "text-blue-400",
       bgColor: "bg-blue-500/10",
     },
     {
-      title: "Кеңестер",
+      title: t("dashboard.consultations"),
       value: data.stats.completedOrders.toString(),
-      change: "Аяқтал",
+      change: t("dashboard.completed"),
       icon: SlCheck,
       color: "text-emerald-400",
       bgColor: "bg-emerald-500/10",
     },
     {
-      title: "استثمار",
+      title: t("dashboard.investment"),
       value: `${data.stats.totalSpent.toLocaleString()}`,
-      change: "Бөліге кредиттер",
+      change: t("dashboard.creditsAllocated"),
       icon: SlGraph,
       color: "text-purple-400",
       bgColor: "bg-purple-500/10",
@@ -153,9 +155,9 @@ export default function DashboardPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="text-3xl font-display font-bold uppercase">Басқару тақта</h1>
+          <h1 className="text-3xl font-display font-bold uppercase">{t("dashboard.title")}</h1>
           <p className="mt-2 text-muted-foreground font-body">
-            مرحباً بك. Стратегиялық тапрмаларыңыз жәе серіктестіктеріңізді қадаإلىлаңыз.
+            {t("dashboard.welcome")}
           </p>
         </motion.div>
 
@@ -169,19 +171,19 @@ export default function DashboardPage() {
           <Link href="/specialists">
             <Button className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90">
               <SlPeople size={18} />
-              Серіктестерді көру
+              {t("dashboard.viewSpecialists")}
             </Button>
           </Link>
           <Link href="/request">
             <Button variant="outline" className="gap-2 border-border hover:border-primary/50">
               <SlBriefcase size={18} />
-              جديد кеңес
+              {t("dashboard.newConsultation")}
             </Button>
           </Link>
           <Link href="/dashboard/wallet">
             <Button variant="outline" className="gap-2 border-border hover:border-primary/50">
               <SlPlus size={18} />
-              إضافة رصيد
+              {t("dashboard.addCredits")}
             </Button>
           </Link>
         </motion.div>
@@ -225,22 +227,22 @@ export default function DashboardPage() {
             <Card className="glass border-border">
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="text-lg font-semibold">
-                  Соңғы тапрыстар
+                  {t("dashboard.recentOrders")}
                 </CardTitle>
                 <Link
                   href="/dashboard/purchases"
                   className="text-sm text-primary hover:text-primary/80"
                 >
-                  Барлығы көру
+                  {t("dashboard.viewAll")}
                 </Link>
               </CardHeader>
               <CardContent>
                 {data.recentOrders.length === 0 ? (
                   <div className="text-center py-8 text-muted-foreground">
                     <SlBriefcase className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                    <p>Тапрыстар жоқ</p>
+                    <p>{t("dashboard.noOrders")}</p>
                     <Link href="/specialists" className="text-primary text-sm hover:underline">
-                      Серіктестерمع таыңыз
+                      {t("dashboard.browseSpecialists")}
                     </Link>
                   </div>
                 ) : (
@@ -298,20 +300,20 @@ export default function DashboardPage() {
             <Card className="glass border-border">
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="text-lg font-semibold">
-                  Білікті серіктестер
+                  {t("dashboard.qualifiedPartners")}
                 </CardTitle>
                 <Link
                   href="/specialists"
                   className="text-sm text-primary hover:text-primary/80"
                 >
-                  Барлығы қарау
+                  {t("dashboard.viewAll")}
                 </Link>
               </CardHeader>
               <CardContent>
                 {data.recommendedSpecialists.length === 0 ? (
                   <div className="text-center py-8 text-muted-foreground">
                     <SlPeople className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                    <p>Серіктестер жоқ</p>
+                    <p>{t("dashboard.noSpecialists")}</p>
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -362,14 +364,14 @@ export default function DashboardPage() {
                 <SlRocket size={24} className="text-primary" />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold">Үздіктікке дайыз ба?</h3>
+                <h3 className="font-semibold">{t("dashboard.readyForExcellence")}</h3>
                 <p className="text-sm text-muted-foreground">
-                  أرسل مهمتك الاستراتيجية واتصل بمستشارين مؤهلين يقدمون النتائج بدقة.
+                  {t("dashboard.submitMission")}
                 </p>
               </div>
               <Link href="/request">
                 <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                  Кеңес сұрау
+                  {t("dashboard.requestConsultation")}
                 </Button>
               </Link>
             </CardContent>

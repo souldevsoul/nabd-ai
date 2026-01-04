@@ -7,6 +7,7 @@ import { RiUser3Line, RiSparklingLine, RiArrowRightLine, RiCheckLine } from "rea
 import { Header, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { SlStar, SlBadge, SlBriefcase } from "react-icons/sl";
+import { useTranslation } from "@/lib/i18n";
 
 interface Specialist {
   id: string;
@@ -34,6 +35,7 @@ interface SpecialistsClientProps {
 
 export function SpecialistsClient({ specialists, categories }: SpecialistsClientProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const filteredSpecialists = selectedCategory
     ? specialists.filter((s) =>
@@ -73,21 +75,21 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/30 bg-primary/5">
               <RiSparklingLine className="text-primary" size={14} />
-              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">قائمة الأطباء</span>
+              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">{t("specialists.roster")}</span>
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.95] mb-6">
-              أطباء
-              <span className="block font-bold gradient-text mt-2">متخصصون</span>
+              {t("specialists.elite")}
+              <span className="block font-bold gradient-text mt-2">{t("specialists.experts")}</span>
             </h1>
 
             <div className="w-32 h-1 cosmic-line mb-8" />
 
             <p className="text-muted-foreground text-xl font-light leading-relaxed mb-4">
-              لدينا فريق نخبة من الأطباء والاستشاريين الطبيين المتخصصين.
+              {t("specialists.description")}
             </p>
             <p className="text-foreground/70 text-lg font-light leading-relaxed">
-              خبرة موثقة. أداء متميز. نتائج استثنائية.
+              {t("specialists.tagline")}
             </p>
 
             <div className="mt-12 flex flex-col sm:flex-row gap-4">
@@ -97,7 +99,7 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
                   className="px-10 py-6 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-display tracking-wider uppercase text-sm shadow-lg shadow-secondary/20"
                 >
                   <SlBriefcase size={18} />
-                  طلب استشارة طبية
+                  {t("specialists.requestConsultation")}
                   <RiArrowRightLine size={16} />
                 </Button>
               </Link>
@@ -121,7 +123,7 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
                     : "border-border hover:border-primary hover:text-primary"
                 }`}
               >
-                جميع الأطباء ({specialists.length})
+                {t("specialists.allSpecialists")} ({specialists.length})
               </Button>
               {categories.slice(0, 8).map((category) => (
                 <Button
@@ -180,7 +182,7 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
                     </div>
                     <span className="text-muted-foreground text-sm">•</span>
                     <span className="text-sm text-muted-foreground font-light">
-                      {specialist.completedTasks} استشارة
+                      {specialist.completedTasks} {t("specialists.consultations")}
                     </span>
                   </div>
                 </div>
@@ -212,12 +214,12 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
                 {/* Rate & CTA */}
                 <div className="pt-6 border-t border-border flex items-center justify-between">
                   <div>
-                    <div className="text-sm text-muted-foreground font-light mb-1 font-mono">سعر الاستشارة</div>
+                    <div className="text-sm text-muted-foreground font-light mb-1 font-mono">{t("specialists.rate")}</div>
                     <div className="flex items-baseline gap-1">
                       <span className="font-display text-2xl font-bold text-foreground">
                         ${specialist.hourlyRate}
                       </span>
-                      <span className="text-sm text-muted-foreground">/استشارة</span>
+                      <span className="text-sm text-muted-foreground">/{t("specialists.perConsultation")}</span>
                     </div>
                   </div>
                   <Link href={`/request?specialist=${specialist.id}`}>
@@ -226,7 +228,7 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
                       variant="outline"
                       className="font-display tracking-wider uppercase text-xs gap-1 border-border hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300"
                     >
-                      تعيين
+                      {t("specialists.engage")}
                       <RiArrowRightLine size={12} />
                     </Button>
                   </Link>
@@ -251,17 +253,17 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
             >
               <SlBadge size={64} className="mx-auto text-muted-foreground/40 mb-6" />
               <h3 className="font-display text-2xl font-light text-foreground mb-3">
-                لا يوجد أطباء متاحون حالياً
+                {t("specialists.noSpecialists")}
               </h3>
               <p className="text-muted-foreground font-light mb-8">
-                جميع الأطباء مشغولون حالياً بالاستشارات. يرجى المحاولة لاحقاً.
+                {t("specialists.noSpecialistsDesc")}
               </p>
               <Button
                 variant="outline"
                 onClick={() => setSelectedCategory(null)}
                 className="font-display tracking-wider uppercase text-xs"
               >
-                عرض جميع الأطباء
+                {t("specialists.viewAllSpecialists")}
               </Button>
             </motion.div>
           )}
@@ -306,27 +308,27 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
               >
                 <RiSparklingLine className="text-primary" size={16} />
               </motion.div>
-              <span className="text-xs tracking-[0.4em] uppercase text-primary font-bold">استشارة خاصة</span>
+              <span className="text-xs tracking-[0.4em] uppercase text-primary font-bold">{t("specialists.bespoke")}</span>
             </div>
 
             <h2 className="font-display text-4xl md:text-6xl font-light text-foreground mb-6 leading-tight">
-              استشارة طبية
-              <span className="block font-bold gradient-text mt-2">متخصصة مطلوبة؟</span>
+              {t("specialists.customConsultation")}
+              <span className="block font-bold gradient-text mt-2">{t("specialists.needed")}</span>
             </h2>
 
             <div className="w-32 h-1 cosmic-line mx-auto mb-8" />
 
             <p className="text-muted-foreground text-lg font-light mb-4 leading-relaxed max-w-2xl mx-auto">
-              أخبرنا عن احتياجاتك الطبية، وسنقوم بتعيين أفضل طبيب متخصص من فريقنا النشط.
+              {t("specialists.ctaDescription")}
             </p>
             <p className="text-foreground/60 text-base font-light mb-12 leading-relaxed max-w-xl mx-auto">
-              تخطيط العلاج. تعيين الطبيب. بدء الاستشارة.
+              {t("specialists.ctaTagline")}
             </p>
 
             <Link href="/request">
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button className="px-12 py-7 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-display tracking-[0.2em] uppercase text-sm shadow-2xl shadow-secondary/30 border border-secondary/50">
-                  طلب استشارة طبية
+                  {t("specialists.requestConsultation")}
                   <RiArrowRightLine className="ml-3" size={18} />
                 </Button>
               </motion.div>
@@ -335,11 +337,11 @@ export function SpecialistsClient({ specialists, categories }: SpecialistsClient
             <div className="mt-10 flex items-center justify-center gap-8 text-xs text-muted-foreground font-mono">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                <span>توفر 24/7</span>
+                <span>{t("specialists.availability247")}</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-                <span>استجابة سريعة</span>
+                <span>{t("specialists.fastResponse")}</span>
               </div>
             </div>
           </motion.div>
