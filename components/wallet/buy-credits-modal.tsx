@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n";
 
 interface BuyCreditsModalProps {
   open: boolean;
@@ -33,9 +34,9 @@ interface BuyCreditsModalProps {
 }
 
 const creditPackages = [
-  { credits: 100, price: 10, label: "Starter" },
-  { credits: 500, price: 50, label: "Popular", popular: true },
-  { credits: 1000, price: 100, label: "Pro" },
+  { credits: 100, price: 10, labelKey: "buyCredits.starter" },
+  { credits: 500, price: 50, labelKey: "buyCredits.popular", popular: true },
+  { credits: 1000, price: 100, labelKey: "buyCredits.pro" },
 ];
 
 type PaymentStep = "select" | "card" | "processing" | "3ds" | "success" | "error";
@@ -55,6 +56,7 @@ export function BuyCreditsModal({
   onSuccess,
 }: BuyCreditsModalProps) {
   const { data: session } = useSession();
+  const { t } = useTranslation();
   const [step, setStep] = useState<PaymentStep>("select");
   const [selectedCredits, setSelectedCredits] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
@@ -539,11 +541,11 @@ export function BuyCreditsModal({
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-xl">
             <SlWallet className="w-5 h-5 text-pink-500" />
-            {step === "success" ? "Payment Complete" : "Add Credits"}
+            {step === "success" ? t("buyCredits.paymentComplete") : t("buyCredits.addCredits")}
           </DialogTitle>
           {step !== "success" && (
             <DialogDescription>
-              Purchase credits to use services. 10 credits = $1 USD
+              {t("buyCredits.purchaseDescription")}
             </DialogDescription>
           )}
         </DialogHeader>
@@ -559,9 +561,9 @@ export function BuyCreditsModal({
               className="py-8"
             >
               <div className="p-3 rounded-lg bg-zinc-800/50 mb-6 flex items-center justify-between">
-                <span className="text-sm text-zinc-400">Current Balance</span>
+                <span className="text-sm text-zinc-400">{t("wallet.currentBalance")}</span>
                 <span className="font-semibold text-white">
-                  {currentBalance.toLocaleString()} credits
+                  {currentBalance.toLocaleString()} {t("common.credits")}
                 </span>
               </div>
 
@@ -569,20 +571,20 @@ export function BuyCreditsModal({
                 <SlEnvolopeLetter className="w-14 h-14 text-pink-500 mx-auto" />
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-2">
-                    Contact Support
+                    {t("buyCredits.contactSupport")}
                   </h3>
                   <p className="text-sm text-zinc-300 mb-1">
-                    Credit purchase is currently disabled for your account.
+                    {t("buyCredits.purchaseDisabled")}
                   </p>
                   <p className="text-sm text-zinc-400 mb-4">
-                    Please contact our support team to purchase credits.
+                    {t("buyCredits.contactSupportDesc")}
                   </p>
                   <Button
-                    onClick={() => window.location.href = "mailto:support@catalyst.ai"}
+                    onClick={() => window.location.href = "mailto:support@nabd.ai"}
                     className="bg-pink-500 hover:bg-pink-400 text-black font-semibold"
                   >
                     <SlEnvolopeLetter className="w-4 h-4 mr-2" />
-                    Contact Support
+                    {t("buyCredits.contactSupport")}
                   </Button>
                 </div>
               </div>
@@ -597,9 +599,9 @@ export function BuyCreditsModal({
             >
               {/* Current Balance */}
               <div className="flex items-center justify-between p-3 rounded-lg bg-zinc-800/50">
-                <span className="text-sm text-zinc-400">Current Balance</span>
+                <span className="text-sm text-zinc-400">{t("wallet.currentBalance")}</span>
                 <span className="font-semibold text-white">
-                  {currentBalance.toLocaleString()} credits
+                  {currentBalance.toLocaleString()} {t("common.credits")}
                 </span>
               </div>
 
@@ -623,7 +625,7 @@ export function BuyCreditsModal({
                   >
                     {pkg.popular && (
                       <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-pink-500 text-black text-xs font-semibold">
-                        Popular
+                        {t("buyCredits.popular")}
                       </span>
                     )}
                     <p className="text-2xl font-bold text-white">{pkg.credits}</p>
@@ -634,12 +636,12 @@ export function BuyCreditsModal({
 
               {/* Custom Amount */}
               <div className="space-y-2">
-                <Label className="text-sm text-zinc-400">Or enter custom amount</Label>
+                <Label className="text-sm text-zinc-400">{t("buyCredits.orEnterCustom")}</Label>
                 <div className="relative">
                   <SlWallet className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                   <Input
                     type="text"
-                    placeholder="Enter credits (min 10)"
+                    placeholder={t("buyCredits.enterCreditsMin")}
                     value={customAmount}
                     onChange={(e) => {
                       setCustomAmount(e.target.value.replace(/\D/g, ""));
@@ -666,7 +668,7 @@ export function BuyCreditsModal({
                     : "bg-zinc-700 text-zinc-400"
                 )}
               >
-                Continue to Payment
+                {t("buyCredits.continueToPayment")}
               </Button>
             </motion.div>
           ) : step === "card" ? (
@@ -680,14 +682,14 @@ export function BuyCreditsModal({
               {/* Summary */}
               <div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20">
                 <div className="flex items-center justify-between">
-                  <span className="text-zinc-300">Credits</span>
+                  <span className="text-zinc-300">{t("common.credits")}</span>
                   <span className="font-semibold text-white flex items-center gap-1">
                     <SlStar className="w-4 h-4 text-pink-500" />
                     {effectiveCredits.toLocaleString()}
                   </span>
                 </div>
                 <div className="flex items-center justify-between mt-2">
-                  <span className="text-zinc-300">Total</span>
+                  <span className="text-zinc-300">{t("buyCredits.total")}</span>
                   <span className="text-xl font-bold text-pink-500">
                     ${priceUsd.toFixed(2)}
                   </span>
@@ -697,7 +699,7 @@ export function BuyCreditsModal({
               {/* Card Form */}
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label>Card Number</Label>
+                  <Label>{t("buyCredits.cardNumber")}</Label>
                   <div className="relative">
                     <SlCreditCard className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                     <Input
@@ -713,7 +715,7 @@ export function BuyCreditsModal({
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label>Expiry Date</Label>
+                    <Label>{t("buyCredits.expiryDate")}</Label>
                     <Input
                       type="text"
                       placeholder="MM/YY"
@@ -724,7 +726,7 @@ export function BuyCreditsModal({
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>CVV</Label>
+                    <Label>{t("buyCredits.cvv")}</Label>
                     <div className="relative">
                       <SlLock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                       <Input
@@ -745,7 +747,7 @@ export function BuyCreditsModal({
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Cardholder Name</Label>
+                  <Label>{t("buyCredits.cardholderName")}</Label>
                   <Input
                     type="text"
                     placeholder="JOHN DOE"
@@ -768,7 +770,7 @@ export function BuyCreditsModal({
                   onClick={() => setStep("select")}
                   className="flex-1 border-zinc-700"
                 >
-                  Back
+                  {t("common.back")}
                 </Button>
                 <Button
                   onClick={handleSubmitPayment}
@@ -781,12 +783,12 @@ export function BuyCreditsModal({
                   )}
                 >
                   <SlLock className="w-4 h-4 mr-2" />
-                  Pay ${priceUsd.toFixed(2)}
+                  {t("buyCredits.pay")} ${priceUsd.toFixed(2)}
                 </Button>
               </div>
 
               <p className="text-xs text-center text-zinc-500">
-                Your payment is secured with industry-standard encryption.
+                {t("buyCredits.securePayment")}
               </p>
             </motion.div>
           ) : step === "processing" ? (
@@ -799,10 +801,10 @@ export function BuyCreditsModal({
             >
               <SlRefresh className="w-12 h-12 text-pink-500 mx-auto animate-spin mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">
-                Processing Payment
+                {t("buyCredits.processingPayment")}
               </h3>
               <p className="text-sm text-zinc-400">
-                Please wait while we process your payment...
+                {t("buyCredits.pleaseWait")}
               </p>
             </motion.div>
           ) : step === "3ds" ? (
@@ -816,10 +818,10 @@ export function BuyCreditsModal({
               <div className="text-center mb-4">
                 <SlLock className="w-8 h-8 text-pink-500 mx-auto mb-2" />
                 <h3 className="text-lg font-semibold text-white">
-                  Verify Your Payment
+                  {t("buyCredits.verifyPayment")}
                 </h3>
                 <p className="text-sm text-zinc-400">
-                  Please complete the verification below.
+                  {t("buyCredits.completeVerification")}
                 </p>
               </div>
 
@@ -830,7 +832,7 @@ export function BuyCreditsModal({
               />
 
               <p className="text-xs text-center text-zinc-500 mt-4">
-                This verification is required by your bank for security.
+                {t("buyCredits.bankVerification")}
               </p>
             </motion.div>
           ) : step === "success" ? (
@@ -850,17 +852,17 @@ export function BuyCreditsModal({
                 <SlCheck className="w-8 h-8 text-emerald-500" />
               </motion.div>
               <h3 className="text-xl font-semibold text-white mb-2">
-                Credits Added!
+                {t("buyCredits.creditsAdded")}
               </h3>
               <p className="text-zinc-400 mb-6">
-                +{effectiveCredits.toLocaleString()} credits added to your wallet
+                +{effectiveCredits.toLocaleString()} {t("buyCredits.creditsAddedToWallet")}
               </p>
               <Button
                 onClick={handleSuccessClose}
                 className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold"
               >
                 <SlCheck className="w-4 h-4 mr-2" />
-                Done
+                {t("buyCredits.done")}
               </Button>
             </motion.div>
           ) : step === "error" ? (
@@ -879,22 +881,22 @@ export function BuyCreditsModal({
                 <SlClose className="w-8 h-8 text-red-500" />
               </motion.div>
               <h3 className="text-xl font-semibold text-white mb-2">
-                Payment Failed
+                {t("buyCredits.paymentFailed")}
               </h3>
-              <p className="text-zinc-400 mb-6">{error || "Something went wrong"}</p>
+              <p className="text-zinc-400 mb-6">{error || t("common.error")}</p>
               <div className="flex gap-3 justify-center">
                 <Button
                   variant="outline"
                   onClick={() => onOpenChange(false)}
                   className="border-zinc-700"
                 >
-                  Cancel
+                  {t("common.cancel")}
                 </Button>
                 <Button
                   onClick={handleRetry}
                   className="bg-pink-500 hover:bg-pink-400 text-black font-semibold"
                 >
-                  Try Again
+                  {t("buyCredits.tryAgain")}
                 </Button>
               </div>
             </motion.div>

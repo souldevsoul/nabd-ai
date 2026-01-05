@@ -6,6 +6,7 @@ import { SlWallet, SlPlus, SlRefresh } from "react-icons/sl";
 import { Button } from "@/components/ui/button";
 import { BuyCreditsModal } from "./buy-credits-modal";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n";
 
 interface WalletBalanceProps {
   variant?: "header" | "full";
@@ -16,6 +17,7 @@ export function WalletBalance({ variant = "header", className }: WalletBalancePr
   const [balance, setBalance] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [showTopup, setShowTopup] = useState(false);
+  const { t } = useTranslation();
 
   const fetchBalance = async () => {
     try {
@@ -93,7 +95,7 @@ export function WalletBalance({ variant = "header", className }: WalletBalancePr
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-zinc-400 mb-1">Сіздің баتمңыз</p>
+            <p className="text-sm text-zinc-400 mb-1">{t("wallet.currentBalance")}</p>
             <div className="flex items-center gap-3">
               <SlWallet className="w-8 h-8 text-amber-500" />
               {loading ? (
@@ -108,7 +110,7 @@ export function WalletBalance({ variant = "header", className }: WalletBalancePr
                   {balance?.toLocaleString() || 0}
                 </motion.span>
               )}
-              <span className="text-zinc-500 text-lg">кредит</span>
+              <span className="text-zinc-500 text-lg">{t("common.credits")}</span>
             </div>
           </div>
           <Button
@@ -116,7 +118,7 @@ export function WalletBalance({ variant = "header", className }: WalletBalancePr
             className="bg-amber-500 hover:bg-amber-400 text-black font-semibold"
           >
             <SlPlus className="w-4 h-4 mr-2" />
-            إضافة رصيد
+            {t("dashboard.addCredits")}
           </Button>
         </div>
       </motion.div>

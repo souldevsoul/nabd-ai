@@ -247,11 +247,11 @@ export default function SettingsPage() {
               <div className="space-y-3">
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" defaultChecked className="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500" />
-                  <span className="text-slate-300">{t("settings.newLicenseRequests")}</span>
+                  <span className="text-slate-300">{t("settings.newOrderRequests")}</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" defaultChecked className="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500" />
-                  <span className="text-slate-300">{t("settings.photoVerificationUpdates")}</span>
+                  <span className="text-slate-300">{t("settings.orderUpdates")}</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" defaultChecked className="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500" />

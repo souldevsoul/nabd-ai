@@ -1,263 +1,262 @@
-import { Metadata } from "next";
-import { Header, Footer } from "@/components/layout";
+"use client";
 
-export const metadata: Metadata = {
-  title: "سياسة الخصوصية",
-  description: "NABD GDPR бойыша жеке ақпарاسمك қалай жиайтыы, пайдаتمатыы و қорإلىйтыы біліңіз.",
-};
+import { Header, Footer } from "@/components/layout";
+import { useTranslation } from "@/lib/i18n";
 
 export default function PrivacyPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
       <article className="pt-32 pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-black tracking-tight mb-4">سياسة الخصوصية</h1>
-          <p className="text-muted-foreground mb-8">آخر تحديث: 20 ديسمبر 2025</p>
+          <h1 className="text-4xl font-black tracking-tight mb-4">{t("privacy.title")}</h1>
+          <p className="text-muted-foreground mb-8">{t("privacy.lastUpdated")}: 20 December 2025</p>
 
           <div className="prose prose-invert prose-amber max-w-none">
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">1. المقدمة</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.intro.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                NewCo Ltd. (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), Company No: NEW123, registered at New Address 1, is committed to protecting your privacy and personal data in accordance with the General Data Protection Regulation (GDPR) and applicable data protection laws.
+                {t("privacy.sections.intro.p1")}
               </p>
               <p className="text-muted-foreground mb-4">
-                This Privacy Policy explains how we collect, use, store, and protect your personal data when you use the NABD platform and services.
+                {t("privacy.sections.intro.p2")}
               </p>
               <p className="text-muted-foreground">
-                We are the data controller for the personal data we process. Our Data Protection Officer can be contacted at dpo@vertex.ai.
+                {t("privacy.sections.intro.p3")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">2. البيانات الشخصية التي نجمعها</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.dataCollected.title")}</h2>
 
-              <h3 className="text-xl font-semibold mb-3">2.1 أنت ұаты ақпарат</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.dataCollected.provided.title")}</h3>
               <ul className="list-disc pl-6 text-muted-foreground mb-4 space-y-2">
-                <li>Account information: name, email address, password (encrypted)</li>
-                <li>Payment information: billing address, payment card details (processed by our payment provider)</li>
-                <li>Profile information: professional background, preferences</li>
-                <li>Communications: messages sent through our platform, support inquiries</li>
-                <li>Service requests: project descriptions, requirements</li>
+                <li>{t("privacy.sections.dataCollected.provided.item1")}</li>
+                <li>{t("privacy.sections.dataCollected.provided.item2")}</li>
+                <li>{t("privacy.sections.dataCollected.provided.item3")}</li>
+                <li>{t("privacy.sections.dataCollected.provided.item4")}</li>
+                <li>{t("privacy.sections.dataCollected.provided.item5")}</li>
               </ul>
 
-              <h3 className="text-xl font-semibold mb-3">2.2 المعلومات التي يتم جمعها تلقائياً</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.dataCollected.automatic.title")}</h3>
               <ul className="list-disc pl-6 text-muted-foreground mb-4 space-y-2">
-                <li>Technical data: IP address, browser type and version, device information</li>
-                <li>Usage data: pages visited, time spent, interaction patterns</li>
-                <li>Cookies and tracking technologies (see our <a href="/cookies" className="text-primary hover:underline">Cookie Policy</a>)</li>
+                <li>{t("privacy.sections.dataCollected.automatic.item1")}</li>
+                <li>{t("privacy.sections.dataCollected.automatic.item2")}</li>
+                <li>{t("privacy.sections.dataCollected.automatic.item3")}</li>
               </ul>
 
-              <h3 className="text-xl font-semibold mb-3">2.3 المعلومات المستلمة من أطراف ثالثة</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.dataCollected.thirdParty.title")}</h3>
               <p className="text-muted-foreground">
-                We may receive data from payment processors, analytics providers, and security services necessary to operate our platform.
+                {t("privacy.sections.dataCollected.thirdParty.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">3. الأسس القانونية والأغراض للمعالجة</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.legalBasis.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                We process your personal data only when we have a lawful basis:
+                {t("privacy.sections.legalBasis.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">3.1 Contractual Necessity</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.legalBasis.contractual.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                To provide our services, process transactions, and fulfill our contractual obligations to you.
+                {t("privacy.sections.legalBasis.contractual.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">3.2 Legitimate Interests</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.legalBasis.legitimate.title")}</h3>
               <ul className="list-disc pl-6 text-muted-foreground mb-4 space-y-2">
-                <li>Platform improvement and optimization</li>
-                <li>Fraud prevention and security</li>
-                <li>Customer support and relationship management</li>
-                <li>Analytics and business intelligence</li>
+                <li>{t("privacy.sections.legalBasis.legitimate.item1")}</li>
+                <li>{t("privacy.sections.legalBasis.legitimate.item2")}</li>
+                <li>{t("privacy.sections.legalBasis.legitimate.item3")}</li>
+                <li>{t("privacy.sections.legalBasis.legitimate.item4")}</li>
               </ul>
 
-              <h3 className="text-xl font-semibold mb-3">3.3 Legal Obligations</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.legalBasis.legal.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                To comply with legal requirements including tax, accounting, and anti-money laundering obligations.
+                {t("privacy.sections.legalBasis.legal.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">3.4 Consent</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.legalBasis.consent.title")}</h3>
               <p className="text-muted-foreground">
-                For marketing communications and non-essential cookies. You may withdraw consent at any time.
+                {t("privacy.sections.legalBasis.consent.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">4. مشاركة البيانات والإفصاح عنها</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.sharing.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                We do not sell your personal data. We share data only as follows:
+                {t("privacy.sections.sharing.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">4.1 Service Providers</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.sharing.providers.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                We engage trusted third-party processors for:
+                {t("privacy.sections.sharing.providers.p1")}
               </p>
               <ul className="list-disc pl-6 text-muted-foreground mb-4 space-y-2">
-                <li>Payment processing (PCI-DSS compliant)</li>
-                <li>Cloud hosting and infrastructure</li>
-                <li>Email communications</li>
-                <li>Analytics services</li>
+                <li>{t("privacy.sections.sharing.providers.item1")}</li>
+                <li>{t("privacy.sections.sharing.providers.item2")}</li>
+                <li>{t("privacy.sections.sharing.providers.item3")}</li>
+                <li>{t("privacy.sections.sharing.providers.item4")}</li>
               </ul>
               <p className="text-muted-foreground mb-4">
-                All processors are bound by data processing agreements ensuring GDPR compliance.
+                {t("privacy.sections.sharing.providers.p2")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">4.2 Specialists</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.sharing.specialists.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                When you engage a specialist, relevant project information is shared to facilitate service delivery.
+                {t("privacy.sections.sharing.specialists.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">4.3 Legal Requirements</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.sharing.legal.title")}</h3>
               <p className="text-muted-foreground">
-                We may disclose data when required by law, to protect our rights, or in response to valid legal requests from authorities.
+                {t("privacy.sections.sharing.legal.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">5. نقل البيانات الدولية</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.transfers.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                Your data is primarily stored within the European Economic Area (EEA). Where we transfer data outside the EEA, we ensure appropriate safeguards are in place:
+                {t("privacy.sections.transfers.p1")}
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
-                <li>Standard Contractual Clauses approved by the European Commission</li>
-                <li>Adequacy decisions by the European Commission</li>
-                <li>Other legally recognized transfer mechanisms</li>
+                <li>{t("privacy.sections.transfers.item1")}</li>
+                <li>{t("privacy.sections.transfers.item2")}</li>
+                <li>{t("privacy.sections.transfers.item3")}</li>
               </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">6. الاحتفاظ بالبيانات</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.retention.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                We retain personal data only as long as necessary:
+                {t("privacy.sections.retention.p1")}
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
-                <li>Account data: While your account is active and up to 7 years after closure for legal obligations</li>
-                <li>Transaction records: 7 years for tax and accounting purposes</li>
-                <li>Marketing data: Until you withdraw consent or 2 years of inactivity</li>
-                <li>Technical logs: 90 days</li>
+                <li>{t("privacy.sections.retention.item1")}</li>
+                <li>{t("privacy.sections.retention.item2")}</li>
+                <li>{t("privacy.sections.retention.item3")}</li>
+                <li>{t("privacy.sections.retention.item4")}</li>
               </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">7. أمان البيانات</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.security.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                We implement appropriate technical and organizational measures to protect your data:
+                {t("privacy.sections.security.p1")}
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
-                <li>Encryption in transit (TLS) and at rest</li>
-                <li>Access controls and authentication</li>
-                <li>Regular security assessments and audits</li>
-                <li>Employee training on data protection</li>
-                <li>Incident response procedures</li>
+                <li>{t("privacy.sections.security.item1")}</li>
+                <li>{t("privacy.sections.security.item2")}</li>
+                <li>{t("privacy.sections.security.item3")}</li>
+                <li>{t("privacy.sections.security.item4")}</li>
+                <li>{t("privacy.sections.security.item5")}</li>
               </ul>
               <p className="text-muted-foreground mt-4">
-                In the event of a data breach affecting your rights, we will notify you and the relevant supervisory authority within 72 hours as required by GDPR.
+                {t("privacy.sections.security.p2")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">8. حقوقك بموجب اللائحة العامة لحماية البيانات</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.rights.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                You have the following rights regarding your personal data:
+                {t("privacy.sections.rights.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">8.1 Right of Access</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.rights.access.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                Request a copy of your personal data we hold.
+                {t("privacy.sections.rights.access.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">8.2 Right to Rectification</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.rights.rectification.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                Correct inaccurate or incomplete personal data.
+                {t("privacy.sections.rights.rectification.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">8.3 Right to Erasure</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.rights.erasure.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                Request deletion of your personal data (subject to legal retention requirements).
+                {t("privacy.sections.rights.erasure.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">8.4 Right to Restriction</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.rights.restriction.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                Request restriction of processing in certain circumstances.
+                {t("privacy.sections.rights.restriction.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">8.5 Right to Data Portability</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.rights.portability.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                Receive your data in a structured, commonly used format and transmit it to another controller.
+                {t("privacy.sections.rights.portability.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">8.6 Right to Object</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.rights.object.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                Object to processing based on legitimate interests or for direct marketing.
+                {t("privacy.sections.rights.object.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">8.7 Right to Withdraw Consent</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("privacy.sections.rights.withdraw.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                Withdraw consent for processing based on consent (does not affect prior lawful processing).
+                {t("privacy.sections.rights.withdraw.p1")}
               </p>
 
               <p className="text-muted-foreground">
-                To exercise these rights, contact us at privacy@vertex.ai. We will respond within one month. You also have the right to lodge a complaint with your local data protection supervisory authority.
+                {t("privacy.sections.rights.exercise")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">9. ملفات تعريف الارتباط والتتبع</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.cookies.title")}</h2>
               <p className="text-muted-foreground">
-                We use cookies and similar technologies. For detailed information, see our <a href="/cookies" className="text-primary hover:underline">Cookie Policy</a>. You can manage cookie preferences through your browser settings or our cookie consent tool.
+                {t("privacy.sections.cookies.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">10. الاتصالات التسويقية</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.marketing.title")}</h2>
               <p className="text-muted-foreground">
-                We send marketing communications only with your consent. You may unsubscribe at any time using the link in our emails or by contacting privacy@vertex.ai. We will process your opt-out within 48 hours.
+                {t("privacy.sections.marketing.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">11. خصوصية الأطفال</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.children.title")}</h2>
               <p className="text-muted-foreground">
-                Our services are not intended for individuals under 16 years of age. We do not knowingly collect personal data from children. If you believe we have collected data from a child, please contact us immediately at privacy@vertex.ai.
+                {t("privacy.sections.children.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">12. اتخاذ القرار الآلي</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.automated.title")}</h2>
               <p className="text-muted-foreground">
-                We may use automated systems to match clients with specialists. You have the right to request human review of automated decisions that significantly affect you.
+                {t("privacy.sections.automated.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">13. التغييرات على السياسة</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.changes.title")}</h2>
               <p className="text-muted-foreground">
-                We may update this Privacy Policy from time to time. Material changes will be notified to you by email or prominent notice on our platform at least 30 days in advance. The &quot;Last updated&quot; date will be revised accordingly.
+                {t("privacy.sections.changes.p1")}
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">14. معلومات الاتصال</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.contact.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                For questions, concerns, or to exercise your rights, please contact:
+                {t("privacy.sections.contact.p1")}
               </p>
               <p className="text-muted-foreground">
-                <strong>Data Controller:</strong><br />
-                NewCo Ltd.<br />
-                New Address 1<br />
-                Company No: NEW123<br />
+                <strong>{t("privacy.sections.contact.controller")}</strong><br />
+                {t("privacy.sections.contact.company")}<br />
+                {t("privacy.sections.contact.address")}<br />
+                {t("privacy.sections.contact.companyNo")}<br />
                 <br />
-                <strong>Data Protection Officer:</strong><br />
-                Email: dpo@vertex.ai<br />
+                <strong>{t("privacy.sections.contact.dpo")}</strong><br />
+                {t("privacy.sections.contact.dpEmail")}<br />
                 <br />
-                <strong>Privacy Inquiries:</strong><br />
-                Email: privacy@vertex.ai<br />
+                <strong>{t("privacy.sections.contact.privacyInquiries")}</strong><br />
+                {t("privacy.sections.contact.privacyEmail")}<br />
                 <br />
-                <strong>General Support:</strong><br />
-                Email: support@vertex.ai
+                <strong>{t("privacy.sections.contact.generalSupport")}</strong><br />
+                {t("privacy.sections.contact.supportEmail")}
               </p>
             </section>
           </div>

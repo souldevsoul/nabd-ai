@@ -866,16 +866,444 @@
   "cookies": {
     "title": "Cookie Policy",
     "description": "Learn about how we use cookies and similar technologies on the NABD platform.",
-    "lastUpdated": "Last updated"
+    "lastUpdated": "Last updated",
+    "sections": {
+      "intro": {
+        "title": "1. Introduction",
+        "p1": "This Cookie Policy explains how NewCo Ltd. (\"we,\" \"our,\" or \"us\") uses cookies and similar tracking technologies on the NABD platform.",
+        "p2": "By using our website, you consent to the use of cookies in accordance with this policy. You can manage your cookie preferences as described below."
+      },
+      "whatAreCookies": {
+        "title": "2. What Are Cookies?",
+        "p1": "Cookies are small text files placed on your device when you visit a website. They help the website remember information about your visit, such as your preferences and actions.",
+        "p2": "Similar technologies include web beacons, pixels, and local storage, which serve comparable purposes."
+      },
+      "types": {
+        "title": "3. Types of Cookies We Use",
+        "necessary": {
+          "title": "3.1 Strictly Necessary Cookies",
+          "p1": "These cookies are essential for the website to function properly. They enable core functionality such as security, network management, and accessibility.",
+          "item1": "Authentication and session management",
+          "item2": "Security and fraud prevention",
+          "item3": "Load balancing",
+          "legalBasis": "Legal basis:",
+          "contractual": "Contractual necessity",
+          "canBeDisabled": "Can be disabled:",
+          "no": "No (required for service operation)"
+        },
+        "functional": {
+          "title": "3.2 Functional Cookies",
+          "p1": "These cookies enable enhanced functionality and personalization, such as remembering your preferences.",
+          "item1": "Language preferences",
+          "item2": "Display preferences (theme, layout)",
+          "item3": "User interface customizations",
+          "legalBasis": "Legitimate interest / Consent",
+          "canBeDisabled": "Yes"
+        },
+        "analytics": {
+          "title": "3.3 Performance/Analytics Cookies",
+          "p1": "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.",
+          "item1": "Page views and navigation patterns",
+          "item2": "Error tracking and performance monitoring",
+          "item3": "Feature usage statistics",
+          "legalBasis": "Consent",
+          "canBeDisabled": "Yes"
+        },
+        "marketing": {
+          "title": "3.4 Marketing/Targeting Cookies",
+          "p1": "These cookies track your browsing habits to deliver relevant advertisements and measure campaign effectiveness.",
+          "item1": "Advertising delivery and personalization",
+          "item2": "Campaign performance tracking",
+          "item3": "Retargeting",
+          "legalBasis": "Consent",
+          "canBeDisabled": "Yes"
+        }
+      },
+      "duration": {
+        "title": "4. Cookie Duration",
+        "session": {
+          "title": "4.1 Session Cookies",
+          "p1": "Temporary cookies that are deleted when you close your browser. Used for session management and security."
+        },
+        "persistent": {
+          "title": "4.2 Persistent Cookies",
+          "p1": "Remain on your device for a set period (up to 12 months) or until manually deleted. Used to remember your preferences across sessions."
+        }
+      },
+      "thirdParty": {
+        "title": "5. Third-Party Cookies",
+        "p1": "We may use third-party services that set their own cookies. These providers have their own privacy policies:",
+        "item1": "Analytics providers (e.g., anonymized analytics)",
+        "item2": "Payment processors (for secure transactions)",
+        "item3": "Content delivery networks (for performance)",
+        "item4": "Security services (for fraud prevention)"
+      },
+      "managing": {
+        "title": "6. Managing Your Cookie Preferences",
+        "consent": {
+          "title": "6.1 Cookie Consent Tool",
+          "p1": "When you first visit our website, you'll see a cookie consent banner. You can accept all cookies, reject non-essential cookies, or customize your preferences.",
+          "p2": "You can change your preferences at any time by accessing the cookie settings in your account or using the cookie preferences link in the footer."
+        },
+        "browser": {
+          "title": "6.2 Browser Settings",
+          "p1": "Most browsers allow you to control cookies through their settings. You can:",
+          "item1": "Block all cookies",
+          "item2": "Accept only first-party cookies",
+          "item3": "Delete cookies after each browsing session",
+          "item4": "Make exceptions for specific websites",
+          "p2": "Please note that blocking all cookies may impact your ability to use certain features of our website."
+        },
+        "instructions": {
+          "title": "6.3 Browser-Specific Instructions",
+          "chrome": "Chrome: Settings > Privacy and security > Cookies and other site data",
+          "firefox": "Firefox: Options > Privacy & Security > Cookies and Site Data",
+          "safari": "Safari: Preferences > Privacy > Cookies and website data",
+          "edge": "Edge: Settings > Cookies and site permissions > Cookies and site data"
+        }
+      },
+      "dnt": {
+        "title": "7. Do Not Track Signals",
+        "p1": "Some browsers support \"Do Not Track\" (DNT) signals. Currently, there is no universal standard for handling DNT signals. We respect your privacy choices made through our cookie consent tool and browser settings."
+      },
+      "details": {
+        "title": "8. Specific Cookie Details",
+        "headerName": "Cookie Name",
+        "headerPurpose": "Purpose",
+        "headerType": "Type",
+        "headerDuration": "Duration",
+        "session": "Session",
+        "authentication": "Authentication",
+        "security": "Security",
+        "userPreferences": "User preferences",
+        "usageStatistics": "Usage statistics",
+        "necessary": "Necessary",
+        "functional": "Functional",
+        "analytics": "Analytics",
+        "months": "months"
+      },
+      "rights": {
+        "title": "9. Your Rights",
+        "p1": "Under GDPR, you have rights regarding cookies and tracking:",
+        "item1": "Right to be informed about cookies we use",
+        "item2": "Right to consent or refuse non-essential cookies",
+        "item3": "Right to withdraw consent at any time",
+        "item4": "Right to object to processing for legitimate interests"
+      },
+      "changes": {
+        "title": "10. Changes to This Policy",
+        "p1": "We may update this Cookie Policy from time to time to reflect changes in our practices or legal requirements. The \"Last updated\" date will be revised accordingly. We encourage you to review this policy periodically."
+      },
+      "contact": {
+        "title": "11. Contact Us",
+        "p1": "If you have questions about our use of cookies, please contact us:",
+        "company": "NewCo Ltd.",
+        "address": "New Address 1",
+        "companyNo": "Company No: NEW123",
+        "email": "Email: privacy@nabd.ai",
+        "dpo": "Data Protection Officer: dpo@nabd.ai"
+      }
+    }
   },
-  "refundPolicy": {
+  "refund": {
     "title": "Refund Policy",
     "description": "Information about refunds and our satisfaction guarantee.",
-    "lastUpdated": "Last updated"
+    "lastUpdated": "Last updated",
+    "sections": {
+      "overview": {
+        "title": "1. Overview",
+        "p1": "At NABD, operated by NewCo Ltd., we are committed to your satisfaction. This Refund Policy outlines your rights to refunds and withdrawals in compliance with EU consumer protection laws.",
+        "p2": "All refunds are subject to the terms outlined below and your statutory rights under EU law."
+      },
+      "euRights": {
+        "title": "2. EU Right of Withdrawal (14-Day Cooling-Off Period)",
+        "yourRights": {
+          "title": "2.1 Your Rights",
+          "p1": "As a consumer in the European Union, you have the right to withdraw from credit purchases within 14 days of purchase without providing a reason, in accordance with the EU Consumer Rights Directive."
+        },
+        "howTo": {
+          "title": "2.2 How to Exercise Your Right",
+          "p1": "To withdraw from a purchase, send a clear written statement to:",
+          "p2": "Email: support@nabd.ai",
+          "subject": "Subject line: \"Withdrawal Request\"",
+          "include": "Include: Your name, order number, and date of purchase",
+          "p3": "The 14-day period begins on the day of purchase. You must communicate your decision to withdraw before the deadline."
+        },
+        "exception": {
+          "title": "2.3 Important Exception - Services Commenced Early",
+          "p1": "If you request consulting services to begin during the 14-day withdrawal period and the service is fully performed, you lose your right to withdraw. However, you will only pay proportionate costs for services actually rendered before withdrawal."
+        }
+      },
+      "creditRefund": {
+        "title": "3. Credit Refund Policy",
+        "unused": {
+          "title": "3.1 Unused Credits",
+          "p1": "Unused credits may be refunded within 30 days of purchase. After 30 days, credits remain valid indefinitely but are non-refundable.",
+          "p2": "To request a refund of unused credits, contact support@nabd.ai with:",
+          "item1": "Your account email",
+          "item2": "Purchase date and order number",
+          "item3": "Number of unused credits",
+          "item4": "Reason for refund (optional but helpful)"
+        },
+        "partial": {
+          "title": "3.2 Partially Used Credit Packages",
+          "p1": "If you have used some credits from a package:",
+          "item1": "Within 14 days: You may withdraw and receive a refund for unused credits (minus the standard rate for credits used)",
+          "item2": "After 14 days but within 30 days: Refund available for unused credits at the package rate",
+          "item3": "After 30 days: No refund available, but credits remain valid"
+        },
+        "bonus": {
+          "title": "3.3 Bonus Credits",
+          "p1": "Bonus credits received as part of promotional packages are non-refundable but remain valid indefinitely."
+        }
+      },
+      "serviceRefunds": {
+        "title": "4. Service Refunds",
+        "completed": {
+          "title": "4.1 Completed Services",
+          "p1": "Credits used for successfully completed consulting services are generally non-refundable. However, we maintain a satisfaction guarantee (see Section 5)."
+        },
+        "cancelled": {
+          "title": "4.2 Cancelled or Incomplete Services",
+          "p1": "If a service is cancelled before completion or a specialist fails to deliver:",
+          "item1": "Full credit refund to your account balance",
+          "item2": "Option to cash refund within 14 days of cancellation",
+          "item3": "No penalty or deduction"
+        },
+        "defects": {
+          "title": "4.3 Service Defects",
+          "p1": "If services are defective, not as described, or fail to meet reasonable quality standards, you are entitled to remedies under EU consumer law, including service correction, price reduction, or refund."
+        }
+      },
+      "satisfaction": {
+        "title": "5. Satisfaction Guarantee",
+        "p1": "We stand behind the quality of our specialist services. If you are not satisfied with a completed service:",
+        "item1": "Contact us within 7 days of service completion",
+        "item2": "Provide specific details about your concerns",
+        "item3": "We will review and offer remedies, which may include:",
+        "subItem1": "Service revision by the same specialist",
+        "subItem2": "Reassignment to a different specialist",
+        "subItem3": "Partial or full credit refund",
+        "p2": "Our goal is to ensure every engagement meets your expectations and our standards of excellence."
+      },
+      "processing": {
+        "title": "6. Refund Processing",
+        "time": {
+          "title": "6.1 Processing Time",
+          "p1": "We process refund requests within 5 business days of approval. Refunds are issued to your original payment method."
+        },
+        "payment": {
+          "title": "6.2 Payment Method Timing",
+          "item1": "Credit/Debit cards: 5-10 business days (depending on your bank)",
+          "item2": "Other payment methods: As specified by the payment provider"
+        },
+        "currency": {
+          "title": "6.3 Currency and Fees",
+          "p1": "Refunds are issued in the original purchase currency. We do not charge refund processing fees. However, your bank or payment provider may apply currency conversion or transaction fees beyond our control."
+        }
+      },
+      "nonRefundable": {
+        "title": "7. Non-Refundable Items",
+        "p1": "The following are non-refundable:",
+        "item1": "Bonus credits from promotional offers",
+        "item2": "Credits older than 30 days (unless subject to satisfaction guarantee)",
+        "item3": "Gift credits or promotional codes",
+        "item4": "Services fully performed during the withdrawal period with your express consent"
+      },
+      "fraudulent": {
+        "title": "8. Fraudulent or Abusive Refund Requests",
+        "p1": "We reserve the right to refuse refunds for fraudulent or abusive requests, including repeated refund requests without valid reason. Such actions may result in account suspension or termination."
+      },
+      "disputes": {
+        "title": "9. Dispute Resolution",
+        "p1": "If you are not satisfied with our refund decision, you may:",
+        "item1": "Contact our customer support team for escalation",
+        "item2": "Use the EU Online Dispute Resolution platform",
+        "item3": "Contact your local consumer protection authority",
+        "item4": "Seek legal remedies under applicable law"
+      },
+      "changes": {
+        "title": "10. Changes to This Policy",
+        "p1": "We may update this Refund Policy from time to time. Material changes will be notified by email or prominent notice on our platform. Your statutory rights as a consumer are not affected by policy changes."
+      },
+      "contact": {
+        "title": "11. Contact Information",
+        "p1": "For refund requests or questions about this policy:",
+        "company": "NewCo Ltd.",
+        "address": "New Address 1",
+        "companyNo": "Company No: NEW123",
+        "email": "Email: support@nabd.ai",
+        "hours": "Customer Service: Available Monday-Friday, 9:00-17:00 CET",
+        "urgent": "For urgent refund inquiries: refunds@nabd.ai"
+      }
+    }
   },
   "license": {
     "title": "License Agreement",
     "description": "Terms governing the licensing of content and services.",
-    "lastUpdated": "Last updated"
+    "lastUpdated": "Last updated",
+    "licenseTypes": "License Types",
+    "feature": "Feature",
+    "standard": "Standard",
+    "extended": "Extended",
+    "features": {
+      "digitalUse": "Digital use (websites, apps)",
+      "socialMedia": "Social media",
+      "printLimited": "Print materials (up to 500k copies)",
+      "printUnlimited": "Print materials (unlimited)",
+      "productsForResale": "Products for resale",
+      "broadcast": "Broadcast/streaming",
+      "editorial": "Editorial use",
+      "commercial": "Commercial advertising",
+      "modify": "Modify/edit the image",
+      "multiSeat": "Multi-seat license (teams)"
+    },
+    "sections": {
+      "grant": {
+        "title": "1. Grant of License",
+        "p1": "Upon purchase of a photo from NABD, the Licensor (photographer) grants you (the Licensee) a non-exclusive, worldwide, perpetual license to use the photo according to the terms of the license type selected at purchase.",
+        "p2": "This license is non-transferable and may not be sublicensed to third parties. The photographer retains full copyright ownership of the image."
+      },
+      "standardLicense": {
+        "title": "2. Standard License",
+        "p1": "The Standard License permits:",
+        "item1": "Use in websites, apps, and digital media",
+        "item2": "Social media posts and advertising",
+        "item3": "Print materials with distribution up to 500,000 copies",
+        "item4": "Presentations, documents, and educational materials",
+        "item5": "Editorial and news content",
+        "item6": "Commercial advertising (excluding products for resale)",
+        "p2": "Standard licenses are valid for a single user/seat. Organizations requiring multiple users should purchase additional licenses or upgrade to Extended."
+      },
+      "extendedLicense": {
+        "title": "3. Extended License",
+        "p1": "The Extended License includes all Standard License rights plus:",
+        "item1": "Unlimited print distribution",
+        "item2": "Products intended for resale (merchandise, prints, etc.)",
+        "item3": "Broadcast, streaming, and video production",
+        "item4": "Multi-seat license for teams up to 10 users",
+        "item5": "Template and design tool creation"
+      },
+      "restrictions": {
+        "title": "4. Restrictions",
+        "p1": "Regardless of license type, you may NOT:",
+        "item1": "Resell, redistribute, or share the original image file",
+        "item2": "Use the image in a way that suggests endorsement by persons depicted",
+        "item3": "Use in pornographic, defamatory, or illegal content",
+        "item4": "Remove or alter watermarks or embedded metadata",
+        "item5": "Use to train AI/ML models without explicit written permission",
+        "item6": "Falsely claim authorship of the photograph",
+        "item7": "Use in a trademark or logo"
+      },
+      "releases": {
+        "title": "5. Model and Property Releases",
+        "p1": "Photos featuring identifiable people or private property may require additional releases for certain uses. Release information is displayed on each photo's detail page.",
+        "item1": "Model Released: Commercial use with identifiable people permitted",
+        "item2": "Property Released: Commercial use with identifiable property permitted",
+        "item3": "Editorial Only: Use limited to newsworthy/editorial context"
+      },
+      "attribution": {
+        "title": "6. Attribution",
+        "p1": "Attribution is appreciated but not required under either license type. If you choose to provide credit, please use: \"Photo by [Photographer Name] via NABD\"."
+      },
+      "authenticity": {
+        "title": "7. Authenticity Guarantee",
+        "p1": "All photos on NABD are verified as authentic human-made photography. Each image includes preserved EXIF metadata demonstrating its authenticity. If you discover a photo was misrepresented, contact us for a full refund."
+      },
+      "warranty": {
+        "title": "8. Warranty and Indemnification",
+        "p1": "NABD and the photographer warrant that:",
+        "item1": "The photographer owns or has rights to license the image",
+        "item2": "The image does not infringe any third-party rights (to our knowledge)",
+        "item3": "Appropriate releases are obtained where indicated",
+        "p2": "NABD's liability is limited to the purchase price of the license. We recommend consulting legal counsel for high-risk uses."
+      },
+      "termination": {
+        "title": "9. Termination",
+        "p1": "This license is perpetual unless terminated for breach. If you violate these terms, your license automatically terminates and you must cease all use of the image. NABD may pursue legal remedies for unauthorized use."
+      },
+      "contact": {
+        "title": "10. Contact",
+        "p1": "For licensing questions or custom licensing arrangements, contact:",
+        "licensing": "Email: licensing@nabd.ai",
+        "enterprise": "For enterprise licensing: enterprise@nabd.ai"
+      }
+    }
+  },
+  "buyCredits": {
+    "addCredits": "Add Credits",
+    "paymentComplete": "Payment Complete",
+    "purchaseDescription": "Purchase credits to use services. 10 credits = $1 USD",
+    "contactSupport": "Contact Support",
+    "purchaseDisabled": "Credit purchase is currently disabled for your account.",
+    "contactSupportDesc": "Please contact our support team to purchase credits.",
+    "starter": "Starter",
+    "popular": "Popular",
+    "pro": "Pro",
+    "orEnterCustom": "Or enter custom amount",
+    "enterCreditsMin": "Enter credits (min 10)",
+    "continueToPayment": "Continue to Payment",
+    "total": "Total",
+    "cardNumber": "Card Number",
+    "expiryDate": "Expiry Date",
+    "cvv": "CVV",
+    "cardholderName": "Cardholder Name",
+    "pay": "Pay",
+    "securePayment": "Your payment is secured with industry-standard encryption.",
+    "processingPayment": "Processing Payment",
+    "pleaseWait": "Please wait while we process your payment...",
+    "verifyPayment": "Verify Your Payment",
+    "completeVerification": "Please complete the verification below.",
+    "bankVerification": "This verification is required by your bank for security.",
+    "creditsAdded": "Credits Added!",
+    "creditsAddedToWallet": "credits added to your wallet",
+    "done": "Done",
+    "paymentFailed": "Payment Failed",
+    "tryAgain": "Try Again",
+    "selectAmount": "Select an amount",
+    "purchaseCredits": "Purchase Credits"
+  },
+  "share": {
+    "linkCopied": "Link copied to clipboard!",
+    "copyFailed": "Failed to copy link",
+    "shareButton": "Share"
+  },
+  "chat": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "noMessages": "No messages yet",
+    "startConversation": "Start a conversation with {{name}}",
+    "specialist": "the specialist",
+    "chatUnavailable": "Chat is not available for this task",
+    "admin": "Admin",
+    "unknown": "Unknown",
+    "writeMessage": "Write a message...",
+    "enterToSend": "Press Enter to send, Shift+Enter for new line",
+    "chatOnlyActive": "Chat is only available for active tasks"
+  },
+  "taskStatus": {
+    "pending": "Pending",
+    "accepted": "Accepted",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "rated": "Rated"
+  },
+  "taskDetail": {
+    "title": "Task Details",
+    "customTask": "Custom Task",
+    "notFound": "Task not found",
+    "loadFailed": "Failed to load task",
+    "completed": "completed",
+    "match": "match",
+    "client": "Client",
+    "description": "Description",
+    "timeline": "Timeline",
+    "created": "Created",
+    "started": "Started",
+    "completedLabel": "Completed",
+    "acceptTask": "Accept Task",
+    "startWork": "Start Work",
+    "markComplete": "Mark as Complete",
+    "chat": "Chat"
   }
 }

@@ -1,211 +1,210 @@
-import { Metadata } from "next";
-import { Header, Footer } from "@/components/layout";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Қайтару саясаты",
-  description: "Vertex қайтару саясаты жәе ЕО тұтыушыларыың шегіу құқықтары.",
-};
+import { Header, Footer } from "@/components/layout";
+import { useTranslation } from "@/lib/i18n";
 
 export default function RefundPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
       <article className="pt-32 pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-black tracking-tight mb-4">Қайтару саясаты</h1>
-          <p className="text-muted-foreground mb-8">آخر تحديث: 24 ديسمبر 2024</p>
+          <h1 className="text-4xl font-black tracking-tight mb-4">{t("refund.title")}</h1>
+          <p className="text-muted-foreground mb-8">{t("refund.lastUpdated")}: 24 December 2024</p>
 
           <div className="prose prose-invert prose-amber max-w-none">
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">1. Overview</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.overview.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                At Vertex, operated by NewCo Ltd., we are committed to your satisfaction. This Refund Policy outlines your rights to refunds and withdrawals in compliance with EU consumer protection laws.
+                {t("refund.sections.overview.p1")}
               </p>
               <p className="text-muted-foreground">
-                All refunds are subject to the terms outlined below and your statutory rights under EU law.
+                {t("refund.sections.overview.p2")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">2. EU Right of Withdrawal (14-Day Cooling-Off Period)</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.euRights.title")}</h2>
 
-              <h3 className="text-xl font-semibold mb-3">2.1 Your Rights</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("refund.sections.euRights.yourRights.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                As a consumer in the European Union, you have the right to withdraw from credit purchases within 14 days of purchase without providing a reason, in accordance with the EU Consumer Rights Directive.
-              </p>
-
-              <h3 className="text-xl font-semibold mb-3">2.2 How to Exercise Your Right</h3>
-              <p className="text-muted-foreground mb-4">
-                To withdraw from a purchase, send a clear written statement to:
-              </p>
-              <p className="text-muted-foreground mb-4">
-                Email: support@vertex.ai<br />
-                Subject line: &quot;Withdrawal Request&quot;<br />
-                Include: Your name, order number, and date of purchase
-              </p>
-              <p className="text-muted-foreground mb-4">
-                The 14-day period begins on the day of purchase. You must communicate your decision to withdraw before the deadline.
+                {t("refund.sections.euRights.yourRights.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">2.3 Important Exception - Services Commenced Early</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("refund.sections.euRights.howTo.title")}</h3>
+              <p className="text-muted-foreground mb-4">
+                {t("refund.sections.euRights.howTo.p1")}
+              </p>
+              <p className="text-muted-foreground mb-4">
+                {t("refund.sections.euRights.howTo.p2")}<br />
+                {t("refund.sections.euRights.howTo.subject")}<br />
+                {t("refund.sections.euRights.howTo.include")}
+              </p>
+              <p className="text-muted-foreground mb-4">
+                {t("refund.sections.euRights.howTo.p3")}
+              </p>
+
+              <h3 className="text-xl font-semibold mb-3">{t("refund.sections.euRights.exception.title")}</h3>
               <p className="text-muted-foreground">
-                If you request consulting services to begin during the 14-day withdrawal period and the service is fully performed, you lose your right to withdraw. However, you will only pay proportionate costs for services actually rendered before withdrawal.
+                {t("refund.sections.euRights.exception.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">3. Credit Refund Policy</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.creditRefund.title")}</h2>
 
-              <h3 className="text-xl font-semibold mb-3">3.1 Unused Credits</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("refund.sections.creditRefund.unused.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                Unused credits may be refunded within 30 days of purchase. After 30 days, credits remain valid indefinitely but are non-refundable.
+                {t("refund.sections.creditRefund.unused.p1")}
               </p>
               <p className="text-muted-foreground mb-4">
-                To request a refund of unused credits, contact support@vertex.ai with:
+                {t("refund.sections.creditRefund.unused.p2")}
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
-                <li>Your account email</li>
-                <li>Purchase date and order number</li>
-                <li>Number of unused credits</li>
-                <li>Reason for refund (optional but helpful)</li>
+                <li>{t("refund.sections.creditRefund.unused.item1")}</li>
+                <li>{t("refund.sections.creditRefund.unused.item2")}</li>
+                <li>{t("refund.sections.creditRefund.unused.item3")}</li>
+                <li>{t("refund.sections.creditRefund.unused.item4")}</li>
               </ul>
 
-              <h3 className="text-xl font-semibold mb-3">3.2 Partially Used Credit Packages</h3>
+              <h3 className="text-xl font-semibold mb-3 mt-6">{t("refund.sections.creditRefund.partial.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                If you have used some credits from a package:
+                {t("refund.sections.creditRefund.partial.p1")}
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
-                <li>Within 14 days: You may withdraw and receive a refund for unused credits (minus the standard rate for credits used)</li>
-                <li>After 14 days but within 30 days: Refund available for unused credits at the package rate</li>
-                <li>After 30 days: No refund available, but credits remain valid</li>
+                <li>{t("refund.sections.creditRefund.partial.item1")}</li>
+                <li>{t("refund.sections.creditRefund.partial.item2")}</li>
+                <li>{t("refund.sections.creditRefund.partial.item3")}</li>
               </ul>
 
-              <h3 className="text-xl font-semibold mb-3">3.3 Bonus Credits</h3>
+              <h3 className="text-xl font-semibold mb-3 mt-6">{t("refund.sections.creditRefund.bonus.title")}</h3>
               <p className="text-muted-foreground">
-                Bonus credits received as part of promotional packages are non-refundable but remain valid indefinitely.
+                {t("refund.sections.creditRefund.bonus.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">4. Service Refunds</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.serviceRefunds.title")}</h2>
 
-              <h3 className="text-xl font-semibold mb-3">4.1 Completed Services</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("refund.sections.serviceRefunds.completed.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                Credits used for successfully completed consulting services are generally non-refundable. However, we maintain a satisfaction guarantee (see Section 5).
+                {t("refund.sections.serviceRefunds.completed.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">4.2 Cancelled or Incomplete Services</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("refund.sections.serviceRefunds.cancelled.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                If a service is cancelled before completion or a specialist fails to deliver:
+                {t("refund.sections.serviceRefunds.cancelled.p1")}
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
-                <li>Full credit refund to your account balance</li>
-                <li>Option to cash refund within 14 days of cancellation</li>
-                <li>No penalty or deduction</li>
+                <li>{t("refund.sections.serviceRefunds.cancelled.item1")}</li>
+                <li>{t("refund.sections.serviceRefunds.cancelled.item2")}</li>
+                <li>{t("refund.sections.serviceRefunds.cancelled.item3")}</li>
               </ul>
 
-              <h3 className="text-xl font-semibold mb-3">4.3 Service Defects</h3>
+              <h3 className="text-xl font-semibold mb-3 mt-6">{t("refund.sections.serviceRefunds.defects.title")}</h3>
               <p className="text-muted-foreground">
-                If services are defective, not as described, or fail to meet reasonable quality standards, you are entitled to remedies under EU consumer law, including service correction, price reduction, or refund.
+                {t("refund.sections.serviceRefunds.defects.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">5. Satisfaction Guarantee</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.satisfaction.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                We stand behind the quality of our specialist services. If you are not satisfied with a completed service:
+                {t("refund.sections.satisfaction.p1")}
               </p>
               <ul className="list-disc pl-6 text-muted-foreground mb-4 space-y-2">
-                <li>Contact us within 7 days of service completion</li>
-                <li>Provide specific details about your concerns</li>
-                <li>We will review and offer remedies, which may include:
+                <li>{t("refund.sections.satisfaction.item1")}</li>
+                <li>{t("refund.sections.satisfaction.item2")}</li>
+                <li>{t("refund.sections.satisfaction.item3")}
                   <ul className="list-circle pl-6 mt-2 space-y-1">
-                    <li>Service revision by the same specialist</li>
-                    <li>Reassignment to a different specialist</li>
-                    <li>Partial or full credit refund</li>
+                    <li>{t("refund.sections.satisfaction.subItem1")}</li>
+                    <li>{t("refund.sections.satisfaction.subItem2")}</li>
+                    <li>{t("refund.sections.satisfaction.subItem3")}</li>
                   </ul>
                 </li>
               </ul>
               <p className="text-muted-foreground">
-                Our goal is to ensure every engagement meets your expectations and our standards of excellence.
+                {t("refund.sections.satisfaction.p2")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">6. Refund Processing</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.processing.title")}</h2>
 
-              <h3 className="text-xl font-semibold mb-3">6.1 Processing Time</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("refund.sections.processing.time.title")}</h3>
               <p className="text-muted-foreground mb-4">
-                We process refund requests within 5 business days of approval. Refunds are issued to your original payment method.
+                {t("refund.sections.processing.time.p1")}
               </p>
 
-              <h3 className="text-xl font-semibold mb-3">6.2 Payment Method Timing</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("refund.sections.processing.payment.title")}</h3>
               <ul className="list-disc pl-6 text-muted-foreground mb-4 space-y-2">
-                <li>Credit/Debit cards: 5-10 business days (depending on your bank)</li>
-                <li>Other payment methods: As specified by the payment provider</li>
+                <li>{t("refund.sections.processing.payment.item1")}</li>
+                <li>{t("refund.sections.processing.payment.item2")}</li>
               </ul>
 
-              <h3 className="text-xl font-semibold mb-3">6.3 Currency and Fees</h3>
+              <h3 className="text-xl font-semibold mb-3">{t("refund.sections.processing.currency.title")}</h3>
               <p className="text-muted-foreground">
-                Refunds are issued in the original purchase currency. We do not charge refund processing fees. However, your bank or payment provider may apply currency conversion or transaction fees beyond our control.
+                {t("refund.sections.processing.currency.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">7. Non-Refundable Items</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.nonRefundable.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                The following are non-refundable:
+                {t("refund.sections.nonRefundable.p1")}
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
-                <li>Bonus credits from promotional offers</li>
-                <li>Credits older than 30 days (unless subject to satisfaction guarantee)</li>
-                <li>Gift credits or promotional codes</li>
-                <li>Services fully performed during the withdrawal period with your express consent</li>
+                <li>{t("refund.sections.nonRefundable.item1")}</li>
+                <li>{t("refund.sections.nonRefundable.item2")}</li>
+                <li>{t("refund.sections.nonRefundable.item3")}</li>
+                <li>{t("refund.sections.nonRefundable.item4")}</li>
               </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">8. Fraudulent or Abusive Refund Requests</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.fraudulent.title")}</h2>
               <p className="text-muted-foreground">
-                We reserve the right to refuse refunds for fraudulent or abusive requests, including repeated refund requests without valid reason. Such actions may result in account suspension or termination.
+                {t("refund.sections.fraudulent.p1")}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">9. Dispute Resolution</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.disputes.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                If you are not satisfied with our refund decision, you may:
+                {t("refund.sections.disputes.p1")}
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
-                <li>Contact our customer support team for escalation</li>
-                <li>Use the EU Online Dispute Resolution platform: <a href="https://ec.europa.eu/consumers/odr" className="text-primary hover:underline" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></li>
-                <li>Contact your local consumer protection authority</li>
-                <li>Seek legal remedies under applicable law</li>
+                <li>{t("refund.sections.disputes.item1")}</li>
+                <li>{t("refund.sections.disputes.item2")}: <a href="https://ec.europa.eu/consumers/odr" className="text-primary hover:underline" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></li>
+                <li>{t("refund.sections.disputes.item3")}</li>
+                <li>{t("refund.sections.disputes.item4")}</li>
               </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">10. Changes to This Policy</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.changes.title")}</h2>
               <p className="text-muted-foreground">
-                We may update this Refund Policy from time to time. Material changes will be notified by email or prominent notice on our platform. Your statutory rights as a consumer are not affected by policy changes.
+                {t("refund.sections.changes.p1")}
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">11. Contact Information</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("refund.sections.contact.title")}</h2>
               <p className="text-muted-foreground mb-4">
-                For refund requests or questions about this policy:
+                {t("refund.sections.contact.p1")}
               </p>
               <p className="text-muted-foreground">
-                NewCo Ltd.<br />
-                New Address 1<br />
-                Company No: NEW123<br />
+                {t("refund.sections.contact.company")}<br />
+                {t("refund.sections.contact.address")}<br />
+                {t("refund.sections.contact.companyNo")}<br />
                 <br />
-                Email: support@vertex.ai<br />
-                Customer Service: Available Monday-Friday, 9:00-17:00 CET<br />
+                {t("refund.sections.contact.email")}<br />
+                {t("refund.sections.contact.hours")}<br />
                 <br />
-                For urgent refund inquiries: refunds@vertex.ai
+                {t("refund.sections.contact.urgent")}
               </p>
             </section>
           </div>

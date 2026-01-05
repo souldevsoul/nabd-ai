@@ -22,6 +22,7 @@ import {
   SlRocket,
   SlBadge,
 } from "react-icons/sl";
+import { useTranslation } from "@/lib/i18n";
 
 interface Assignment {
   id: string;
@@ -76,12 +77,12 @@ interface TaskDetailDrawerProps {
   onStatusChange?: () => void;
 }
 
-const statusConfig: Record<string, { label: string; color: string }> = {
-  PENDING: { label: "في الانتظار", color: "bg-amber-500/10 text-amber-500 border-amber-500/20" },
-  ACCEPTED: { label: "Қабылда", color: "bg-blue-500/10 text-blue-500 border-blue-500/20" },
-  IN_PROGRESS: { label: "قيد التنفيذ", color: "bg-purple-500/10 text-purple-500 border-purple-500/20" },
-  COMPLETED: { label: "Аяқтал", color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" },
-  RATED: { label: "Баإلىتم", color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" },
+const statusConfig: Record<string, { labelKey: string; color: string }> = {
+  PENDING: { labelKey: "taskStatus.pending", color: "bg-amber-500/10 text-amber-500 border-amber-500/20" },
+  ACCEPTED: { labelKey: "taskStatus.accepted", color: "bg-blue-500/10 text-blue-500 border-blue-500/20" },
+  IN_PROGRESS: { labelKey: "taskStatus.inProgress", color: "bg-purple-500/10 text-purple-500 border-purple-500/20" },
+  COMPLETED: { labelKey: "taskStatus.completed", color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" },
+  RATED: { labelKey: "taskStatus.rated", color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" },
 };
 
 export function TaskDetailDrawer({
@@ -92,6 +93,7 @@ export function TaskDetailDrawer({
   userRole,
   onStatusChange,
 }: TaskDetailDrawerProps) {
+  const { t } = useTranslation();
   const [assignment, setAssignment] = useState<Assignment | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -119,12 +121,12 @@ export function TaskDetailDrawer({
         setAssignment(data.assignment);
         setCanSend(data.access.canSend);
       } else if (res.status === 404) {
-        setError("Тапрма табылма");
+        setError(t("taskDetail.notFound"));
       } else {
-        setError("Тапрмаы жүктеу сәтсіз аяқтал");
+        setError(t("taskDetail.loadFailed"));
       }
     } catch (err) {
-      setError("Тапрмаы жүктеу сәтсіз аяқтал");
+      setError(t("taskDetail.loadFailed"));
     } finally {
       setLoading(false);
     }
@@ -167,16 +169,16 @@ export function TaskDetailDrawer({
           <div className="flex items-start justify-between">
             <div className="flex-1 pr-4">
               <DrawerTitle className="text-xl font-display">
-                {assignment?.request.task?.displayName || "Тапрма мәліметтері"}
+                {assignment?.request.task?.displayName || t("taskDetail.title")}
               </DrawerTitle>
               <DrawerDescription>
-                {assignment?.request.task?.category || "Арайы тапрма"}
+                {assignment?.request.task?.category || t("taskDetail.customTask")}
               </DrawerDescription>
             </div>
             <div className="flex items-center gap-2">
               {status && (
                 <Badge variant="outline" className={status.color}>
-                  {status.label}
+                  {t(status.labelKey)}
                 </Badge>
               )}
               <DrawerClose asChild>
@@ -198,7 +200,7 @@ export function TaskDetailDrawer({
             <div className="flex flex-col items-center justify-center h-64 text-center p-4">
               <p className="text-muted-foreground mb-4">{error}</p>
               <Button variant="outline" onClick={fetchAssignment}>
-                Қайталап көру
+                {t("dashboard.retry")}
               </Button>
             </div>
           ) : assignment ? (
@@ -222,7 +224,7 @@ export function TaskDetailDrawer({
                       </span>
                       <span className="flex items-center gap-1">
                         <SlCheck className="w-3 h-3" />
-                        {assignment.specialist.completedTasks} аяқтал
+                        {assignment.specialist.completedTasks} {t("taskDetail.completed")}
                       </span>
                     </div>
                   </div>
@@ -232,7 +234,7 @@ export function TaskDetailDrawer({
                     </div>
                     {assignment.confidence && (
                       <div className="text-xs text-muted-foreground">
-                        {Math.round(assignment.confidence * 100)}% сәйкестік
+                        {Math.round(assignment.confidence * 100)}% {t("taskDetail.match")}
                       </div>
                     )}
                   </div>
@@ -247,7 +249,7 @@ export function TaskDetailDrawer({
                   </div>
                   <div className="flex-1">
                     <h3 className="font-display font-bold">
-                      {assignment.request.user.name || "Тапрыс беруші"}
+                      {assignment.request.user.name || t("taskDetail.client")}
                     </h3>
                     <p className="text-sm text-muted-foreground">
                       {assignment.request.user.email}
@@ -264,7 +266,7 @@ export function TaskDetailDrawer({
               {/* Task description */}
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground mb-2">
-                  Сипаттама
+                  {t("taskDetail.description")}
                 </h3>
                 <p className="text-sm whitespace-pre-wrap">
                   {assignment.request.description}
@@ -274,24 +276,24 @@ export function TaskDetailDrawer({
               {/* Timeline */}
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground mb-3">
-                  Уақыт кестесі
+                  {t("taskDetail.timeline")}
                 </h3>
                 <div className="space-y-2">
                   <TimelineItem
                     icon={<SlClock className="w-3 h-3" />}
-                    label="Жасал"
+                    label={t("taskDetail.created")}
                     date={assignment.createdAt}
                     completed
                   />
                   <TimelineItem
                     icon={<SlRocket className="w-3 h-3" />}
-                    label="Бастал"
+                    label={t("taskDetail.started")}
                     date={assignment.startedAt}
                     completed={!!assignment.startedAt}
                   />
                   <TimelineItem
                     icon={<SlBadge className="w-3 h-3" />}
-                    label="Аяқтал"
+                    label={t("taskDetail.completedLabel")}
                     date={assignment.completedAt}
                     completed={!!assignment.completedAt}
                   />
@@ -307,7 +309,7 @@ export function TaskDetailDrawer({
                       disabled={actionLoading}
                       className="flex-1"
                     >
-                      {actionLoading ? "جارٍ المعالجة..." : "Тапрмаы қабылдау"}
+                      {actionLoading ? t("request.processing") : t("taskDetail.acceptTask")}
                     </Button>
                   )}
                   {assignment.status === "ACCEPTED" && (
@@ -316,7 +318,7 @@ export function TaskDetailDrawer({
                       disabled={actionLoading}
                       className="flex-1"
                     >
-                      {actionLoading ? "جارٍ المعالجة..." : "Жұмысты бастау"}
+                      {actionLoading ? t("request.processing") : t("taskDetail.startWork")}
                     </Button>
                   )}
                   {assignment.status === "IN_PROGRESS" && (
@@ -325,7 +327,7 @@ export function TaskDetailDrawer({
                       disabled={actionLoading}
                       className="flex-1"
                     >
-                      {actionLoading ? "جارٍ المعالجة..." : "Аяқтал деп белгілеу"}
+                      {actionLoading ? t("request.processing") : t("taskDetail.markComplete")}
                     </Button>
                   )}
                 </div>
@@ -334,7 +336,7 @@ export function TaskDetailDrawer({
               {/* Chat section */}
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground mb-3">
-                  محادثة
+                  {t("taskDetail.chat")}
                 </h3>
                 <TaskChat
                   assignmentId={assignment.id}
@@ -344,7 +346,7 @@ export function TaskDetailDrawer({
                   specialistName={
                     userRole === "buyer"
                       ? assignment.specialist.firstName
-                      : assignment.request.user.name || "Тапрыс беруші"
+                      : assignment.request.user.name || t("taskDetail.client")
                   }
                 />
               </div>

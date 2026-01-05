@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SlPaperPlane, SlBubble } from "react-icons/sl";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n";
 
 interface Message {
   id: string;
@@ -34,6 +35,7 @@ export function TaskChat({
   initialMessages = [],
   specialistName,
 }: TaskChatProps) {
+  const { t } = useTranslation();
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [newMessage, setNewMessage] = useState("");
   const [sending, setSending] = useState(false);
@@ -125,9 +127,9 @@ export function TaskChat({
     yesterday.setDate(yesterday.getDate() - 1);
 
     if (date.toDateString() === today.toDateString()) {
-      return "Бүгі";
+      return t("chat.today");
     } else if (date.toDateString() === yesterday.toDateString()) {
-      return "الأمس";
+      return t("chat.yesterday");
     }
     return date.toLocaleDateString();
   };
@@ -157,11 +159,11 @@ export function TaskChat({
         {messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center">
             <SlBubble className="w-12 h-12 text-muted-foreground/50 mb-4" />
-            <h3 className="font-medium text-muted-foreground">Әлі хабарлар жоқ</h3>
+            <h3 className="font-medium text-muted-foreground">{t("chat.noMessages")}</h3>
             <p className="text-sm text-muted-foreground/70">
               {canSend
-                ? `${specialistName || "мамаمع"} әңгіме бастаңыз`
-                : "الدردشة غير متاحة لهذه المهمة"}
+                ? t("chat.startConversation", { name: specialistName || t("chat.specialist") })
+                : t("chat.chatUnavailable")}
             </p>
           </div>
         ) : (
@@ -225,10 +227,10 @@ export function TaskChat({
                           >
                             {isAdmin && (
                               <span className="text-purple-500 font-medium">
-                                المسؤول ·{" "}
+                                {t("chat.admin")} ·{" "}
                               </span>
                             )}
-                            {message.sender.name || "Белгісіз"}
+                            {message.sender.name || t("chat.unknown")}
                           </div>
 
                           {/* Content */}
@@ -266,7 +268,7 @@ export function TaskChat({
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Хабарлама жазыңыз..."
+              placeholder={t("chat.writeMessage")}
               className="min-h-[44px] max-h-[120px] resize-none"
               disabled={sending}
             />
@@ -280,13 +282,13 @@ export function TaskChat({
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-2">
-            اضغط Enter للإرسال، Shift+Enter لسطر جديد
+            {t("chat.enterToSend")}
           </p>
         </div>
       ) : (
         <div className="p-4 border-t border-border bg-muted/50">
           <p className="text-sm text-muted-foreground text-center">
-            الدردشة متاحة فقط للمهام النشطة
+            {t("chat.chatOnlyActive")}
           </p>
         </div>
       )}

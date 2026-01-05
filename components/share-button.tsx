@@ -2,6 +2,7 @@
 
 import { SlShare } from "react-icons/sl";
 import { toast } from "sonner";
+import { useTranslation } from "@/lib/i18n";
 
 interface ShareButtonProps {
   title: string;
@@ -9,13 +10,15 @@ interface ShareButtonProps {
 }
 
 export function ShareButton({ title, url }: ShareButtonProps) {
+  const { t } = useTranslation();
+
   const handleShare = async () => {
     const shareUrl = typeof window !== "undefined" ? window.location.href : url;
 
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `${title} | Vertex`,
+          title: `${title} | Nabd`,
           url: shareUrl,
         });
       } catch (err) {
@@ -32,9 +35,9 @@ export function ShareButton({ title, url }: ShareButtonProps) {
   const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      toast.success("Сілтеме алмасу буферіе көшірілді!");
+      toast.success(t("share.linkCopied"));
     } catch {
-      toast.error("Сілтеمعі көшіру сәтсіз аяқтал");
+      toast.error(t("share.copyFailed"));
     }
   };
 
@@ -42,7 +45,7 @@ export function ShareButton({ title, url }: ShareButtonProps) {
     <button
       onClick={handleShare}
       className="p-2 rounded-lg bg-zinc-800 text-zinc-400 hover:text-white transition-colors"
-      aria-label="Фотосуретпе бөлісу"
+      aria-label={t("share.shareButton")}
     >
       <SlShare className="w-5 h-5" />
     </button>
