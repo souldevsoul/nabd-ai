@@ -9,14 +9,12 @@ import {
   SlShield,
   SlPaperPlane,
   SlLink,
-  SlSocialInstagram,
-  SlSocialTwitter,
-  SlSocialLinkedin,
   SlCheck,
   SlDocs,
   SlShareAlt,
   SlClose,
 } from "react-icons/sl";
+import { useTranslation } from "@/lib/i18n";
 
 interface UserSettings {
   id: string;
@@ -25,16 +23,6 @@ interface UserSettings {
   telegramUserId: string | null;
   telegramUsername: string | null;
   telegramLinkedAt: string | null;
-  photographerProfile: {
-    displayName: string;
-    handle: string;
-    bio: string | null;
-    location: string | null;
-    websiteUrl: string | null;
-    socialInstagram: string | null;
-    socialX: string | null;
-    socialLinkedin: string | null;
-  } | null;
 }
 
 interface TelegramLinkToken {
@@ -73,16 +61,10 @@ export default function SettingsPage() {
   const [showTwoFactorModal, setShowTwoFactorModal] = useState(false);
   const [passwordForm, setPasswordForm] = useState({ current: "", new: "", confirm: "" });
   const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
+  const { t } = useTranslation();
 
   // Form refs for controlled inputs
   const nameRef = useRef<HTMLInputElement>(null);
-  const displayNameRef = useRef<HTMLInputElement>(null);
-  const bioRef = useRef<HTMLTextAreaElement>(null);
-  const locationRef = useRef<HTMLInputElement>(null);
-  const websiteRef = useRef<HTMLInputElement>(null);
-  const instagramRef = useRef<HTMLInputElement>(null);
-  const twitterRef = useRef<HTMLInputElement>(null);
-  const linkedinRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const fetchSettings = async () => {
@@ -129,21 +111,9 @@ export default function SettingsPage() {
   const handleSaveChanges = async () => {
     setSaving(true);
     try {
-      const payload: Record<string, unknown> = {
+      const payload = {
         name: nameRef.current?.value,
       };
-
-      if (settings?.photographerProfile) {
-        payload.photographerProfile = {
-          displayName: displayNameRef.current?.value,
-          bio: bioRef.current?.value,
-          location: locationRef.current?.value,
-          websiteUrl: websiteRef.current?.value,
-          socialInstagram: instagramRef.current?.value,
-          socialX: twitterRef.current?.value,
-          socialLinkedin: linkedinRef.current?.value,
-        };
-      }
 
       const res = await fetch("/api/user/settings", {
         method: "PATCH",
@@ -210,31 +180,31 @@ export default function SettingsPage() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white">الإعدادات</h1>
-        <p className="text-slate-400 mt-2">إدارة معايير الحساب والتكاملات</p>
+        <h1 className="text-3xl font-bold text-white">{t("settings.title")}</h1>
+        <p className="text-slate-400 mt-2">{t("settings.subtitle")}</p>
       </div>
 
       {/* Profile Settings */}
-      <SettingsSection title="الملف الشخصي" description="تحديث معلوماتك الشخصية">
+      <SettingsSection title={t("settings.profile")} description={t("settings.updateInfo")}>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm text-slate-400 mb-2">البريد الإلكتروني</label>
+            <label className="block text-sm text-slate-400 mb-2">{t("settings.email")}</label>
             <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700">
               <SlEnvelopeOpen className="w-5 h-5 text-slate-500" />
               <span className="text-white">{settings?.email}</span>
               <span className="ml-auto flex items-center gap-1 text-xs text-emerald-400">
-                <SlCheck className="w-3 h-3" /> تم التحقق
+                <SlCheck className="w-3 h-3" /> {t("settings.verified")}
               </span>
             </div>
           </div>
           <div>
-            <label className="block text-sm text-slate-400 mb-2">الاسم المعروض</label>
+            <label className="block text-sm text-slate-400 mb-2">{t("settings.displayName")}</label>
             <input
               ref={nameRef}
               type="text"
               defaultValue={settings?.name || ""}
               className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-              placeholder="اسمك"
+              placeholder={t("settings.yourName")}
             />
           </div>
         </div>
@@ -242,8 +212,8 @@ export default function SettingsPage() {
 
       {/* Telegram Integration */}
       <SettingsSection
-        title="تكامل Telegram"
-        description="قم بتوصيل حساب Telegram الخاص بك للإشعارات الفورية"
+        title={t("settings.telegram")}
+        description={t("settings.telegramDesc")}
       >
         {settings?.telegramUserId ? (
           <div className="space-y-4">
@@ -253,13 +223,13 @@ export default function SettingsPage() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <p className="text-white font-semibold">Telegram متصل</p>
+                  <p className="text-white font-semibold">{t("settings.telegramConnected")}</p>
                   <SlCheck className="w-4 h-4 text-emerald-400" />
                 </div>
                 <p className="text-sm text-slate-400">
-                  @{settings.telegramUsername || "مستخدم"}
+                  @{settings.telegramUsername || t("settings.user")}
                   <span className="text-slate-600 ml-2">
-                    {new Date(settings.telegramLinkedAt!).toLocaleDateString()} منذ
+                    {t("settings.since")} {new Date(settings.telegramLinkedAt!).toLocaleDateString()}
                   </span>
                 </p>
               </div>
@@ -268,24 +238,24 @@ export default function SettingsPage() {
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 transition-colors"
               >
                 <SlClose className="w-4 h-4" />
-                فصل
+                {t("settings.disconnect")}
               </button>
             </div>
 
             <div className="p-4 rounded-xl bg-slate-800/30 border border-slate-700">
-              <h4 className="text-white font-medium mb-2">إعدادات الإشعارات</h4>
+              <h4 className="text-white font-medium mb-2">{t("settings.notificationSettings")}</h4>
               <div className="space-y-3">
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" defaultChecked className="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500" />
-                  <span className="text-slate-300">طلبات ترخيص جديدة</span>
+                  <span className="text-slate-300">{t("settings.newLicenseRequests")}</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" defaultChecked className="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500" />
-                  <span className="text-slate-300">تحديثات التحقق من الصور</span>
+                  <span className="text-slate-300">{t("settings.photoVerificationUpdates")}</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" defaultChecked className="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500" />
-                  <span className="text-slate-300">إشعارات الدفع</span>
+                  <span className="text-slate-300">{t("settings.paymentNotifications")}</span>
                 </label>
               </div>
             </div>
@@ -298,9 +268,9 @@ export default function SettingsPage() {
                   <SlPaperPlane className="w-6 h-6 text-blue-400" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-white font-semibold">توصيل Telegram</h4>
+                  <h4 className="text-white font-semibold">{t("settings.connectTelegram")}</h4>
                   <p className="text-sm text-slate-400 mt-1">
-                    Лицезия сұраулары, фото растаулар жәе басқа да жедел хабарتمрулар алу үші Telegram аккаутыңыз қоңыз.
+                    {t("settings.connectTelegramDesc")}
                   </p>
                 </div>
               </div>
@@ -312,19 +282,19 @@ export default function SettingsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20"
               >
-                <h4 className="text-amber-400 font-semibold mb-3">ربط حسابك</h4>
+                <h4 className="text-amber-400 font-semibold mb-3">{t("settings.linkYourAccount")}</h4>
                 <ol className="space-y-3 text-sm text-slate-300">
                   <li className="flex gap-2">
                     <span className="text-amber-500 font-bold">1.</span>
-                    <span>افتح Telegram وابحث عن <code className="px-1.5 py-0.5 rounded bg-slate-800 text-amber-400">@NABDBot</code></span>
+                    <span>{t("settings.step1")} <code className="px-1.5 py-0.5 rounded bg-slate-800 text-amber-400">@NABDBot</code></span>
                   </li>
                   <li className="flex gap-2">
                     <span className="text-amber-500 font-bold">2.</span>
-                    <span>ابدأ محادثة مع البوت</span>
+                    <span>{t("settings.step2")}</span>
                   </li>
                   <li className="flex gap-2">
                     <span className="text-amber-500 font-bold">3.</span>
-                    <span>أرسل هذا الرمز:</span>
+                    <span>{t("settings.step3")}</span>
                   </li>
                 </ol>
                 <div className="mt-4 flex items-center gap-2">
@@ -339,7 +309,7 @@ export default function SettingsPage() {
                   </button>
                 </div>
                 <p className="mt-3 text-xs text-slate-500">
-                  هذا الرمز صالح حتى {new Date(telegramToken.expiresAt).toLocaleTimeString()}
+                  {t("settings.codeValidUntil")} {new Date(telegramToken.expiresAt).toLocaleTimeString()}
                 </p>
               </motion.div>
             ) : (
@@ -348,7 +318,7 @@ export default function SettingsPage() {
                 className="flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-semibold transition-colors"
               >
                 <SlLink className="w-5 h-5" />
-                إنشاء رمز الربط
+                {t("settings.generateLinkCode")}
               </button>
             )}
 
@@ -359,110 +329,14 @@ export default function SettingsPage() {
               className="flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition-colors"
             >
               <SlShareAlt className="w-5 h-5" />
-              فتح @NABDBot في Telegram
+              {t("settings.openTelegramBot")}
             </a>
           </div>
         )}
       </SettingsSection>
 
-      {/* Photographer Profile (if applicable) */}
-      {settings?.photographerProfile && (
-        <SettingsSection title="ملف المصور" description="تحرير ملفك العام">
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm text-slate-400 mb-2">الاسم المعروض</label>
-                <input
-                  ref={displayNameRef}
-                  type="text"
-                  defaultValue={settings.photographerProfile.displayName}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-slate-400 mb-2">العنوان</label>
-                <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700">
-                  <span className="text-slate-500">@</span>
-                  <span className="text-white">{settings.photographerProfile.handle}</span>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm text-slate-400 mb-2">السيرة الذاتية</label>
-              <textarea
-                ref={bioRef}
-                defaultValue={settings.photographerProfile.bio || ""}
-                rows={3}
-                className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 resize-none"
-                placeholder="Фотографияңыз туралы әлемге айтыңыз..."
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm text-slate-400 mb-2">Ораласқа жері</label>
-                <input
-                  ref={locationRef}
-                  type="text"
-                  defaultValue={settings.photographerProfile.location || ""}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                  placeholder="المدينة، البلد"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-slate-400 mb-2">الموقع الإلكتروني</label>
-                <input
-                  ref={websiteRef}
-                  type="url"
-                  defaultValue={settings.photographerProfile.websiteUrl || ""}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                  placeholder="https://yoursite.com"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm text-slate-400 mb-2">Әлеуметтік сілтемелер</label>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-800 border border-slate-700">
-                  <SlSocialInstagram className="w-5 h-5 text-pink-400" />
-                  <input
-                    ref={instagramRef}
-                    type="text"
-                    defaultValue={settings.photographerProfile.socialInstagram || ""}
-                    className="flex-1 bg-transparent text-white placeholder:text-slate-500 focus:outline-none"
-                    placeholder="username"
-                  />
-                </div>
-                <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-800 border border-slate-700">
-                  <SlSocialTwitter className="w-5 h-5 text-blue-400" />
-                  <input
-                    ref={twitterRef}
-                    type="text"
-                    defaultValue={settings.photographerProfile.socialX || ""}
-                    className="flex-1 bg-transparent text-white placeholder:text-slate-500 focus:outline-none"
-                    placeholder="username"
-                  />
-                </div>
-                <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-800 border border-slate-700">
-                  <SlSocialLinkedin className="w-5 h-5 text-blue-500" />
-                  <input
-                    ref={linkedinRef}
-                    type="text"
-                    defaultValue={settings.photographerProfile.socialLinkedin || ""}
-                    className="flex-1 bg-transparent text-white placeholder:text-slate-500 focus:outline-none"
-                    placeholder="username"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </SettingsSection>
-      )}
-
       {/* Security */}
-      <SettingsSection title="الأمان" description="Құпия сөз жәе қауіпсіздік баптаулары басқарыңыз">
+      <SettingsSection title={t("settings.security")} description={t("settings.securityDesc")}>
         <div className="space-y-4">
           <button
             onClick={() => setShowPasswordModal(true)}
@@ -470,8 +344,8 @@ export default function SettingsPage() {
           >
             <SlLock className="w-5 h-5 text-slate-400" />
             <div>
-              <p className="text-white font-medium">Құпия сөзді өзгерту</p>
-              <p className="text-sm text-slate-500">Аккаутыңыз қауіпсіз ұстау үші құпия сөзді жаңартыңыз</p>
+              <p className="text-white font-medium">{t("settings.changePassword")}</p>
+              <p className="text-sm text-slate-500">{t("settings.changePasswordDesc")}</p>
             </div>
           </button>
           <button
@@ -480,8 +354,8 @@ export default function SettingsPage() {
           >
             <SlShield className="w-5 h-5 text-slate-400" />
             <div>
-              <p className="text-white font-medium">Екі факторлы аутетификация</p>
-              <p className="text-sm text-slate-500">Аккаутыңызإلى қомша қауіпсіздік қабаты қоңыз</p>
+              <p className="text-white font-medium">{t("settings.twoFactor")}</p>
+              <p className="text-sm text-slate-500">{t("settings.twoFactorDesc")}</p>
             </div>
           </button>
         </div>
@@ -494,7 +368,7 @@ export default function SettingsPage() {
           disabled={saving}
           className="px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-semibold transition-colors disabled:opacity-50"
         >
-          {saving ? "جارٍ الحفظ..." : "حفظ التغييرات"}
+          {saving ? t("settings.saving") : t("settings.saveChanges")}
         </button>
       </div>
 
@@ -515,36 +389,36 @@ export default function SettingsPage() {
               className="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-xl font-bold text-white mb-4">Құпия сөзді өзгерту</h3>
+              <h3 className="text-xl font-bold text-white mb-4">{t("settings.changePassword")}</h3>
               <div className="space-y-4 mb-6">
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">Ағымдағы құпия сөз</label>
+                  <label className="block text-sm text-slate-400 mb-2">{t("settings.currentPassword")}</label>
                   <input
                     type="password"
                     value={passwordForm.current}
                     onChange={(e) => setPasswordForm(p => ({ ...p, current: e.target.value }))}
                     className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                    placeholder="Ағымдағы құпия сөзді егізіңіз"
+                    placeholder={t("settings.enterCurrentPassword")}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">جديد құпия сөз</label>
+                  <label className="block text-sm text-slate-400 mb-2">{t("settings.newPassword")}</label>
                   <input
                     type="password"
                     value={passwordForm.new}
                     onChange={(e) => setPasswordForm(p => ({ ...p, new: e.target.value }))}
                     className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                    placeholder="جديد құпия сөзді егізіңіз"
+                    placeholder={t("settings.enterNewPassword")}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">جديد құпия сөзді растау</label>
+                  <label className="block text-sm text-slate-400 mb-2">{t("settings.confirmNewPassword")}</label>
                   <input
                     type="password"
                     value={passwordForm.confirm}
                     onChange={(e) => setPasswordForm(p => ({ ...p, confirm: e.target.value }))}
                     className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                    placeholder="جديد құпия сөзді растаңыз"
+                    placeholder={t("settings.confirmNewPasswordPlaceholder")}
                   />
                 </div>
               </div>
@@ -556,14 +430,14 @@ export default function SettingsPage() {
                   }}
                   className="flex-1 px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 transition-colors"
                 >
-                  إلغاء
+                  {t("common.cancel")}
                 </button>
                 <button
                   onClick={handleChangePassword}
                   disabled={isUpdatingPassword || !passwordForm.current || !passwordForm.new}
                   className="flex-1 px-4 py-2 rounded-lg bg-amber-500 text-black font-semibold hover:bg-amber-400 transition-colors disabled:opacity-50"
                 >
-                  {isUpdatingPassword ? "جديدртылуда..." : "Құпия сөзді жаңарту"}
+                  {isUpdatingPassword ? t("settings.updating") : t("settings.updatePassword")}
                 </button>
               </div>
             </motion.div>
@@ -588,14 +462,14 @@ export default function SettingsPage() {
               className="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-xl font-bold text-white mb-4">Екі факторлы аутетификация</h3>
+              <h3 className="text-xl font-bold text-white mb-4">{t("settings.twoFactor")}</h3>
               <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 mb-6">
                 <div className="flex items-start gap-3">
                   <SlShield className="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-amber-400 font-semibold">Жақы арада</p>
+                    <p className="text-amber-400 font-semibold">{t("settings.comingSoon")}</p>
                     <p className="text-sm text-slate-400 mt-1">
-                      المصادقة الثنائية ستكون متاحة قريباً. في الوقت الحالي، استخدم كلمة مرور قوية وفريدة لحماية حسابك.
+                      {t("settings.comingSoonDesc")}
                     </p>
                   </div>
                 </div>
@@ -604,7 +478,7 @@ export default function SettingsPage() {
                 onClick={() => setShowTwoFactorModal(false)}
                 className="w-full px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 transition-colors"
               >
-                إغلاق
+                {t("common.close")}
               </button>
             </motion.div>
           </motion.div>

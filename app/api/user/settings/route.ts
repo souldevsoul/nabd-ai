@@ -18,23 +18,10 @@ export async function GET() {
         name: true,
         image: true,
         roles: true,
+        kycStatus: true,
         telegramUserId: true,
         telegramUsername: true,
         telegramLinkedAt: true,
-        photographerProfile: {
-          select: {
-            displayName: true,
-            handle: true,
-            bio: true,
-            location: true,
-            websiteUrl: true,
-            socialInstagram: true,
-            socialX: true,
-            socialLinkedin: true,
-            avatarUrl: true,
-            isVerified: true,
-          },
-        },
       },
     });
 
@@ -61,38 +48,17 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, photographerProfile } = body;
+    const { name, image } = body;
 
     // Update user
     const updateData: Record<string, unknown> = {};
     if (name !== undefined) updateData.name = name;
+    if (image !== undefined) updateData.image = image;
 
     const user = await db.user.update({
       where: { id: session.user.id },
       data: updateData,
     });
-
-    // Update photographer profile if provided
-    if (photographerProfile) {
-      const existingProfile = await db.photographerProfile.findUnique({
-        where: { userId: session.user.id },
-      });
-
-      if (existingProfile) {
-        await db.photographerProfile.update({
-          where: { userId: session.user.id },
-          data: {
-            displayName: photographerProfile.displayName,
-            bio: photographerProfile.bio,
-            location: photographerProfile.location,
-            websiteUrl: photographerProfile.websiteUrl,
-            socialInstagram: photographerProfile.socialInstagram,
-            socialX: photographerProfile.socialX,
-            socialLinkedin: photographerProfile.socialLinkedin,
-          },
-        });
-      }
-    }
 
     return NextResponse.json({ success: true, user });
   } catch (error) {

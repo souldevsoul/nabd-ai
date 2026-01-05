@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 
-// GET - Get user's photo requests (sent or received)
+// GET - Get user's task requests
 export async function GET(request: NextRequest) {
   try {
     const session = await auth();
@@ -11,28 +11,23 @@ export async function GET(request: NextRequest) {
     }
 
     const { searchParams } = new URL(request.url);
-    const type = searchParams.get("type") || "sent";
+    const status = searchParams.get("status");
 
-    const requests = await db.photoRequest.findMany({
-      where: type === "sent"
-        ? { buyerId: session.user.id }
-        : { photographerId: session.user.id },
+    const requests = await db.taskRequest.findMany({
+      where: {
+        userId: session.user.id,
+        ...(status ? { status: status as any } : {}),
+      },
       include: {
-        buyer: {
-          select: { id: true, name: true, email: true, image: true },
+        task: {
+          select: { id: true, name: true, displayName: true, category: true },
         },
-        photographer: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-            photographerProfile: {
-              select: { displayName: true, handle: true, avatarUrl: true },
+        assignments: {
+          include: {
+            specialist: {
+              select: { id: true, firstName: true, avatarSeed: true, rating: true },
             },
           },
-        },
-        deliveredPhoto: {
-          select: { id: true, title: true, thumbnailUrl: true },
         },
       },
       orderBy: { createdAt: "desc" },
@@ -48,7 +43,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST - Create a new photo request to a photographer
+// POST - Create a new task request
 export async function POST(request: NextRequest) {
   try {
     const session = await auth();
@@ -57,44 +52,27 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { photographerId, title, description, category, budget, deadline } = body;
+    const { description, taskId } = body;
 
-    if (!photographerId || !title || !description) {
+    if (!description) {
       return NextResponse.json(
-        { error: "Photographer, title, and description are required" },
+        { error: "Description is required" },
         { status: 400 }
       );
     }
 
-    const photographer = await db.user.findFirst({
-      where: {
-        id: photographerId,
-        roles: { has: "PHOTOGRAPHER" },
-      },
-    });
-
-    if (!photographer) {
-      return NextResponse.json(
-        { error: "Photographer not found" },
-        { status: 404 }
-      );
-    }
-
-    const photoRequest = await db.photoRequest.create({
+    const taskRequest = await db.taskRequest.create({
       data: {
-        buyerId: session.user.id,
-        photographerId,
-        title,
+        userId: session.user.id,
         description,
-        category,
-        budget: budget ? parseInt(budget) : null,
-        deadline: deadline ? new Date(deadline) : null,
+        taskId: taskId || null,
+        status: "PENDING",
       },
     });
 
     return NextResponse.json({
       success: true,
-      request: photoRequest,
+      request: taskRequest,
     });
   } catch (error) {
     console.error("Error creating request:", error);

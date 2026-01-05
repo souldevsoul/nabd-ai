@@ -519,5 +519,96 @@
   "language": {
     "ar": "العربية",
     "en": "English"
+  },
+  "wallet": {
+    "title": "المحفظة",
+    "subtitle": "إدارة أرصدتك وعرض سجل المعاملات",
+    "currentBalance": "الرصيد الحالي",
+    "totalSpent": "إجمالي الإنفاق",
+    "totalEarnings": "إجمالي الأرباح",
+    "recentTransactions": "المعاملات الأخيرة",
+    "noTransactions": "لا توجد معاملات بعد",
+    "addCreditsToStart": "أضف أرصدة للبدء",
+    "balance": "الرصيد"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "subtitle": "إدارة إعدادات الحساب والتكاملات",
+    "profile": "الملف الشخصي",
+    "updateInfo": "تحديث معلوماتك الشخصية",
+    "email": "البريد الإلكتروني",
+    "verified": "تم التحقق",
+    "displayName": "الاسم المعروض",
+    "yourName": "اسمك",
+    "telegram": "تكامل Telegram",
+    "telegramDesc": "قم بتوصيل حساب Telegram الخاص بك للإشعارات الفورية",
+    "telegramConnected": "Telegram متصل",
+    "user": "مستخدم",
+    "since": "منذ",
+    "disconnect": "فصل",
+    "notificationSettings": "إعدادات الإشعارات",
+    "newOrderRequests": "طلبات جديدة",
+    "orderUpdates": "تحديثات الطلبات",
+    "paymentNotifications": "إشعارات الدفع",
+    "connectTelegram": "توصيل Telegram",
+    "connectTelegramDesc": "اربط حساب Telegram الخاص بك لتلقي إشعارات فورية للطلبات والتحديثات والمزيد.",
+    "linkYourAccount": "ربط حسابك",
+    "step1": "افتح Telegram وابحث عن",
+    "step2": "ابدأ محادثة مع البوت",
+    "step3": "أرسل هذا الرمز:",
+    "codeValidUntil": "هذا الرمز صالح حتى",
+    "generateLinkCode": "إنشاء رمز الربط",
+    "openTelegramBot": "فتح @NABDBot في Telegram",
+    "editPublicProfile": "تحرير ملفك العام",
+    "handle": "العنوان",
+    "bio": "السيرة الذاتية",
+    "bioPlaceholder": "أخبرنا عن نفسك...",
+    "location": "الموقع",
+    "locationPlaceholder": "المدينة، البلد",
+    "website": "الموقع الإلكتروني",
+    "socialLinks": "الروابط الاجتماعية",
+    "security": "الأمان",
+    "securityDesc": "إدارة كلمة المرور وإعدادات الأمان",
+    "changePassword": "تغيير كلمة المرور",
+    "changePasswordDesc": "حدّث كلمة المرور للحفاظ على أمان حسابك",
+    "twoFactor": "المصادقة الثنائية",
+    "twoFactorDesc": "أضف طبقة أمان إضافية لحسابك",
+    "currentPassword": "كلمة المرور الحالية",
+    "enterCurrentPassword": "أدخل كلمة المرور الحالية",
+    "newPassword": "كلمة المرور الجديدة",
+    "enterNewPassword": "أدخل كلمة المرور الجديدة",
+    "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+    "confirmNewPasswordPlaceholder": "أكد كلمة المرور الجديدة",
+    "updatePassword": "تحديث كلمة المرور",
+    "updating": "جارٍ التحديث...",
+    "comingSoon": "قريباً",
+    "comingSoonDesc": "المصادقة الثنائية ستكون متاحة قريباً. في الوقت الحالي، استخدم كلمة مرور قوية وفريدة لحماية حسابك.",
+    "saveChanges": "حفظ التغييرات",
+    "saving": "جارٍ الحفظ..."
+  },
+  "terms": {
+    "title": "شروط الخدمة",
+    "description": "شروط وأحكام استخدام خدمات استشارات الذكاء الاصطناعي في نبض.",
+    "lastUpdated": "آخر تحديث"
+  },
+  "privacy": {
+    "title": "سياسة الخصوصية",
+    "description": "تعرف على كيفية جمع نبض واستخدام وحماية معلوماتك الشخصية وفقاً للائحة العامة لحماية البيانات.",
+    "lastUpdated": "آخر تحديث"
+  },
+  "cookies": {
+    "title": "سياسة ملفات تعريف الارتباط",
+    "description": "تعرف على كيفية استخدامنا لملفات تعريف الارتباط والتقنيات المشابهة على منصة نبض.",
+    "lastUpdated": "آخر تحديث"
+  },
+  "refundPolicy": {
+    "title": "سياسة الاسترداد",
+    "description": "معلومات حول استرداد الأموال وضمان الرضا.",
+    "lastUpdated": "آخر تحديث"
+  },
+  "license": {
+    "title": "اتفاقية الترخيص",
+    "description": "الشروط التي تحكم ترخيص المحتوى والخدمات.",
+    "lastUpdated": "آخر تحديث"
   }
 }

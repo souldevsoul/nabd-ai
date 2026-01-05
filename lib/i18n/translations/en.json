@@ -519,5 +519,363 @@
   "language": {
     "ar": "العربية",
     "en": "English"
+  },
+  "wallet": {
+    "title": "Wallet",
+    "subtitle": "Manage your credits and view transaction history",
+    "currentBalance": "Current Balance",
+    "totalSpent": "Total Spent",
+    "totalEarnings": "Total Earnings",
+    "recentTransactions": "Recent Transactions",
+    "noTransactions": "No transactions yet",
+    "addCreditsToStart": "Add credits to get started",
+    "balance": "Balance"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your account settings and integrations",
+    "profile": "Profile",
+    "updateInfo": "Update your personal information",
+    "email": "Email",
+    "verified": "Verified",
+    "displayName": "Display Name",
+    "yourName": "Your name",
+    "telegram": "Telegram Integration",
+    "telegramDesc": "Connect your Telegram account for instant notifications",
+    "telegramConnected": "Telegram Connected",
+    "user": "user",
+    "since": "since",
+    "disconnect": "Disconnect",
+    "notificationSettings": "Notification Settings",
+    "newOrderRequests": "New order requests",
+    "orderUpdates": "Order updates",
+    "paymentNotifications": "Payment notifications",
+    "connectTelegram": "Connect Telegram",
+    "connectTelegramDesc": "Link your Telegram account to receive instant notifications for order requests, updates, and more.",
+    "linkYourAccount": "Link Your Account",
+    "step1": "Open Telegram and search for",
+    "step2": "Start a conversation with the bot",
+    "step3": "Send this code:",
+    "codeValidUntil": "This code is valid until",
+    "generateLinkCode": "Generate Link Code",
+    "openTelegramBot": "Open @NABDBot in Telegram",
+    "editPublicProfile": "Edit your public profile",
+    "handle": "Handle",
+    "bio": "Bio",
+    "bioPlaceholder": "Tell us about yourself...",
+    "location": "Location",
+    "locationPlaceholder": "City, Country",
+    "website": "Website",
+    "socialLinks": "Social Links",
+    "security": "Security",
+    "securityDesc": "Manage your password and security settings",
+    "changePassword": "Change Password",
+    "changePasswordDesc": "Update your password to keep your account secure",
+    "twoFactor": "Two-Factor Authentication",
+    "twoFactorDesc": "Add an extra layer of security to your account",
+    "currentPassword": "Current Password",
+    "enterCurrentPassword": "Enter current password",
+    "newPassword": "New Password",
+    "enterNewPassword": "Enter new password",
+    "confirmNewPassword": "Confirm New Password",
+    "confirmNewPasswordPlaceholder": "Confirm new password",
+    "updatePassword": "Update Password",
+    "updating": "Updating...",
+    "comingSoon": "Coming Soon",
+    "comingSoonDesc": "Two-factor authentication will be available soon. For now, use a strong and unique password to protect your account.",
+    "saveChanges": "Save Changes",
+    "saving": "Saving..."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "description": "Terms and conditions for using NABD AI consulting services.",
+    "lastUpdated": "Last updated",
+    "sections": {
+      "intro": {
+        "title": "1. Introduction and Acceptance",
+        "p1": "These Terms of Service govern your use of NABD's AI consulting platform and services, operated by NewCo Ltd. (\"we,\" \"our,\" or \"us\"), registered at New Address 1, Company No: NEW123.",
+        "p2": "By accessing or using our services, you agree to be bound by these Terms. If you do not agree, you may not use our services.",
+        "p3": "We reserve the right to modify these terms with reasonable notice. Material changes will be notified to you at least 30 days in advance. Continued use after changes constitutes acceptance."
+      },
+      "services": {
+        "title": "2. Services Description",
+        "p1": "NABD provides a premium AI consulting platform connecting individual clients with elite AI specialists. Our services include:",
+        "item1": "Access to verified AI consultants and specialists",
+        "item2": "Credit-based payment system for consulting services",
+        "item3": "Bespoke AI solutions and strategic advisory",
+        "item4": "Platform tools for service delivery and communication"
+      },
+      "consumerRights": {
+        "title": "3. Consumer Rights (EU)",
+        "withdrawal": {
+          "title": "3.1 Right of Withdrawal",
+          "p1": "As a consumer in the European Union, you have the right to withdraw from credit purchases within 14 days of purchase without giving any reason. To exercise this right, contact us at support@nabd.ai with your order details.",
+          "p2": "Please note: If you request consulting services to begin during the withdrawal period and the service is fully performed, you may not be entitled to withdraw or may be required to pay proportionate costs for services rendered."
+        },
+        "guarantees": {
+          "title": "3.2 Consumer Guarantees",
+          "p1": "Services must be performed with reasonable care and skill. If services are defective or not as described, you may be entitled to a remedy including service correction, price reduction, or refund in accordance with EU consumer protection laws."
+        }
+      },
+      "credits": {
+        "title": "4. Credit System",
+        "purchases": {
+          "title": "4.1 Credit Purchases",
+          "p1": "Credits are purchased directly as one-time transactions. NABD does not operate on a subscription model. Each credit purchase is a separate contract for digital content.",
+          "p2": "Exchange rate: 10 credits = 1 USD (or equivalent in EUR). Prices are displayed in your local currency at checkout."
+        },
+        "terms": {
+          "title": "4.2 Credit Terms",
+          "item1": "Credits do not expire",
+          "item2": "Credits are non-transferable between accounts",
+          "item3": "Unused credits may be refunded within 30 days of purchase (subject to withdrawal rights)",
+          "item4": "Credits are debited only when services are successfully completed"
+        }
+      },
+      "obligations": {
+        "title": "5. User Obligations",
+        "p1": "You agree to:",
+        "item1": "Provide accurate account information",
+        "item2": "Maintain confidentiality of your credentials",
+        "item3": "Use services only for lawful purposes",
+        "item4": "Not attempt to circumvent platform security",
+        "item5": "Communicate respectfully with specialists",
+        "item6": "Comply with all applicable EU and local laws"
+      },
+      "payment": {
+        "title": "6. Payment Terms",
+        "p1": "All payments are processed securely through authorized payment providers. We accept Visa and Mastercard.",
+        "p2": "Prices include applicable VAT where required. VAT will be shown separately at checkout for EU customers.",
+        "p3": "You will receive a tax-compliant invoice for each purchase via email."
+      },
+      "refund": {
+        "title": "7. Refund Policy",
+        "p1": "See our dedicated Refund Policy for complete details.",
+        "p2": "In summary: Unused credits may be refunded within 30 days. Credits used for completed services are generally non-refundable, though we maintain a satisfaction guarantee and will work to resolve any issues."
+      },
+      "ip": {
+        "title": "8. Intellectual Property",
+        "p1": "All platform content, trademarks, and intellectual property remain the property of NewCo Ltd. or our licensors.",
+        "p2": "Deliverables from consulting engagements: Ownership and licensing terms will be specified in individual engagement agreements between you and the specialist."
+      },
+      "liability": {
+        "title": "9. Liability",
+        "p1": "Nothing in these Terms excludes or limits our liability for:",
+        "item1": "Death or personal injury caused by negligence",
+        "item2": "Fraud or fraudulent misrepresentation",
+        "item3": "Any liability that cannot be excluded under EU law",
+        "p2": "Subject to the above, our liability for any claim is limited to the total amount you paid us in the 12 months preceding the claim. We are not liable for indirect or consequential losses that are not reasonably foreseeable."
+      },
+      "data": {
+        "title": "10. Data Protection",
+        "p1": "Your personal data is processed in accordance with our Privacy Policy and applicable data protection laws including GDPR. You have rights regarding your personal data as detailed in our Privacy Policy."
+      },
+      "termination": {
+        "title": "11. Termination",
+        "p1": "You may close your account at any time. We may suspend or terminate accounts for violations of these Terms, with notice where reasonably possible.",
+        "p2": "Upon termination, unused credits may be refunded in accordance with our refund policy. Completed services and their terms survive termination."
+      },
+      "disputes": {
+        "title": "12. Dispute Resolution",
+        "p1": "These Terms are governed by the laws of the European Union and applicable member state law.",
+        "p2": "In the event of a dispute, we encourage you to contact us first at legal@nabd.ai to seek an amicable resolution.",
+        "p3": "If you are a consumer in the EU, you retain the right to bring proceedings in the courts of your country of residence. You may also use the EU Online Dispute Resolution platform.",
+        "p4": "Nothing in these Terms affects your statutory rights as a consumer."
+      },
+      "contact": {
+        "title": "13. Contact Information",
+        "p1": "For questions about these Terms of Service, please contact us at:",
+        "company": "NewCo Ltd.",
+        "address": "New Address 1",
+        "companyNo": "Company No: NEW123",
+        "emailLegal": "Email: legal@nabd.ai",
+        "emailSupport": "Support: support@nabd.ai"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "Learn how NABD collects, uses, and protects your personal information in accordance with GDPR.",
+    "lastUpdated": "Last updated",
+    "sections": {
+      "intro": {
+        "title": "1. Introduction",
+        "p1": "NewCo Ltd. (\"we,\" \"our,\" or \"us\"), Company No: NEW123, registered at New Address 1, is committed to protecting your privacy and personal data in accordance with the General Data Protection Regulation (GDPR) and applicable data protection laws.",
+        "p2": "This Privacy Policy explains how we collect, use, store, and protect your personal data when you use the NABD platform and services.",
+        "p3": "We are the data controller for the personal data we process. Our Data Protection Officer can be contacted at dpo@nabd.ai."
+      },
+      "dataCollected": {
+        "title": "2. Personal Data We Collect",
+        "provided": {
+          "title": "2.1 Information You Provide",
+          "item1": "Account information: name, email address, password (encrypted)",
+          "item2": "Payment information: billing address, payment card details (processed by our payment provider)",
+          "item3": "Profile information: professional background, preferences",
+          "item4": "Communications: messages sent through our platform, support inquiries",
+          "item5": "Service requests: project descriptions, requirements"
+        },
+        "automatic": {
+          "title": "2.2 Information Collected Automatically",
+          "item1": "Technical data: IP address, browser type and version, device information",
+          "item2": "Usage data: pages visited, time spent, interaction patterns",
+          "item3": "Cookies and tracking technologies (see our Cookie Policy)"
+        },
+        "thirdParty": {
+          "title": "2.3 Information from Third Parties",
+          "p1": "We may receive data from payment processors, analytics providers, and security services necessary to operate our platform."
+        }
+      },
+      "legalBasis": {
+        "title": "3. Legal Bases and Purposes for Processing",
+        "p1": "We process your personal data only when we have a lawful basis:",
+        "contractual": {
+          "title": "3.1 Contractual Necessity",
+          "p1": "To provide our services, process transactions, and fulfill our contractual obligations to you."
+        },
+        "legitimate": {
+          "title": "3.2 Legitimate Interests",
+          "item1": "Platform improvement and optimization",
+          "item2": "Fraud prevention and security",
+          "item3": "Customer support and relationship management",
+          "item4": "Analytics and business intelligence"
+        },
+        "legal": {
+          "title": "3.3 Legal Obligations",
+          "p1": "To comply with legal requirements including tax, accounting, and anti-money laundering obligations."
+        },
+        "consent": {
+          "title": "3.4 Consent",
+          "p1": "For marketing communications and non-essential cookies. You may withdraw consent at any time."
+        }
+      },
+      "sharing": {
+        "title": "4. Data Sharing and Disclosure",
+        "p1": "We do not sell your personal data. We share data only as follows:",
+        "providers": {
+          "title": "4.1 Service Providers",
+          "p1": "We engage trusted third-party processors for:",
+          "item1": "Payment processing (PCI-DSS compliant)",
+          "item2": "Cloud hosting and infrastructure",
+          "item3": "Email communications",
+          "item4": "Analytics services",
+          "p2": "All processors are bound by data processing agreements ensuring GDPR compliance."
+        },
+        "specialists": {
+          "title": "4.2 Specialists",
+          "p1": "When you engage a specialist, relevant project information is shared to facilitate service delivery."
+        },
+        "legal": {
+          "title": "4.3 Legal Requirements",
+          "p1": "We may disclose data when required by law, to protect our rights, or in response to valid legal requests from authorities."
+        }
+      },
+      "transfers": {
+        "title": "5. International Data Transfers",
+        "p1": "Your data is primarily stored within the European Economic Area (EEA). Where we transfer data outside the EEA, we ensure appropriate safeguards are in place:",
+        "item1": "Standard Contractual Clauses approved by the European Commission",
+        "item2": "Adequacy decisions by the European Commission",
+        "item3": "Other legally recognized transfer mechanisms"
+      },
+      "retention": {
+        "title": "6. Data Retention",
+        "p1": "We retain personal data only as long as necessary:",
+        "item1": "Account data: While your account is active and up to 7 years after closure for legal obligations",
+        "item2": "Transaction records: 7 years for tax and accounting purposes",
+        "item3": "Marketing data: Until you withdraw consent or 2 years of inactivity",
+        "item4": "Technical logs: 90 days"
+      },
+      "security": {
+        "title": "7. Data Security",
+        "p1": "We implement appropriate technical and organizational measures to protect your data:",
+        "item1": "Encryption in transit (TLS) and at rest",
+        "item2": "Access controls and authentication",
+        "item3": "Regular security assessments and audits",
+        "item4": "Employee training on data protection",
+        "item5": "Incident response procedures",
+        "p2": "In the event of a data breach affecting your rights, we will notify you and the relevant supervisory authority within 72 hours as required by GDPR."
+      },
+      "rights": {
+        "title": "8. Your Rights Under GDPR",
+        "p1": "You have the following rights regarding your personal data:",
+        "access": {
+          "title": "8.1 Right of Access",
+          "p1": "Request a copy of your personal data we hold."
+        },
+        "rectification": {
+          "title": "8.2 Right to Rectification",
+          "p1": "Correct inaccurate or incomplete personal data."
+        },
+        "erasure": {
+          "title": "8.3 Right to Erasure",
+          "p1": "Request deletion of your personal data (subject to legal retention requirements)."
+        },
+        "restriction": {
+          "title": "8.4 Right to Restriction",
+          "p1": "Request restriction of processing in certain circumstances."
+        },
+        "portability": {
+          "title": "8.5 Right to Data Portability",
+          "p1": "Receive your data in a structured, commonly used format and transmit it to another controller."
+        },
+        "object": {
+          "title": "8.6 Right to Object",
+          "p1": "Object to processing based on legitimate interests or for direct marketing."
+        },
+        "withdraw": {
+          "title": "8.7 Right to Withdraw Consent",
+          "p1": "Withdraw consent for processing based on consent (does not affect prior lawful processing)."
+        },
+        "exercise": "To exercise these rights, contact us at privacy@nabd.ai. We will respond within one month. You also have the right to lodge a complaint with your local data protection supervisory authority."
+      },
+      "cookies": {
+        "title": "9. Cookies and Tracking",
+        "p1": "We use cookies and similar technologies. For detailed information, see our Cookie Policy. You can manage cookie preferences through your browser settings or our cookie consent tool."
+      },
+      "marketing": {
+        "title": "10. Marketing Communications",
+        "p1": "We send marketing communications only with your consent. You may unsubscribe at any time using the link in our emails or by contacting privacy@nabd.ai. We will process your opt-out within 48 hours."
+      },
+      "children": {
+        "title": "11. Children's Privacy",
+        "p1": "Our services are not intended for individuals under 16 years of age. We do not knowingly collect personal data from children. If you believe we have collected data from a child, please contact us immediately at privacy@nabd.ai."
+      },
+      "automated": {
+        "title": "12. Automated Decision-Making",
+        "p1": "We may use automated systems to match clients with specialists. You have the right to request human review of automated decisions that significantly affect you."
+      },
+      "changes": {
+        "title": "13. Policy Changes",
+        "p1": "We may update this Privacy Policy from time to time. Material changes will be notified to you by email or prominent notice on our platform at least 30 days in advance. The \"Last updated\" date will be revised accordingly."
+      },
+      "contact": {
+        "title": "14. Contact Information",
+        "p1": "For questions, concerns, or to exercise your rights, please contact:",
+        "controller": "Data Controller:",
+        "company": "NewCo Ltd.",
+        "address": "New Address 1",
+        "companyNo": "Company No: NEW123",
+        "dpo": "Data Protection Officer:",
+        "dpEmail": "Email: dpo@nabd.ai",
+        "privacyInquiries": "Privacy Inquiries:",
+        "privacyEmail": "Email: privacy@nabd.ai",
+        "generalSupport": "General Support:",
+        "supportEmail": "Email: support@nabd.ai"
+      }
+    }
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "description": "Learn about how we use cookies and similar technologies on the NABD platform.",
+    "lastUpdated": "Last updated"
+  },
+  "refundPolicy": {
+    "title": "Refund Policy",
+    "description": "Information about refunds and our satisfaction guarantee.",
+    "lastUpdated": "Last updated"
+  },
+  "license": {
+    "title": "License Agreement",
+    "description": "Terms governing the licensing of content and services.",
+    "lastUpdated": "Last updated"
   }
 }

@@ -117,10 +117,6 @@ export function isAdmin(roles: UserRole[]): boolean {
   return hasRole(roles, "ADMIN");
 }
 
-export function isPhotographer(roles: UserRole[]): boolean {
-  return hasRole(roles, "PHOTOGRAPHER");
-}
-
 export function isBuyer(roles: UserRole[]): boolean {
   return hasRole(roles, "BUYER");
 }

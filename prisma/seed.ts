@@ -512,8 +512,8 @@ async function main() {
     await prisma.creditTransaction.createMany({
       data: [
         { walletId: testWallet.id, type: "CREDIT_PURCHASE", amount: 25000, balance: 25000, description: "رصيد البحث الصحي", createdAt: daysAgo(30) },
-        { walletId: testWallet.id, type: "PHOTO_PURCHASE", amount: -6500, balance: 18500, description: "نظام التشخيص", createdAt: daysAgo(19) },
-        { walletId: testWallet.id, type: "PHOTO_PURCHASE", amount: -8000, balance: 10500, description: "تحليل الصور", createdAt: daysAgo(5) },
+        { walletId: testWallet.id, type: "SERVICE_PURCHASE", amount: -6500, balance: 18500, description: "نظام التشخيص", createdAt: daysAgo(19) },
+        { walletId: testWallet.id, type: "SERVICE_PURCHASE", amount: -8000, balance: 10500, description: "تحليل الصور", createdAt: daysAgo(5) },
         { walletId: testWallet.id, type: "BONUS", amount: -500, balance: 10000, description: "تسوية الرصيد", createdAt: daysAgo(1) },
       ],
     });
@@ -525,8 +525,8 @@ async function main() {
     await prisma.creditTransaction.createMany({
       data: [
         { walletId: buyerWallet.id, type: "CREDIT_PURCHASE", amount: 50000, balance: 50000, description: "رصيد المستشفى", createdAt: daysAgo(25) },
-        { walletId: buyerWallet.id, type: "PHOTO_PURCHASE", amount: -9500, balance: 40500, description: "التجارب السريرية", createdAt: daysAgo(7) },
-        { walletId: buyerWallet.id, type: "PHOTO_PURCHASE", amount: -15500, balance: 25000, description: "مشاريع أخرى", createdAt: daysAgo(3) },
+        { walletId: buyerWallet.id, type: "SERVICE_PURCHASE", amount: -9500, balance: 40500, description: "التجارب السريرية", createdAt: daysAgo(7) },
+        { walletId: buyerWallet.id, type: "SERVICE_PURCHASE", amount: -15500, balance: 25000, description: "مشاريع أخرى", createdAt: daysAgo(3) },
       ],
     });
     console.log(`  ✓ تم إنشاء المعاملات للمشتري`);
@@ -540,7 +540,7 @@ async function main() {
     });
     await prisma.creditTransaction.createMany({
       data: [
-        { walletId: executorWallet.id, type: "PHOTOGRAPHER_EARNING", amount: 5600, balance: 5600, description: "أرباح المشاريع الصحية (80%)", createdAt: daysAgo(20) },
+        { walletId: executorWallet.id, type: "SPECIALIST_EARNING", amount: 5600, balance: 5600, description: "أرباح المشاريع الصحية (80%)", createdAt: daysAgo(20) },
       ],
     });
     console.log(`  ✓ تم إنشاء أرباح المنفذ`);

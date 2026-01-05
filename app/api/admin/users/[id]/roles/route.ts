@@ -35,7 +35,7 @@ export async function PATCH(
     }
 
     // Validate roles
-    const validRoles: UserRole[] = ["PHOTOGRAPHER", "BUYER", "ADMIN"];
+    const validRoles: UserRole[] = ["BUYER", "ADMIN", "SPECIALIST"];
     const invalidRoles = roles.filter((r) => !validRoles.includes(r));
     if (invalidRoles.length > 0) {
       return NextResponse.json(

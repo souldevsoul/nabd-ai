@@ -6,13 +6,7 @@ import { z } from "zod";
 const onboardingSchema = z.object({
   // Profile
   displayName: z.string().min(2, "Display name is required"),
-  handle: z.string().min(2, "Handle is required").regex(/^[a-z0-9_]+$/, "Handle can only contain lowercase letters, numbers, and underscores"),
   bio: z.string().optional(),
-  location: z.string().optional(),
-  // Social
-  websiteUrl: z.string().url().optional().or(z.literal("")),
-  socialInstagram: z.string().optional(),
-  socialX: z.string().optional(),
   // AML/KYC
   fullLegalName: z.string().min(2, "Legal name is required"),
   dateOfBirth: z.string().min(1, "Date of birth is required"),
@@ -35,50 +29,12 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = onboardingSchema.parse(body);
 
-    // Check if handle is already taken
-    const existingHandle = await db.photographerProfile.findUnique({
-      where: { handle: validatedData.handle },
-    });
-
-    if (existingHandle) {
-      return NextResponse.json(
-        { error: "Handle is already taken" },
-        { status: 400 }
-      );
-    }
-
-    // Create or update photographer profile
-    const photographerProfile = await db.photographerProfile.upsert({
-      where: { userId: session.user.id },
-      create: {
-        userId: session.user.id,
-        displayName: validatedData.displayName,
-        handle: validatedData.handle,
-        bio: validatedData.bio || null,
-        location: validatedData.location || null,
-        websiteUrl: validatedData.websiteUrl || null,
-        socialInstagram: validatedData.socialInstagram || null,
-        socialX: validatedData.socialX || null,
-      },
-      update: {
-        displayName: validatedData.displayName,
-        handle: validatedData.handle,
-        bio: validatedData.bio || null,
-        location: validatedData.location || null,
-        websiteUrl: validatedData.websiteUrl || null,
-        socialInstagram: validatedData.socialInstagram || null,
-        socialX: validatedData.socialX || null,
-      },
-    });
-
-    // Add PHOTOGRAPHER role if not already present
-    await db.user.update({
+    // Update user profile
+    const user = await db.user.update({
       where: { id: session.user.id },
       data: {
-        roles: {
-          push: "PHOTOGRAPHER",
-        },
         name: validatedData.displayName,
+        kycStatus: "IN_PROGRESS",
       },
     });
 
@@ -98,7 +54,11 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      profile: photographerProfile,
+      user: {
+        id: user.id,
+        name: user.name,
+        kycStatus: user.kycStatus,
+      },
     });
   } catch (error) {
     if (error instanceof z.ZodError) {

@@ -13,6 +13,7 @@ import {
 } from "react-icons/sl";
 import { WalletBalance } from "@/components/wallet";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n";
 
 interface Transaction {
   id: string;
@@ -32,16 +33,16 @@ interface WalletData {
 
 const transactionIcons: Record<string, typeof SlWallet> = {
   CREDIT_PURCHASE: SlArrowUp,
-  PHOTO_PURCHASE: SlBasket,
-  PHOTOGRAPHER_EARNING: SlChart,
+  SERVICE_PURCHASE: SlBasket,
+  SPECIALIST_EARNING: SlChart,
   REFUND: SlArrowDown,
   BONUS: SlBadge,
 };
 
 const transactionColors: Record<string, string> = {
   CREDIT_PURCHASE: "text-emerald-500",
-  PHOTO_PURCHASE: "text-red-400",
-  PHOTOGRAPHER_EARNING: "text-emerald-500",
+  SERVICE_PURCHASE: "text-red-400",
+  SPECIALIST_EARNING: "text-emerald-500",
   REFUND: "text-amber-500",
   BONUS: "text-purple-500",
 };
@@ -49,6 +50,7 @@ const transactionColors: Record<string, string> = {
 export default function WalletPage() {
   const [walletData, setWalletData] = useState<WalletData | null>(null);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function fetchWallet() {
@@ -79,8 +81,8 @@ export default function WalletPage() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white">Әмия</h1>
-        <p className="text-slate-400 mt-1">Кредиттеріңізді басқарыңыз жәе тразакция тарихы қараңыз</p>
+        <h1 className="text-3xl font-bold text-white">{t("wallet.title")}</h1>
+        <p className="text-slate-400 mt-1">{t("wallet.subtitle")}</p>
       </div>
 
       {/* Balance Card */}
@@ -99,7 +101,7 @@ export default function WalletPage() {
               <SlWallet className="w-5 h-5 text-amber-500" />
             </div>
             <div>
-              <p className="text-sm text-slate-400">Ағымдағы баتمс</p>
+              <p className="text-sm text-slate-400">{t("wallet.currentBalance")}</p>
               <p className="text-2xl font-bold text-white">
                 {walletData?.balance.toLocaleString() || 0}
               </p>
@@ -118,7 +120,7 @@ export default function WalletPage() {
               <SlBasket className="w-5 h-5 text-red-400" />
             </div>
             <div>
-              <p className="text-sm text-slate-400">Жалпы шығы</p>
+              <p className="text-sm text-slate-400">{t("wallet.totalSpent")}</p>
               <p className="text-2xl font-bold text-white">
                 {walletData?.totalSpent.toLocaleString() || 0}
               </p>
@@ -137,7 +139,7 @@ export default function WalletPage() {
               <SlChart className="w-5 h-5 text-emerald-500" />
             </div>
             <div>
-              <p className="text-sm text-slate-400">Жалпы табыс</p>
+              <p className="text-sm text-slate-400">{t("wallet.totalEarnings")}</p>
               <p className="text-2xl font-bold text-white">
                 {walletData?.totalEarnings.toLocaleString() || 0}
               </p>
@@ -148,7 +150,7 @@ export default function WalletPage() {
 
       {/* Transaction History */}
       <div>
-        <h2 className="text-xl font-semibold text-white mb-4">Соңғы тразакциялар</h2>
+        <h2 className="text-xl font-semibold text-white mb-4">{t("wallet.recentTransactions")}</h2>
         <div className="space-y-3">
           {walletData?.recentTransactions && walletData.recentTransactions.length > 0 ? (
             walletData.recentTransactions.map((tx, index) => {
@@ -189,7 +191,7 @@ export default function WalletPage() {
                       {tx.amount > 0 ? "+" : ""}{tx.amount.toLocaleString()}
                     </p>
                     <p className="text-sm text-slate-500">
-                      الرصيد: {tx.balance.toLocaleString()}
+                      {t("wallet.balance")}: {tx.balance.toLocaleString()}
                     </p>
                   </div>
                 </motion.div>
@@ -198,8 +200,8 @@ export default function WalletPage() {
           ) : (
             <div className="text-center py-12">
               <SlWallet className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-              <p className="text-slate-400">Тразакциялар жоқ</p>
-              <p className="text-sm text-slate-500">Бастау үші кредит қоңыз</p>
+              <p className="text-slate-400">{t("wallet.noTransactions")}</p>
+              <p className="text-sm text-slate-500">{t("wallet.addCreditsToStart")}</p>
             </div>
           )}
         </div>

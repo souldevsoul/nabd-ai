@@ -11,7 +11,6 @@ datasource db {
 // ============================================
 
 enum UserRole {
-  PHOTOGRAPHER
   BUYER
   ADMIN
   SPECIALIST
@@ -46,17 +45,10 @@ model User {
   telegramLinkedAt  DateTime?
 
   // Relations
-  photographerProfile  PhotographerProfile?
-  photos               Photo[]
-  licenseRequests      LicenseRequest[]
-  adminReviews         AdminReview[]
   telegramLinkTokens   TelegramLinkToken[]
   accounts             Account[]
   sessions             Session[]
   wallet               Wallet?
-  purchases            Purchase[]       @relation("BuyerPurchases")
-  buyerRequests        PhotoRequest[]   @relation("BuyerRequests")
-  photographerRequests PhotoRequest[]   @relation("PhotographerRequests")
   taskRequests         TaskRequest[]
   taskMessages         TaskMessage[]
   invoices             Invoice[]
@@ -101,210 +93,6 @@ model VerificationToken {
 }
 
 // ============================================
-// PHOTOGRAPHER PROFILE
-// ============================================
-
-model PhotographerProfile {
-  id              String   @id @default(cuid())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  userId          String   @unique
-  displayName     String
-  handle          String   @unique
-  bio             String?  @db.Text
-  location        String?
-  websiteUrl      String?
-  socialInstagram String?
-  socialX         String?
-  socialLinkedin  String?
-  avatarUrl       String?
-  coverImageUrl   String?
-  isVerified      Boolean  @default(false)
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([handle])
-}
-
-// ============================================
-// PHOTOS & VERIFICATION
-// ============================================
-
-enum PhotoStatus {
-  UPLOADING
-  PENDING_REVIEW
-  VERIFIED
-  REJECTED
-}
-
-model Photo {
-  id              String      @id @default(cuid())
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
-  photographerId  String
-
-  // Basic info
-  title           String
-  description     String?     @db.Text
-  category        String?
-
-  // File storage
-  fileUrl         String
-  thumbnailUrl    String?
-  mediumUrl       String?
-  storageKey      String
-  location        String?
-
-  // Status & verification
-  status          PhotoStatus @default(UPLOADING)
-  verificationScore Float?
-  verificationNotes String?    @db.Text
-  verifiedAt      DateTime?
-
-  // Technical metadata (EXIF)
-  width           Int?
-  height          Int?
-  fileSize        Int?
-  mimeType        String?
-  shootDate       DateTime?
-  cameraMake      String?
-  cameraModel     String?
-  lens            String?
-  aperture        String?
-  shutterSpeed    String?
-  iso             Int?
-  focalLength     String?
-  gpsLatitude     Float?
-  gpsLongitude    Float?
-
-  // Integrity
-  fileHash        String      @unique
-
-  // Visual analysis (optional)
-  primaryColor    String?
-  dominantColors  String[]
-
-  // Relations
-  photographer      User        @relation(fields: [photographerId], references: [id], onDelete: Cascade)
-  tags              PhotoTag[]
-  licenseOptions    LicenseOption[]
-  licenseRequests   LicenseRequest[]
-  adminReviews      AdminReview[]
-  purchases         Purchase[]
-  deliveredRequests PhotoRequest[] @relation("DeliveredPhoto")
-
-  @@index([photographerId])
-  @@index([status])
-  @@index([createdAt])
-  @@index([fileHash])
-  @@index([category])
-}
-
-model Tag {
-  id        String     @id @default(cuid())
-  name      String     @unique
-  slug      String     @unique
-  photos    PhotoTag[]
-
-  @@index([slug])
-}
-
-model PhotoTag {
-  photoId String
-  tagId   String
-  photo   Photo  @relation(fields: [photoId], references: [id], onDelete: Cascade)
-  tag     Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
-
-  @@id([photoId, tagId])
-}
-
-// ============================================
-// LICENSING
-// ============================================
-
-enum LicenseType {
-  PERSONAL
-  EDITORIAL
-  COMMERCIAL
-  EXTENDED
-}
-
-model LicenseOption {
-  id          String      @id @default(cuid())
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  photoId     String
-  type        LicenseType
-  name        String
-  description String?     @db.Text
-  priceCents  Int
-  credits     Int         @default(0) // Price in credits
-  currency    String      @default("USD")
-  usageTerms  String?     @db.Text
-  isActive    Boolean     @default(true)
-
-  photo     Photo       @relation(fields: [photoId], references: [id], onDelete: Cascade)
-  requests  LicenseRequest[]
-  purchases Purchase[]
-
-  @@index([photoId])
-}
-
-enum RequestStatus {
-  OPEN
-  IN_REVIEW
-  APPROVED
-  DECLINED
-  COMPLETED
-}
-
-model LicenseRequest {
-  id              String        @id @default(cuid())
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-  photoId         String
-  buyerId         String
-  licenseOptionId String?
-  status          RequestStatus @default(OPEN)
-  message         String?       @db.Text
-  intendedUse     String?       @db.Text
-  adminNotes      String?       @db.Text
-
-  photo         Photo         @relation(fields: [photoId], references: [id], onDelete: Cascade)
-  buyer         User          @relation(fields: [buyerId], references: [id], onDelete: Cascade)
-  licenseOption LicenseOption? @relation(fields: [licenseOptionId], references: [id])
-
-  @@index([photoId])
-  @@index([buyerId])
-  @@index([status])
-}
-
-// ============================================
-// ADMIN & MODERATION
-// ============================================
-
-enum ReviewDecision {
-  VERIFIED
-  REJECTED
-  NEEDS_INFO
-}
-
-model AdminReview {
-  id        String         @id @default(cuid())
-  createdAt DateTime       @default(now())
-  photoId   String
-  adminId   String
-  decision  ReviewDecision
-  notes     String?        @db.Text
-
-  photo Photo @relation(fields: [photoId], references: [id], onDelete: Cascade)
-  admin User  @relation(fields: [adminId], references: [id], onDelete: Cascade)
-
-  @@index([photoId])
-  @@index([adminId])
-}
-
-// ============================================
 // TELEGRAM INTEGRATION
 // ============================================
 
@@ -332,19 +120,19 @@ model Wallet {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   userId        String   @unique
-  balance       Int      @default(0) // Credits balance
-  totalSpent    Int      @default(0) // Total credits spent
-  totalEarnings Int      @default(0) // For photographers - lifetime earnings
-  pendingPayout Int      @default(0) // Pending photographer earnings
+  balance       Int      @default(0)
+  totalSpent    Int      @default(0)
+  totalEarnings Int      @default(0)
+  pendingPayout Int      @default(0)
 
   user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   transactions CreditTransaction[]
 }
 
 enum TransactionType {
-  CREDIT_PURCHASE      // Buyer purchased credits
-  PHOTO_PURCHASE       // Buyer spent credits on a photo
-  PHOTOGRAPHER_EARNING // Photographer received credits from sale
+  CREDIT_PURCHASE      // User purchased credits
+  SERVICE_PURCHASE     // User spent credits on a service
+  SPECIALIST_EARNING   // Specialist received credits from service
   REFUND               // Credits refunded
   BONUS                // Promotional credits
 }
@@ -357,12 +145,10 @@ model CreditTransaction {
   amount      Int             // Positive for credits in, negative for credits out
   balance     Int             // Balance after transaction
   description String?
-  metadata    Json?           // Store payment info, photo ID, etc.
+  metadata    Json?           // Store payment info, service ID, etc.
   paymentId   String?         // External payment provider ID
 
   wallet     Wallet    @relation(fields: [walletId], references: [id], onDelete: Cascade)
-  purchase   Purchase? @relation(fields: [purchaseId], references: [id])
-  purchaseId String?
   invoice    Invoice?  @relation(fields: [invoiceId], references: [id])
   invoiceId  String?
 
@@ -370,87 +156,6 @@ model CreditTransaction {
   @@index([type])
   @@index([createdAt])
   @@index([paymentId])
-}
-
-// ============================================
-// PURCHASES & DOWNLOADS
-// ============================================
-
-enum PurchaseStatus {
-  PENDING
-  COMPLETED
-  REFUNDED
-}
-
-model Purchase {
-  id              String         @id @default(cuid())
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  buyerId         String
-  photoId         String
-  licenseOptionId String
-  status          PurchaseStatus @default(COMPLETED)
-  creditsCost     Int            // Credits spent
-  photographerCut Int            // Credits to photographer (80%)
-  platformCut     Int            // Platform fee (20%)
-  downloadToken   String         @unique @default(cuid())
-  downloadCount   Int            @default(0)
-  maxDownloads    Int            @default(5)
-
-  buyer         User                @relation("BuyerPurchases", fields: [buyerId], references: [id])
-  photo         Photo               @relation(fields: [photoId], references: [id])
-  licenseOption LicenseOption       @relation(fields: [licenseOptionId], references: [id])
-  transactions  CreditTransaction[]
-
-  @@index([buyerId])
-  @@index([photoId])
-  @@index([downloadToken])
-  @@index([status])
-}
-
-// ============================================
-// PHOTO REQUESTS (Custom commissions)
-// ============================================
-
-enum PhotoRequestStatus {
-  PENDING
-  ACCEPTED
-  IN_PROGRESS
-  DELIVERED
-  COMPLETED
-  DECLINED
-  CANCELLED
-}
-
-model PhotoRequest {
-  id             String             @id @default(cuid())
-  createdAt      DateTime           @default(now())
-  updatedAt      DateTime           @updatedAt
-  buyerId        String
-  photographerId String
-  status         PhotoRequestStatus @default(PENDING)
-
-  // Request details
-  title          String
-  description    String             @db.Text
-  category       String?
-  budget         Int?               // Budget in credits
-  deadline       DateTime?
-
-  // Response
-  photographerNotes String?         @db.Text
-  quotedPrice    Int?               // Photographer's quote in credits
-
-  // Delivery
-  deliveredPhotoId String?
-
-  buyer          User   @relation("BuyerRequests", fields: [buyerId], references: [id])
-  photographer   User   @relation("PhotographerRequests", fields: [photographerId], references: [id])
-  deliveredPhoto Photo? @relation("DeliveredPhoto", fields: [deliveredPhotoId], references: [id])
-
-  @@index([buyerId])
-  @@index([photographerId])
-  @@index([status])
 }
 
 // ============================================

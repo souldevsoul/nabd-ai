@@ -22,8 +22,8 @@ function RegisterForm() {
   const defaultRole = searchParams.get("role") || "buyer";
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedRole, setSelectedRole] = useState<"PHOTOGRAPHER" | "BUYER">(
-    defaultRole === "photographer" ? "PHOTOGRAPHER" : "BUYER"
+  const [selectedRole, setSelectedRole] = useState<"SPECIALIST" | "BUYER">(
+    defaultRole === "specialist" ? "SPECIALIST" : "BUYER"
   );
   const { t } = useTranslation();
 
@@ -70,7 +70,7 @@ function RegisterForm() {
     }
   };
 
-  const handleRoleChange = (role: "PHOTOGRAPHER" | "BUYER") => {
+  const handleRoleChange = (role: "SPECIALIST" | "BUYER") => {
     setSelectedRole(role);
     setValue("role", role);
   };
@@ -130,25 +130,25 @@ function RegisterForm() {
           <div className="grid grid-cols-2 gap-4 mb-8 relative">
             <button
               type="button"
-              onClick={() => handleRoleChange("PHOTOGRAPHER")}
+              onClick={() => handleRoleChange("SPECIALIST")}
               className={cn(
                 "flex flex-col items-center gap-3 p-5 border-2 transition-all relative overflow-hidden group",
-                selectedRole === "PHOTOGRAPHER"
+                selectedRole === "SPECIALIST"
                   ? "border-aurora bg-aurora/10"
                   : "border-aurora/20 hover:border-aurora/40"
               )}
             >
               <RiImageLine
                 size={24}
-                className={selectedRole === "PHOTOGRAPHER" ? "text-aurora" : "text-background/40"}
+                className={selectedRole === "SPECIALIST" ? "text-aurora" : "text-background/40"}
               />
               <span className={cn(
                 "text-xs tracking-cosmos uppercase",
-                selectedRole === "PHOTOGRAPHER" ? "text-background" : "text-background/50"
+                selectedRole === "SPECIALIST" ? "text-background" : "text-background/50"
               )}>
-                {t("auth.creator")}
+                {t("auth.specialist")}
               </span>
-              {selectedRole === "PHOTOGRAPHER" && (
+              {selectedRole === "SPECIALIST" && (
                 <div className="absolute top-0 right-0 w-2 h-2 bg-aurora animate-pulse" />
               )}
             </button>

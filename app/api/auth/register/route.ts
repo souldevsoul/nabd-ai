@@ -34,21 +34,13 @@ export async function POST(request: Request) {
       },
     });
 
-    // If photographer, create photographer profile placeholder
-    if (validatedData.role === "PHOTOGRAPHER") {
-      const handle = validatedData.name
-        .toLowerCase()
-        .replace(/[^a-z0-9]/g, "")
-        .slice(0, 20) + Math.random().toString(36).slice(2, 6);
-
-      await db.photographerProfile.create({
-        data: {
-          userId: user.id,
-          displayName: validatedData.name,
-          handle,
-        },
-      });
-    }
+    // Create wallet for new user
+    await db.wallet.create({
+      data: {
+        userId: user.id,
+        balance: 0,
+      },
+    });
 
     return NextResponse.json(
       {
