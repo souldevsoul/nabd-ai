@@ -9,7 +9,6 @@ const footerLinkKeys = {
     { labelKey: "footer.eliteExperts", href: "/specialists" },
     { labelKey: "footer.requestService", href: "/request" },
     { labelKey: "footer.premiumPricing", href: "/pricing" },
-    { labelKey: "footer.api", href: "/docs/api" },
   ],
   company: [
     { labelKey: "footer.aboutNabd", href: "/about" },
@@ -20,6 +19,8 @@ const footerLinkKeys = {
     { labelKey: "footer.privacy", href: "/privacy" },
     { labelKey: "footer.terms", href: "/terms" },
     { labelKey: "footer.cookies", href: "/cookies" },
+    { labelKey: "footer.paymentsPolicy", href: "/payments-policy" },
+    { labelKey: "footer.amlPolicy", href: "/aml-policy" },
     { labelKey: "footer.refund", href: "/refund" },
     { labelKey: "footer.licenseAgreement", href: "/license-agreement" },
   ],
