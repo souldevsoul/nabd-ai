@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { loginSchema, type LoginInput } from "@/lib/validations";
 import { RiMailLine, RiLockLine, RiEyeLine, RiArrowLeftLine, RiLoader4Line, RiSparkling2Line } from "react-icons/ri";
 import { toast } from "sonner";
+import { useTranslation } from "@/lib/i18n";
 
 function LoginForm() {
   const router = useRouter();
@@ -20,6 +21,7 @@ function LoginForm() {
   const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
   const {
     register,
@@ -39,14 +41,14 @@ function LoginForm() {
       });
 
       if (result?.error) {
-        toast.error("المصادقة сәтсіз аяқтал - بيانات غير صالحة");
+        toast.error(t("auth.authFailed"));
       } else {
-        toast.success("ҚОЛ ЖЕТКІЗУ РҰҚСАТ ЕТІЛДІ - مرحباً بك, رائد فضاء");
+        toast.success(t("auth.accessGranted"));
         router.push(callbackUrl);
         router.refresh();
       }
     } catch {
-      toast.error("Бірдеңе дұрыс болма.");
+      toast.error(t("auth.somethingWrong"));
     } finally {
       setIsLoading(false);
     }
@@ -71,7 +73,7 @@ function LoginForm() {
           className="inline-flex items-center gap-2 text-sm text-background/60 hover:text-background transition-colors mb-8"
         >
           <RiArrowLeftLine size={16} />
-          <span className="tracking-cosmos uppercase text-xs">Базаإلى қайту</span>
+          <span className="tracking-cosmos uppercase text-xs">{t("auth.backToBase")}</span>
         </Link>
 
         <div className="p-10 space-window backdrop-blur-xl relative overflow-hidden">
@@ -87,9 +89,9 @@ function LoginForm() {
             </div>
             <Logo size="lg" className="justify-center mb-4" />
             <h1 className="text-2xl font-display font-bold text-background tracking-cosmos uppercase mb-2">
-              الطاقمң аутетификация
+              {t("auth.crewAuth")}
             </h1>
-            <p className="text-xs text-aurora/80 tracking-widest uppercase">المهمةمطلوب للوصول إلى</p>
+            <p className="text-xs text-aurora/80 tracking-widest uppercase">{t("auth.accessRequired")}</p>
             <div className="w-24 h-px bg-aurora/60 mx-auto mt-6" />
           </div>
 
@@ -97,7 +99,7 @@ function LoginForm() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 relative">
             <div className="space-y-2">
               <Label className="text-xs text-background/70 uppercase tracking-cosmos flex items-center gap-2">
-                <span className="text-aurora">▸</span> Экипаж ID
+                <span className="text-aurora">&#9656;</span> {t("auth.crewId")}
               </Label>
               <div className="relative group">
                 <RiMailLine
@@ -106,7 +108,7 @@ function LoginForm() {
                 />
                 <Input
                   type="email"
-                  placeholder="رائد فضاء@orbita.space"
+                  placeholder="crew@nabd.ai"
                   className="pl-12 h-14 bg-navy/50 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 tracking-wide transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)]"
                   {...register("email")}
                 />
@@ -117,14 +119,14 @@ function LoginForm() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label className="text-xs text-background/70 uppercase tracking-cosmos flex items-center gap-2">
-                  <span className="text-aurora">▸</span> رمز الوصول
+                  <span className="text-aurora">&#9656;</span> {t("auth.accessCode")}
                 </Label>
                 <button
                   type="button"
-                  onClick={() => toast.info("لاستعادة الرمز مهمة бақылауыمع اتصل.")}
+                  onClick={() => toast.info(t("auth.recoverMessage"))}
                   className="text-xs text-aurora/60 hover:text-aurora tracking-cosmos uppercase transition-colors"
                 >
-                  استعادة؟
+                  {t("auth.recover")}
                 </button>
               </div>
               <div className="relative group">
@@ -158,10 +160,10 @@ function LoginForm() {
               {isLoading ? (
                 <span className="flex items-center gap-2">
                   <RiLoader4Line size={20} className="animate-spin" />
-                  المصادقة жүріп жатыр...
+                  {t("auth.authenticating")}
                 </span>
               ) : (
-                "بدء تسلسل الوصول"
+                t("auth.startAccessSequence")
               )}
             </Button>
           </form>
@@ -170,9 +172,9 @@ function LoginForm() {
           <div className="mt-10 text-center relative">
             <div className="w-24 h-px bg-aurora/30 mx-auto mb-6" />
             <p className="text-xs text-background/60 tracking-cosmos uppercase">
-              جديد жұмысшы?{" "}
+              {t("auth.newCrew")}{" "}
               <Link href="/register" className="text-aurora hover:text-aurora/80 transition-colors">
-                Рұқсат сұрау
+                {t("auth.requestAccess")}
               </Link>
             </p>
           </div>
@@ -182,7 +184,7 @@ function LoginForm() {
         <div className="mt-8 text-center">
           <p className="text-xs text-aurora/40 tracking-cosmos uppercase flex items-center justify-center gap-2">
             <span className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-            Қауіпсіз ара белседі
+            {t("auth.secureConnection")}
           </p>
         </div>
       </div>

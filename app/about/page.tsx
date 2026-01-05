@@ -5,49 +5,51 @@ import Link from "next/link";
 import { Header, Footer } from "@/components/layout";
 import { Logo } from "@/components/brand";
 import { Button } from "@/components/ui/button";
-import { RiVipCrownLine, RiAwardLine, RiShieldStarLine, RiShieldKeyholeLine, RiSparklingLine, RiPriceTag3Line, RiRocketLine } from "react-icons/ri";
-
-const missionParameters = [
-  {
-    icon: RiRocketLine,
-    title: "السرعة",
-    code: "PARAM-001",
-    description: "تسريع أقصى في دورات التطوير. متخصصون نخبة يقدمون نتائج تحويلية بسرعة مدارية لا مثيل لها.",
-  },
-  {
-    icon: RiShieldKeyholeLine,
-    title: "الأمان",
-    code: "PARAM-002",
-    description: "Әскери деңгейдегі шифрлау хаттамалары. الكل مهمةإلى маңыз деректер тек сіздің басқару модуліңізде қала.",
-  },
-  {
-    icon: RiPriceTag3Line,
-    title: "الدقة",
-    code: "PARAM-003",
-    description: "Есептелге траектория түзетулері. Әрбір مهمة хирургиялық дәлдікпе орыдала, ең талапшыл спецификациялар ара.",
-  },
-  {
-    icon: RiSparklingLine,
-    title: "الإرث",
-    code: "PARAM-004",
-    description: "تأثير على الأجيال. نحن نصنع حلولاً تخلق ميزة تنافسية دائمة عبر الدورات المدارية.",
-  },
-];
-
-const flightManifest = [
-  { value: "2025", label: "بدء المهمة", code: "EST" },
-  { value: "النخبة", label: "فئة الطاقم", code: "TIER" },
-  { value: "∞", label: "قدرة المدار", code: "RANGE" },
-  { value: "100%", label: "معدل النجاح", code: "PERF" },
-];
-
-const crewRoster = [
-  { role: "قائد المهمة", position: "عمليات الذكاء الاصطناعي الاستراتيجية", code: "CDR" },
-  { role: "مهندس طيران", position: "أنظمة فنية", code: "FE" },
-  { role: "متخصص الحمولة", position: "حلول متخصصة", code: "PS" },
-];
+import { RiAwardLine, RiShieldKeyholeLine, RiSparklingLine, RiPriceTag3Line, RiRocketLine } from "react-icons/ri";
+import { useTranslation } from "@/lib/i18n";
 
 export default function AboutPage() {
+  const { t } = useTranslation();
+
+  const missionParameters = [
+    {
+      icon: RiRocketLine,
+      titleKey: "about.speed",
+      code: "PARAM-001",
+      descKey: "about.speedDesc",
+    },
+    {
+      icon: RiShieldKeyholeLine,
+      titleKey: "about.security",
+      code: "PARAM-002",
+      descKey: "about.securityDesc",
+    },
+    {
+      icon: RiPriceTag3Line,
+      titleKey: "about.precision",
+      code: "PARAM-003",
+      descKey: "about.precisionDesc",
+    },
+    {
+      icon: RiSparklingLine,
+      titleKey: "about.legacy",
+      code: "PARAM-004",
+      descKey: "about.legacyDesc",
+    },
+  ];
+
+  const flightManifest = [
+    { value: "2025", labelKey: "about.missionStart", code: "EST" },
+    { valueKey: "cta.elite", labelKey: "about.crewClass", code: "TIER" },
+    { value: "\u221E", labelKey: "about.orbitCapacity", code: "RANGE" },
+    { value: "100%", labelKey: "about.performance", code: "PERF" },
+  ];
+
+  const crewRoster = [
+    { roleKey: "about.missionCommander", positionKey: "about.strategicOps", code: "CDR" },
+    { roleKey: "about.flightEngineer", positionKey: "about.technicalSystems", code: "FE" },
+    { roleKey: "about.payloadSpecialist", positionKey: "about.specializedSolutions", code: "PS" },
+  ];
   return (
     <div className="min-h-screen starfield">
       <Header />
@@ -97,14 +99,14 @@ export default function AboutPage() {
                   transition={{ duration: 2, repeat: Infinity }}
                   className="w-2 h-2 bg-aurora rounded-full"
                 />
-                <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">المهمة Жіктелімі: Элита</span>
+                <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">{t("about.missionClassification")}</span>
               </div>
 
               <Logo size="lg" className="mb-8" />
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-extrabold uppercase tracking-tight text-background leading-[0.9] mb-6">
-                المهمة
-                <span className="block gradient-text mt-2">إحاطة</span>
+                {t("about.missionBriefing")}
+                <span className="block gradient-text mt-2">{t("about.briefing")}</span>
               </h1>
 
               <div className="w-32 h-1 bg-aurora mb-8" />
@@ -119,13 +121,13 @@ export default function AboutPage() {
             >
               <div className="space-y-6">
                 <p className="text-xl md:text-2xl text-background/80 font-body font-light leading-relaxed">
-                  NABD تمثل ذروة التميز في استشارات الذكاء الاصطناعي.
+                  {t("about.description1")}
                 </p>
                 <p className="text-lg text-background/70 font-body font-light leading-relaxed">
-                  المهمة طاقم من المستشارين النخبة الاستثنائيين من التحكم إلى الاستشارات الاستراتيجية.
+                  {t("about.description2")}
                 </p>
                 <p className="text-base text-background/60 font-body font-light leading-relaxed">
-                  حيث يصل أصحاب الرؤية إلى فضاء خبرة الذكاء الاصطناعي.
+                  {t("about.description3")}
                 </p>
 
                 {/* Floating stats */}
@@ -137,7 +139,7 @@ export default function AboutPage() {
                     className="text-center"
                   >
                     <div className="text-3xl font-display font-bold text-aurora mb-1">2025</div>
-                    <div className="text-xs text-background/50 uppercase tracking-wider">إطلاق</div>
+                    <div className="text-xs text-background/50 uppercase tracking-wider">{t("about.launch")}</div>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -146,7 +148,7 @@ export default function AboutPage() {
                     className="text-center"
                   >
                     <div className="text-3xl font-display font-bold text-aurora mb-1">100%</div>
-                    <div className="text-xs text-background/50 uppercase tracking-wider">نجاح</div>
+                    <div className="text-xs text-background/50 uppercase tracking-wider">{t("about.success")}</div>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -154,8 +156,8 @@ export default function AboutPage() {
                     transition={{ delay: 0.6 }}
                     className="text-center"
                   >
-                    <div className="text-3xl font-display font-bold text-aurora mb-1">∞</div>
-                    <div className="text-xs text-background/50 uppercase tracking-wider">المدار</div>
+                    <div className="text-3xl font-display font-bold text-aurora mb-1">{"\u221E"}</div>
+                    <div className="text-xs text-background/50 uppercase tracking-wider">{t("about.orbit")}</div>
                   </motion.div>
                 </div>
               </div>
@@ -175,22 +177,19 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 border border-aurora/40 bg-aurora/5 mb-4">
-                <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">المهمة Мақсаты</span>
+                <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">{t("about.missionObjective")}</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-display font-extrabold uppercase mb-6 text-background">
-                لدينا إطلاق Директива
+                {t("about.launchDirective")}
               </h2>
               <p className="text-background/70 mb-4 leading-relaxed font-light">
-                NABD экипаж мүшелері AI өзгертеті шешімдері іздейті көреге адамдарإلى сеімді مهمة мамадары ретіде тұра.
-                نحن القوة الصامتة وراء الاستراتيجيات المعقدة التي تقدم نتائج استثنائية.
+                {t("about.objectiveDesc1")}
               </p>
               <p className="text-background/70 mb-4 leading-relaxed font-light">
-                لدينا мамадар AI стратегия, озық аалитика و жеке مهمة параметрлеріе калибрлеге арайы шешімдерде
-                المعايرة لمعايير المهمة الفردية. كل مهمة منفذة بأعلى دقة.
+                {t("about.objectiveDesc2")}
               </p>
               <p className="text-background/70 leading-relaxed font-light">
-                هذه ليست سوقاً. هذا مركز تحكم حصري لمستشاري الذكاء الاصطناعي الأبرز في الفضاء،
-                مخصص فقط لمن لا يطلبون شيئاً أقل من التميز المداري.
+                {t("about.objectiveDesc3")}
               </p>
             </motion.div>
             <motion.div
@@ -204,9 +203,9 @@ export default function AboutPage() {
                 <div className="text-center">
                   <RiAwardLine className="w-24 h-24 text-aurora mx-auto mb-6 cosmic-glow-pulse" />
                   <p className="text-2xl font-display font-bold uppercase text-aurora mb-2 tracking-cosmos">
-                    Элиталық المهمة Мәртебесі
+                    {t("about.eliteMissionStatus")}
                   </p>
-                  <p className="text-background/70">مصمم حصرياً للتحكم البصير</p>
+                  <p className="text-background/70">{t("about.exclusiveDesign")}</p>
                 </div>
               </div>
             </motion.div>
@@ -220,7 +219,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {flightManifest.map((stat, i) => (
               <motion.div
-                key={stat.label}
+                key={stat.labelKey}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -231,10 +230,10 @@ export default function AboutPage() {
                   {stat.code}
                 </div>
                 <div className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-aurora">
-                  {stat.value}
+                  {stat.valueKey ? t(stat.valueKey) : stat.value}
                 </div>
                 <div className="mt-2 text-xs text-background/60 uppercase tracking-cosmos font-display font-medium">
-                  {stat.label}
+                  {t(stat.labelKey)}
                 </div>
               </motion.div>
             ))}
@@ -252,20 +251,20 @@ export default function AboutPage() {
             className="text-center mb-12"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 border border-aurora/40 bg-aurora/5 mb-4">
-              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">أنظمة أساسية</span>
+              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">{t("about.coreSystems")}</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-display font-extrabold uppercase mb-4 text-background">
-              المهمة Параметрлері
+              {t("about.missionParameters")}
             </h2>
             <p className="text-background/70 max-w-2xl mx-auto font-light">
-              كل NABD مهمةың тапрма аықтайты ерекшелік баإلىдары
+              {t("about.parametersDesc")}
             </p>
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-2">
             {missionParameters.map((param, i) => (
               <motion.div
-                key={param.title}
+                key={param.titleKey}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -279,11 +278,11 @@ export default function AboutPage() {
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <h3 className="text-lg font-display font-bold uppercase tracking-wide text-background">
-                        {param.title}
+                        {t(param.titleKey)}
                       </h3>
                       <span className="text-xs text-aurora/60 font-mono">{param.code}</span>
                     </div>
-                    <p className="text-background/70 font-light">{param.description}</p>
+                    <p className="text-background/70 font-light">{t(param.descKey)}</p>
                   </div>
                 </div>
               </motion.div>
@@ -302,20 +301,20 @@ export default function AboutPage() {
             className="text-center mb-12"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 border border-aurora/40 bg-aurora/5 mb-4">
-              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">الموظفين</span>
+              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">{t("about.readyToEngage")}</span>
             </div>
             <h2 className="text-2xl md:text-3xl font-display font-extrabold uppercase mb-4 text-background">
-              تخصصات الطاقم
+              {t("about.crewRoster")}
             </h2>
             <p className="text-background/70 max-w-2xl mx-auto font-light">
-              استشارات استراتيجية في المواضيع التي تحدد الميزة التنافسية
+              {t("about.crewRosterDesc")}
             </p>
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
             {crewRoster.map((item, i) => (
               <motion.div
-                key={item.role}
+                key={item.roleKey}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -326,9 +325,9 @@ export default function AboutPage() {
                   <span className="text-aurora font-display font-bold text-xl">{item.code}</span>
                 </div>
                 <h3 className="font-display font-bold uppercase tracking-cosmos text-background mb-1">
-                  {item.role}
+                  {t(item.roleKey)}
                 </h3>
-                <p className="text-background/60 text-sm">{item.position}</p>
+                <p className="text-background/60 text-sm">{t(item.positionKey)}</p>
               </motion.div>
             ))}
           </div>
@@ -345,14 +344,13 @@ export default function AboutPage() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-2 border-2 border-aurora/40 bg-aurora/5 mb-6">
               <span className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">التوظيف نشط</span>
+              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">{t("about.recruitmentActive")}</span>
             </div>
             <h2 className="text-2xl md:text-3xl font-display font-extrabold uppercase mb-4 text-background">
-              المهمة Рұқсаты طلب
+              {t("about.requestMissionClearance")}
             </h2>
             <p className="text-background/70 mb-8 max-w-2xl mx-auto font-light">
-              الوصول إلى NABD بالدعوة فقط. طلبыңыз жіберіңіз, ал біздің مهمة басқару комада
-              بتقييم توافقك للوصول إلى أبرز متخصصي الذكاء الاصطناعي في الفضاء.
+              {t("about.ctaDesc")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/request">
@@ -361,7 +359,7 @@ export default function AboutPage() {
                   className="bg-primary hover:bg-primary/90 text-white font-display font-bold uppercase tracking-cosmos shadow-lg shadow-primary/25 hover:shadow-[0_0_30px_rgba(30,64,175,0.5)] transition-all"
                 >
                   <RiRocketLine size={20} className="mr-2" />
-                  طلب استشارة
+                  {t("cta.requestConsultation")}
                 </Button>
               </Link>
               <Link href="/specialists">
@@ -370,7 +368,7 @@ export default function AboutPage() {
                   variant="outline"
                   className="border-2 border-aurora/30 hover:bg-aurora/5 hover:border-aurora font-display font-bold uppercase tracking-cosmos text-aurora"
                 >
-                  عرض قائمة الطاقم
+                  {t("about.viewCrewRoster")}
                 </Button>
               </Link>
             </div>

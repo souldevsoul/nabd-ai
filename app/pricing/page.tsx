@@ -6,135 +6,12 @@ import { Header, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { RiSparklingLine, RiArrowRightLine, RiCheckLine, RiShieldCheckLine, RiVipCrownLine, RiVipDiamondLine, RiTimeLine, RiQuestionLine, RiPhoneLine, RiCalculatorLine } from "react-icons/ri";
 import { useState } from "react";
-
-const membershipTiers = [
-  {
-    tier: "FOUNDATION",
-    tagline: "Begin Your Journey",
-    credits: 100,
-    price: 10,
-    discount: 0,
-    pricePerCredit: "0.10",
-    features: [
-      "100 Elite Credits",
-      "Access to All Services",
-      "Standard Response Time",
-      "Email Support",
-      "Credits Never Expire",
-    ],
-    cta: "Start Foundation",
-    href: "/dashboard/wallet?topup=100",
-    featured: false,
-    icon: RiSparklingLine,
-  },
-  {
-    tier: "EXECUTIVE",
-    tagline: "The Preferred Choice",
-    credits: 500,
-    price: 48.5,
-    discount: 3,
-    pricePerCredit: "0.097",
-    savings: "3% Off",
-    features: [
-      "500 Elite Credits",
-      "3% Volume Discount",
-      "Priority Service Queue",
-      "Dedicated Account Manager",
-      "48-Hour Response Guarantee",
-      "Phone & Email Support",
-    ],
-    cta: "Claim Executive",
-    href: "/dashboard/wallet?topup=500",
-    featured: true,
-    icon: RiVipCrownLine,
-  },
-  {
-    tier: "PINNACLE",
-    tagline: "Uncompromising Excellence",
-    credits: 1000,
-    price: 92,
-    discount: 8,
-    pricePerCredit: "0.092",
-    savings: "8% Off",
-    features: [
-      "1000 Elite Credits",
-      "8% Volume Discount",
-      "Instant Priority Access",
-      "Personal Success Director",
-      "24-Hour Platinum SLA",
-      "Private Slack Channel",
-      "Monthly Executive Briefing",
-    ],
-    cta: "Ascend to Pinnacle",
-    href: "/dashboard/wallet?topup=1000",
-    featured: false,
-    icon: RiVipDiamondLine,
-  },
-  {
-    tier: "CHAIRMAN'S CIRCLE",
-    tagline: "The Pinnacle of Excellence",
-    credits: 2500,
-    price: 212.5,
-    discount: 15,
-    pricePerCredit: "0.085",
-    savings: "15% Off",
-    features: [
-      "2500 Elite Credits",
-      "15% Volume Discount",
-      "White-Glove Concierge Service",
-      "C-Suite Executive Partner",
-      "Instant Priority Access",
-      "Custom Integration Support",
-      "Quarterly Strategy Sessions",
-      "Lifetime VIP Status",
-    ],
-    cta: "Join Chairman's Circle",
-    href: "/dashboard/wallet?topup=2500",
-    featured: false,
-    icon: RiVipDiamondLine,
-  },
-];
-
-const valuePropositions = [
-  {
-    number: "01",
-    title: "TRANSPARENT PRICING",
-    description: "10 credits = $1 USD. No hidden fees, no surprises. Your investment, fully accounted for.",
-  },
-  {
-    number: "02",
-    title: "PERPETUAL VALUE",
-    description: "Credits never expire. Use them when you need them, on your timeline.",
-  },
-  {
-    number: "03",
-    title: "SATISFACTION ASSURED",
-    description: "Every engagement backed by our commitment to excellence. Your success is non-negotiable.",
-  },
-];
-
-const faqs = [
-  {
-    q: "How does the credit system work?",
-    a: "Credits are your currency for accessing VERTEX services. Each service has a transparent credit cost based on complexity and specialist expertise. You'll always know the exact cost before committing.",
-  },
-  {
-    q: "What happens if I'm not satisfied?",
-    a: "Excellence is our standard. If a deliverable doesn't meet your expectations, we'll work with you to make it right or refund your credits. No questions asked.",
-  },
-  {
-    q: "Can I transfer credits to another account?",
-    a: "Credits are non-transferable and tied to your individual account. For custom arrangements, contact our partnerships team.",
-  },
-  {
-    q: "How quickly can I access a specialist?",
-    a: "Executive and Pinnacle members receive priority matching within 24-48 hours. Foundation members typically connect within 72 hours.",
-  },
-];
+import { useTranslation } from "@/lib/i18n";
 
 // Credit Calculator Component
 function CreditCalculator() {
   const [credits, setCredits] = useState(100);
+  const { t } = useTranslation();
 
   // Calculate discount based on credit amount
   const getDiscount = (amount: number) => {
@@ -168,20 +45,20 @@ function CreditCalculator() {
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 border border-primary/30 bg-primary/5">
           <RiCalculatorLine className="text-primary" size={14} />
-          <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">Custom Calculator</span>
+          <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">{t("pricing.calculator.title")}</span>
         </div>
         <h3 className="font-display text-3xl md:text-4xl font-light text-foreground mb-4">
-          Design Your <span className="font-bold gradient-text">Perfect Package</span>
+          {t("pricing.calculator.designPackage")}
         </h3>
         <p className="text-muted-foreground text-sm">
-          Select any amount from 10 to 10,000 credits with automatic volume discounts
+          {t("pricing.calculator.selectCredits")}
         </p>
       </div>
 
       {/* Credit Input */}
       <div className="mb-8">
         <label className="block text-sm font-medium text-muted-foreground mb-4 text-center">
-          Number of Credits
+          {t("pricing.calculator.numberOfCredits")}
         </label>
         <input
           type="number"
@@ -214,7 +91,7 @@ function CreditCalculator() {
       <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-lg p-8 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           <div className="text-center">
-            <p className="text-xs text-muted-foreground mb-1 tracking-wider uppercase">Base Price</p>
+            <p className="text-xs text-muted-foreground mb-1 tracking-wider uppercase">{t("pricing.calculator.basePrice")}</p>
             <p className="text-2xl font-display font-bold text-foreground/60">
               ${basePrice.toFixed(2)}
             </p>
@@ -222,7 +99,7 @@ function CreditCalculator() {
 
           <div className="text-center">
             <p className="text-xs text-muted-foreground mb-1 tracking-wider uppercase">
-              Volume Discount ({(discount * 100).toFixed(0)}%)
+              {t("pricing.calculator.volumeDiscount")} ({(discount * 100).toFixed(0)}%)
             </p>
             <p className="text-2xl font-display font-bold text-primary">
               -${savings.toFixed(2)}
@@ -230,7 +107,7 @@ function CreditCalculator() {
           </div>
 
           <div className="text-center">
-            <p className="text-xs text-muted-foreground mb-1 tracking-wider uppercase">Final Price</p>
+            <p className="text-xs text-muted-foreground mb-1 tracking-wider uppercase">{t("pricing.calculator.finalPrice")}</p>
             <p className="text-3xl font-display font-bold gradient-text">
               ${finalPrice.toFixed(2)}
             </p>
@@ -239,7 +116,7 @@ function CreditCalculator() {
 
         <div className="text-center pt-6 border-t border-primary/20">
           <p className="text-sm text-muted-foreground">
-            Effective rate: <span className="font-semibold text-foreground">${(finalPrice / credits).toFixed(3)}</span> per credit
+            {t("pricing.calculator.effectiveRate")}: <span className="font-semibold text-foreground">${(finalPrice / credits).toFixed(3)}</span> {t("pricing.calculator.perCredit")}
           </p>
         </div>
       </div>
@@ -247,40 +124,147 @@ function CreditCalculator() {
       {/* Discount Tier Info */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
         <div className={`p-3 rounded border text-center transition-all ${credits < 100 ? 'border-primary bg-primary/5' : 'border-border/50'}`}>
-          <p className="text-xs text-muted-foreground mb-1">Under 100</p>
-          <p className="font-display font-bold text-sm">0% off</p>
+          <p className="text-xs text-muted-foreground mb-1">&lt;100</p>
+          <p className="font-display font-bold text-sm">0%</p>
         </div>
         <div className={`p-3 rounded border text-center transition-all ${credits >= 100 && credits < 500 ? 'border-primary bg-primary/5' : 'border-border/50'}`}>
           <p className="text-xs text-muted-foreground mb-1">100-499</p>
-          <p className="font-display font-bold text-sm">3% off</p>
+          <p className="font-display font-bold text-sm">3%</p>
         </div>
         <div className={`p-3 rounded border text-center transition-all ${credits >= 500 && credits < 1000 ? 'border-primary bg-primary/5' : 'border-border/50'}`}>
           <p className="text-xs text-muted-foreground mb-1">500-999</p>
-          <p className="font-display font-bold text-sm">8% off</p>
+          <p className="font-display font-bold text-sm">8%</p>
         </div>
         <div className={`p-3 rounded border text-center transition-all ${credits >= 1000 ? 'border-primary bg-primary/5' : 'border-border/50'}`}>
           <p className="text-xs text-muted-foreground mb-1">1000+</p>
-          <p className="font-display font-bold text-sm">15% off</p>
+          <p className="font-display font-bold text-sm">15%</p>
         </div>
       </div>
 
       {/* CTA */}
       <Link href={`/dashboard/wallet?topup=${credits}`} className="block">
         <Button className="w-full py-6 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-display tracking-wider uppercase text-sm shadow-lg shadow-secondary/20 transition-all duration-500">
-          Purchase {credits.toLocaleString()} Credits
+          {t("pricing.calculator.purchase")} {credits.toLocaleString()} {t("common.credits")}
           <RiArrowRightLine className="ml-2" size={16} />
         </Button>
       </Link>
 
       <p className="text-center text-xs text-muted-foreground mt-6 flex items-center justify-center gap-2">
         <RiTimeLine size={14} className="text-primary" />
-        Elite credits never expire
+        {t("pricing.calculator.creditsNeverExpire")}
       </p>
     </motion.div>
   );
 }
 
 export default function PricingPage() {
+  const { t } = useTranslation();
+
+  const membershipTiers = [
+    {
+      tierKey: "foundation",
+      credits: 100,
+      price: 10,
+      discount: 0,
+      pricePerCredit: "0.10",
+      featureKeys: [
+        "pricing.features.eliteCredits",
+        "pricing.features.accessAllServices",
+        "pricing.features.standardResponse",
+        "pricing.features.emailSupport",
+        "pricing.features.neverExpire",
+      ],
+      href: "/dashboard/wallet?topup=100",
+      featured: false,
+      icon: RiSparklingLine,
+    },
+    {
+      tierKey: "executive",
+      credits: 500,
+      price: 48.5,
+      discount: 3,
+      pricePerCredit: "0.097",
+      savings: "3%",
+      featureKeys: [
+        "pricing.features.eliteCredits",
+        "pricing.features.volumeDiscount",
+        "pricing.features.priorityQueue",
+        "pricing.features.accountManager",
+        "pricing.features.responseGuarantee",
+        "pricing.features.phoneSupport",
+      ],
+      href: "/dashboard/wallet?topup=500",
+      featured: true,
+      icon: RiVipCrownLine,
+    },
+    {
+      tierKey: "pinnacle",
+      credits: 1000,
+      price: 92,
+      discount: 8,
+      pricePerCredit: "0.092",
+      savings: "8%",
+      featureKeys: [
+        "pricing.features.eliteCredits",
+        "pricing.features.volumeDiscount",
+        "pricing.features.instantPriority",
+        "pricing.features.successDirector",
+        "pricing.features.platinumSLA",
+        "pricing.features.slackChannel",
+        "pricing.features.executiveBriefing",
+      ],
+      href: "/dashboard/wallet?topup=1000",
+      featured: false,
+      icon: RiVipDiamondLine,
+    },
+    {
+      tierKey: "chairman",
+      credits: 2500,
+      price: 212.5,
+      discount: 15,
+      pricePerCredit: "0.085",
+      savings: "15%",
+      featureKeys: [
+        "pricing.features.eliteCredits",
+        "pricing.features.volumeDiscount",
+        "pricing.features.conciergeService",
+        "pricing.features.cSuitePartner",
+        "pricing.features.instantPriority",
+        "pricing.features.integrationSupport",
+        "pricing.features.strategySessions",
+        "pricing.features.vipStatus",
+      ],
+      href: "/dashboard/wallet?topup=2500",
+      featured: false,
+      icon: RiVipDiamondLine,
+    },
+  ];
+
+  const valuePropositions = [
+    {
+      number: "01",
+      titleKey: "pricing.values.transparent.title",
+      descKey: "pricing.values.transparent.description",
+    },
+    {
+      number: "02",
+      titleKey: "pricing.values.perpetual.title",
+      descKey: "pricing.values.perpetual.description",
+    },
+    {
+      number: "03",
+      titleKey: "pricing.values.satisfaction.title",
+      descKey: "pricing.values.satisfaction.description",
+    },
+  ];
+
+  const faqs = [
+    { qKey: "pricing.faq.q1", aKey: "pricing.faq.a1" },
+    { qKey: "pricing.faq.q2", aKey: "pricing.faq.a2" },
+    { qKey: "pricing.faq.q3", aKey: "pricing.faq.a3" },
+    { qKey: "pricing.faq.q4", aKey: "pricing.faq.a4" },
+  ];
+
   return (
     <div className="min-h-screen bg-background starfield">
       <Header />
@@ -330,13 +314,13 @@ export default function PricingPage() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-3 mb-10 border-2 border-primary/40 bg-primary/10 backdrop-blur-sm">
               <RiVipDiamondLine className="text-primary" size={18} />
-              <span className="text-sm tracking-[0.4em] uppercase text-primary font-bold">Elite Pricing</span>
+              <span className="text-sm tracking-[0.4em] uppercase text-primary font-bold">{t("pricing.elitePricing")}</span>
             </div>
 
             <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-light text-black leading-[0.9] mb-10">
-              استثمار
+              {t("pricing.investment")}
               <span className="block font-bold bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent mt-4">
-                Озық деңгейге
+                {t("pricing.premiumLevel")}
               </span>
             </h1>
 
@@ -347,10 +331,10 @@ export default function PricingPage() {
             </div>
 
             <p className="text-gray-600 text-xl md:text-2xl font-light max-w-2xl mx-auto leading-relaxed mb-4">
-              أرصدة نخبوية للشخصيات الب الرزة.
+              {t("pricing.eliteCredits")}
             </p>
             <p className="text-black text-lg md:text-xl font-medium max-w-xl mx-auto">
-              الأرصدة لا تنتهي صلاحيتها. 15%-إلى дейі көлемдік жеңілдіктер.
+              {t("pricing.neverExpire")} {t("pricing.volumeDiscounts")}
             </p>
 
             {/* Orbital stats */}
@@ -364,19 +348,19 @@ export default function PricingPage() {
                 <div className="w-8 h-8 border border-primary/30 rounded-full flex items-center justify-center">
                   <RiTimeLine size={16} className="text-primary" />
                 </div>
-                <span>Мерзімсіз</span>
+                <span>{t("pricing.noExpiry")}</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 border border-primary/30 rounded-full flex items-center justify-center">
                   <RiShieldCheckLine size={16} className="text-primary" />
                 </div>
-                <span>Қауіпсіз</span>
+                <span>{t("pricing.secure")}</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 border border-primary/30 rounded-full flex items-center justify-center">
                   <RiSparklingLine size={16} className="text-primary" />
                 </div>
-                <span>Озық деңгей</span>
+                <span>{t("pricing.premium")}</span>
               </div>
             </motion.div>
           </motion.div>
@@ -393,15 +377,15 @@ export default function PricingPage() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-4xl md:text-5xl font-light text-black mb-4">
-              Elite <span className="font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">Credit Packages</span>
+              {t("pricing.creditPackages")}
             </h2>
-            <p className="text-gray-600 text-lg">Curated packages with automatic volume discounts</p>
+            <p className="text-gray-600 text-lg">{t("pricing.curatedPackages")}</p>
           </motion.div>
 
           <div className="grid gap-8 lg:grid-cols-4">
             {membershipTiers.map((tier, i) => (
               <motion.div
-                key={tier.tier}
+                key={tier.tierKey}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -416,7 +400,7 @@ export default function PricingPage() {
                 {tier.featured && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <span className="inline-flex items-center gap-1 px-4 py-2 bg-primary text-white text-xs font-semibold tracking-wider uppercase shadow-lg">
-                      Most Popular
+                      {t("pricing.mostPopular")}
                     </span>
                   </div>
                 )}
@@ -425,8 +409,8 @@ export default function PricingPage() {
                 <div className="mb-8 pt-2">
                   <div className="flex flex-col items-center text-center mb-4">
                     <tier.icon size={32} className="text-primary mb-4" />
-                    <h3 className="font-display text-2xl font-bold tracking-wide text-black">{tier.tier}</h3>
-                    <p className="text-xs text-gray-500 tracking-wider mt-1">{tier.tagline}</p>
+                    <h3 className="font-display text-2xl font-bold tracking-wide text-black">{t(`pricing.${tier.tierKey}.tier`)}</h3>
+                    <p className="text-xs text-gray-500 tracking-wider mt-1">{t(`pricing.${tier.tierKey}.tagline`)}</p>
                   </div>
                 </div>
 
@@ -436,10 +420,10 @@ export default function PricingPage() {
                     <span className="font-display text-5xl font-bold text-black">${tier.price}</span>
                   </div>
                   <div className="text-center mb-3">
-                    <span className="text-gray-600 font-medium">{tier.credits.toLocaleString()} credits</span>
+                    <span className="text-gray-600 font-medium">{tier.credits.toLocaleString()} {t("common.credits")}</span>
                   </div>
                   <div className="flex items-center justify-center gap-3 text-sm">
-                    <span className="text-gray-500">${tier.pricePerCredit}/credit</span>
+                    <span className="text-gray-500">${tier.pricePerCredit}/{t("common.credits").slice(0, -1)}</span>
                     {tier.savings && (
                       <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-wide">
                         {tier.savings}
@@ -450,10 +434,10 @@ export default function PricingPage() {
 
                 {/* Features */}
                 <ul className="space-y-3 mb-10">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
+                  {tier.featureKeys.map((featureKey) => (
+                    <li key={featureKey} className="flex items-start gap-3">
                       <RiCheckLine size={18} className="text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-600">{feature}</span>
+                      <span className="text-sm text-gray-600">{t(featureKey)}</span>
                     </li>
                   ))}
                 </ul>
@@ -467,7 +451,7 @@ export default function PricingPage() {
                         : "bg-muted border-2 border-primary text-foreground hover:bg-primary hover:text-primary-foreground"
                     }`}
                   >
-                    {tier.cta}
+                    {t(`pricing.${tier.tierKey}.cta`)}
                     <RiArrowRightLine className="ml-2" size={16} />
                   </Button>
                 </Link>
@@ -495,10 +479,10 @@ export default function PricingPage() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-3 mb-6 border border-primary/30 bg-primary/5">
               <RiSparklingLine className="text-primary" size={16} />
-              <span className="text-xs tracking-[0.4em] uppercase text-primary font-semibold">The VERTEX Difference</span>
+              <span className="text-xs tracking-[0.4em] uppercase text-primary font-semibold">{t("pricing.difference.title")}</span>
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-light text-black">
-              Why Leaders <span className="font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">Choose Us</span>
+              {t("pricing.difference.whyLeaders")}
             </h2>
           </motion.div>
 
@@ -516,10 +500,10 @@ export default function PricingPage() {
                   {prop.number}
                 </span>
                 <h3 className="font-display font-bold text-xl tracking-wide mt-6 mb-4 text-black">
-                  {prop.title}
+                  {t(prop.titleKey)}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  {prop.description}
+                  {t(prop.descKey)}
                 </p>
               </motion.div>
             ))}
@@ -543,26 +527,25 @@ export default function PricingPage() {
             <div className="relative">
               <div className="inline-flex items-center gap-2 px-6 py-3 mb-8 border border-primary/30 bg-primary/5">
                 <RiVipDiamondLine className="text-primary" size={16} />
-                <span className="text-xs tracking-[0.4em] uppercase text-primary font-semibold">Premium Support</span>
+                <span className="text-xs tracking-[0.4em] uppercase text-primary font-semibold">{t("pricing.premium.title")}</span>
               </div>
 
               <h2 className="font-display text-4xl md:text-5xl font-light text-black mb-4">
-                Bespoke Solutions for
-                <span className="block font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent mt-3">Distinguished Individuals</span>
+                {t("pricing.premium.bespoke")}
+                <span className="block font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent mt-3">{t("pricing.premium.forDistinguished")}</span>
               </h2>
 
               <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto my-10" />
 
               <p className="text-gray-600 text-xl font-light max-w-2xl mx-auto mb-12 leading-relaxed">
-                Custom credit packages, dedicated support, and tailored integrations.
-                Let&apos;s architect your AI transformation together.
+                {t("pricing.premium.description")}
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link href="/request">
                   <Button className="px-12 py-7 bg-black hover:bg-black/90 text-white font-display tracking-wider uppercase text-sm shadow-lg transition-all duration-500">
                     <RiPhoneLine className="mr-2" size={16} />
-                    Schedule Consultation
+                    {t("pricing.premium.scheduleConsultation")}
                   </Button>
                 </Link>
               </div>
@@ -582,25 +565,25 @@ export default function PricingPage() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-3 mb-6 border border-primary/30 bg-primary/5">
               <RiQuestionLine className="text-primary" size={16} />
-              <span className="text-xs tracking-[0.4em] uppercase text-primary font-semibold">FAQ</span>
+              <span className="text-xs tracking-[0.4em] uppercase text-primary font-semibold">{t("pricing.faq.title")}</span>
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-light text-black">
-              Common <span className="font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">Questions</span>
+              {t("pricing.faq.common")}
             </h2>
           </motion.div>
 
           <div className="space-y-6">
             {faqs.map((faq, i) => (
               <motion.div
-                key={faq.q}
+                key={faq.qKey}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
                 className="bg-muted border border-border rounded-lg p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-lg"
               >
-                <h3 className="font-display font-bold text-black tracking-wide mb-3 text-lg">{faq.q}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+                <h3 className="font-display font-bold text-black tracking-wide mb-3 text-lg">{t(faq.qKey)}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{t(faq.aKey)}</p>
               </motion.div>
             ))}
           </div>
@@ -613,17 +596,17 @@ export default function PricingPage() {
           <div className="flex flex-wrap items-center justify-center gap-8 text-gray-600 text-sm">
             <div className="flex items-center gap-2">
               <RiShieldCheckLine size={20} className="text-primary" />
-              <span className="tracking-wider font-medium">Secure Payments</span>
+              <span className="tracking-wider font-medium">{t("pricing.trust.securePayments")}</span>
             </div>
             <div className="w-px h-5 bg-gray-300 hidden sm:block" />
             <div className="flex items-center gap-2">
               <RiTimeLine size={20} className="text-primary" />
-              <span className="tracking-wider font-medium">Credits Never Expire</span>
+              <span className="tracking-wider font-medium">{t("pricing.trust.neverExpire")}</span>
             </div>
             <div className="w-px h-5 bg-gray-300 hidden sm:block" />
             <div className="flex items-center gap-2">
               <RiSparklingLine size={20} className="text-primary" />
-              <span className="tracking-wider font-medium">Satisfaction Guaranteed</span>
+              <span className="tracking-wider font-medium">{t("pricing.trust.satisfactionGuaranteed")}</span>
             </div>
           </div>
         </div>

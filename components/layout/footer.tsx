@@ -2,29 +2,32 @@
 
 import Link from "next/link";
 import { Logo } from "@/components/brand";
+import { useTranslation } from "@/lib/i18n";
 
-const footerLinks = {
+const footerLinkKeys = {
   product: [
-    { label: "خبراء متميزون", href: "/specialists" },
-    { label: "طلب خدمة", href: "/request" },
-    { label: "الأسعار المميزة", href: "/pricing" },
-    { label: "واجهة برمجية", href: "/docs/api" },
+    { labelKey: "footer.eliteExperts", href: "/specialists" },
+    { labelKey: "footer.requestService", href: "/request" },
+    { labelKey: "footer.premiumPricing", href: "/pricing" },
+    { labelKey: "footer.api", href: "/docs/api" },
   ],
   company: [
-    { label: "عن نبض", href: "/about" },
-    { label: "المدونة", href: "/blog" },
-    { label: "اتصل بنا", href: "/contact" },
+    { labelKey: "footer.aboutNabd", href: "/about" },
+    { labelKey: "footer.blog", href: "/blog" },
+    { labelKey: "footer.contactUs", href: "/contact" },
   ],
   legal: [
-    { label: "الخصوصية", href: "/privacy" },
-    { label: "الشروط", href: "/terms" },
-    { label: "ملفات تعريف الارتباط", href: "/cookies" },
-    { label: "سياسة الاسترجاع", href: "/refund" },
-    { label: "اتفاقية الترخيص", href: "/license-agreement" },
+    { labelKey: "footer.privacy", href: "/privacy" },
+    { labelKey: "footer.terms", href: "/terms" },
+    { labelKey: "footer.cookies", href: "/cookies" },
+    { labelKey: "footer.refund", href: "/refund" },
+    { labelKey: "footer.licenseAgreement", href: "/license-agreement" },
   ],
 };
 
 export function Footer() {
+  const { t, locale } = useTranslation();
+
   return (
     <footer className="relative border-t border-accent/30 bg-gradient-to-b from-primary to-primary/95 overflow-hidden">
       {/* Pulse pattern background */}
@@ -44,28 +47,28 @@ export function Footer() {
             <div className="col-span-2 lg:col-span-2">
               <Logo size="lg" />
               <p className="mt-4 max-w-xs text-sm text-white/70 leading-relaxed">
-                منصة نبض للذكاء الاصطناعي في المملكة العربية السعودية. تواصل مع خبراء الذكاء الاصطناعي المعتمدين للحصول على نتائج استثنائية.
+                {t("footer.description")}
               </p>
               <div className="mt-6 text-xs text-accent/60 space-y-1 font-mono">
-                <p>سجل تجاري: SA123456</p>
-                <p>المنصة: نبض-٢٠٢٥</p>
-                <p>الموقع: الرياض، السعودية</p>
+                <p>{t("footer.commercialRecord")}: SA123456</p>
+                <p>{t("footer.platformCode")}: {locale === "ar" ? "نبض-٢٠٢٥" : "NABD-2025"}</p>
+                <p>{t("footer.locationLabel")}: {t("hero.locationValue")}</p>
               </div>
             </div>
 
             {/* Links columns */}
             <div>
-              <h3 className="text-sm font-display font-bold uppercase tracking-[0.2em] text-accent mb-1">المنصة</h3>
+              <h3 className="text-sm font-display font-bold uppercase tracking-[0.2em] text-accent mb-1">{t("footer.platform")}</h3>
               <div className="h-0.5 w-12 bg-gradient-to-l from-accent to-transparent mb-4" />
               <ul className="mt-4 space-y-3">
-                {footerLinks.product.map((link) => (
+                {footerLinkKeys.product.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       className="text-sm text-white/60 hover:text-accent transition-colors flex items-center gap-2 group"
                     >
                       <span className="w-1 h-1 bg-accent/40 rounded-full group-hover:bg-accent transition-colors" />
-                      {link.label}
+                      {t(link.labelKey)}
                     </Link>
                   </li>
                 ))}
@@ -73,17 +76,17 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="text-sm font-display font-bold uppercase tracking-[0.2em] text-accent mb-1">الشركة</h3>
+              <h3 className="text-sm font-display font-bold uppercase tracking-[0.2em] text-accent mb-1">{t("footer.company")}</h3>
               <div className="h-0.5 w-12 bg-gradient-to-l from-accent to-transparent mb-4" />
               <ul className="mt-4 space-y-3">
-                {footerLinks.company.map((link) => (
+                {footerLinkKeys.company.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       className="text-sm text-white/60 hover:text-accent transition-colors flex items-center gap-2 group"
                     >
                       <span className="w-1 h-1 bg-accent/40 rounded-full group-hover:bg-accent transition-colors" />
-                      {link.label}
+                      {t(link.labelKey)}
                     </Link>
                   </li>
                 ))}
@@ -91,17 +94,17 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="text-sm font-display font-bold uppercase tracking-[0.2em] text-accent mb-1">قانوني</h3>
+              <h3 className="text-sm font-display font-bold uppercase tracking-[0.2em] text-accent mb-1">{t("footer.legal")}</h3>
               <div className="h-0.5 w-12 bg-gradient-to-l from-accent to-transparent mb-4" />
               <ul className="mt-4 space-y-3">
-                {footerLinks.legal.map((link) => (
+                {footerLinkKeys.legal.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       className="text-sm text-white/60 hover:text-accent transition-colors flex items-center gap-2 group"
                     >
                       <span className="w-1 h-1 bg-accent/40 rounded-full group-hover:bg-accent transition-colors" />
-                      {link.label}
+                      {t(link.labelKey)}
                     </Link>
                   </li>
                 ))}
@@ -116,11 +119,11 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
               <p className="text-xs text-white/50 font-mono">
-                &copy; {new Date().getFullYear()} منصة نبض. شركة NewCo SA - المملكة العربية السعودية.
+                &copy; {new Date().getFullYear()} {t("footer.copyright")}
               </p>
             </div>
             <div className="flex flex-col items-center gap-3">
-              <p className="text-xs text-accent/60 uppercase tracking-[0.2em] font-semibold">معاملات آمنة ومشفرة</p>
+              <p className="text-xs text-accent/60 uppercase tracking-[0.2em] font-semibold">{t("footer.secureTransactions")}</p>
               <div className="flex items-center gap-4">
                 <div className="bg-white/10 backdrop-blur-sm border border-accent/20 rounded px-3 py-2 shadow-lg shadow-accent/10">
                   <img
@@ -146,7 +149,7 @@ export function Footer() {
           {/* Saudi Arabia tagline */}
           <div className="mt-4 text-center">
             <p className="text-xs text-accent/40 tracking-widest font-mono">
-              نبض الذكاء الاصطناعي من قلب المملكة العربية السعودية
+              {t("footer.tagline")}
             </p>
           </div>
         </div>

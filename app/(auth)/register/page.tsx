@@ -11,9 +11,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { registerSchema, type RegisterInput } from "@/lib/validations";
-import { RiMailLine, RiLockLine, RiEyeLine, RiArrowLeftLine, RiLoader4Line, RiUserLine, RiVipCrownLine, RiImageLine, RiShoppingBagLine, RiRocketLine } from "react-icons/ri";
+import { RiMailLine, RiLockLine, RiEyeLine, RiArrowLeftLine, RiLoader4Line, RiUserLine, RiImageLine, RiShoppingBagLine, RiRocketLine } from "react-icons/ri";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n";
 
 function RegisterForm() {
   const router = useRouter();
@@ -24,6 +25,7 @@ function RegisterForm() {
   const [selectedRole, setSelectedRole] = useState<"PHOTOGRAPHER" | "BUYER">(
     defaultRole === "photographer" ? "PHOTOGRAPHER" : "BUYER"
   );
+  const { t } = useTranslation();
 
   const {
     register,
@@ -47,7 +49,7 @@ function RegisterForm() {
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Registration failed");
 
-      toast.success("ОРБИТА ЖЕТІЛДІ - المهمة дайы, экипажإلى қош келдіңіз!");
+      toast.success(t("auth.orbitAchieved"));
 
       const signInResult = await signIn("credentials", {
         email: data.email,
@@ -62,7 +64,7 @@ function RegisterForm() {
         router.refresh();
       }
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "فشل التسجيل");
+      toast.error(error instanceof Error ? error.message : t("auth.registrationFailed"));
     } finally {
       setIsLoading(false);
     }
@@ -86,8 +88,8 @@ function RegisterForm() {
 
       {/* Rocket stages indicator - right side */}
       <div className="absolute right-12 top-1/2 -translate-y-1/2 space-y-6 hidden lg:block">
-        {['قبل الإطلاق', 'الإطلاق', 'المدار'].map((stage, idx) => (
-          <div key={stage} className="flex items-center gap-3">
+        {[t("auth.preLaunch"), t("auth.launch"), t("auth.inOrbit")].map((stage, idx) => (
+          <div key={idx} className="flex items-center gap-3">
             <div className={`w-3 h-3 rounded-full ${idx === 0 ? 'bg-aurora animate-pulse' : 'bg-aurora/20'}`} />
             <span className="text-xs text-background/40 tracking-cosmos uppercase">{stage}</span>
           </div>
@@ -102,7 +104,7 @@ function RegisterForm() {
           className="inline-flex items-center gap-2 text-sm text-background/60 hover:text-background transition-colors mb-8"
         >
           <RiArrowLeftLine size={16} />
-          <span className="tracking-cosmos uppercase text-xs">إيقاف الإطلاق</span>
+          <span className="tracking-cosmos uppercase text-xs">{t("auth.abortLaunch")}</span>
         </Link>
 
         <div className="p-10 space-window backdrop-blur-xl relative overflow-hidden">
@@ -118,9 +120,9 @@ function RegisterForm() {
             </div>
             <Logo size="lg" className="justify-center mb-4" />
             <h1 className="text-2xl font-display font-bold text-background tracking-cosmos uppercase mb-2">
-              الطاقم тіркеу
+              {t("auth.crewRegistration")}
             </h1>
-            <p className="text-xs text-aurora/80 tracking-widest uppercase">بدء تسلسل الإعداد</p>
+            <p className="text-xs text-aurora/80 tracking-widest uppercase">{t("auth.initOnboarding")}</p>
             <div className="w-24 h-px bg-aurora/60 mx-auto mt-6" />
           </div>
 
@@ -144,7 +146,7 @@ function RegisterForm() {
                 "text-xs tracking-cosmos uppercase",
                 selectedRole === "PHOTOGRAPHER" ? "text-background" : "text-background/50"
               )}>
-                منشئ
+                {t("auth.creator")}
               </span>
               {selectedRole === "PHOTOGRAPHER" && (
                 <div className="absolute top-0 right-0 w-2 h-2 bg-aurora animate-pulse" />
@@ -168,7 +170,7 @@ function RegisterForm() {
                 "text-xs tracking-cosmos uppercase",
                 selectedRole === "BUYER" ? "text-background" : "text-background/50"
               )}>
-                جامع
+                {t("auth.collector")}
               </span>
               {selectedRole === "BUYER" && (
                 <div className="absolute top-0 right-0 w-2 h-2 bg-aurora animate-pulse" />
@@ -180,13 +182,13 @@ function RegisterForm() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 relative">
             <div className="space-y-2">
               <Label className="text-xs text-background/70 uppercase tracking-cosmos flex items-center gap-2">
-                <span className="text-aurora">▸</span> معرّف الاستدعاء
+                <span className="text-aurora">&#9656;</span> {t("contact.callsign")}
               </Label>
               <div className="relative group">
                 <RiUserLine size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-aurora/60 group-focus-within:text-aurora transition-colors" />
                 <Input
                   type="text"
-                  placeholder="اسم عضو الطاقم"
+                  placeholder={t("contact.yourName")}
                   className="pl-12 h-14 bg-navy/50 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 tracking-wide transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)]"
                   {...register("name")}
                 />
@@ -196,7 +198,7 @@ function RegisterForm() {
 
             <div className="space-y-2">
               <Label className="text-xs text-background/70 uppercase tracking-cosmos flex items-center gap-2">
-                <span className="text-aurora">▸</span> قناة الاتصال
+                <span className="text-aurora">&#9656;</span> {t("auth.commChannel")}
               </Label>
               <div className="relative group">
                 <RiMailLine size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-aurora/60 group-focus-within:text-aurora transition-colors" />
@@ -213,7 +215,7 @@ function RegisterForm() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label className="text-xs text-background/70 uppercase tracking-cosmos flex items-center gap-2">
-                  <span className="text-aurora">▸</span> الأمان кілті
+                  <span className="text-aurora">&#9656;</span> {t("auth.securityKey")}
                 </Label>
                 <div className="relative group">
                   <RiLockLine size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-aurora/60 group-focus-within:text-aurora transition-colors" />
@@ -230,7 +232,7 @@ function RegisterForm() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label className="text-xs text-background/70 uppercase tracking-cosmos flex items-center gap-2">
-                    <span className="text-aurora">▸</span> Кілтті растау
+                    <span className="text-aurora">&#9656;</span> {t("auth.confirmKey")}
                   </Label>
                   <button
                     type="button"
@@ -262,12 +264,12 @@ function RegisterForm() {
               {isLoading ? (
                 <span className="flex items-center gap-2">
                   <RiLoader4Line size={20} className="animate-spin" />
-                  Іске қосу жүріп жатыр...
+                  {t("auth.launching")}
                 </span>
               ) : (
                 <span className="flex items-center gap-2">
                   <RiRocketLine size={18} />
-                  Іске қосу тізбегі бастау
+                  {t("auth.startLaunchSequence")}
                 </span>
               )}
             </Button>
@@ -277,18 +279,16 @@ function RegisterForm() {
           <div className="mt-8 text-center relative">
             <div className="w-24 h-px bg-aurora/30 mx-auto mb-6" />
             <p className="text-xs text-background/60 tracking-cosmos uppercase">
-              هل أنت عضو في الطاقم؟{" "}
+              {t("auth.alreadyCrew")}{" "}
               <Link href="/login" className="text-aurora hover:text-aurora/80 transition-colors">
-                Порталإلى кіру
+                {t("auth.enterPortal")}
               </Link>
             </p>
           </div>
 
           <p className="mt-6 text-center text-xs text-background/40 leading-relaxed">
-            تسجيل арқылы сіз біздің{" "}
-            <Link href="/terms" className="underline hover:text-aurora/60">Шарттарымызمع</Link>
-            {" "}و{" "}
-            <Link href="/privacy" className="underline hover:text-aurora/60">سياسة الخصوصيةمع</Link> келісесіз
+            {t("auth.byRegistering")}{" "}
+            <Link href="/terms" className="underline hover:text-aurora/60">{t("auth.termsAndPrivacy")}</Link>
           </p>
         </div>
 
@@ -296,7 +296,7 @@ function RegisterForm() {
         <div className="mt-8 text-center">
           <p className="text-xs text-aurora/40 tracking-cosmos uppercase flex items-center justify-center gap-2">
             <span className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-            قبل الإطلاقгі кезең белседі
+            {t("auth.preLaunchActive")}
           </p>
         </div>
       </div>

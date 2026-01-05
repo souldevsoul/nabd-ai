@@ -25,8 +25,10 @@ import {
   SlGrid,
   SlWallet,
 } from "react-icons/sl";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import { RiMenuLine, RiCloseLine, RiHeartPulseLine, RiHeartLine } from "react-icons/ri";
 import { useState } from "react";
+import { useTranslation } from "@/lib/i18n";
 
 interface HeaderProps {
   user?: {
@@ -38,11 +40,11 @@ interface HeaderProps {
   } | null;
 }
 
-const navLinks = [
-  { href: "/specialists", label: "المتخصصون" },
-  { href: "/tasks", label: "الخدمات" },
-  { href: "/request", label: "استشارة" },
-  { href: "/pricing", label: "الأسعار" },
+const navLinkKeys = [
+  { href: "/specialists", key: "nav.specialists" },
+  { href: "/tasks", key: "nav.services" },
+  { href: "/request", key: "nav.consultation" },
+  { href: "/pricing", key: "nav.pricing" },
 ];
 
 export function Header({ user: userProp }: HeaderProps) {
@@ -51,10 +53,12 @@ export function Header({ user: userProp }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const { data: session } = useSession();
   const { scrollY } = useScroll();
+  const { t, locale, setLocale } = useTranslation();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 50);
   });
+
 
   // Use passed user prop if available, otherwise use session
   const user = userProp || (session?.user ? {
@@ -89,7 +93,7 @@ export function Header({ user: userProp }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1 absolute right-1/2 translate-x-1/2">
-            {navLinks.map((link) => (
+            {navLinkKeys.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -100,7 +104,7 @@ export function Header({ user: userProp }: HeaderProps) {
                     : "text-white/70 hover:text-white"
                 )}
               >
-                {link.label}
+                {t(link.key)}
                 <span
                   className={cn(
                     "absolute bottom-0 right-1/2 translate-x-1/2 h-0.5 bg-gradient-to-l from-accent to-primary transition-all duration-500",
@@ -116,6 +120,9 @@ export function Header({ user: userProp }: HeaderProps) {
 
           {/* Right side */}
           <div className="flex items-center gap-4">
+            {/* Language Toggle */}
+            <LanguageToggle />
+
             {user ? (
               <>
                 {/* Dashboard quick access */}
@@ -126,7 +133,7 @@ export function Header({ user: userProp }: HeaderProps) {
                     className="gap-2 text-white/70 hover:text-accent hover:bg-white/10 tracking-wider uppercase text-xs border border-white/20"
                   >
                     <SlGrid size={14} />
-                    <span className="hidden xl:inline">لوحة التحكم</span>
+                    <span className="hidden xl:inline">{t("nav.dashboard")}</span>
                   </Button>
                 </Link>
 
@@ -162,19 +169,19 @@ export function Header({ user: userProp }: HeaderProps) {
                     <DropdownMenuItem asChild>
                       <Link href="/dashboard" className="cursor-pointer py-2.5">
                         <SlGrid className="ml-3 h-4 w-4 text-muted-foreground" />
-                        <span className="tracking-wide">لوحة التحكم</span>
+                        <span className="tracking-wide">{t("nav.dashboard")}</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link href="/dashboard/wallet" className="cursor-pointer py-2.5">
                         <SlWallet className="ml-3 h-4 w-4 text-muted-foreground" />
-                        <span className="tracking-wide">المحفظة</span>
+                        <span className="tracking-wide">{t("nav.wallet")}</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link href="/dashboard/purchases" className="cursor-pointer py-2.5">
                         <SlBag className="ml-3 h-4 w-4 text-muted-foreground" />
-                        <span className="tracking-wide">الطلبات</span>
+                        <span className="tracking-wide">{t("nav.orders")}</span>
                       </Link>
                     </DropdownMenuItem>
                     {isAdmin && (
@@ -183,7 +190,7 @@ export function Header({ user: userProp }: HeaderProps) {
                         <DropdownMenuItem asChild>
                           <Link href="/admin" className="cursor-pointer py-2.5">
                             <SlUser className="ml-3 h-4 w-4 text-muted-foreground" />
-                            <span className="tracking-wide">لوحة الإدارة</span>
+                            <span className="tracking-wide">{t("nav.admin")}</span>
                           </Link>
                         </DropdownMenuItem>
                       </>
@@ -192,13 +199,13 @@ export function Header({ user: userProp }: HeaderProps) {
                     <DropdownMenuItem asChild>
                       <Link href="/settings" className="cursor-pointer py-2.5">
                         <SlSettings className="ml-3 h-4 w-4 text-muted-foreground" />
-                        <span className="tracking-wide">الإعدادات</span>
+                        <span className="tracking-wide">{t("nav.settings")}</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link href="/api/auth/signout" className="cursor-pointer py-2.5 text-destructive focus:text-destructive">
                         <SlLogout className="ml-3 h-4 w-4" />
-                        <span className="tracking-wide">تسجيل الخروج</span>
+                        <span className="tracking-wide">{t("nav.signOut")}</span>
                       </Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -212,7 +219,7 @@ export function Header({ user: userProp }: HeaderProps) {
                     size="sm"
                     className="tracking-wider uppercase text-xs text-white/70 hover:text-white hover:bg-white/10"
                   >
-                    تسجيل الدخول
+                    {t("nav.signIn")}
                   </Button>
                 </Link>
                 <Link href="/register">
@@ -221,7 +228,7 @@ export function Header({ user: userProp }: HeaderProps) {
                     className="bg-gradient-to-l from-accent to-primary hover:from-accent/90 hover:to-primary/90 text-white font-display tracking-wider uppercase text-xs px-6 shadow-lg shadow-accent/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent/50"
                   >
                     <RiHeartPulseLine className="ml-2" size={14} />
-                    انضم للمنصة
+                    {t("nav.joinPlatform")}
                   </Button>
                 </Link>
               </>
@@ -244,7 +251,7 @@ export function Header({ user: userProp }: HeaderProps) {
                   {/* Mobile nav */}
                   <nav className="flex-1 p-6">
                     <div className="space-y-1">
-                      {navLinks.map((link) => (
+                      {navLinkKeys.map((link) => (
                         <Link
                           key={link.href}
                           href={link.href}
@@ -256,10 +263,13 @@ export function Header({ user: userProp }: HeaderProps) {
                               : "text-muted-foreground hover:text-foreground hover:pr-2"
                           )}
                         >
-                          {link.label}
+                          {t(link.key)}
                         </Link>
                       ))}
                     </div>
+
+                    {/* Mobile Language Toggle */}
+                    <LanguageToggle variant="mobile" />
                   </nav>
 
                   {/* Mobile footer */}
@@ -267,13 +277,13 @@ export function Header({ user: userProp }: HeaderProps) {
                     <div className="p-6 border-t border-border space-y-3">
                       <Link href="/login" onClick={() => setMobileOpen(false)} className="block">
                         <Button variant="outline" className="w-full tracking-wider uppercase text-xs rounded-none">
-                          تسجيل الدخول
+                          {t("nav.signIn")}
                         </Button>
                       </Link>
                       <Link href="/register" onClick={() => setMobileOpen(false)} className="block">
                         <Button className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground tracking-wider uppercase text-xs rounded-none">
                           <RiHeartLine className="ml-2" size={14} />
-                          سجل الآن
+                          {t("nav.registerNow")}
                         </Button>
                       </Link>
                     </div>

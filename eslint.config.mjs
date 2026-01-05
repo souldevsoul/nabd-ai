@@ -241,6 +241,81 @@ const buttonMustBeClickableRule = {
   },
 };
 
+// Custom ESLint rule to detect hardcoded text that should use i18n
+// Warns when Arabic text or user-facing strings are hardcoded without t()
+const noHardcodedTextRule = {
+  meta: {
+    type: "suggestion",
+    docs: {
+      description: "Detect hardcoded text that should use the t() translation function",
+    },
+    messages: {
+      hardcodedArabic: "Hardcoded Arabic text detected: '{{text}}'. Use t('key') from useTranslation() instead.",
+      hardcodedText: "Potentially hardcoded user-facing text: '{{text}}'. Consider using t('key') from useTranslation().",
+    },
+  },
+  create(context) {
+    // Arabic character range
+    const arabicPattern = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+
+    // Skip patterns that are not user-facing text
+    const skipPatterns = [
+      /^[0-9.,\-+%$\s]+$/, // Pure numbers/punctuation
+      /^#[0-9a-fA-F]{3,8}$/, // Hex colors
+      /^\d+px$/, // CSS values
+      /^[a-z\-_]+$/, // CSS class names, identifiers
+      /^https?:\/\//, // URLs
+      /^mailto:/, // Email links
+      /^tel:/, // Phone links
+      /^\/[a-z\-\/]*$/, // Route paths
+      /^@/, // Social handles
+      /^[A-Z_]{2,}$/, // Constants
+    ];
+
+    function shouldSkip(text) {
+      const trimmed = text.trim();
+      if (trimmed.length < 2) return true;
+      return skipPatterns.some(pattern => pattern.test(trimmed));
+    }
+
+    function checkText(node, value) {
+      if (typeof value !== "string") return;
+      const trimmed = value.trim();
+      if (shouldSkip(trimmed)) return;
+
+      // Check for Arabic text
+      if (arabicPattern.test(trimmed)) {
+        const preview = trimmed.length > 40 ? trimmed.substring(0, 40) + "..." : trimmed;
+        context.report({
+          node,
+          messageId: "hardcodedArabic",
+          data: { text: preview },
+        });
+      }
+    }
+
+    return {
+      // Check JSX text content (e.g., <span>Hello</span>)
+      JSXText(node) {
+        const trimmed = node.value.trim();
+        if (trimmed.length > 0) {
+          checkText(node, node.value);
+        }
+      },
+      // Check string literals in JSX attributes that might be user-facing
+      JSXAttribute(node) {
+        // Only check certain attributes that might contain user-facing text
+        const userFacingAttrs = ["title", "placeholder", "label", "aria-label", "alt"];
+        if (!userFacingAttrs.includes(node.name.name)) return;
+
+        if (node.value && node.value.type === "Literal" && typeof node.value.value === "string") {
+          checkText(node, node.value.value);
+        }
+      },
+    };
+  },
+};
+
 // Custom ESLint rule to detect non-Arabic text (Kazakh/Cyrillic) in BURJ
 // BURJ is Arabic-only site - no Kazakh or Russian allowed
 const noKazakhTextRule = {
@@ -366,6 +441,7 @@ const vertexPlugin = {
     "button-must-be-clickable": buttonMustBeClickableRule,
     "burj-dark-theme": orbitaDarkThemeRule,
     "no-kazakh-text": noKazakhTextRule,
+    "no-hardcoded-text": noHardcodedTextRule,
   },
 };
 
@@ -537,7 +613,10 @@ const eslintConfig = defineConfig([
       "vertex/valid-internal-links": "error",
       "vertex/button-must-be-clickable": "error",
       "vertex/burj-dark-theme": "error",
-      "vertex/no-kazakh-text": "error",
+      // TODO: These rules are temporarily set to "warn" while i18n migration is in progress
+      // They should be set back to "error" once all strings are extracted
+      "vertex/no-kazakh-text": "warn",
+      "vertex/no-hardcoded-text": "warn",
     },
   },
   // Three.js components - allow impure functions

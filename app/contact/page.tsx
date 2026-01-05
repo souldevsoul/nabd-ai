@@ -9,23 +9,25 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SlEnvelopeOpen, SlLocationPin, SlClock, SlPaperPlane, SlBubble, SlBriefcase, SlQuestion } from "react-icons/sl";
 import { toast } from "sonner";
-
-const contactReasons = [
-  { id: "general", label: "استفسار عام", icon: SlBubble },
-  { id: "support", label: "الدعم الفني", icon: SlQuestion },
-  { id: "business", label: "الأعمال", icon: SlBriefcase },
-  { id: "press", label: "الصحافة والإعلام", icon: SlEnvelopeOpen },
-];
+import { useTranslation } from "@/lib/i18n";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedReason, setSelectedReason] = useState("general");
+  const { t } = useTranslation();
+
+  const contactReasons = [
+    { id: "general", labelKey: "contact.reasons.general", icon: SlBubble },
+    { id: "support", labelKey: "contact.reasons.support", icon: SlQuestion },
+    { id: "business", labelKey: "contact.reasons.business", icon: SlBriefcase },
+    { id: "press", labelKey: "contact.reasons.press", icon: SlEnvelopeOpen },
+  ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    toast.success("تم استلام الرسالة - تأكيد المركز الأرضي لرسالتك");
+    toast.success(t("contact.messageReceived"));
     setIsSubmitting(false);
     (e.target as HTMLFormElement).reset();
   };
@@ -51,13 +53,13 @@ export default function ContactPage() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-2 border-2 border-aurora/40 bg-aurora/5 mb-6">
               <span className="w-2 h-2 bg-aurora rounded-full animate-pulse" />
-              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">قناة الاتصال مفتوحة</span>
+              <span className="text-xs tracking-cosmos uppercase text-aurora font-semibold">{t("contact.channelOpen")}</span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-background">
-              المركز <span className="gradient-text">الأرضي</span>
+              {t("contact.groundControl").split(" ")[0]} <span className="gradient-text">{t("contact.groundControl").split(" ")[1]}</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-background/70 font-body font-light">
-              بدء تسلسل الاتصال مع مركز التحكم. وقت الاستجابة: نافذة مدارية 24 ساعة.
+              {t("contact.responseTime")}
             </p>
           </motion.div>
         </div>
@@ -87,9 +89,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h2 className="text-xl font-display font-bold uppercase tracking-cosmos text-background">
-                      نموذج الإرسال
+                      {t("contact.transmissionForm")}
                     </h2>
-                    <p className="text-xs text-aurora/80 tracking-cosmos uppercase">بدء تسلسل الاتصال</p>
+                    <p className="text-xs text-aurora/80 tracking-cosmos uppercase">{t("contact.initSequence")}</p>
                   </div>
                 </div>
 
@@ -107,7 +109,7 @@ export default function ContactPage() {
                       } relative`}
                     >
                       <reason.icon size={18} />
-                      <span className="text-xs font-display font-bold uppercase tracking-wide">{reason.label}</span>
+                      <span className="text-xs font-display font-bold uppercase tracking-wide">{t(reason.labelKey)}</span>
                       {selectedReason === reason.id && (
                         <div className="absolute top-0 right-0 w-2 h-2 bg-aurora animate-pulse" />
                       )}
@@ -119,19 +121,19 @@ export default function ContactPage() {
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
                       <Label htmlFor="name" className="font-display font-bold uppercase tracking-cosmos text-xs text-background/70 flex items-center gap-2">
-                        <span className="text-aurora">▸</span> معرّف الاستدعاء
+                        <span className="text-aurora">&#9656;</span> {t("contact.callsign")}
                       </Label>
                       <Input
                         id="name"
                         name="name"
-                        placeholder="اسمك"
+                        placeholder={t("contact.yourName")}
                         required
                         className="mt-1.5 h-12 bg-navy/50 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)]"
                       />
                     </div>
                     <div>
                       <Label htmlFor="email" className="font-display font-bold uppercase tracking-cosmos text-xs text-background/70 flex items-center gap-2">
-                        <span className="text-aurora">▸</span> رابط الاتصال
+                        <span className="text-aurora">&#9656;</span> {t("contact.commLink")}
                       </Label>
                       <Input
                         id="email"
@@ -146,12 +148,12 @@ export default function ContactPage() {
 
                   <div>
                     <Label htmlFor="subject" className="font-display font-bold uppercase tracking-cosmos text-xs text-background/70 flex items-center gap-2">
-                      <span className="text-aurora">▸</span> رمز الموضوع
+                      <span className="text-aurora">&#9656;</span> {t("contact.subjectCode")}
                     </Label>
                     <Input
                       id="subject"
                       name="subject"
-                      placeholder="موضوع الإرسال"
+                      placeholder={t("contact.transmissionSubject")}
                       required
                       className="mt-1.5 h-12 bg-navy/50 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)]"
                     />
@@ -159,13 +161,13 @@ export default function ContactPage() {
 
                   <div>
                     <Label htmlFor="message" className="font-display font-bold uppercase tracking-cosmos text-xs text-background/70 flex items-center gap-2">
-                      <span className="text-aurora">▸</span> حمولة الرسالة
+                      <span className="text-aurora">&#9656;</span> {t("contact.messagePayload")}
                     </Label>
                     <textarea
                       id="message"
                       name="message"
                       rows={5}
-                      placeholder="أرسل رسالتك..."
+                      placeholder={t("contact.sendMessage")}
                       required
                       className="mt-1.5 w-full px-4 py-3 bg-navy/50 border-2 border-aurora/30 focus:border-aurora text-background placeholder:text-background/30 transition-all focus:shadow-[0_0_20px_rgba(56,189,248,0.3)] resize-none focus:outline-none focus:ring-0"
                     />
@@ -180,12 +182,12 @@ export default function ContactPage() {
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">
                         <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        جارٍ الإرسال...
+                        {t("contact.transmitting")}
                       </span>
                     ) : (
                       <>
                         <SlPaperPlane size={18} />
-                        إرسال الرسالة
+                        {t("contact.transmit")}
                       </>
                     )}
                   </Button>
@@ -207,9 +209,9 @@ export default function ContactPage() {
                     <SlEnvelopeOpen size={24} className="text-aurora" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">القناة المباشرة</h3>
+                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">{t("contact.directChannel")}</h3>
                     <p className="text-background/60 text-sm font-light mb-2">
-                      للاتصالات الحيوية للمهمة
+                      {t("contact.criticalComms")}
                     </p>
                     <a
                       href="mailto:control@orbita.space"
@@ -227,14 +229,12 @@ export default function ContactPage() {
                     <SlLocationPin size={24} className="text-aurora" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">الإحداثيات</h3>
+                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">{t("contact.coordinates")}</h3>
                     <p className="text-background/60 text-sm font-light mb-2">
-                      شبكة التحكم في المهمة الموزعة
+                      {t("contact.distributedGrid")}
                     </p>
                     <p className="text-sm font-light text-background/80">
-                      الرياض، المملكة العربية السعودية<br />
-                      جدة، المملكة العربية السعودية<br />
-                      الدمام، المملكة العربية السعودية
+                      {t("hero.locationValue")}
                     </p>
                   </div>
                 </div>
@@ -246,14 +246,14 @@ export default function ContactPage() {
                     <SlClock size={24} className="text-aurora" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">نافذة الاستجابة</h3>
+                    <h3 className="font-display font-bold uppercase tracking-cosmos mb-1 text-background">{t("contact.responseWindow")}</h3>
                     <p className="text-background/60 text-sm font-light mb-2">
-                      جدول الاتصالات المدارية
+                      {t("contact.orbitalSchedule")}
                     </p>
                     <p className="text-sm font-light text-background/80">
-                      عام: خلال 24 ساعة مدارية<br />
-                      الدعم: خلال نافذة 4 ساعات<br />
-                      حيوية للمهمة: فورية
+                      {t("contact.generalTime")}<br />
+                      {t("contact.supportTime")}<br />
+                      {t("contact.criticalTime")}
                     </p>
                   </div>
                 </div>
@@ -261,15 +261,14 @@ export default function ContactPage() {
 
               <div className="space-window p-6 border-2 border-primary/40 bg-primary/5">
                 <h3 className="font-display font-bold uppercase tracking-cosmos mb-2 text-background">
-                  <span className="text-aurora">◆</span> مهام المؤسسات
+                  <span className="text-aurora">&#9670;</span> {t("contact.enterpriseMissions")}
                 </h3>
                 <p className="text-sm text-background/70 font-light mb-4">
-                  بعثات الفضاء العميق، تكوينات الحمولة المخصصة، أو إدارة المهام ذات العلامة البيضاء؟
-                  أسطول المؤسسات لدينا في الانتظار.
+                  {t("contact.enterpriseDesc")}
                 </p>
                 <Link href="/contact?type=business">
                   <Button variant="outline" className="border-2 border-aurora/40 hover:bg-aurora/5 hover:border-aurora font-display font-bold uppercase tracking-cosmos text-aurora">
-                    الاتصال بقيادة الأسطول
+                    {t("contact.contactFleet")}
                   </Button>
                 </Link>
               </div>

@@ -5,23 +5,12 @@ import Link from "next/link";
 import { useRef } from "react";
 import { Header, Footer } from "@/components/layout";
 import { RiArrowRightLine, RiArrowDownLine, RiSparklingLine, RiShieldCheckLine, RiAwardLine, RiCheckboxCircleLine, RiBrainLine, RiLineChartLine, RiDatabase2Line, RiHeartPulseLine, RiHeartLine } from "react-icons/ri";
-
-const eliteServices = [
-  { id: "01", title: "استراتيجية الذكاء الاصطناعي", desc: "خارطة طريق الذكاء الاصطناعي المصممة خصيصاً لقادة الصناعة. استشارات متميزة لنتائج تحويلية.", icon: RiBrainLine },
-  { id: "02", title: "حلول التعلم الآلي", desc: "تطبيقات تعلم آلي على مستوى احترافي. أنظمة متقدمة للقادة.", icon: RiLineChartLine },
-  { id: "03", title: "هندسة البيانات المخصصة", desc: "نظام بيئي آمن ومعقد للبيانات. ميزتك التنافسية محمية ومحسّنة.", icon: RiDatabase2Line },
-];
-
-const accolades = [
-  { metric: "٩٫٦ مليار ريال", label: "قيمة محفظة العملاء" },
-  { metric: "Fortune 100", label: "عملاء متميزون" },
-  { metric: "٩٩٫٩٪", label: "معدل الرضا" },
-  { metric: "٢٤/٧", label: "دعم مخصص" },
-];
+import { useTranslation } from "@/lib/i18n";
 
 export default function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
+  const { t, locale } = useTranslation();
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -30,6 +19,26 @@ export default function HomePage() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  const eliteServices = [
+    { id: "01", titleKey: "services.aiStrategy.title", descKey: "services.aiStrategy.description", icon: RiBrainLine },
+    { id: "02", titleKey: "services.mlSolutions.title", descKey: "services.mlSolutions.description", icon: RiLineChartLine },
+    { id: "03", titleKey: "services.dataEngineering.title", descKey: "services.dataEngineering.description", icon: RiDatabase2Line },
+  ];
+
+  const accolades = [
+    { metric: locale === "ar" ? "٩٫٦ مليار ريال" : "$9.6B SAR", labelKey: "accolades.portfolioValue" },
+    { metric: "Fortune 100", labelKey: "accolades.premiumClients" },
+    { metric: locale === "ar" ? "٩٩٫٩٪" : "99.9%", labelKey: "accolades.satisfactionRate" },
+    { metric: locale === "ar" ? "٢٤/٧" : "24/7", labelKey: "accolades.dedicatedSupport" },
+  ];
+
+  const promiseFeatures = [
+    { icon: RiAwardLine, titleKey: "promise.distinguished", descKey: "promise.distinguishedDesc", x: '20%', y: '20%' },
+    { icon: RiShieldCheckLine, titleKey: "promise.secure", descKey: "promise.secureDesc", x: '80%', y: '15%' },
+    { icon: RiSparklingLine, titleKey: "promise.premium", descKey: "promise.premiumDesc", x: '25%', y: '75%' },
+    { icon: RiCheckboxCircleLine, titleKey: "promise.results", descKey: "promise.resultsDesc", x: '75%', y: '80%' },
+  ];
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-background overflow-x-hidden">
@@ -72,7 +81,7 @@ export default function HomePage() {
           {/* LEFT PANEL: Vital Signs Display */}
           <div className="relative flex flex-col justify-center py-20 lg:py-0">
             <motion.div
-              initial={{ opacity: 0, x: -60 }}
+              initial={{ opacity: 0, x: locale === "ar" ? -60 : 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="relative z-10"
@@ -85,14 +94,14 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/40 bg-primary/10 backdrop-blur-sm"
               >
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                <span className="text-[10px] tracking-[0.2em] uppercase text-primary font-bold font-mono">مراقبة العلامات الحيوية</span>
+                <span className="text-[10px] tracking-[0.2em] uppercase text-primary font-bold font-mono">{t("hero.vitalSigns")}</span>
               </motion.div>
 
               {/* Main Headline - At peak of heartbeat */}
               <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-light text-foreground leading-[1.1] tracking-wide mb-6">
-                <span className="block">نبض الذكاء</span>
+                <span className="block">{t("hero.pulseOfAI")}</span>
                 <span className="block font-bold mt-2">
-                  <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">الاصطناعي</span>
+                  <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">{t("hero.artificialIntelligence")}</span>
                 </span>
               </h1>
 
@@ -103,35 +112,35 @@ export default function HomePage() {
               </div>
 
               <p className="text-foreground/90 text-base md:text-lg font-light leading-relaxed mb-3">
-                منصة نبض للذكاء الاصطناعي في المملكة العربية السعودية
+                {t("hero.platformDescription")}
               </p>
               <p className="text-primary/80 text-sm md:text-base font-light leading-relaxed mb-10">
-                نبض حي. تقنية متقدمة. مستقبل واعد.
+                {t("hero.tagline")}
               </p>
 
               {/* Vital Signs Panel */}
               <div className="bg-gradient-to-br from-card to-muted/50 border border-primary/30 rounded-lg p-6 mb-8 max-w-md shadow-lg shadow-primary/10">
-                <div className="text-primary text-[10px] font-mono mb-4 tracking-wider border-b border-primary/20 pb-2">المؤشرات الحيوية</div>
+                <div className="text-primary text-[10px] font-mono mb-4 tracking-wider border-b border-primary/20 pb-2">{t("hero.vitalIndicators")}</div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-background/50 rounded p-3">
-                    <div className="text-primary text-xs font-mono mb-1">الحالة:</div>
+                    <div className="text-primary text-xs font-mono mb-1">{t("hero.status")}</div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
-                      <span className="text-foreground text-sm font-mono font-medium">نشط</span>
+                      <span className="text-foreground text-sm font-mono font-medium">{t("hero.active")}</span>
                     </div>
                   </div>
                   <div className="bg-background/50 rounded p-3">
-                    <div className="text-primary text-xs font-mono mb-1">المشاريع:</div>
-                    <div className="text-foreground text-sm font-mono font-medium tabular-nums">٥٠+ ناجح</div>
+                    <div className="text-primary text-xs font-mono mb-1">{t("hero.projects")}</div>
+                    <div className="text-foreground text-sm font-mono font-medium tabular-nums">{t("hero.projectsCount")}</div>
                   </div>
                   <div className="bg-background/50 rounded p-3">
-                    <div className="text-primary text-xs font-mono mb-1">الموقع:</div>
-                    <div className="text-foreground text-sm font-mono font-medium">الرياض، السعودية</div>
+                    <div className="text-primary text-xs font-mono mb-1">{t("hero.location")}</div>
+                    <div className="text-foreground text-sm font-mono font-medium">{t("hero.locationValue")}</div>
                   </div>
                   <div className="bg-background/50 rounded p-3">
-                    <div className="text-primary text-xs font-mono mb-1">الوقت:</div>
+                    <div className="text-primary text-xs font-mono mb-1">{t("hero.time")}</div>
                     <div className="text-foreground text-sm font-mono font-medium tabular-nums">
-                      {new Date().toLocaleTimeString('ar-SA', { hour12: false })}
+                      {new Date().toLocaleTimeString(locale === "ar" ? 'ar-SA' : 'en-US', { hour12: false })}
                     </div>
                   </div>
                 </div>
@@ -147,7 +156,7 @@ export default function HomePage() {
                   >
                     <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                     <RiHeartPulseLine className="relative z-10" size={20} />
-                    <span className="relative z-10">ابدأ مشروعك</span>
+                    <span className="relative z-10">{t("hero.startProject")}</span>
                     <RiArrowRightLine className="relative z-10 group-hover:-translate-x-2 transition-transform duration-500" size={18} />
                   </motion.button>
                 </Link>
@@ -158,7 +167,7 @@ export default function HomePage() {
                     className="inline-flex items-center gap-3 px-10 py-5 border-2 border-primary/60 text-primary font-display text-sm tracking-widest uppercase hover:bg-primary/10 backdrop-blur-sm transition-all duration-500"
                   >
                     <RiHeartLine size={18} />
-                    استكشف المنصة
+                    {t("hero.explorePlatform")}
                   </motion.button>
                 </Link>
               </div>
@@ -168,7 +177,7 @@ export default function HomePage() {
           {/* RIGHT PANEL: Heart Monitor Display */}
           <div className="relative flex flex-col justify-center py-20 lg:py-0">
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
+              initial={{ opacity: 0, x: locale === "ar" ? 60 : -60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="space-y-6"
@@ -180,10 +189,10 @@ export default function HomePage() {
                     <RiHeartPulseLine className="text-primary animate-pulse" size={24} />
                   </div>
                   <div className="flex-1">
-                    <div className="text-primary text-[9px] font-mono mb-1 tracking-widest">معدل النبض #001</div>
-                    <h3 className="text-foreground font-display font-bold text-lg mb-2">منصة نبض للذكاء الاصطناعي</h3>
+                    <div className="text-primary text-[9px] font-mono mb-1 tracking-widest">{t("monitor.pulseRate")} #001</div>
+                    <h3 className="text-foreground font-display font-bold text-lg mb-2">{t("monitor.nabdPlatform")}</h3>
                     <p className="text-muted-foreground text-xs leading-relaxed">
-                      تقنية متقدمة للذكاء الاصطناعي من المملكة العربية السعودية
+                      {t("monitor.advancedTech")}
                     </p>
                   </div>
                 </div>
@@ -191,36 +200,36 @@ export default function HomePage() {
 
               {/* System Indicators */}
               <div className="bg-card border border-accent/30 rounded-lg p-5 border-r-4 border-r-accent shadow-lg shadow-accent/10">
-                <div className="text-primary text-[10px] font-mono mb-3 tracking-wider">بيانات النظام</div>
+                <div className="text-primary text-[10px] font-mono mb-3 tracking-wider">{t("monitor.systemData")}</div>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between bg-background/50 rounded p-2">
                     <div className="flex items-center gap-2">
                       <RiShieldCheckLine size={14} className="text-accent" />
-                      <span className="text-foreground text-xs">موثق</span>
+                      <span className="text-foreground text-xs">{t("monitor.verified")}</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <div className="w-1.5 h-1.5 bg-success rounded-full" />
-                      <span className="text-foreground text-xs font-mono font-medium">١٠٠٪</span>
+                      <span className="text-foreground text-xs font-mono font-medium">{locale === "ar" ? "١٠٠٪" : "100%"}</span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between bg-background/50 rounded p-2">
                     <div className="flex items-center gap-2">
                       <RiHeartPulseLine size={14} className="text-accent" />
-                      <span className="text-foreground text-xs">المشاريع</span>
+                      <span className="text-foreground text-xs">{t("hero.projects").replace(":", "")}</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <div className="w-1.5 h-1.5 bg-success rounded-full" />
-                      <span className="text-foreground text-xs font-mono font-medium tabular-nums">٥٠+</span>
+                      <span className="text-foreground text-xs font-mono font-medium tabular-nums">{locale === "ar" ? "٥٠+" : "50+"}</span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between bg-background/50 rounded p-2">
                     <div className="flex items-center gap-2">
                       <RiAwardLine size={14} className="text-accent" />
-                      <span className="text-foreground text-xs">معدل النجاح</span>
+                      <span className="text-foreground text-xs">{t("monitor.successRate")}</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <div className="w-1.5 h-1.5 bg-success rounded-full animate-pulse" />
-                      <span className="text-foreground text-xs font-mono font-medium">٩٩٫٩٪</span>
+                      <span className="text-foreground text-xs font-mono font-medium">{locale === "ar" ? "٩٩٫٩٪" : "99.9%"}</span>
                     </div>
                   </div>
                 </div>
@@ -228,16 +237,16 @@ export default function HomePage() {
 
               {/* Pulse Monitor */}
               <div className="bg-card border border-success/30 rounded-lg p-5 border-r-4 border-r-success shadow-lg shadow-success/10">
-                <div className="text-primary text-[10px] font-mono mb-2 tracking-wider">مراقبة النبض</div>
+                <div className="text-primary text-[10px] font-mono mb-2 tracking-wider">{t("monitor.pulseMonitor")}</div>
                 <div className="flex items-baseline gap-3 bg-background/50 rounded p-3">
                   <motion.div
                     className="text-3xl font-display font-bold text-primary tabular-nums"
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 1, repeat: Infinity }}
                   >
-                    ♥
+                    &#9829;
                   </motion.div>
-                  <div className="text-foreground text-xs font-mono font-medium">نشط الآن</div>
+                  <div className="text-foreground text-xs font-mono font-medium">{t("monitor.activeNow")}</div>
                 </div>
                 <div className="mt-3 h-1.5 bg-background/50 rounded-full overflow-hidden">
                   <motion.div
@@ -259,7 +268,7 @@ export default function HomePage() {
           transition={{ delay: 1.8 }}
           className="absolute bottom-12 right-8 lg:right-1/2 lg:translate-x-1/2 flex flex-col items-center gap-2"
         >
-          <span className="text-xs tracking-[0.3em] uppercase text-muted-foreground">استكشف</span>
+          <span className="text-xs tracking-[0.3em] uppercase text-muted-foreground">{t("hero.explore")}</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
@@ -277,7 +286,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
             {accolades.map((item, i) => (
               <motion.div
-                key={item.label}
+                key={item.labelKey}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -306,7 +315,7 @@ export default function HomePage() {
                   {item.metric}
                 </div>
                 <div className="text-muted-foreground text-xs tracking-[0.2em] uppercase font-mono">
-                  {item.label}
+                  {t(item.labelKey)}
                 </div>
               </motion.div>
             ))}
@@ -325,10 +334,10 @@ export default function HomePage() {
             className="mb-20 text-center"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 border border-primary/30 bg-primary/5">
-              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">خدماتنا</span>
+              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">{t("services.title")}</span>
             </div>
             <h2 className="font-display text-4xl md:text-6xl font-light text-foreground mb-4">
-              شرايين <span className="font-bold bg-gradient-to-l from-primary to-accent bg-clip-text text-transparent">الابتكار</span>
+              {t("services.arteries")} <span className="font-bold bg-gradient-to-l from-primary to-accent bg-clip-text text-transparent">{t("services.innovation")}</span>
             </h2>
             <div className="w-24 h-0.5 bg-gradient-to-l from-primary to-accent mx-auto mt-6" />
           </motion.div>
@@ -362,16 +371,16 @@ export default function HomePage() {
                     </div>
 
                     <h3 className="text-xl md:text-2xl font-display font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-500 mb-4">
-                      {service.title}
+                      {t(service.titleKey)}
                     </h3>
 
                     <p className="text-muted-foreground font-light leading-relaxed text-sm mb-6">
-                      {service.desc}
+                      {t(service.descKey)}
                     </p>
 
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
-                      <span className="text-[10px] text-muted-foreground font-mono tracking-wider">نشط</span>
+                      <span className="text-[10px] text-muted-foreground font-mono tracking-wider">{t("hero.active")}</span>
                     </div>
                   </div>
                 </div>
@@ -393,28 +402,23 @@ export default function HomePage() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/30 bg-primary/5">
               <RiSparklingLine className="text-primary" size={14} />
-              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">وعدنا</span>
+              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">{t("promise.title")}</span>
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-light text-foreground leading-tight mb-8">
-              التميز ليس خياراً.
-              <span className="block bg-gradient-to-l from-primary to-accent bg-clip-text text-transparent font-bold mt-2">إنه معيارنا.</span>
+              {t("promise.headline")}
+              <span className="block bg-gradient-to-l from-primary to-accent bg-clip-text text-transparent font-bold mt-2">{t("promise.subheadline")}</span>
             </h2>
             <div className="w-24 h-0.5 bg-gradient-to-l from-primary to-accent mx-auto mb-8" />
             <p className="text-muted-foreground text-lg font-light leading-relaxed max-w-2xl mx-auto">
-              كل مشاركة مع نبض تبدأ بالفهم — رؤيتك، تحدياتك، تعريفك للنجاح. نحن لا نقدم خدمات فقط. نحن نبني شراكات تحول الصناعات.
+              {t("promise.description")}
             </p>
           </motion.div>
 
           {/* Heart with vessels pattern */}
           <div className="relative max-w-4xl mx-auto h-96 md:h-[500px]">
-            {[
-              { icon: RiAwardLine, title: "متميز", desc: "اعتراف صناعي بالتميز", x: '20%', y: '20%' },
-              { icon: RiShieldCheckLine, title: "آمن", desc: "أمان على مستوى احترافي", x: '80%', y: '15%' },
-              { icon: RiSparklingLine, title: "مميز", desc: "جودة بلا حدود", x: '25%', y: '75%' },
-              { icon: RiCheckboxCircleLine, title: "نتائج", desc: "نتائج قابلة للقياس", x: '75%', y: '80%' },
-            ].map((item, i) => (
+            {promiseFeatures.map((item, i) => (
               <motion.div
-                key={item.title}
+                key={item.titleKey}
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -427,8 +431,8 @@ export default function HomePage() {
 
                   <div className="relative bg-card border border-primary/30 p-6 rounded-xl hover:scale-105 transition-transform duration-500 w-48 md:w-56 shadow-lg">
                     <item.icon className="text-primary mb-4" size={32} />
-                    <h3 className="font-display font-bold text-foreground mb-2 text-sm tracking-wide">{item.title}</h3>
-                    <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
+                    <h3 className="font-display font-bold text-foreground mb-2 text-sm tracking-wide">{t(item.titleKey)}</h3>
+                    <p className="text-muted-foreground text-xs leading-relaxed">{t(item.descKey)}</p>
                   </div>
                 </div>
               </motion.div>
@@ -447,15 +451,15 @@ export default function HomePage() {
             <div className="lg:order-2">
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/30 bg-primary/5">
                 <RiAwardLine className="text-primary" size={14} />
-                <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">للمتخصصين</span>
+                <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">{t("partner.forSpecialists")}</span>
               </div>
               <h2 className="font-display text-4xl md:text-5xl font-light text-foreground leading-tight mb-6">
-                كن جزءاً من
-                <span className="block font-bold bg-gradient-to-l from-primary to-accent bg-clip-text text-transparent mt-2">نخبة الخبراء</span>
+                {t("partner.bePartOf")}
+                <span className="block font-bold bg-gradient-to-l from-primary to-accent bg-clip-text text-transparent mt-2">{t("partner.eliteExperts")}</span>
               </h2>
               <div className="w-24 h-0.5 bg-gradient-to-l from-primary to-accent mb-8" />
               <p className="text-muted-foreground text-lg font-light leading-relaxed mb-8">
-                انضم إلى شبكتنا المختارة من مستشاري الذكاء الاصطناعي العالميين. اعمل مع عملاء Fortune 500، حدد أسعاراً مميزة، واحتفظ بالاستقلالية الكاملة في ممارستك.
+                {t("partner.description")}
               </p>
               <Link href="/become-partner">
                 <motion.button
@@ -463,7 +467,7 @@ export default function HomePage() {
                   whileTap={{ scale: 0.98 }}
                   className="group inline-flex items-center gap-3 px-10 py-5 bg-secondary text-secondary-foreground font-display text-sm tracking-widest uppercase shadow-lg shadow-secondary/20 hover:shadow-xl hover:shadow-secondary/30 transition-all duration-500"
                 >
-                  كن شريكاً
+                  {t("partner.becomePartner")}
                   <RiArrowRightLine className="group-hover:-translate-x-1 transition-transform duration-500" size={18} />
                 </motion.button>
               </Link>
@@ -523,21 +527,21 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-6 py-3 mb-12 border border-primary/30 bg-primary/5"
             >
               <RiSparklingLine className="text-primary" size={14} />
-              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium font-mono">إتاحة محدودة</span>
+              <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium font-mono">{t("cta.limitedAvailability")}</span>
             </motion.div>
 
             <h2 className="font-display text-5xl md:text-7xl font-light text-foreground mb-4">
-              انضم إلى
+              {t("cta.joinThe")}
             </h2>
             <h2 className="font-display text-5xl md:text-7xl font-bold bg-gradient-to-l from-primary to-accent bg-clip-text text-transparent mb-10">
-              النخبة
+              {t("cta.elite")}
             </h2>
 
             <div className="w-32 h-0.5 bg-gradient-to-l from-primary to-accent mx-auto mb-10" />
 
             <p className="text-muted-foreground text-lg md:text-xl font-light mb-14 max-w-3xl mx-auto leading-relaxed">
-              نبض تقبل شراكات جديدة مختارة كل ربع سنة.
-              <span className="block mt-3 text-foreground/80">ابدأ رحلتك نحو التميز في الذكاء الاصطناعي اليوم.</span>
+              {t("cta.quarterlyNote")}
+              <span className="block mt-3 text-foreground/80">{t("cta.startJourney")}</span>
             </p>
 
             {/* Large pulsing heart button */}
@@ -561,14 +565,14 @@ export default function HomePage() {
                     >
                       <RiHeartPulseLine className="mb-4" size={48} />
                     </motion.div>
-                    <span>ابدأ الآن</span>
+                    <span>{t("cta.startNow")}</span>
                   </span>
                 </motion.button>
               </motion.div>
             </Link>
 
             <p className="mt-12 text-sm text-muted-foreground tracking-wider">
-              اضغط للتقديم على الشراكة
+              {t("cta.applyForPartnership")}
             </p>
           </motion.div>
         </div>
