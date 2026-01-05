@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { useTranslation } from "@/lib/i18n";
 import {
   TbRocket,
   TbSearch,
@@ -34,55 +35,55 @@ import {
 } from "react-icons/tb";
 import { SlStar } from "react-icons/sl";
 
-// Request presets/templates
-const REQUEST_PRESETS = [
+// Template keys for presets - actual text comes from translations
+const REQUEST_PRESET_KEYS = [
   {
     id: "mvp",
-    title: "إطلاق MVP",
-    description: "Build and ship a working MVP with core features in 2-4 weeks",
+    titleKey: "request.templates.mvp.title",
+    descriptionKey: "request.templates.mvp.description",
     icon: TbRocket,
-    prompt: "I need to build an MVP for my startup. The core features are:\n\n• User authentication\n• Main product functionality\n• Basic dashboard\n\nTimeline: 2-4 weeks to launch",
-    category: "Product",
+    promptKey: "request.templates.mvp.prompt",
+    categoryKey: "request.categories.product",
   },
   {
     id: "ai-integration",
-    title: "تكامل الذكاء الاصطناعي",
-    description: "Add AI/ML capabilities to your existing product",
+    titleKey: "request.templates.aiIntegration.title",
+    descriptionKey: "request.templates.aiIntegration.description",
     icon: TbBrain,
-    prompt: "I want to integrate AI into my existing application:\n\n• Current stack: [describe your tech]\n• AI use case: [chatbot/recommendations/analysis]\n• Data available: [describe your data]\n\nGoal: Enhance user experience with intelligent features",
-    category: "AI",
+    promptKey: "request.templates.aiIntegration.prompt",
+    categoryKey: "request.categories.ai",
   },
   {
     id: "growth",
-    title: "تحليلات النمو",
-    description: "Set up analytics and optimize conversion funnels",
+    titleKey: "request.templates.growth.title",
+    descriptionKey: "request.templates.growth.description",
     icon: TbChartLine,
-    prompt: "Need help with growth and analytics:\n\n• Current metrics: [describe KPIs]\n• Biggest challenge: [conversion/retention/acquisition]\n• Tools in use: [list current tools]\n\nGoal: Data-driven growth strategy",
-    category: "Growth",
+    promptKey: "request.templates.growth.prompt",
+    categoryKey: "request.categories.growth",
   },
   {
     id: "chatbot",
-    title: "روبوت الدعم",
-    description: "Build an AI chatbot to handle customer support",
+    titleKey: "request.templates.chatbot.title",
+    descriptionKey: "request.templates.chatbot.description",
     icon: TbMessageChatbot,
-    prompt: "Need a customer support chatbot:\n\n• Platform: [web/app/both]\n• Common questions: [list top 5 FAQs]\n• Escalation needed: [when to involve humans]\n\nGoal: Reduce support tickets by 50%+",
-    category: "Automation",
+    promptKey: "request.templates.chatbot.prompt",
+    categoryKey: "request.categories.automation",
   },
   {
     id: "automation",
-    title: "أتمتة سير العمل",
-    description: "Automate repetitive tasks and processes",
+    titleKey: "request.templates.automation.title",
+    descriptionKey: "request.templates.automation.description",
     icon: TbRobot,
-    prompt: "Looking to automate workflows:\n\n• Current manual process: [describe steps]\n• Frequency: [how often this runs]\n• Tools involved: [list integrations needed]\n\nGoal: Save hours per week on repetitive tasks",
-    category: "Automation",
+    promptKey: "request.templates.automation.prompt",
+    categoryKey: "request.categories.automation",
   },
   {
     id: "pitch",
-    title: "تحسين العرض",
-    description: "AI analysis of your pitch deck for fundraising",
+    titleKey: "request.templates.pitch.title",
+    descriptionKey: "request.templates.pitch.description",
     icon: TbTargetArrow,
-    prompt: "Need help optimizing my pitch deck:\n\n• Stage: [pre-seed/seed/series A]\n• Industry: [your market]\n• Current deck: [number of slides]\n\nGoal: Improve investor conversion rate",
-    category: "Fundraising",
+    promptKey: "request.templates.pitch.prompt",
+    categoryKey: "request.categories.fundraising",
   },
 ];
 
@@ -131,6 +132,7 @@ function RequestContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { data: session, status } = useSession();
+  const { t } = useTranslation();
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [hiring, setHiring] = useState<string | null>(null);
@@ -186,7 +188,7 @@ function RequestContent() {
 
     // Don't search if there are unfilled placeholders
     if (hasPlaceholders(searchDesc)) {
-      setError("Please fill in all template placeholders before searching");
+      setError(t("request.fillPlaceholders"));
       return;
     }
 
@@ -220,8 +222,8 @@ function RequestContent() {
     await handleSearch();
   };
 
-  const handlePresetClick = (preset: typeof REQUEST_PRESETS[0]) => {
-    setDescription(preset.prompt);
+  const handlePresetClick = (presetKey: typeof REQUEST_PRESET_KEYS[0]) => {
+    setDescription(t(presetKey.promptKey));
   };
 
   const handleHire = async (assignmentId: string, price: number) => {
@@ -245,28 +247,28 @@ function RequestContent() {
       if (!response.ok) {
         if (data.error === "Insufficient رصيد") {
           setHireError({
-            message: "Not enough رصيد",
+            message: t("request.notEnoughCredits"),
             required: data.required,
             available: data.available,
           });
-          toast.error(`Need ${data.required} رصيد, you have ${data.available}`, {
+          toast.error(`${t("request.required")}: ${data.required}, ${t("request.available")}: ${data.available}`, {
             action: {
-              label: "Add Credits",
+              label: t("dashboard.addCredits"),
               onClick: () => router.push("/dashboard/wallet"),
             },
           });
         } else {
-          setHireError({ message: data.error || "Failed to hire specialist" });
-          toast.error(data.error || "Failed to hire specialist");
+          setHireError({ message: data.error || t("request.hireFailed") });
+          toast.error(data.error || t("request.hireFailed"));
         }
         return;
       }
 
-      toast.success(`Project started with ${data.assignment.specialist}!`);
+      toast.success(t("request.projectStarted"));
       router.push(`/dashboard/tasks/${assignmentId}`);
     } catch (err) {
-      setHireError({ message: "Failed to complete hire" });
-      toast.error("Failed to complete hire");
+      setHireError({ message: t("request.hireFailed") });
+      toast.error(t("request.hireFailed"));
     } finally {
       setHiring(null);
     }
@@ -294,7 +296,7 @@ function RequestContent() {
                   className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-rose-100 border border-orange-200"
                 >
                   <TbRocket className="w-5 h-5 text-rose-500" />
-                  <span className="text-orange-700 text-sm font-bold uppercase tracking-wider">منصة الإطلاق</span>
+                  <span className="text-orange-700 text-sm font-bold uppercase tracking-wider">{t("request.launchPad")}</span>
                 </motion.div>
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
@@ -302,7 +304,7 @@ function RequestContent() {
                   transition={{ delay: 0.1 }}
                   className="text-4xl lg:text-5xl font-display font-bold uppercase tracking-tight text-slate-900 mb-4"
                 >
-                  ماذا <span className="text-rose-500">تبني؟</span>
+                  {t("request.whatBuilding")}
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -310,7 +312,7 @@ function RequestContent() {
                   transition={{ delay: 0.2 }}
                   className="text-lg text-slate-600 max-w-2xl mx-auto"
                 >
-                  اختر قالباً أو صف مشروعك. Our AI matches you with the perfect founders.
+                  {t("request.description")}
                 </motion.p>
               </div>
 
@@ -322,14 +324,14 @@ function RequestContent() {
                 className="mb-8"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700">قوالب البداية السريعة</h2>
+                  <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700">{t("request.quickStart")}</h2>
                   {savedSearches.length > 0 && (
                     <button
                       onClick={() => setShowHistory(!showHistory)}
                       className="flex items-center gap-1 text-sm text-rose-500 hover:text-rose-600"
                     >
                       <TbHistory size={16} />
-                      عمليات البحث الأخيرة
+                      {t("request.recentSearches")}
                     </button>
                   )}
                 </div>
@@ -341,7 +343,7 @@ function RequestContent() {
                     className="mb-6 p-4 bg-slate-100 rounded-xl border border-slate-200"
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-slate-700">Previous Searches</span>
+                      <span className="text-sm font-medium text-slate-700">{t("request.previousSearches")}</span>
                       <button onClick={() => setShowHistory(false)} className="text-slate-400 hover:text-slate-600">
                         <TbX size={16} />
                       </button>
@@ -363,7 +365,7 @@ function RequestContent() {
                           <span className="flex-1 truncate">{search.description}</span>
                           {search.result && search.result.matches.length > 0 && (
                             <span className="text-xs text-rose-500 font-medium flex-shrink-0">
-                              {search.result.matches.length} matches
+                              {search.result.matches.length} {t("request.matchesCount")}
                             </span>
                           )}
                         </button>
@@ -373,7 +375,7 @@ function RequestContent() {
                 )}
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {REQUEST_PRESETS.map((preset, i) => (
+                  {REQUEST_PRESET_KEYS.map((preset, i) => (
                     <motion.button
                       key={preset.id}
                       initial={{ opacity: 0, y: 20 }}
@@ -386,10 +388,10 @@ function RequestContent() {
                         <div className="w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center text-rose-500 group-hover:bg-rose-500 group-hover:text-white transition-colors">
                           <preset.icon size={20} />
                         </div>
-                        <span className="text-xs font-medium text-rose-500 uppercase tracking-wider">{preset.category}</span>
+                        <span className="text-xs font-medium text-rose-500 uppercase tracking-wider">{t(preset.categoryKey)}</span>
                       </div>
-                      <h3 className="font-bold text-slate-900 mb-1">{preset.title}</h3>
-                      <p className="text-sm text-slate-500 line-clamp-2">{preset.description}</p>
+                      <h3 className="font-bold text-slate-900 mb-1">{t(preset.titleKey)}</h3>
+                      <p className="text-sm text-slate-500 line-clamp-2">{t(preset.descriptionKey)}</p>
                     </motion.button>
                   ))}
                 </div>
@@ -406,7 +408,7 @@ function RequestContent() {
                 <Textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Describe your project in detail. The more specific, the better the match..."
+                  placeholder={t("request.placeholder")}
                   className="min-h-[180px] text-base resize-none border-slate-200 focus:border-rose-500 focus:ring-rose-500 rounded-xl"
                   disabled={loading}
                 />
@@ -422,9 +424,9 @@ function RequestContent() {
                     <div className="flex items-start gap-2">
                       <TbSparkles size={18} className="flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-medium mb-1">Fill in the template placeholders</p>
+                        <p className="font-medium mb-1">{t("request.fillPlaceholdersTitle")}</p>
                         <p className="text-pink-600">
-                          Replace these with your details: {placeholdersInDescription.join(", ")}
+                          {t("request.replacePlaceholders")}: {placeholdersInDescription.join(", ")}
                         </p>
                       </div>
                     </div>
@@ -441,12 +443,12 @@ function RequestContent() {
                     {loading ? (
                       <>
                         <TbLoader2 size={20} className="animate-spin" />
-                        Finding matches...
+                        {t("request.findingMatches")}
                       </>
                     ) : (
                       <>
                         <TbSearch size={20} />
-                        ابحث عن خبرائي
+                        {t("request.findMyExperts")}
                       </>
                     )}
                   </Button>
@@ -454,8 +456,8 @@ function RequestContent() {
 
                 <p className="text-xs text-slate-500 text-center mt-3">
                   {hasUnfilledPlaceholders
-                    ? "Complete all placeholders in brackets to search"
-                    : "No commitment required. Browse matches before deciding."}
+                    ? t("request.fillPlaceholders")
+                    : t("request.noCommitment")}
                 </p>
               </motion.form>
 
@@ -467,14 +469,14 @@ function RequestContent() {
                 className="mt-8 grid grid-cols-3 gap-4 text-center"
               >
                 {[
-                  { icon: TbSparkles, label: "AI Matching", desc: "Smart algorithms" },
-                  { icon: TbClock, label: "48h Turnaround", desc: "Fast delivery" },
-                  { icon: TbCheck, label: "Pay for Results", desc: "Satisfaction guaranteed" },
+                  { icon: TbSparkles, labelKey: "request.aiMatching", descKey: "request.smartAlgorithms" },
+                  { icon: TbClock, labelKey: "request.turnaround", descKey: "request.fastDelivery" },
+                  { icon: TbCheck, labelKey: "request.payForResults", descKey: "request.satisfactionGuaranteed" },
                 ].map((item) => (
-                  <div key={item.label} className="p-4 rounded-xl bg-white border border-slate-200">
+                  <div key={item.labelKey} className="p-4 rounded-xl bg-white border border-slate-200">
                     <item.icon className="w-6 h-6 mx-auto mb-2 text-rose-500" />
-                    <div className="font-medium text-slate-900 text-sm">{item.label}</div>
-                    <div className="text-xs text-slate-500">{item.desc}</div>
+                    <div className="font-medium text-slate-900 text-sm">{t(item.labelKey)}</div>
+                    <div className="text-xs text-slate-500">{t(item.descKey)}</div>
                   </div>
                 ))}
               </motion.div>
@@ -491,9 +493,9 @@ function RequestContent() {
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h2 className="text-2xl font-bold text-slate-900">
-                      {result.matches.length} خبراء تم العثور عليهم
+                      {result.matches.length} {t("request.expertsFound")}
                     </h2>
-                    <p className="text-slate-600">اختر واحداً لبدء مشروعك</p>
+                    <p className="text-slate-600">{t("request.selectToStart")}</p>
                   </div>
                   <Button
                     variant="outline"
@@ -503,7 +505,7 @@ function RequestContent() {
                     }}
                     className="border-slate-300"
                   >
-                    بحث جديد
+                    {t("request.newSearch")}
                   </Button>
                 </div>
 
@@ -532,7 +534,7 @@ function RequestContent() {
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="font-bold text-slate-900">{match.specialist.firstName}</h3>
                           <span className="px-2 py-0.5 rounded-full bg-rose-100 text-rose-600 text-xs font-medium">
-                            {Math.round(match.confidence * 100)}% match
+                            {Math.round(match.confidence * 100)}% {t("request.match")}
                           </span>
                         </div>
                         <div className="flex items-center gap-3 text-sm text-slate-600">
@@ -540,14 +542,14 @@ function RequestContent() {
                             <SlStar size={12} className="text-pink-400 fill-pink-400" />
                             {match.specialist.rating.toFixed(1)}
                           </span>
-                          <span>{match.specialist.completedTasks} projects</span>
+                          <span>{match.specialist.completedTasks} {t("request.projects")}</span>
                           <span className="text-rose-500 font-medium">{match.taskName}</span>
                         </div>
                       </div>
 
                       <div className="text-right">
                         <div className="text-2xl font-bold text-slate-900">{Math.round(match.price)}</div>
-                        <div className="text-xs text-slate-500">رصيد</div>
+                        <div className="text-xs text-slate-500">{t("request.credits")}</div>
                       </div>
                     </div>
 
@@ -569,25 +571,25 @@ function RequestContent() {
                 <div className="sticky top-24 bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-lg">
                   {selectedMatch ? (
                     <>
-                      <h3 className="font-bold text-lg text-slate-900 mb-4">تأكيد التوظيف</h3>
+                      <h3 className="font-bold text-lg text-slate-900 mb-4">{t("request.confirmHire")}</h3>
 
                       <div className="space-y-4 mb-6">
                         <div className="flex items-center justify-between">
-                          <span className="text-slate-600">Specialist</span>
+                          <span className="text-slate-600">{t("request.specialist")}</span>
                           <span className="font-medium text-slate-900">{selectedMatch.specialist.firstName}</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-slate-600">Task</span>
+                          <span className="text-slate-600">{t("request.task")}</span>
                           <span className="font-medium text-slate-900">{selectedMatch.taskName}</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-slate-600">Unit Price</span>
-                          <span className="font-medium text-slate-900">{Math.round(selectedMatch.price)} رصيد</span>
+                          <span className="text-slate-600">{t("request.unitPrice")}</span>
+                          <span className="font-medium text-slate-900">{Math.round(selectedMatch.price)} {t("request.credits")}</span>
                         </div>
 
                         <div className="pt-4 border-t border-slate-200">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-slate-600">Quantity</span>
+                            <span className="text-slate-600">{t("request.quantity")}</span>
                             <div className="flex items-center gap-2">
                               <button
                                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -608,11 +610,11 @@ function RequestContent() {
 
                         <div className="pt-4 border-t border-slate-200">
                           <div className="flex items-center justify-between text-lg">
-                            <span className="font-bold text-slate-900">Total</span>
-                            <span className="font-bold text-rose-500">{totalCost} رصيد</span>
+                            <span className="font-bold text-slate-900">{t("request.total")}</span>
+                            <span className="font-bold text-rose-500">{totalCost} {t("request.credits")}</span>
                           </div>
                           <div className="text-xs text-slate-500 text-right">
-                            ≈ ${(totalCost / 10).toFixed(2)} USD
+                            ≈ ${(totalCost / 10).toFixed(2)} {t("common.usd")}
                           </div>
                         </div>
                       </div>
@@ -623,13 +625,13 @@ function RequestContent() {
                           <p className="text-sm font-medium text-red-700 mb-1">{hireError.message}</p>
                           {hireError.required && hireError.available !== undefined && (
                             <div className="text-xs text-red-600">
-                              <p>Required: <span className="font-bold">{hireError.required}</span> رصيد</p>
-                              <p>Available: <span className="font-bold">{hireError.available}</span> رصيد</p>
-                              <p className="mt-2">Missing: <span className="font-bold">{hireError.required - hireError.available}</span> رصيد</p>
+                              <p>{t("request.required")}: <span className="font-bold">{hireError.required}</span> {t("request.credits")}</p>
+                              <p>{t("request.available")}: <span className="font-bold">{hireError.available}</span> {t("request.credits")}</p>
+                              <p className="mt-2">{t("request.missing")}: <span className="font-bold">{hireError.required - hireError.available}</span> {t("request.credits")}</p>
                             </div>
                           )}
                           <Link href="/dashboard/wallet" className="mt-2 inline-flex items-center gap-1 text-xs text-rose-600 font-medium hover:text-orange-700">
-                            Add Credits <TbArrowRight size={12} />
+                            {t("dashboard.addCredits")} <TbArrowRight size={12} />
                           </Link>
                         </div>
                       )}
@@ -642,24 +644,24 @@ function RequestContent() {
                         {hiring === selectedMatch.id ? (
                           <>
                             <TbLoader2 size={20} className="animate-spin mr-2" />
-                            Processing...
+                            {t("request.processing")}
                           </>
                         ) : result.isAuthenticated ? (
                           <>
                             <TbRocket size={20} className="mr-2" />
-                            بدء المشروع
+                            {t("request.startProject")}
                           </>
                         ) : (
                           <>
                             <TbArrowRight size={20} className="mr-2" />
-                            Sign in to Start
+                            {t("request.signInToStart")}
                           </>
                         )}
                       </Button>
 
                       {!result.isAuthenticated && (
                         <p className="text-xs text-slate-500 text-center mt-3">
-                          You&apos;ll be redirected to sign in first
+                          {t("request.redirectToSignIn")}
                         </p>
                       )}
                     </>
@@ -668,9 +670,9 @@ function RequestContent() {
                       <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-rose-100 flex items-center justify-center">
                         <TbUser size={32} className="text-rose-500" />
                       </div>
-                      <h3 className="font-bold text-slate-900 mb-2">Select an Expert</h3>
+                      <h3 className="font-bold text-slate-900 mb-2">{t("request.selectExpert")}</h3>
                       <p className="text-sm text-slate-500">
-                        Click on a specialist to see details and start your project
+                        {t("request.clickToSeeDetails")}
                       </p>
                     </div>
                   )}

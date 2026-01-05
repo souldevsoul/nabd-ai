@@ -279,31 +279,51 @@
     "quickStart": "Quick Start Templates",
     "recentSearches": "Recent Searches",
     "previousSearches": "Previous Searches",
+    "matchesCount": "matches",
+    "placeholder": "Describe your project in detail. The more specific, the better the match...",
+    "fillPlaceholdersTitle": "Fill in the template placeholders",
+    "replacePlaceholders": "Replace these with your details",
+    "projects": "projects",
+    "hireFailed": "Failed to hire specialist",
+    "projectStarted": "Project started successfully!",
     "templates": {
       "mvp": {
         "title": "MVP Launch",
-        "description": "Build and ship a working MVP with core features in 2-4 weeks"
+        "description": "Build and ship a working MVP with core features in 2-4 weeks",
+        "prompt": "I need to build an MVP for my startup. The core features are:\n\n- User authentication\n- Main product functionality\n- Basic dashboard\n\nTimeline: 2-4 weeks to launch"
       },
       "aiIntegration": {
         "title": "AI Integration",
-        "description": "Add AI/ML capabilities to your existing product"
+        "description": "Add AI/ML capabilities to your existing product",
+        "prompt": "I want to integrate AI into my existing application:\n\n- Current stack: [describe your tech]\n- AI use case: [chatbot/recommendations/analysis]\n- Data available: [describe your data]\n\nGoal: Enhance user experience with intelligent features"
       },
       "growth": {
         "title": "Growth Analytics",
-        "description": "Set up analytics and optimize conversion funnels"
+        "description": "Set up analytics and optimize conversion funnels",
+        "prompt": "Need help with growth and analytics:\n\n- Current metrics: [describe KPIs]\n- Biggest challenge: [conversion/retention/acquisition]\n- Tools in use: [list current tools]\n\nGoal: Data-driven growth strategy"
       },
       "chatbot": {
         "title": "Support Bot",
-        "description": "Build an AI chatbot to handle customer support"
+        "description": "Build an AI chatbot to handle customer support",
+        "prompt": "Need a customer support chatbot:\n\n- Platform: [web/app/both]\n- Common questions: [list top 5 FAQs]\n- Escalation needed: [when to involve humans]\n\nGoal: Reduce support tickets by 50%+"
       },
       "automation": {
         "title": "Workflow Automation",
-        "description": "Automate repetitive tasks and processes"
+        "description": "Automate repetitive tasks and processes",
+        "prompt": "Looking to automate workflows:\n\n- Current manual process: [describe steps]\n- Frequency: [how often this runs]\n- Tools involved: [list integrations needed]\n\nGoal: Save hours per week on repetitive tasks"
       },
       "pitch": {
         "title": "Pitch Optimization",
-        "description": "AI analysis of your pitch deck for fundraising"
+        "description": "AI analysis of your pitch deck for fundraising",
+        "prompt": "Need help optimizing my pitch deck:\n\n- Stage: [pre-seed/seed/series A]\n- Industry: [your market]\n- Current deck: [number of slides]\n\nGoal: Improve investor conversion rate"
       }
+    },
+    "categories": {
+      "product": "Product",
+      "ai": "AI",
+      "growth": "Growth",
+      "automation": "Automation",
+      "fundraising": "Fundraising"
     },
     "findMyExperts": "Find My Experts",
     "findingMatches": "Finding matches...",
